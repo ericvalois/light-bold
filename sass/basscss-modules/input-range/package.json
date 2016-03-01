@@ -1,0 +1,28 @@
+{
+  "name": "basscss-input-range",
+  "version": "2.0.1",
+  "description": "Custom input range module for Basscss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/addons.git"
+  },
+  "keywords": [
+    "CSS",
+    "OOCSS",
+    "Basscss",
+    "Rework"
+  ],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basscss/addons/issues"
+  },
+  "homepage": "https://github.com/basscss/addons",
+  "basscss": {
+    "category": "color",
+    "optional": true
+  },
+  "dependencies": {
+    "basscss-defaults": "^2.0.1"
+  }
+}

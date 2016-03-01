@@ -1,0 +1,31 @@
+.admin-bar .main-header {
+  top: 46px;
+}
+
+.admin-bar .nav-container {
+    top: 132px;
+}
+
+@media screen and (min-width: 783px) {
+    .admin-bar .main-header {
+        top: 32px;
+    }
+
+    .admin-bar .nav-container {
+        top: 118px;
+    }
+}
+
+@include media-query(md) {
+    .admin-bar .nav-container {
+        top: 118px;
+    }
+}
+
+@media (min-width: 1200px){
+    .admin-bar .nav-container {
+        top: auto;
+    }
+}
+
+#wpadminbar{ position: fixed !important; }

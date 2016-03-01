@@ -1,2 +1,2 @@
-# light-bold
-Light &amp; Bold WordPress theme
+# perfthemes-starter
+Starter theme for perfthemes.com

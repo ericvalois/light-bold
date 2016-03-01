@@ -1,0 +1,23 @@
+{
+  "name": "basscss-btn-outline",
+  "version": "1.0.2",
+  "description": "Outline button color style module for Basscss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basscss/addons.git"
+  },
+  "keywords": [
+    "basscss",
+    "css",
+    "oocss"
+  ],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basscss/addons/issues"
+  },
+  "homepage": "https://github.com/basscss/addons",
+  "devDependencies": {
+    "basscss-defaults": "^2.0.1"
+  }
+}

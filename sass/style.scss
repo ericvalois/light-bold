@@ -1,0 +1,117 @@
+/*!
+Theme Name: Light & Bold
+Theme URI: https://light-bold.perfthemes.com
+Author: Perfthemes
+Author URI: https://perfthemes.com
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: perf
+Tags:
+*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+$text-color: #3e3e3e;
+
+$dark-bg: #1E1E1E;
+
+@import 'normalize';
+
+@import 'basscss-custom';
+
+@import 'underscore';
+
+@import 'mixins';
+
+@import 'main-nav';
+
+@import 'images';
+
+@import 'accessibility';
+
+@import 'admin-bar';
+
+@import 'typo';
+
+
+
+.dark-bg{ background-color: $dark-bg; }
+
+.white-color{ color: #fff; }
+
+
+
+.neg_margin{
+    margin-top: -100px;
+    position: relative;
+    z-index: 2;
+}
+
+.front-hero{
+    min-height: 200px;
+    min-height: 33.33333vh;
+}
+
+.front-hero-content{ min-height: 300px; }
+
+.thumb_section1{ height: 360px; }
+
+@include media-query(md) {
+    .front-hero,
+    .front-hero-content{
+        min-height: 350px;
+        min-height: 58.33333vh;
+    }
+
+    .section1{ 
+        min-height: 200px;
+        min-height: 33.33333vh;
+    }
+}
+
+body{
+    padding-top: 64px;
+}
+
+.site-content{
+    margin: 0 auto;
+    min-height: 100%;
+    backface-visibility: hidden;
+}
+
+.neg_bm1{ margin-bottom: -2rem;}
+
+
+
+@include media-query(sm) {
+  
+}
+
+@include media-query(md) {
+  body{
+  	font-size: 120%;
+    padding-top: 86px;
+  }
+}
+
+@include media-query(lg) {
+  .section2_box{
+        display: table-cell;
+    }
+}
+
+@media (min-width: 1200px){
+    body{
+        font-size: 130%;
+        padding-top: 0;
+    }
+}
+
+
+
