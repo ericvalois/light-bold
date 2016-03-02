@@ -7,12 +7,12 @@ h1,h2,h3,h4,h5,h6{ -webkit-font-smoothing: antialiased;}
 
 a{
 	text-decoration: none;
-	transition: color 0.2s ease;
-
-	&:hover,
-    &:focus{
-        text-decoration: underline;
-    }
+	-ms-touch-action: manipulation;	/* IE10  */
+	touch-action: manipulation;		/* IE11+ */
+	transition: border-color 0.2s ease;
+	border-bottom-style: solid;
+    border-bottom-width: 0.08em;
+    border-bottom-color: transparent;
 }
 
 .separator:after{
@@ -44,6 +44,8 @@ a{
     line-height: 1;
     //transition: background-color 0.3s ease, color 0.3s ease;
     transition: background-color .3s ease, color .4s ease;
+    -ms-touch-action: manipulation;	/* IE10  */
+	touch-action: manipulation;		/* IE11+ */
    
     &:hover,
     &:focus{

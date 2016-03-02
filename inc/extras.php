@@ -121,21 +121,26 @@ function wpdocs_add_menu_parent_class( $items ) {
 }
 add_filter( 'wp_nav_menu_objects', 'wpdocs_add_menu_parent_class' );
 
+/**
+* Add search in main menu
+*/
 function my_nav_wrap() {
-  // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
-  
-  // open the <ul>, set 'menu_class' and 'menu_id' values
-  $wrap  = '<ul id="%1$s" class="%2$s">';
-  
-  // get nav items as configured in /wp-admin/
-  $wrap .= '%3$s';
-  
-  // the static link 
-  $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://perf.dev/blog/"><span>Search</span><i class="_mi _after fa fa-search"></i></a></li>';
-  
-  // close the <ul>
-  $wrap .= '</ul>';
+    // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
 
-  // return the result
-  return $wrap;
+    // open the <ul>, set 'menu_class' and 'menu_id' values
+    $wrap  = '<ul id="%1$s" class="%2$s">';
+
+    // get nav items as configured in /wp-admin/
+    $wrap .= '%3$s';
+
+    // the static link 
+    if( get_field("perf_hide_search","option") != 1 ){
+        $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="Search" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
+    }
+
+    // close the <ul>
+    $wrap .= '</ul>';
+
+    // return the result
+    return $wrap;
 }

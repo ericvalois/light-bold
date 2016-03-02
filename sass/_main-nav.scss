@@ -149,6 +149,7 @@
     text-decoration: none;
     color: $text-color;
     border-top: 2px solid #f4f3f3;
+    border-bottom: none;
     
     transition: color .3s ease;
 
@@ -180,11 +181,11 @@
 
 
 
-#primary-menu a i {
+#primary-menu i {
     font-size: 20px;
 }
 
-#primary-menu a i.fa { display:table-cell !important; vertical-align: middle!important; }
+#primary-menu i.fa { display:table-cell !important; vertical-align: middle!important; }
 #primary-menu li a span { display:table-cell !important; vertical-align: middle!important; width: 100%; padding-right: 20px; }
 
 #primary-menu li:hover > .sub-menu,
@@ -209,22 +210,6 @@
     //transition: background-color .3s ease;
 }
 
-#primary-menu > li.menu-item-has-children:hover  {
-    background-color: #efefef;
-}
-
-#primary-menu .sub-menu li:hover,
-#primary-menu .sub-menu li:focus{
-    background-color: #D6D4D4;
-}
-
-#primary-menu .sub-sub-menu  {
-    background-color: #D6D4D4;
-
-}
-
-
-
 #primary-menu .sub-menu a {
 
     width: 100%;
@@ -232,22 +217,44 @@
 
 
 
-    .main-header {
-        height: 86px;
-    }
+.main-header {
+    height: 86px;
+}
 
-    .nav-container {
-        top: 86px;
-    }
+.nav-container {
+    top: 86px;
+}
 
-    #primary-menu a  {
-        padding-left: 2rem;
-        z-index: 3;
-    }
+#primary-menu a  {
+    padding-left: 2rem;
+    z-index: 3;
+}
 
-    
+.main-search {
+    padding-left: 3rem;
+    padding-right: 2rem;
+    border-top: 2px solid #f4f3f3;
+    border-bottom: 2px solid #f4f3f3;
+}
 
-  
+.main-search input[type="search"]{
+    font-size: 13px;
+    padding-right: 1rem;
+    height: 50px;
+    height: 8.33333vh;
+    color: #3e3e3e;
+    transition: color .3s ease;
+    box-sizing: border-box;
+    letter-spacing: 0;
+}
+
+.main-search input[type="search"]::-webkit-input-placeholder{
+    color: #3e3e3e;
+}
+
+.main-search input[type="search"]:focus{
+    outline: none;
+}
 
 @include media-query(lg) {
 
@@ -258,7 +265,7 @@
     }
 
     #primary-menu .sub-menu .sub-menu  {
-        background-color: #efefef;
+        background-color: #fff;
     }
 
     .navigation-opened {
@@ -273,7 +280,7 @@
         visibility: hidden;
         width: 320px;
         z-index: 1;
-        background-color: #efefef;
+        background-color: #fff;
         -webkit-transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
         transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
         padding: 0;
@@ -361,11 +368,6 @@
         -webkit-transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
         transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
 
-    }
-
-    #primary-menu .sub-menu li:hover,
-    #primary-menu .sub-menu li:focus{
-        background-color: transparent;
     }
     
 }

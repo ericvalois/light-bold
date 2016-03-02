@@ -104,6 +104,8 @@ body{
   .section2_box{
         display: table-cell;
     }
+
+    .section2{ min-height: 600px;}
 }
 
 @media (min-width: 1200px){
