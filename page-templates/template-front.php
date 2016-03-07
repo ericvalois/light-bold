@@ -13,6 +13,10 @@ get_header(); ?>
 			<?php get_template_part( 'components/front-sections/section1' ); ?>
 
 			<?php get_template_part( 'components/front-sections/section2' ); ?>
+
+			<?php get_template_part( 'components/front-sections/section3' ); ?>
+
+			<?php get_template_part( 'components/front-sections/section4' ); ?>
 		</main>
 	</div>
 

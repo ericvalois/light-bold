@@ -22,21 +22,33 @@ document.getElementById("main_nav_toggle").addEventListener("click", function ()
 });
 
 
-/*
-var classname = document.querySelectorAll(".menu-item-depth-0.menu-item-has-children");
+function scrollTo(element, to, duration) {
+    if (duration <= 0) return;
+    var difference = to - element.scrollTop;
+    var perTick = difference / duration * 10;
 
-//var classname = document.querySelectorAll(".menu-item-has-children");
+    setTimeout(function() {
+        element.scrollTop = element.scrollTop + perTick;
+        if (element.scrollTop === to) return;
+        scrollTo(element, to, duration - 10);
+    }, 10);
+}
 
+function runScroll() {
+  scrollTo(document.body, 0, 600);
+}
+var scrollme;
+scrollme = document.querySelector("#to_top");
+scrollme.addEventListener("click",runScroll,false)
 
-for (var i = 0; i < classname.length; i++) {
-    //classname[i].addEventListener('click', myFunction, false);
-    classname[i].children.addEventListener("click", function (e) {
-        //e.target.classList.add('green');
-        if (e.target.classList.contains("opened")) {
-            e.target.classList.remove("opened");
-        } else {
-            e.target.classList.add("opened");
-        }
+function scrollTo(element, to, duration) {
+  if (duration <= 0) return;
+  var difference = to - element.scrollTop;
+  var perTick = difference / duration * 10;
 
-    });
-}*/
+  setTimeout(function() {
+    element.scrollTop = element.scrollTop + perTick;
+    if (element.scrollTop == to) return;
+    scrollTo(element, to, duration - 10);
+  }, 10);
+}

@@ -12,13 +12,41 @@
 ?>
 
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'perf' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'perf' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'perf' ), 'perf', '<a href="https://perfthemes.com" rel="designer">Perfthemes</a>' ); ?>
+	<footer class="site-footer clearfix dark-bg" role="contentinfo">
+
+		<div class="clearfix mt3 lg-mt4 px2 lg-px3 ">
+			<div class="col col-12 md-col-3">
+				<?php dynamic_sidebar( 'footer-1' ); ?>
+			</div>
+
+			<div class="col col-12 md-col-3">
+				<?php dynamic_sidebar( 'footer-2' ); ?>
+			</div>
+
+			<div class="col col-12 md-col-3">
+				<?php dynamic_sidebar( 'footer-3' ); ?>
+			</div>
+
+			<div class="col col-12 md-col-3">
+				<?php dynamic_sidebar( 'footer-4' ); ?>
+			</div>
+		</div>
+
+		<div class="site-info py2 px2 lg-px3 bg-black clearfix">
+			<div class="col col-12 md-col-6 mb1 md-mb0">
+				<div class="white-color copy">@ <?php echo date("Y"); ?> <?php echo get_field("perf_footer_copy","option"); ?></div>
+			</div>
+			
+			<div class="col col-12 md-col-6">
+				<?php if( !get_field("perf_disble_top_anchor") ){ echo '<button id="to_top" class="right ml2 bg-black border-none"><i class="fa fa-chevron-up"></i></button>'; } ?>
+				<?php 
+					wp_nav_menu( array( 'theme_location' => 'sub-footer', 'menu_id' => 'sub-footer', 'container' => '', 'fallback_cb' => false, 'menu_class' => 'list-reset md-right' ) );
+				?>
+				
+			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+
 </div><!-- .site-content -->
 
 <?php wp_footer(); ?>

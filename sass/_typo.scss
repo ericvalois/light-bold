@@ -28,8 +28,13 @@ a{
     background-color: #fff;
 }
 
-.small-p{
-    font-size: 80%;
+.separator.seprarator-center:after{
+    margin: 0 auto;
+}
+
+.small-p,
+.textwidget{
+    font-size: 75%;
 }
 
 .perf_btn{

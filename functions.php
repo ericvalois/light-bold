@@ -52,6 +52,7 @@ function perf_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'perf' ),
+		'sub-footer' => esc_html__( 'sub-footer', 'perf' ),
 	) );
 
 	/*
@@ -87,17 +88,6 @@ function perf_setup() {
 endif; // perf_setup
 add_action( 'after_setup_theme', 'perf_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function perf_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'perf_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'perf_content_width', 0 );
 
 /**
  * Register widget area.
@@ -106,13 +96,43 @@ add_action( 'after_setup_theme', 'perf_content_width', 0 );
  */
 function perf_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'perf' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Footer 1', 'perf' ),
+		'id'            => 'footer-1',
 		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2', 'perf' ),
+		'id'            => 'footer-2',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 3', 'perf' ),
+		'id'            => 'footer-3',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 4', 'perf' ),
+		'id'            => 'footer-4',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'perf_widgets_init' );
@@ -203,7 +223,19 @@ require get_template_directory() . '/inc/custom-styles.php';
  */
 require get_template_directory() . '/inc/menu-icons.php';
 
+/**
+ * Social Widget
+ */
+require get_template_directory() . '/inc/widget-social.php';
 
+/**
+ * Address widget
+ */
+require get_template_directory() . '/inc/address-widget.php';
 
+/**
+ * Image widget
+ */
+require get_template_directory() . '/inc/widget-image.php';
 
 
