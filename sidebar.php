@@ -7,11 +7,11 @@
  * @package perfthemes
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'blog-sidebar' ) ) {
 	return;
 }
 ?>
 
-<div id="secondary" class="widget-area  sm-col sm-col-4 border px2" role="complementary">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<div class="widget-area md-col md-col-3 lg-col-2 mt4 md-mt0" role="complementary">
+	<?php dynamic_sidebar( 'blog-sidebar' ); ?>
 </div><!-- #secondary -->

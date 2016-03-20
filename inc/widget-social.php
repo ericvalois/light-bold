@@ -34,7 +34,7 @@ class perf_social_profiles extends WP_Widget {
 
     foreach( $icons as $icon ){
     	?>
-    		<a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social white-color"><?php echo $icon['icon']; ?></a>
+    		<a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><?php echo $icon['icon']; ?></a>
     	<?php
     }
 

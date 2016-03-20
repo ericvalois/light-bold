@@ -29,10 +29,18 @@ class perf_image_widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
     }
     
+    $nofollow = get_field('perf_image_noffolow_widget', 'widget_' . $args['widget_id']);
+    $link = get_field('perf_image_link_widget', 'widget_' . $args['widget_id']);
     $image = get_field('perf_image_widget', 'widget_' . $args['widget_id']);
   
     ?>
-      <img data-src="<?php echo $image['sizes']['medium']; ?>" title="<?php echo $image['title']; ?>" alt="<?php echo $image['alt']; ?>" class="lazyload">
+      <?php if( $link ): ?>
+        <a href="<?php echo $link; ?>" <?php if( $nofollow ){ echo 'rel="nofollow"'; } ?> target="_blank" class="border-none">
+      <?php endif; ?>
+        <img data-src="<?php echo $image['sizes']['medium']; ?>" title="<?php echo $image['title']; ?>" alt="<?php echo $image['alt']; ?>" class="lazyload">
+      <?php if( $link ): ?>
+        </a>
+      <?php endif; ?>
     <?php
     
 

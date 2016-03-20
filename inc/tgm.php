@@ -73,9 +73,9 @@ function perf_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'AMP',
-			'slug'      => 'amp',
-			'required'  => false,
+			'name'      => 'Advanced Custom Fields: Font Awesome',
+			'slug'      => 'advanced-custom-fields-font-awesome',
+			'required'  => true,
 		),
 
 	);

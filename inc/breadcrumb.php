@@ -1,40 +1,55 @@
 <?php
-function perf_breadcrumb() {
+function perf_breadcrumbs() {
     global $post;
-	$separator = " » "; // Simply change the separator to what ever you need e.g. / or >
+	$separator = '<span class="white-color upper"> | </span>'; // Simply change the separator to what ever you need e.g. / or >
 	
-    echo '<div class="breadcrumb">';
+    echo '<nav class="perf_breadcrumbs">';
 	if (!is_front_page()) {
-		echo '<a href="';
+		echo '<a class="fa fa-home white-color" href="';
 		echo get_option('home');
 		echo '">';
-		bloginfo('name');
 		echo "</a> ".$separator;
 		if ( is_category() || is_single() ) {
-			the_category(', ');
+			echo '<span class="white-color">';
+			
+			$categories = get_the_category();
+			$cat_separator = ', ';
+			$output = '';
+			if ( ! empty( $categories ) ) {
+			    foreach( $categories as $category ) {
+			        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+			    }
+			    echo trim( $output, $cat_separator );
+			}
+
+			echo '</span>';
 			if ( is_single() ) {
 				echo $separator;
+				echo '<span class="white-color upper">';
 				the_title();
+				echo '</span>';
 			}
 		} elseif ( is_page() && $post->post_parent ) {
 			$home = get_page(get_option('page_on_front'));
 			for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
 				if (($home->ID) != ($post->ancestors[$i])) {
-					echo '<a href="';
+					echo '<a class="white-color upper" href="';
 					echo get_permalink($post->ancestors[$i]); 
 					echo '">';
 					echo get_the_title($post->ancestors[$i]);
 					echo "</a>".$separator;
 				}
 			}
-			echo the_title();
+			echo '<span class="white-color upper">' . get_the_title() . '</span>';
 		} elseif (is_page()) {
-			echo the_title();
+			echo '<span class="white-color upper">' . get_the_title() . '</span>';
+		} elseif ( is_home() ) {
+			echo '<span class="white-color upper">' . get_the_title( get_option('page_for_posts', true) ) . '</span>';
 		} elseif (is_404()) {
-			echo "404";
+			echo '<span class="white-color upper">' . __("404 page","perf") . '</span>';
 		}
 	} else {
-		bloginfo('name');
+		echo '<span class="white-color upper">' . get_bloginfo('name') . '</span>';
 	}
-	echo '</div>';
+	echo '</nav>';
 }

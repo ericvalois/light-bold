@@ -16,6 +16,7 @@ module.exports = function(grunt) {
                     "style.css": "sass/style.scss"
                 }
             }
+
         },
 
         criticalcss: {

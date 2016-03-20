@@ -13,25 +13,23 @@
  */
 
 get_header(); ?>
+	
+	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area sm-col sm-col-8 border px2">
-		<main id="main" class="site-main " role="main">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4">
+		<main id="main" class="site-main px2 sm-px3 md-px4 col lg-col-9" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'template-parts/content', 'page' ); ?>
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
-
 			<?php endwhile; // End of the loop. ?>
 
 		</main><!-- #main -->
+
+		<?php get_sidebar("social"); ?>
+
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

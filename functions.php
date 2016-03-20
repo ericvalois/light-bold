@@ -134,6 +134,16 @@ function perf_widgets_init() {
 		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
 		'after_title'   => '</h4>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Blog sidebar', 'perf' ),
+		'id'            => 'blog-sidebar',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title separator upper mb2">',
+		'after_title'   => '</h3>',
+	) );
 }
 add_action( 'widgets_init', 'perf_widgets_init' );
 
@@ -237,5 +247,20 @@ require get_template_directory() . '/inc/address-widget.php';
  * Image widget
  */
 require get_template_directory() . '/inc/widget-image.php';
+
+/**
+ * Add custom buttons and formating to Tinymce
+ */
+require get_template_directory() . '/inc/extend-tinymce.php';
+
+/**
+ * Plugins compatibility
+ */
+require get_template_directory() . '/inc/plugins-compatibility.php';
+
+/**
+ * Google Font
+ */
+require get_template_directory() . '/inc/google-font.php';
 
 

@@ -1,6 +1,6 @@
 body{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    color: $text-color;
+    color: #3e3e3e;
 }
 
 h1,h2,h3,h4,h5,h6{ -webkit-font-smoothing: antialiased;}
@@ -9,7 +9,7 @@ a{
 	text-decoration: none;
 	-ms-touch-action: manipulation;	/* IE10  */
 	touch-action: manipulation;		/* IE11+ */
-	transition: border-color 0.2s ease;
+	transition: border-color 0.2s ease, color 0.2s ease;
 	border-bottom-style: solid;
     border-bottom-width: 0.08em;
     border-bottom-color: transparent;
@@ -34,10 +34,13 @@ a{
 
 .small-p,
 .textwidget{
-    font-size: 75%;
+    font-size: 16px;
 }
 
-.perf_btn{
+.ultra-small{ font-size: 13px; }
+
+.perf_btn,
+.submit{
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
@@ -47,6 +50,7 @@ a{
     text-decoration: none;
     padding: 0.8rem 2.3rem;
     line-height: 1;
+    background-color: transparent;
     //transition: background-color 0.3s ease, color 0.3s ease;
     transition: background-color .3s ease, color .4s ease;
     -ms-touch-action: manipulation;	/* IE10  */
@@ -66,7 +70,57 @@ a{
     &:hover,
     &:focus{
         text-decoration: none;
-        color: $text-color;
+        color: #3e3e3e;
         background-color: #fff;
+        border-color: #fff;
     }
+}
+
+.intro-text{
+    font-size: 140%;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+main table{
+    width: 100%;
+    border-top: 1px solid #d2d2d2;
+    border-left: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+main table td,
+main table th{
+    @extend .px2;
+    @extend .py1;
+    text-align: center;
+    border-bottom: 1px solid #d2d2d2;
+    vertical-align: middle;
+}
+
+main table tr:nth-child(2n) td{
+    background-color: #efefee;
+}
+
+main table th{ font-weight: bold; }
+
+blockquote{
+    font-style: italic;
+    padding-left: 30px;
+    border-left-width: 3px;
+    border-left-style: solid;
+    margin: 0 0 3rem 0;
+}
+
+pre{
+    padding: 2rem;
+    background-color: $dark-bg;
+    overflow-x: scroll;
+    border-radius: 3px;
+    font-family: 'Source Code Pro',Menlo,monospace;
+    font-size: 75%;
+    font-weight: normal;
+    color: #d0d4d7;
 }

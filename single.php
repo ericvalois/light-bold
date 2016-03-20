@@ -8,27 +8,35 @@
  */
 
 get_header(); ?>
+	
+	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area  sm-col sm-col-8 border px2">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<div class="md-col md-col-9 lg-col-10 md-col-right">
+			<main id="main" class="site-main lg-col lg-col-10 md-ml3 lg-m0 lg-px4" role="main">
 
-			<?php get_template_part( 'template-parts/content', 'single' ); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php the_post_navigation(); ?>
+					<?php get_template_part( 'template-parts/content', 'single' ); ?>
 
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
+					<?php
+						// If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) :
+							comments_template();
+						endif;
+					?>
 
-		<?php endwhile; // End of the loop. ?>
+				<?php endwhile; // End of the loop. ?>
 
-		</main><!-- #main -->
+			</main><!-- #main -->
+
+			<?php get_sidebar("social"); ?>
+		</div>
+
+		<?php get_sidebar(); ?>
+
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+	
 <?php get_footer(); ?>

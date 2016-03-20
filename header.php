@@ -22,6 +22,7 @@
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 		<?php wp_head(); ?>
+
 	</head>
 
 <body <?php body_class(); ?>>
@@ -30,7 +31,7 @@
 
 	<header class="main-header site-sidebar bg-white">
 
-		<div class="main-header_container lg-px3">
+		<div class="main-header_container lg-px2">
 
 			<?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
 

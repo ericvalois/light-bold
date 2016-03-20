@@ -6,10 +6,10 @@
  */
 ?>
 
-<section class="clearfix">
-	<div id="hero" class="md-col md-col-7 relative front-hero bg-cover bg-center"></div>
+<section class="clearfix table col-12">
+	<div id="perf-main-hero" class="md-table-cell md-col-7 relative front-hero bg-cover bg-center"></div>
 	
-  	<div class="md-col md-col-5 dark-bg front-hero-content ">
+  	<div class="md-table-cell md-col-5 dark-bg front-hero-content ">
   		<div class="table col-12 front-hero-content">
   			<div class="px2 md-px3 table-cell align-middle">
   				<h1 class=" separator white-color"><?php echo get_field("perf_main_title"); ?></h1>

@@ -12,9 +12,9 @@ if ( ! function_exists( 'perf_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function perf_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	$time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","perf") . ': ' .'%2$s</time></span> ';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","perf") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","perf") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
 	}
 
 	$time_string = sprintf( $time_string,
@@ -24,17 +24,49 @@ function perf_posted_on() {
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'perf' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+	$posted_on = $time_string;
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'perf' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
+	$byline = '<span class="author vcard">' . __("By","perf") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	
+	echo $posted_on;
+	
+	echo $byline;
+
+	$categories = get_the_category();
+	$cat_separator = ', ';
+	$output = '';
+	if ( ! empty( $categories ) ) {
+
+		echo '<span class="cat">' . __("Categories", "perf") . ': ';
+
+	    foreach( $categories as $category ) {
+	        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+	    }
+	    echo trim( $output, $cat_separator );
+
+	    echo '</span>';
+
+	}
+	
+
+	$posttags = get_the_tags();
+	if ($posttags) {
+
+		echo '<span class="tag">' . __("Tags", "perf") . ': ';
+		$cpt = 1;
+		foreach($posttags as $tag) {
+			if( $cpt != 1){
+				echo ', ';
+			}
+			echo '<a class="white-color upper" href="' . get_tag_link($tag->term_id) . '">';
+			echo $tag->name;
+			echo '</a> '; 
+			$cpt++;
+		}
+
+		echo '</span>';
+	}
 
 }
 endif;

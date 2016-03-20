@@ -4,15 +4,26 @@
  *
  * @package perfthemes
  */
-?>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-<?php if ( has_post_thumbnail() ) : ?>
+?>
+
+
+<section id="perf-main-hero" class="relative bg-cover bg-center px2 sm-px3 md-px4 perf-main-hero">
+
+	<?php perf_breadcrumbs(); ?>
+
 	
-	<div class="perfthemes-hero">
-		<?php the_post_thumbnail( 'perfthemes-hero' ); ?>
-	</div><!-- .hero -->
-<?php endif; ?>
+	<?php if ( is_home() && ! is_front_page() ) : ?>
+		<?php global $post; ?>
+		<h1 class="h0-responsive regular white-color m0 entry-title"><?php echo get_the_title( get_option('page_for_posts', true) ); ?></h1>
+	<?php else: ?>
+		<h1 class="h0-responsive regular white-color m0 entry-title"><?php the_title(); ?></h1>
+	<?php endif; ?>
+
+	<?php if( is_single() ): ?>
+		<div class="entry-meta white-color upper absolute">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php perf_posted_on(); ?>
+			<?php endwhile; // End of the loop. ?>
+		</div><!-- .entry-meta -->
+	<?php endif; ?>
+</section>

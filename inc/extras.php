@@ -204,5 +204,19 @@ function clean_custom_menu( $theme_location ) {
     echo $menu_list;
 }
 
+/*
+* Wrap all table for responsive table
+*/
+add_filter( 'the_content', 'perf_add_wrap_table', PHP_INT_MAX );
+function perf_add_wrap_table( $content ) {
+
+    if( is_feed() || is_preview() )
+        return $content;
+
+    // This is a pretty simple regex, but it works
+    $content = preg_replace( '/(<table[^>]*>(?:.|\n)*(?=<\/table>))/', '<div class="overflow-scroll">${1}</div>', $content );
+
+    return $content;
+}
 
 

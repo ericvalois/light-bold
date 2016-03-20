@@ -31,10 +31,18 @@ function perf_sm_hero() {
 
     global $post;
 
-    $hero = get_field("perf_hero_image", $post->ID);
+    if( get_field("perf_hero_image", $post->ID) ){
+        $hero = get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
+        $hero = get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && get_field("perf_hero_404", "option") ){
+        $hero = get_field("perf_hero_404", "option");
+    }else{
+        $hero = get_field("perf_hero_image", "option");
+    }
 
 ?>
-    #hero{
+    #perf-main-hero{
         background-image: url(<?php echo $hero['sizes']['perfthemes-hero-sm']; ?>);
     }
 <?php
@@ -48,10 +56,17 @@ function perf_md_hero() {
 
     global $post;
 
-    $hero = get_field("perf_hero_image", $post->ID);
-
+    if( get_field("perf_hero_image", $post->ID) ){
+        $hero = get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
+        $hero = get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && get_field("perf_hero_404", "option") ){
+        $hero = get_field("perf_hero_404", "option");
+    }else{
+        $hero = get_field("perf_hero_image", "option");
+    }
 ?>
-    #hero{
+    #perf-main-hero{
         background-image: url(<?php echo $hero['sizes']['perfthemes-hero-md']; ?>);
     }
 <?php
@@ -65,10 +80,19 @@ function perf_lg_hero() {
 
     global $post;
 
-    $hero = get_field("perf_hero_image", $post->ID);
+    if( get_field("perf_hero_image", $post->ID) ){
+        $hero = get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
+        $hero = get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && get_field("perf_hero_404", "option") ){
+        $hero = get_field("perf_hero_404", "option");
+    }else{
+        $hero = get_field("perf_hero_image", "option");
+    }
+    
 
 ?>
-    #hero{
+    #perf-main-hero{
         background-image: url(<?php echo $hero['sizes']['perfthemes-hero-lg']; ?>);
     }
 <?php
@@ -88,37 +112,74 @@ function perf_custom_color(){
     
     ?>
 
+    .main-color{ color: <?php echo $perf_main_color; ?>; }
     a{ color: <?php echo $perf_main_color; ?>;}
+    a.dark-color:hover,
+    a.white-color:hover{ color: <?php echo $perf_main_color; ?> }
     #primary-menu i,
     #primary-menu a:hover,
     .address_row i { color: <?php echo $perf_main_color; ?>; }
     a:hover,a:focus{ border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu a:before,
     .separator:after{ background-color: <?php echo $perf_main_color; ?>; }
-    .perf_btn{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
-    .perf_btn:hover{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .perf_btn,
+    .submit{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .perf_btn:hover,
+    .submit:hover{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu > li.menu-item-has-children:hover,
     #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
     .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}
+    blockquote{ border-left-color: <?php echo $perf_main_color; ?>}
+    .social_share{ border-color: <?php echo $perf_main_color; ?>; }
+    input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?>; }
+    ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
+    ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
 
     <?php
-  
 }
 
-/*add_action('wp_head','perf_custom_css_inline', 10);
-function perf_custom_css_inline(){
-    if( function_exists("get_field") ){
-        
-        $perf_custom_css_styles = get_field("perf_custom_css_styles","option");
 
-        if( $perf_custom_css_styles != "" ){
-            echo '<style>';
-            echo $perf_custom_css_styles;
-            echo '</style>'; 
+add_action('perf_lg_styles','perf_section1_bg_lg', 10);
+function perf_section1_bg_lg(){
+
+    if( is_page_template("page-templates/template-front.php") ){
+        global $post;
+
+        $section1 = get_field("perf_section_1", $post->ID);
+
+        if( is_array($section1) && count($section1) > 0 ){
+
+            $cpt = 1;
+            foreach($section1 as $box ){
+            ?>
+                .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-md']; ?>); }
+            <?php
+                $cpt++;
+            }
         }
-        
     }
-}*/
+}
+
+add_action('perf_sm_styles','perf_section1_bg_sm', 10);
+function perf_section1_bg_sm(){
+
+    if( is_page_template("page-templates/template-front.php") ){
+        global $post;
+
+        $section1 = get_field("perf_section_1", $post->ID);
+
+        if( is_array($section1) && count($section1) > 0 ){
+
+            $cpt = 1;
+            foreach($section1 as $box ){
+            ?>
+                .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-sm']; ?>); }
+            <?php
+                $cpt++;
+            }
+        }
+    }
+}
 
 function perf_hex2rgba($color, $opacity = false) {
  
