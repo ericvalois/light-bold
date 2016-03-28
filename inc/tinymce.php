@@ -9,7 +9,7 @@
     $stylesheet = file_get_contents("../style.css");
 
     echo $stylesheet;
-    do_action( 'perf_sm_styles' );
+    do_action( 'perf_mobile_styles' );
 
 ?>
 #tinymce{ padding: 30px !important;}

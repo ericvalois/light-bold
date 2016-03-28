@@ -29,14 +29,14 @@ get_header(); ?>
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class("border-bottom mb3"); ?>>
+						<article id="post-<?php the_ID(); ?>" <?php post_class("border-bottom break-word mb2 md-mb3"); ?>>
 							<div class="sticky-meta ultra-small upper mb1">
 								<span class="main-color"><?php echo get_the_date(); ?></span>
 								<span class="inline-block px"> | </span><a href="" class="dark-color"><?php echo get_the_author(); ?></a>
 							</div>
 
-							<h2 class="entry-title h1 mb1 md-mb0 mt0"><a href="<?php the_permalink(); ?>" class="dark-color" rel="bookmark"><?php the_title(); ?></a></h2>
-							<a href="<?php the_permalink(); ?>" class="mb3 small-p inline-block"><?php _e("Read more","perf"); ?></a>
+							<h2 class="entry-title h2 mb1 md-mb0 mt0"><a href="<?php the_permalink(); ?>" class="dark-color" rel="bookmark"><?php the_title(); ?></a></h2>
+							<a href="<?php the_permalink(); ?>" class="mb2 md-mb3 small-p inline-block"><?php _e("Read more","perf"); ?></a>
 						</article>
 
 					<?php endwhile; ?>

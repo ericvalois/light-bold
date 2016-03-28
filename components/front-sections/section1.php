@@ -19,7 +19,7 @@
 
 				<div class="thumb_section1 bg-cover bg-center relative section1_box<?php echo $cpt; ?>">
 					<div class="absolute bottom-0 left-0 z1 col-12 neg_title ">
-						<h3 class="dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h2"><?php echo $box['title']; ?></h3>
+						<h3 class="dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4"><?php echo $box['title']; ?></h3>
 					</div>
 				</div>
 

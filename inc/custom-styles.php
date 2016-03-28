@@ -11,8 +11,12 @@ function perf_inline_styles() {
 
     echo '<style>';
         
-        do_action( 'perf_sm_styles' );
+        do_action( 'perf_mobile_styles' );
         
+        echo '@media (min-width: 40em)  {';
+            do_action( 'perf_sm_styles' );
+        echo '}';
+
         echo '@media (min-width: 52em)  {';
             do_action( 'perf_md_styles' );
         echo '}';
@@ -26,12 +30,12 @@ function perf_inline_styles() {
 /*
 * Mobile hero
 */
-add_action( 'perf_sm_styles', 'perf_sm_hero' );
+add_action( 'perf_mobile_styles', 'perf_sm_hero' );
 function perf_sm_hero() {
 
     global $post;
 
-    if( get_field("perf_hero_image", $post->ID) ){
+    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
         $hero = get_field("perf_hero_image", $post->ID);
     }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
         $hero = get_field("perf_hero_blog_archive", "option");
@@ -56,7 +60,7 @@ function perf_md_hero() {
 
     global $post;
 
-    if( get_field("perf_hero_image", $post->ID) ){
+    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
         $hero = get_field("perf_hero_image", $post->ID);
     }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
         $hero = get_field("perf_hero_blog_archive", "option");
@@ -80,7 +84,7 @@ function perf_lg_hero() {
 
     global $post;
 
-    if( get_field("perf_hero_image", $post->ID) ){
+    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
         $hero = get_field("perf_hero_image", $post->ID);
     }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
         $hero = get_field("perf_hero_blog_archive", "option");
@@ -101,7 +105,7 @@ function perf_lg_hero() {
 /**
  * Print custom inline CSS in the head
  */
-add_action('perf_sm_styles','perf_custom_color', 5);
+add_action('perf_mobile_styles','perf_custom_color', 5);
 function perf_custom_color(){
 
     if( get_field("perf_main_site_color","option") != 'other' ){
@@ -113,9 +117,14 @@ function perf_custom_color(){
     ?>
 
     .main-color{ color: <?php echo $perf_main_color; ?>; }
-    a{ color: <?php echo $perf_main_color; ?>;}
+    a,
+    .tagcloud a:hover{ color: <?php echo $perf_main_color; ?>;}
     a.dark-color:hover,
-    a.white-color:hover{ color: <?php echo $perf_main_color; ?> }
+    a.white-color:hover,
+    .tags:hover,
+    .widget_categories a:hover, 
+    .widget_archive a:hover,
+    .comment-reply-link:hover{ color: <?php echo $perf_main_color; ?> }
     #primary-menu i,
     #primary-menu a:hover,
     .address_row i { color: <?php echo $perf_main_color; ?>; }
@@ -134,7 +143,7 @@ function perf_custom_color(){
     input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?>; }
     ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
-
+    .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
     <?php
 }
 
@@ -160,7 +169,7 @@ function perf_section1_bg_lg(){
     }
 }
 
-add_action('perf_sm_styles','perf_section1_bg_sm', 10);
+add_action('perf_mobile_styles','perf_section1_bg_sm', 10);
 function perf_section1_bg_sm(){
 
     if( is_page_template("page-templates/template-front.php") ){
@@ -179,6 +188,36 @@ function perf_section1_bg_sm(){
             }
         }
     }
+}
+
+/*
+* Mobile logo
+*/
+add_action( 'perf_mobile_styles', 'perf_mobile_logo' );
+function perf_mobile_logo() {
+?>
+    #logo{ background-image: url(<?php echo get_field("perf_log_sm","option"); ?>); }
+<?php
+}
+
+/*
+* Tablet logo
+*/
+add_action( 'perf_sm_styles', 'perf_tablet_logo' );
+function perf_tablet_logo() {
+?>
+    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); }
+<?php
+}
+
+/*
+* Desktop logo
+*/
+add_action( 'perf_lg_styles', 'perf_desktop_logo' );
+function perf_desktop_logo() {
+?>
+    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); }
+<?php
 }
 
 function perf_hex2rgba($color, $opacity = false) {
@@ -218,3 +257,4 @@ function perf_hex2rgba($color, $opacity = false) {
         //Return rgb(a) color string
         return $output;
 }
+

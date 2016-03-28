@@ -45,8 +45,14 @@ function perf_breadcrumbs() {
 			echo '<span class="white-color upper">' . get_the_title() . '</span>';
 		} elseif ( is_home() ) {
 			echo '<span class="white-color upper">' . get_the_title( get_option('page_for_posts', true) ) . '</span>';
+		} elseif ( is_archive() ) {
+			echo '<span class="white-color upper">' . get_the_archive_title() . '</span>';
 		} elseif (is_404()) {
 			echo '<span class="white-color upper">' . __("404 page","perf") . '</span>';
+		} elseif (is_search()) {
+			echo '<span class="white-color upper">';
+			printf( esc_html__( 'Search Results for: %s', 'perf' ),  get_search_query() );
+			echo '</span>';
 		}
 	} else {
 		echo '<span class="white-color upper">' . get_bloginfo('name') . '</span>';

@@ -8,51 +8,65 @@
  */
 
 get_header(); ?>
+	
+	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4">
+		<main id="main" class="site-main px2 sm-px3 md-px4 col lg-col-12" role="main">
 
 			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'perf' ); ?></h1>
-				</header><!-- .page-header -->
 
 				<div class="page-content">
 					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'perf' ); ?></p>
 
 					<?php get_search_form(); ?>
 
-					<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+					<div class="clearfix mt2">
+						<div class="sm-col sm-col-6">
+							<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+						</div>
 
-					<?php if ( perf_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'perf' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-					<?php endif; ?>
+						<div class="sm-col sm-col-6 sm-px3">
+							<?php if ( perf_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+								<div class="widget widget_categories">
+									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'perf' ); ?></h2>
+									<ul>
+										<?php
+											wp_list_categories( array(
+												'orderby'    => 'count',
+												'order'      => 'DESC',
+												'show_count' => 1,
+												'title_li'   => '',
+												'number'     => 10,
+											) );
+										?>
+									</ul>
+								</div><!-- .widget -->
+							<?php endif; ?>
+						</div>
+					</div><?php // row ?>
 
-					<?php
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'perf' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-					?>
+					<div class="clearfix sm-mt2">
 
-					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+						<div class="sm-col sm-col-6">
+							<?php
+								/* translators: %1$s: smiley */
+								$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'perf' ), convert_smilies( ':)' ) ) . '</p>';
+								the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+							?>
+						</div>
+
+						<div class="sm-col sm-col-6 sm-px3">
+							<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
+						</div>
+					</div><?php // row ?>
 
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
 		</main><!-- #main -->
+
 	</div><!-- #primary -->
 
+	
 <?php get_footer(); ?>

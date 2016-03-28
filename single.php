@@ -14,7 +14,7 @@ get_header(); ?>
 	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4">
 
 		<div class="md-col md-col-9 lg-col-10 md-col-right">
-			<main id="main" class="site-main lg-col lg-col-10 md-ml3 lg-m0 lg-px4" role="main">
+			<main id="main" class="site-main lg-col lg-col-10 md-ml3 lg-m0 lg-px4 break-word" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 

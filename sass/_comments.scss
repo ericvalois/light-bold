@@ -1,0 +1,87 @@
+ol.children{ padding-left: 0; }
+
+@include media-query(sm) {
+
+	ol.children{
+		padding-left: 60px;
+	}
+
+	.comment-author-admin > .children{
+		padding-left: 90px;
+	}
+
+}
+
+ol.children{
+	list-style-type: none;
+}
+
+.comment .comment-respond{ padding-left: 60px; }
+
+.comment-list {
+	padding-left: 0;
+}
+
+.comment-body{
+	padding-left: 60px;
+	position: relative;
+	margin-bottom: 2rem;
+	
+}
+
+.comment-content{
+	font-size: 16px;
+}
+
+.avatar{
+	position: absolute;
+	top: 0;
+	left: -60px;
+	border-radius: 2px;
+}
+
+.comment-meta{
+	@extend .small-p;
+	font-weight: normal;
+	position: relative;
+}
+
+.comment-content *:last-child,{
+	margin-bottom: 0;
+}
+
+.comment-reply-link{
+    margin-top: 1rem;
+}
+
+.edit-link .comment-edit-link{ font-size: 13px; padding: 3px 10px; }
+
+.comment-metadata{ margin-bottom: 0.5rem;}
+
+.comment-author-admin > article{
+	padding: 30px 30px 30px 90px;
+}
+
+.comment-author-admin .comment-body{
+	//margin-bottom: 0;
+}
+
+.comment-author-admin .children{
+	margin-top: 2rem;
+}
+
+
+.comment-reply-title small a {
+    border: 0;
+    float: right;
+    height: 32px;
+    overflow: hidden;
+    width: 26px;
+    color: $text-color;
+    font-weight: normal;
+}
+
+.comment-reply-title small a:before {
+    content: "×";
+    font-size: 32px;
+}

@@ -8,40 +8,46 @@
  */
 
 get_header(); ?>
+<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4">
 
-		<?php if ( have_posts() ) : ?>
+		<div class="md-col md-col-9 lg-col-10 md-col-right">
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'perf' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+			<main id="main" class="site-main md-ml3 lg-ml4 lg-m0" role="main">
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-				?>
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+						<article id="post-<?php the_ID(); ?>" <?php post_class("border-bottom break-word mb2 md-mb3"); ?>>
+							<div class="sticky-meta ultra-small upper mb1">
+								<span class="main-color"><?php echo get_the_date(); ?></span>
+								<span class="inline-block px"> | </span><a href="" class="dark-color"><?php echo get_the_author(); ?></a>
+							</div>
 
-			<?php the_posts_navigation(); ?>
+							<h2 class="entry-title h2 mb1 md-mb0 mt0"><a href="<?php the_permalink(); ?>" class="dark-color" rel="bookmark"><?php the_title(); ?></a></h2>
+							<a href="<?php the_permalink(); ?>" class="mb2 md-mb3 small-p inline-block"><?php _e("Read more","perf"); ?></a>
+						</article>
 
-		<?php else : ?>
+					<?php endwhile; ?>
 
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
+					<?php the_posts_navigation(); ?>
 
-		<?php endif; ?>
+				<?php else : ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+					<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
-<?php get_sidebar(); ?>
+				<?php endif; ?>
+
+			</main><!-- #main -->
+
+		</div>
+
+		<?php get_sidebar(); ?>
+
+	</div><!-- #primary -->
+
+	
 <?php get_footer(); ?>

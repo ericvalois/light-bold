@@ -31,7 +31,7 @@
 
 	<header class="main-header site-sidebar bg-white">
 
-		<div class="main-header_container lg-px2">
+		<div class="main-header_container">
 
 			<?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
 

@@ -25,7 +25,7 @@
 					</div>
 				
 					<div class="table-cell align-top white-color pl2">
-						<h4 class="mt0 h2"><?php echo $box['title']; ?></h4>
+						<h4 class="mt0 h4"><?php echo $box['title']; ?></h4>
 
 						<p class="small-p mb0"><?php echo $box['content']; ?></p>
 					</div>

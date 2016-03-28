@@ -120,12 +120,12 @@ pre {
   overflow-x: scroll;
 }
 
-h1 { font-size: 2rem }
-h2 { font-size: 1.5rem }
-h3 { font-size: 1.25rem }
-h4 { font-size: 1rem }
-h5 { font-size: .875rem }
-h6 { font-size: .75rem }
+h1,.h1 { font-size: 230%; }
+h2,.h2 { font-size: 190%; }
+h3,.h3 { font-size: 140%; }
+h4,.h4 { font-size: 120%; }
+h5,.h5 { font-size: 110%; }
+h6,.h6 { font-size: 100%; }
 
 .field {
   border-style: solid;
@@ -193,13 +193,15 @@ h6 { font-size: .75rem }
 .table-light tr:last-child td {
   border-bottom: 0;
 }
-
+/*
 .h1 { font-size: 2rem }
 .h2 { font-size: 1.5rem }
 .h3 { font-size: 1.25rem }
 .h4 { font-size: 1rem }
 .h5 { font-size: .875rem }
 .h6 { font-size: .75rem }
+*/
+
 
 .bold    { font-weight: bold }
 .regular { font-weight: normal }

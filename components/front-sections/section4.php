@@ -15,7 +15,7 @@
 
 		<span class="mt0 perf_sup_title_section_4 small-p upper mb1 block"><?php echo get_field("perf_sup_title_section_4"); ?></span>
 		<span class="separator alt seprarator-center"></span>
-		<span class="block lighter line-height2 h1-responsive mb2 md-mb3 mt2"><?php echo get_field("perf_title_section_4"); ?></span>
+		<span class="block line-height2 h1 mb2 md-mb3 mt2"><?php echo get_field("perf_title_section_4"); ?></span>
 		<a href="<?php echo get_field("perf_link_section_4"); ?>" class="perf_btn alt table mx-auto"><?php _e("Read more","perf"); ?></a>
 		
 	  	

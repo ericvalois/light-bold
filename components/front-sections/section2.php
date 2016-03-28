@@ -17,13 +17,13 @@
 			<?php
 				if( $box['image'] ){
 					$div_class = 'thumb_section2 bg-cover bg-center lazyload';
-					$title_class = 'mt0 separator alt white-color h1';
+					$title_class = 'mt0 separator alt white-color h3';
 					$text_class = 'white-color mb2 mt2 lg-mb3 lg-mt3 small-p';
 					$button_class = 'perf_btn alt';
 					$data_bgset = 'data-bgset="' . $box['image']['sizes']['perfthemes-hero-md'] . ' [(min-width: 60em)] |' . $box['image']['sizes']['perfthemes-hero-sm'] . '[(min-width: 52em)] | ' . $box['image']['sizes']['perfthemes-hero-sm'] . '"';
 				}else{
 					$div_class = 'thumb_section2';
-					$title_class = 'mt0 separator h1';
+					$title_class = 'mt0 separator h3';
 					$text_class = 'mb2 mt2 lg-mb3 lg-mt3 small-p';
 					$button_class = 'perf_btn';
 				}

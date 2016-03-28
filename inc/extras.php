@@ -135,7 +135,7 @@ function my_nav_wrap() {
 
     // the static link 
     if( get_field("perf_hide_search","option") != 1 ){
-        $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="Search" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
+        $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="' . __("Search","perf") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
     }
 
     // close the <ul>
@@ -214,9 +214,21 @@ function perf_add_wrap_table( $content ) {
         return $content;
 
     // This is a pretty simple regex, but it works
-    $content = preg_replace( '/(<table[^>]*>(?:.|\n)*(?=<\/table>))/', '<div class="overflow-scroll">${1}</div>', $content );
+    //$content = preg_replace( '/(<table[^>]*>(?:.|\n)*(?=<\/table>))/', '<div class="overflow-scroll">${1}</div>', $content );
+    $content = str_replace('<table', '<div class="overflow-scroll"><table', $content);
+    $content = str_replace('</table>', '</table></div>', $content);
 
     return $content;
 }
 
+
+/*
+* Same tag cloud font size
+*/
+add_filter('widget_tag_cloud_args','set_tag_cloud_sizes');
+function set_tag_cloud_sizes($args) {
+    $args['smallest'] = 13;
+    $args['largest'] = 13;
+    return $args; 
+}
 

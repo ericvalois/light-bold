@@ -123,8 +123,10 @@
     height: 100%;
 }
 
+
 .main-header{ display: table; }
 .main-header_container{ display: table-cell; vertical-align: middle; }
+
 
 .sub-menu {
     max-height: 0;
@@ -282,11 +284,6 @@
         overflow: auto;
     }
 
-    
-
-    
-    
-
 }
 
 @include media-query(xlg) {
@@ -315,15 +312,11 @@
         transform: translate(0,0);
         -webkit-transition: none;
         transition: none;
-
-
     }
-
+    
     .main_nav_toggle {
         display: none;
     }
-
-    
 
     .main-header {
         background-color: #FFF;
@@ -345,11 +338,12 @@
         height: 16.66667vh;
     }
 
-    
-
-    
-
-    .site-logo{ float: none; display: table; margin: 0 auto; }
+    .site-logo{ 
+        float: none; 
+        margin: 0 auto; 
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 
     .navigation-opened .site-content{
         -webkit-transform: none;

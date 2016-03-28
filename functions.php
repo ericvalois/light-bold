@@ -99,40 +99,40 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 1', 'perf' ),
 		'id'            => 'footer-1',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'after_title'   => '</h6>',
 	) );
 
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 2', 'perf' ),
 		'id'            => 'footer-2',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'after_title'   => '</h6>',
 	) );
 
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 3', 'perf' ),
 		'id'            => 'footer-3',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s ">',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'after_title'   => '</h6>',
 	) );
 
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 4', 'perf' ),
 		'id'            => 'footer-4',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color %2$s ">',
+		'before_widget' => '<div id="%1$s" class="mb2 white-color %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator alt upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'after_title'   => '</h6>',
 	) );
 
 	register_sidebar( array(
@@ -141,8 +141,18 @@ function perf_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="widget-title separator upper mb2">',
-		'after_title'   => '</h3>',
+		'before_title'  => '<h4 class="widget-title separator upper mb2">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Page sidebar', 'perf' ),
+		'id'            => 'page-sidebar',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator upper mb2">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'perf_widgets_init' );
@@ -262,5 +272,12 @@ require get_template_directory() . '/inc/plugins-compatibility.php';
  * Google Font
  */
 require get_template_directory() . '/inc/google-font.php';
+
+/**
+ * Custom protected form markup
+ */
+require get_template_directory() . '/inc/custom-protected-form.php';
+
+
 
 
