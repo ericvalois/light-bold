@@ -400,7 +400,11 @@ input.search-field{ padding-right: 40px; }
 .widget-area ol,
 .widget_categories ul{ margin-bottom: 0; padding: 0; }
 
+/*
+* Contact
+*/
 
+.address_contact_cell{ display: block; }
 
 /*
 * Post navigation
@@ -419,6 +423,8 @@ input.search-field{ padding-right: 40px; }
     .entry-meta{
         display: block;
     }
+
+    .address_contact_cell{ display: table-cell; }
 }
 
 @include media-query(md) {

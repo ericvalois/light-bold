@@ -59,7 +59,12 @@ function add_responsive_class($content){
         $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
         $document = new DOMDocument();
         libxml_use_internal_errors(true);
-        $document->loadHTML(utf8_decode($content));
+        if( !empty($content) ){
+        	$document->loadHTML(utf8_decode($content));
+        }else{
+        	return; 
+        }
+        	
 
         $imgs = $document->getElementsByTagName('img');
         foreach ($imgs as $img) {           
