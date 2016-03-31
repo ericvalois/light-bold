@@ -10,7 +10,7 @@
     "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-criticalcss": "^0.6.1",
+    "grunt-criticalcss": "^1.0.2",
     "grunt-notify": "^0.4.2",
     "grunt-perfbudget": "^0.1.8",
     "grunt-postcss": "^0.7.1",

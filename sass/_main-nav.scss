@@ -250,8 +250,7 @@
 .main-search input[type="search"]{
     font-size: 13px;
     padding-right: 1rem;
-    height: 50px;
-    height: 8.33333vh;
+    height: 80px;
     color: #3e3e3e;
     transition: color .3s ease;
     box-sizing: border-box;
@@ -293,8 +292,9 @@
         overflow: auto;
     }
 
-    #primary-menu a  {
-        min-height: 8.33333vh;
+    #primary-menu a,
+    .main-search input[type="search"] {
+        min-height: 8.33333px;
     }
 
 }
