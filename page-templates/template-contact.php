@@ -8,9 +8,11 @@ get_header(); ?>
 	
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-			<?php get_template_part( 'components/content/content-contact' ); ?>
+	<?php get_template_part( 'components/content/content-contact' ); ?>
+
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4">
+
+		<main id="main" class="site-main col col-12 break-word" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
@@ -24,7 +26,10 @@ get_header(); ?>
 				?>
 
 			<?php endwhile; // End of the loop. ?>
-		</main>
-	</div>
+
+		</main><!-- #main -->
+
+	</div><!-- #primary -->
+
 
 <?php get_footer(); ?>

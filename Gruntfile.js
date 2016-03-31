@@ -26,7 +26,51 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/home.css",
-                    filename: "style.css", // Using path.resolve( path.join( ... ) ) is a good idea here
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            },
+            archive: {
+                options: {
+                    url: "http://perf.dev/blog/",
+                    width: 1200,
+                    height: 900,
+                    outputfile: "critical/archive.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            },
+            page: {
+                options: {
+                    url: "http://perf.dev/about/",
+                    width: 1200,
+                    height: 900,
+                    outputfile: "critical/page.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            },
+            contact: {
+                options: {
+                    url: "http://perf.dev/contact-us/",
+                    width: 1200,
+                    height: 900,
+                    outputfile: "critical/contact.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            },
+            404: {
+                options: {
+                    url: "http://perf.dev/abcdefgh/",
+                    width: 1200,
+                    height: 900,
+                    outputfile: "critical/404.css",
+                    filename: "style.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }

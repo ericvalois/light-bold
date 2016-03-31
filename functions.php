@@ -42,6 +42,11 @@ function perf_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	/*add_theme_support( 'custom-logo', array(
+		'size'        => 'large',
+		'header-text' => array( 'site-title', 'site-description' ),
+	) );*/
+
 	add_image_size( 'perfthemes-hero-xl', 1630, 612, true );
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
@@ -84,6 +89,8 @@ function perf_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+
 }
 endif; // perf_setup
 add_action( 'after_setup_theme', 'perf_setup' );
@@ -167,8 +174,12 @@ function perf_scripts() {
 
 	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+
+	if( get_field("perf_contact_recaptcha","option") && is_page_template("page-templates/template-contact.php") ){
+		wp_enqueue_script( 'perf-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'perf_scripts' );
@@ -201,7 +212,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Load ACF 
  */
-require get_template_directory() . '/inc/acf.php';
+//require get_template_directory() . '/inc/acf.php';
 
 /**
  * Load ACF fields
@@ -277,6 +288,12 @@ require get_template_directory() . '/inc/google-font.php';
  * Custom protected form markup
  */
 require get_template_directory() . '/inc/custom-protected-form.php';
+
+/**
+ * Custom contact form
+ */
+require get_template_directory() . '/inc/contact-form.php';
+
 
 
 

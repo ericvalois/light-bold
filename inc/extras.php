@@ -98,6 +98,7 @@ function perf_clean_custom_menu( $theme_location ) {
  * @param array  $items The menu items, sorted by each menu item's menu order.
  * @return array (maybe) modified parent CSS class.
  */
+add_filter( 'wp_nav_menu_objects', 'wpdocs_add_menu_parent_class' );
 function wpdocs_add_menu_parent_class( $items ) {
     $parents = array();
  
@@ -112,14 +113,14 @@ function wpdocs_add_menu_parent_class( $items ) {
     // Add class.
     foreach ( $items as $item ) {
         if ( in_array( $item->ID, $parents ) ) {
-            $item->url = 'javascript:void(0)';
+            $item->url = 'javascript:void(0);';
             //print_r($item); exit();
             
         }
     }
     return $items;
 }
-add_filter( 'wp_nav_menu_objects', 'wpdocs_add_menu_parent_class' );
+
 
 /**
 * Add search in main menu

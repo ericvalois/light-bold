@@ -12,11 +12,8 @@ require get_template_directory() . '/inc/lazyload.php';
 
 // remove WP version from css
 add_filter( 'style_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
-
 // remove Wp version from scripts
 add_filter( 'script_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
-
-// remove WP version from scripts
 function perf_remove_wp_ver_css_js( $src ) {
     return rtrim( str_replace( array( 'ver='.$GLOBALS['wp_version'], '?&', '&&' ), array( '', '?', '&' ), $src ), '?&' );
 }
@@ -61,16 +58,6 @@ function perf_array_find($needle, array $haystack){
 }
 
 /*
-* Disable Lazy Load on first image for WP Rocket
-*/
-if( function_exists("rocket_lazyload_script") ){
-    add_filter('the_content', 'remove_image_content');
-}
-function remove_image_content($content) {
-    return preg_replace("/<img([^>]+)\>/i","<img $1 data-no-lazy=1>",$content,1);
-}
-
-/*
 * Inject loadcss function to load stylesheet async
 * @link https://github.com/filamentgroup/loadCSS
 */
@@ -97,10 +84,16 @@ function perf_critical_css()
 
     $critical_syle .= '/* Critical CSS */ ';
 
-    if( is_front_page() ){
+    if( is_page_template("page-templates/template-front.php") ){
         $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/home.min.css");
+    }elseif( is_page_template("page-templates/template-contact.php") ){
+        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/contact.min.css");
+    }elseif( is_archive() || is_home() || is_search() ){
+        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/archive.min.css");
+    }elseif( is_404() ){
+        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/404.min.css");
     }else{
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/home.min.css");
+        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/page.min.css");
     }
 
     $critical_syle .= "</style>";
