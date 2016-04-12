@@ -198,6 +198,8 @@
 #primary-menu i.fa { display:table-cell !important; vertical-align: middle!important; }
 #primary-menu li a span { display:table-cell !important; vertical-align: middle!important; width: 100%; padding-right: 20px; }
 
+#primary-menu i._before{ padding-right: 2rem;}
+
 #primary-menu li:hover > .sub-menu,
 #primary-menu li:focus > .sub-menu  {
     max-height: 1000px;
@@ -242,7 +244,7 @@
 
 .main-search {
     padding-left: 1rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     border-top: 2px solid #f4f3f3;
     border-bottom: 2px solid #f4f3f3;
 }
@@ -258,9 +260,7 @@
     border: none;
 }
 
-.main-search input[type="search"]::-webkit-input-placeholder{
-    color: #3e3e3e;
-}
+
 
 .main-search input[type="search"]:focus{
     outline: none;
@@ -294,7 +294,7 @@
 
     #primary-menu a,
     .main-search input[type="search"] {
-        min-height: 8.33333px;
+        min-height: 8.33333vh;
     }
 
 }

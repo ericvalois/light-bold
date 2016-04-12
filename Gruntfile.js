@@ -28,6 +28,7 @@ module.exports = function(grunt) {
                     outputfile: "critical/home.css",
                     filename: "style.css",
                     buffer: 800*1024,
+                    forceInclude: [],
                     ignoreConsole: false
                 }
             },

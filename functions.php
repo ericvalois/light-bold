@@ -293,8 +293,3 @@ require get_template_directory() . '/inc/custom-protected-form.php';
  * Custom contact form
  */
 require get_template_directory() . '/inc/contact-form.php';
-
-
-
-
-
