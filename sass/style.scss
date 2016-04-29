@@ -20,6 +20,7 @@ html {
 $text-color: #3e3e3e;
 
 $dark-bg: #1E1E1E;
+$alt-dark-bg: #2c2c2c;
 
 @import 'normalize';
 
@@ -48,6 +49,7 @@ $dark-bg: #1E1E1E;
 .pl2{ padding-left: 1rem; }
 
 .dark-bg{ background-color: $dark-bg; }
+.alt-dark-bg{ background-color: $alt-dark-bg; }
 .dark-color{ color: $text-color; }
 a.dark-color{ 
     &:hover,
@@ -75,6 +77,8 @@ a.white-color{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
+
+.pb2{ padding-bottom: 2rem; }
 
 .upper{ text-transform: uppercase; }
 
@@ -127,7 +131,8 @@ body{
 }
 
 .site-content{
-    margin: 0 auto;
+    //margin: 0 auto;
+    //overflow: hidden;
     min-height: 100%;
     backface-visibility: hidden;
 }
@@ -209,7 +214,6 @@ h1.entry-title{
 
 #social_widget{
     font-size: 150%;
-    display: table;
 }
 
 .social_share{
@@ -228,9 +232,6 @@ h1.entry-title{
     }
 }
 
-#social_widget.fixed{
-    position: relative;
-}
 
 .entry-meta{
     font-size: 13px;
@@ -300,6 +301,11 @@ input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
+.comment-subscription-form label{
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 /*
 * Widget
 */
@@ -465,6 +471,10 @@ input.search-field{ padding-right: 40px; }
     .site-footer .menu-item { margin-bottom: 0; }
 
     .front-hero{ min-height: 33.33333vh;}
+
+    #social_widget{
+        width: 65px;
+    }
     
 }
 
@@ -478,15 +488,6 @@ input.search-field{ padding-right: 40px; }
     .perf-main-hero{
         min-height: 600px;
         min-height: 58.33333331vh;
-    }
-
-    #social_widget{
-        width: 65px;
-    }
-
-    #social_widget.fixed{
-        top: 182px;
-        position: fixed;
     }
 
     .calendar_wrap th, .calendar_wrap td {

@@ -6,7 +6,7 @@
 			'menu_title'	=> 'Theme options',
 			'menu_slug' 	=> 'perfthemes-settings',
 			'capability'	=> 'edit_posts',
-			'redirect'		=> false
+			'redirect'		=> false,
 		));
 
 		acf_add_options_sub_page(array(

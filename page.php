@@ -16,32 +16,51 @@ get_header(); ?>
 	
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4">
+	<div id="primary" class="content-area clearfix py3 md-py4 px2 sm-px3 md-px3 lg-px4">
 
-		<div class="md-col md-col-9 lg-col-10 md-col-right">
-			<main id="main" class="site-main lg-col lg-col-10 md-ml3 lg-m0 lg-px4 break-word" role="main">
+		<div class="lg-col lg-col-9 lg-col-right">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+			<div class="clearfix">
+				<?php  
+					$perf_disable_all_ss = get_field("perf_disable_all_ss","option");
 
-					<?php get_template_part( 'template-parts/content', 'page' ); ?>
+					if( $perf_disable_all_ss == 1 ){
+						$col_class = 'lg-col lg-col-12';
+					}else{
+						$col_class = 'md-col md-col-10';
+					}
+				?>
 
-					<?php
-						// If comments are open or we have at least one comment, load up the comment template.
-						if ( comments_open() || get_comments_number() ) :
-							comments_template();
-						endif;
-					?>
+				<main id="main" class="site-main <?php echo $col_class; ?>  break-word" role="main">
 
-				<?php endwhile; // End of the loop. ?>
+					<div class="lg-ml4">
+						<?php while ( have_posts() ) : the_post(); ?>
 
-			</main><!-- #main -->
+							<?php get_template_part( 'template-parts/content', 'page' ); ?>
 
-			<?php get_sidebar("social"); ?>
-		</div>
+							<?php
+								// If comments are open or we have at least one comment, load up the comment template.
+								if ( comments_open() || get_comments_number() ) :
+									comments_template();
+								endif;
+							?>
+
+						<?php endwhile; // End of the loop. ?>
+					</div>
+
+				</main><!-- #main -->
+
+				<?php 
+					if( $perf_disable_all_ss != 1 ){
+						get_sidebar("social");
+					}
+				?>
+			</div>
+		</div><?php // lg-col-right ?>
 
 		<?php get_sidebar("page"); ?>
 
-	</div><!-- #primary -->
+	</div><?php // #primary ?>
 
 	
 <?php get_footer(); ?>
