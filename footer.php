@@ -14,7 +14,7 @@
 
 	<footer class="site-footer clearfix dark-bg" role="contentinfo">
 
-		<div class="clearfix mt3 lg-mt4 px2 lg-px3 ">
+		<div class="clearfix mt3 mb3 lg-mt4 px2 lg-px3 ">
 			<div class="col col-12 md-col-3">
 				<?php dynamic_sidebar( 'footer-1' ); ?>
 			</div>
