@@ -1,6 +1,6 @@
 <?php
 /*
-* Version 0.2
+* Version 0.3
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
@@ -3239,6 +3239,71 @@ acf_add_local_field_group(array (
 			'maxlength' => '',
 			'readonly' => 0,
 			'disabled' => 0,
+		),
+		array (
+			'key' => 'field_572374f0a97d5',
+			'label' => 'Social Share',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array (
+			'key' => 'field_57237510a97d6',
+			'label' => 'Disable all social share',
+			'name' => 'perf_disable_all_ss',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
+		array (
+			'key' => 'field_57237528a97d7',
+			'label' => 'Disable Social Share',
+			'name' => 'perf_disable_ss',
+			'type' => 'checkbox',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => 'field_57237510a97d6',
+						'operator' => '!=',
+						'value' => '1',
+					),
+				),
+			),
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array (
+				'facebook' => 'Facebook',
+				'twitter' => 'Twitter',
+				'google+' => 'Google+',
+				'linkedin' => 'Linkedin',
+				'pin' => 'Pinterest',
+			),
+			'default_value' => array (
+			),
+			'layout' => 'vertical',
+			'toggle' => 0,
 		),
 	),
 	'location' => array (
