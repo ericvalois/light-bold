@@ -130,3 +130,15 @@ pre{
     font-weight: normal;
     color: #d0d4d7;
 }
+
+.perf_alert{
+    padding: 2rem;
+    background-color: #eee;
+    border-left-width: 3px;
+    border-left-style: solid;
+}
+
+.perf_warning{ border-left-color: #f39c12; }
+.perf_info{ border-left-color: #3498db; }
+.perf_danger{ border-left-color: #e74c3c; }
+.perf_success{ border-left-color: #2ecc71; }

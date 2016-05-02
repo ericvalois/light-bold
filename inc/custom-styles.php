@@ -138,7 +138,7 @@ function perf_custom_color(){
     #primary-menu > li.menu-item-has-children:hover,
     #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
     .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}
-    blockquote{ border-left-color: <?php echo $perf_main_color; ?>}
+    blockquote, .perf_alert_default{ border-left-color: <?php echo $perf_main_color; ?>}
     .social_share{ border-color: <?php echo $perf_main_color; ?>; }
     input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?>; }
     ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }

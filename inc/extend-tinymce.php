@@ -28,6 +28,31 @@ function perf_styles_dropdown( $settings ) {
 			        'classes' => 'intro-text separator'
 		        ),
 		        array(
+			        'title' => 'Perf alert default',
+			        'selector' => 'p',
+			        'classes' => 'perf_alert perf_alert_default',
+		        ),
+		        array(
+			        'title' => 'Perf alert warning',
+			        'selector' => 'p',
+			        'classes' => 'perf_alert perf_warning',
+		        ),
+		        array(
+			        'title' => 'Perf alert info',
+			        'selector' => 'p',
+			        'classes' => 'perf_alert perf_info',
+		        ),
+		        array(
+			        'title' => 'Perf alert danger',
+			        'selector' => 'p',
+			        'classes' => 'perf_alert perf_danger',
+		        ),
+		        array(
+			        'title' => 'Perf alert success',
+			        'selector' => 'p',
+			        'classes' => 'perf_alert perf_success',
+		        ),
+		        array(
 			        'title' => 'Perf button',
 			        'block' => 'a',
 			        'classes' => 'perf_btn',
