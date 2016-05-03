@@ -35,8 +35,8 @@
     transition: transform .3s cubic-bezier(.86,0,.07,1);
 }
 
-.navigation-opened {
-    overflow: hidden;
+body.navigation-opened {
+    overflow-x: hidden;
 }
 
 .main-header {
@@ -141,7 +141,6 @@
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
-    padding-left: 2rem;
     padding-right: 2rem;
     height: 80px;
     display: table;
@@ -272,6 +271,12 @@
         min-height: 8.33333vh;
     }
 
+}
+
+@include media-query(max-xlg) {
+    #primary-menu a  {
+        padding-left: 2rem;
+    }
 }
 
 @include media-query(xlg) {
