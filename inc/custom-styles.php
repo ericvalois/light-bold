@@ -130,7 +130,8 @@ function perf_custom_color(){
     .address_row i { color: <?php echo $perf_main_color; ?>; }
     a:hover,a:focus{ border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu a:before,
-    .separator:after{ background-color: <?php echo $perf_main_color; ?>; }
+    .separator:after,
+    .perf_btn.alt2{ background-color: <?php echo $perf_main_color; ?>; }
     .perf_btn,
     .submit{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     .perf_btn:hover,
