@@ -25,7 +25,7 @@
 
 	</head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> style="background-color: black;">
 
 	<?php do_action('perf_body_open'); ?>
 
