@@ -16,7 +16,7 @@ get_header(); ?>
 	
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<?php get_template_part( 'components/content/content-featured' ); ?>
+	<?php get_template_part( 'components/content/content-sticky' ); ?>
 
 	<div id="primary" class="content-area clearfix py3 md-py4 px2 sm-px3 md-px3 lg-px4">
 
