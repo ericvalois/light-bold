@@ -85,15 +85,20 @@ function perf_critical_css()
     $critical_syle .= '/* Critical CSS */ ';
 
     if( is_page_template("page-templates/template-front.php") ){
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/home.min.css");
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/home.min.css");
+        $critical_syle .= $temp_css['body'];
     }elseif( is_page_template("page-templates/template-contact.php") ){
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/contact.min.css");
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/contact.min.css");
+        $critical_syle .= $temp_css['body'];
     }elseif( is_archive() || is_home() || is_search() ){
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/archive.min.css");
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/archive.min.css");
+        $critical_syle .= $temp_css['body'];
     }elseif( is_404() ){
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/404.min.css");
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/404.min.css");
+        $critical_syle .= $temp_css['body']; 
     }else{
-        $critical_syle .= file_get_contents( get_bloginfo("template_directory") . "/critical/page.min.css");
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
+        $critical_syle .= $temp_css['body'];
     }
 
     $critical_syle .= "</style>";

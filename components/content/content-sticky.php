@@ -32,7 +32,7 @@
 
 	<?php while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class("featured break-word table col-12"); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class("sticky break-word table col-12"); ?>>
 			<div class="<?php if( has_post_thumbnail() ){ echo 'md-col-7 md-table-cell'; } ?> align-top dark-bg px2 sm-px3 md-px4 py3 md-py4 ">
 
 				<div class="sticky-meta ultra-small upper mb1">

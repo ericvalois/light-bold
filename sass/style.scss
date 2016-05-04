@@ -120,7 +120,7 @@ a.white-color{
         min-height: 33.33333vh;
     }
 
-    .featured{
+    .sticky{
         min-height: 300px;
         min-height: 40.99999998vh;
     }
@@ -290,6 +290,10 @@ select:after{
     font-size: 24px;
     color: #ababab;
 
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 textarea{

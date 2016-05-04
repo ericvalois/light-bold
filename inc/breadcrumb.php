@@ -6,7 +6,7 @@ function perf_breadcrumbs() {
     echo '<nav class="perf_breadcrumbs">';
 	if (!is_front_page()) {
 		echo '<a class="fa fa-home white-color" href="';
-		echo get_option('home');
+		echo esc_url( home_url( '/' ) );
 		echo '">';
 		echo "</a> ".$separator;
 		if ( is_category() || is_single() ) {

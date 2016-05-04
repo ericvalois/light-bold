@@ -61,7 +61,10 @@ function perf_deliver_mail() {
 		));
 
 		if( get_field("perf_contact_recaptcha","option") ){
-			$recaptcha = json_decode(file_get_contents('https://www.google.com/recaptcha/api/siteverify?'.$q));
+
+			$temp_siteverify = wp_remote_get('https://www.google.com/recaptcha/api/siteverify?' . $q);
+    		$siteverify = $temp_siteverify['body'];
+			$recaptcha = json_decode($siteverify);
 			$recaptcha = $recaptcha->success;
 		}else{
 			$recaptcha = true;

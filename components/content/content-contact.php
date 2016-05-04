@@ -5,7 +5,7 @@
 
 			<?php 
 				if( $cpt % 2 == 0 ){
-					include( TEMPLATEPATH . '/components/content-contact/img-location.php'); 
+					include( get_template_directory() . '/components/content-contact/img-location.php'); 
 				}
 			?>
 
@@ -46,7 +46,7 @@
 
 			<?php 
 				if( $cpt % 2 != 0 ){
-					include( TEMPLATEPATH . '/components/content-contact/img-location.php'); 
+					include( get_template_directory() . '/components/content-contact/img-location.php'); 
 				}
 			?>
 		</section>
