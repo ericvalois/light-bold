@@ -14,9 +14,13 @@
 	<h1 class="h0-responsive regular white-color m0 entry-title">
 		<?php if ( is_home() ) : ?>
 			<?php global $post; ?>
-			<?php 
-				echo get_the_title( get_option('page_for_posts', true) ); 
-
+			<?php
+				if( get_option('page_for_posts', true) ){
+					echo get_the_title( get_option('page_for_posts', true) );
+				}else{
+					echo get_bloginfo( "description" );
+				}
+			
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 				if( $paged > 1 ){
