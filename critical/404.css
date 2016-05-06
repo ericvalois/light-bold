@@ -134,6 +134,7 @@ h2{ font-size: 190%; }
 body{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; color: rgb(62, 62, 62); }
 h1, h2{ -webkit-font-smoothing: antialiased; }
 a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08em; border-bottom-color: transparent; }
+.animated{ -webkit-animation-duration: 0.5s; -webkit-animation-fill-mode: both; }
 .white-color{ color: rgb(255, 255, 255); }
 .upper{ text-transform: uppercase; }
 #logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }

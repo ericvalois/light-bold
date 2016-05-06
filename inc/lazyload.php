@@ -4,33 +4,40 @@
  *
  * @since 1.0
  */
-if ( ! get_field("perf_disable_lazy_load","option") ) {
-	
-	
 
+
+$disable_lazy_load = get_field("perf_disable_lazy_load","option");
+if( !is_array($disable_lazy_load) ) $disable_lazy_load = array();
+
+if ( !in_array("disable_img", $disable_lazy_load, true) ) {
 	add_filter( 'get_avatar'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'widget_text'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'get_image_tag'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'post_thumbnail_html'	, 'add_image_placeholders', PHP_INT_MAX );
 
-	add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
-/*
 	add_filter( 'get_avatar'			, 'add_responsive_class', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'add_responsive_class', PHP_INT_MAX );
 	add_filter( 'widget_text'			, 'add_responsive_class', PHP_INT_MAX );
 	add_filter( 'get_image_tag'			, 'add_responsive_class', PHP_INT_MAX );
 	add_filter( 'post_thumbnail_html'	, 'add_responsive_class', PHP_INT_MAX );
-*/
 }
 
+if ( !in_array("disable_iframe", $disable_lazy_load, true) ) {
+	add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
+	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );
+}
+
+add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
 function perf_lazysizes_script() {
 	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/js/picturefill.min.js', '', '', false );
 	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', false );
 	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/lazysizes/lazysizes.min.js', '', '', false );
 }
 
-
+/*
+* Image lazyload core
+*/
 function add_image_placeholders( $content ) {
 
 	// Don't lazyload for feeds, previews, mobile
@@ -45,7 +52,7 @@ function add_image_placeholders( $content ) {
 	$placeholder_image = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
 
 	// This is a pretty simple regex, but it works
-	$content = preg_replace( '#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#', sprintf( '<img${1} class="lazyload blur-up" data-src="${2}"${3}><noscript><img${1}src="${2}"${3}></noscript>', $placeholder_image ), $content );
+	$content = preg_replace( '#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#', sprintf( '<img${1} data-src="${2}"${3}><noscript><img${1}src="${2}"${3}></noscript>', $placeholder_image ), $content );
 
 	// srcset change
 	$content = str_replace('srcset', 'data-srcset', $content);
@@ -53,6 +60,9 @@ function add_image_placeholders( $content ) {
 	return $content;
 }
 
+/*
+* Add image lazyload class
+*/
 function add_responsive_class($content){
 
         $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
@@ -74,4 +84,40 @@ function add_responsive_class($content){
 
         $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $document->saveHTML()));
         return $html_fragment;   
+}
+
+/**
+ * Replace iframes by LazyLoad
+ */
+function perf_lazyload_iframes( $html ) {
+
+	$matches = array();
+	preg_match_all( '/<iframe\s+.*?>/', $html, $matches );
+
+	foreach ( $matches[0] as $k=>$iframe ) {
+
+		// Don't mess with the Gravity Forms ajax iframe
+		if ( strpos( $iframe, 'gform_ajax_frame' ) ) {
+			continue;
+		}
+		
+		/** This filter is documented in inc/front/lazyload.php */
+		//$placeholder = apply_filters( 'rocket_lazyload_placeholder', 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=' );
+		$placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
+		
+		$iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload blur-up" data-src=', $iframe );
+
+		$html = str_replace( $matches[0][ $k ], $iframe, $html );
+		
+		/**
+		 * Filter the LazyLoad HTML output on iframes
+		 *
+		 * @since 2.6
+		 *
+		 * @param array $html Output that will be printed
+		*/
+		//$html = apply_filters( 'rocket_lazyload_iframe_html', $html );
+	}
+
+	return $html;
 }

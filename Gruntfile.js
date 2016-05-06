@@ -13,10 +13,10 @@ module.exports = function(grunt) {
                     noCache: true,
                 },
                 files: {
-                    "style.css": "sass/style.scss"
+                    "style.css": "sass/style.scss",
+                    "critical/critical-admin.css": "sass/critical-admin.scss"
                 }
             }
-
         },
 
         criticalcss: {
@@ -24,10 +24,10 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://perf.dev/",
                     width: 1200,
-                    height: 900,
+                    height: 1500,
                     outputfile: "critical/home.css",
                     filename: "style.css",
-                    buffer: 800*1024,
+                    buffer: 800*1500,
                     forceInclude: [],
                     ignoreConsole: false
                 }
@@ -137,11 +137,11 @@ module.exports = function(grunt) {
         watch: {
             sass: {
                 files: ['sass/*.scss'],
-                tasks: ["sass"],
+                tasks: ['sass'],
                 options: {
                   livereload: true,
                 },
-            }
+            },
         }
     });
 

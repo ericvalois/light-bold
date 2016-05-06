@@ -24,6 +24,10 @@ function perf_inline_styles() {
         echo '@media (min-width: 64em)  {';
             do_action( 'perf_lg_styles' );
         echo '}';
+
+        echo '@media (min-width: 1200px)  {';
+            do_action( 'perf_1200_styles' );
+        echo '}';
     echo '</style>';
 }
 
@@ -145,6 +149,7 @@ function perf_custom_color(){
     ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
+    .opacity-zero{ opacity: 0; }
     <?php
 }
 
@@ -214,10 +219,10 @@ function perf_tablet_logo() {
 /*
 * Desktop logo
 */
-add_action( 'perf_lg_styles', 'perf_desktop_logo' );
+add_action( 'perf_1200_styles', 'perf_desktop_logo' );
 function perf_desktop_logo() {
 ?>
-    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); }
+    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); min-height: 80px; }
 <?php
 }
 

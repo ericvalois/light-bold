@@ -183,4 +183,79 @@ function perf_manual_async_css(){
     
 }
 
+/*
+* Critical mobile fix
+*/
+add_action( 'perf_mobile_styles', 'perf_critical_mobile_fix' );
+function perf_critical_mobile_fix() {
+?>
+    h1.entry-title {
+        padding-top: 10vh;
+        padding-bottom: 15vh;
+    }
+<?php
+}
+
+/*
+* Critical md  fix
+*/
+add_action( 'perf_md_styles', 'perf_critical_md_fix' );
+function perf_critical_md_fix() {
+?>
+    h1.entry-title {
+        padding-top: 20.66666666vh;
+        padding-bottom: 24.66666666vh;
+    }
+
+    .front-hero, .front-hero-content {
+        min-height: 58.33333vh;
+    }
+<?php
+}
+
+/*
+* Critical lg  fix
+*/
+add_action( 'perf_lg_styles', 'perf_critical_lg_fix' );
+function perf_critical_lg_fix() {
+?>
+    #primary-menu a, .main-search input[type="search"] {
+        min-height: 8.33333vh;
+    }
+
+    .perf-main-hero {
+        min-height: 58.33333331vh;
+    }
+<?php
+}
+
+/*
+* Critical 1200  fix
+*/
+add_action( 'perf_1200_styles', 'perf_critical_1200_fix' );
+function perf_critical_1200_fix() {
+?>
+    .main-header_container {
+        height: 16.66667vh;
+    }
+
+    .nav-container {
+        margin-top: 16.66667vh;
+    }
+<?php
+}
+
+/*
+* Critical admin bar
+*/
+add_action( 'perf_mobile_styles', 'perf_critical_admin' );
+function perf_critical_admin() {
+    if (is_user_logged_in()){
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/critical-admin.css");
+        $critical_syle = $temp_css['body'];
+        echo $critical_syle;
+    }
+}
+
+
 

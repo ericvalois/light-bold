@@ -42,6 +42,8 @@ $alt-dark-bg: #2c2c2c;
 
 @import 'comments';
 
+@import 'animate';
+
 /*
 * Custom helper
 */
@@ -472,10 +474,6 @@ input.search-field{ padding-right: 40px; }
     .site-footer .menu-item { margin-bottom: 0; }
 
     .front-hero{ min-height: 33.33333vh;}
-
-    #social_widget{
-        width: 65px;
-    }
     
 }
 
@@ -510,16 +508,11 @@ input.search-field{ padding-right: 40px; }
         font-size: 110%;
     }
 
-    #social_widget.fixed{
-        top: 96px;
-    }
-
     #logo{ width: 100%; height: 80px; background-position: center center;} 
 }
 
 @include media-query(xlg) {
     body{ font-size: 130%; }
 }
-
 
 

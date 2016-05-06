@@ -23,7 +23,7 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title mt3 mb3">
+		<h2 class="comments-title mt3 mb3 separator">
 			<?php
 				$comments_number = get_comments_number();
 				if ( 1 === $comments_number ) {
@@ -72,9 +72,9 @@ if ( post_password_required() ) {
 	<?php
 	
 		comment_form( array(
-			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title">',
+			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title separator mb2">',
 			'title_reply_after'  => '</h3>',
-			'class_form' => 'mb3 clearfix',
+			'class_form' => ' clearfix',
 			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
 		) );
 		

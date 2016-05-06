@@ -256,3 +256,15 @@ class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
     }
 }
 
+/*
+* Show or hide content animation
+*/
+function perf_content_animation(){
+    if( get_field("perf_hide_fade","option") != 1 ){
+        return 'animated fadeIn opacity-zero';
+    }else{
+        return;
+    }
+}
+
+

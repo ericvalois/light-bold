@@ -142,7 +142,7 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 .upper{ text-transform: uppercase; }
 #logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 @media (min-width: 52em){
-.featured{ min-height: 300px; }
+.sticky{ min-height: 300px; }
 }
 body{ padding-top: 64px; }
 .site-content{ min-height: 100%; }
