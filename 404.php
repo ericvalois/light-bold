@@ -11,7 +11,8 @@ get_header(); ?>
 	
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 <?php echo perf_content_animation(); ?>">
+	
 		<main id="main" class="site-main px2 sm-px3 md-px4 col lg-col-12" role="main">
 
 			<section class="error-404 not-found">

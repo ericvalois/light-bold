@@ -12,6 +12,6 @@ if ( ! is_active_sidebar( 'blog-sidebar' ) ) {
 }
 ?>
 
-<div class="widget-area lg-col lg-col-3 mt4 lg-mt0" role="complementary">
+<div class="widget-area lg-col lg-col-4 mt4 lg-mt0" role="complementary">
 	<?php dynamic_sidebar( 'blog-sidebar' ); ?>
 </div><!-- #secondary -->
