@@ -7,6 +7,12 @@
  * @package perfthemes
  */
 
+if ( !function_exists('get_field') ) {
+	function get_field(){
+		return;
+	}
+}
+
 if ( ! function_exists( 'perf_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
