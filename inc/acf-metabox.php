@@ -1,6 +1,6 @@
 <?php
 /*
-* Version 0.3
+* Version 0.4
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
@@ -3022,22 +3022,6 @@ acf_add_local_field_group(array (
 			'readonly' => 0,
 		),
 		array (
-			'key' => 'field_56d5cb6806e42',
-			'label' => 'Hide search from main menu',
-			'name' => 'perf_hide_search',
-			'type' => 'true_false',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'message' => '',
-			'default_value' => 0,
-		),
-		array (
 			'key' => 'field_56d9e12280e09',
 			'label' => 'Footer',
 			'name' => '',
@@ -3073,22 +3057,6 @@ acf_add_local_field_group(array (
 			'maxlength' => '',
 			'readonly' => 0,
 			'disabled' => 0,
-		),
-		array (
-			'key' => 'field_56d9e9953bd91',
-			'label' => 'Disable go to top link',
-			'name' => 'perf_disble_top_anchor',
-			'type' => 'true_false',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'message' => '',
-			'default_value' => 0,
 		),
 		array (
 			'key' => 'field_56face051443f',
@@ -3305,6 +3273,70 @@ acf_add_local_field_group(array (
 			'layout' => 'vertical',
 			'toggle' => 0,
 		),
+		array (
+			'key' => 'field_572a58639b487',
+			'label' => 'Show & hide',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
+		),
+		array (
+			'key' => 'field_56d9e9953bd91',
+			'label' => 'Disable go to top link',
+			'name' => 'perf_disble_top_anchor',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
+		array (
+			'key' => 'field_56d5cb6806e42',
+			'label' => 'Hide search form from nav menu',
+			'name' => 'perf_hide_search',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
+		array (
+			'key' => 'field_572a589d9b488',
+			'label' => 'Disable content fadeIn at page load',
+			'name' => 'perf_hide_fade',
+			'type' => 'true_false',
+			'instructions' => 'This can result to a "Fout" of the content.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
 	),
 	'location' => array (
 		array (
@@ -3331,8 +3363,8 @@ acf_add_local_field_group(array (
 	'fields' => array (
 		array (
 			'key' => 'field_56438a071a01f',
-			'label' => 'JavaScript Optimisation',
-			'name' => '',
+			'label' => 'Scripts Optimisation',
+			'name' => 'scripts_optimisation',
 			'type' => 'tab',
 			'instructions' => '',
 			'required' => 0,
@@ -3430,8 +3462,8 @@ acf_add_local_field_group(array (
 		),
 		array (
 			'key' => 'field_564a00dd8aee9',
-			'label' => 'CSS Optimisation',
-			'name' => '',
+			'label' => 'Stylesheets Optimisation',
+			'name' => 'stylesheets_optimisation',
 			'type' => 'tab',
 			'instructions' => '',
 			'required' => 0,
@@ -3530,8 +3562,8 @@ acf_add_local_field_group(array (
 		),
 		array (
 			'key' => 'field_56abbfc48a72c',
-			'label' => 'Images & Iframe Optimisation',
-			'name' => '',
+			'label' => 'Images & Iframes Optimisation',
+			'name' => 'images_&_iframes_optimisation',
 			'type' => 'tab',
 			'instructions' => '',
 			'required' => 0,
