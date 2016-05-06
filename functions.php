@@ -7,10 +7,17 @@
  * @package perfthemes
  */
 
-if ( !function_exists('get_field') ) {
-	function get_field(){
-		return;
-	}
+/**
+* Detect acf to prevent fatal error
+*/
+if( !is_admin() ){
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	// check for plugin using plugin name
+	if ( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+	  function get_field(){
+				return;
+			}
+	} 
 }
 
 if ( ! function_exists( 'perf_setup' ) ) :
@@ -184,118 +191,120 @@ function perf_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	if( get_field("perf_contact_recaptcha","option") && is_page_template("page-templates/template-contact.php") ){
+	if( function_exists( 'get_field' ) && get_field("perf_contact_recaptcha","option") && is_page_template("page-templates/template-contact.php") ){
 		wp_enqueue_script( 'perf-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '', true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'perf_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+if( function_exists( 'get_field' ) ):
+	/**
+	 * Implement the Custom Header feature.
+	 */
+	require get_template_directory() . '/inc/custom-header.php';
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
+	/**
+	 * Custom template tags for this theme.
+	 */
+	require get_template_directory() . '/inc/template-tags.php';
 
-/**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
+	/**
+	 * Custom functions that act independently of the theme templates.
+	 */
+	require get_template_directory() . '/inc/extras.php';
 
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
+	/**
+	 * Customizer additions.
+	 */
+	require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-require get_template_directory() . '/inc/jetpack.php';
+	/**
+	 * Load Jetpack compatibility file.
+	 */
+	require get_template_directory() . '/inc/jetpack.php';
 
-/**
- * Load ACF 
- */
-//require get_template_directory() . '/inc/acf.php';
+	/**
+	 * Load ACF 
+	 */
+	//require get_template_directory() . '/inc/acf.php';
 
-/**
- * Load ACF fields
- */
-require get_template_directory() . '/inc/acf-fields.php';
+	/**
+	 * Load ACF fields
+	 */
+	require get_template_directory() . '/inc/acf-fields.php';
 
-/**
- * Load ACF metabox
- */
-require get_template_directory() . '/inc/acf-metabox.php';
+	/**
+	 * Load ACF metabox
+	 */
+	require get_template_directory() . '/inc/acf-metabox.php';
 
-/**
- * WordPress cleanup
- */
-require get_template_directory() . '/inc/clean.php';
+	/**
+	 * WordPress cleanup
+	 */
+	require get_template_directory() . '/inc/clean.php';
 
-/**
- * Performances optimizations
- */
-require get_template_directory() . '/inc/performance.php';
+	/**
+	 * Performances optimizations
+	 */
+	require get_template_directory() . '/inc/performance.php';
 
-/**
- * Load TGM class
- */
-require get_template_directory() . '/inc/tgm.php';
+	/**
+	 * Load TGM class
+	 */
+	require get_template_directory() . '/inc/tgm.php';
 
-/**
- * Load Breadcrumb helper
- */
-require get_template_directory() . '/inc/breadcrumb.php';
+	/**
+	 * Load Breadcrumb helper
+	 */
+	require get_template_directory() . '/inc/breadcrumb.php';
 
-/**
- * Load custom style
- */
-require get_template_directory() . '/inc/custom-styles.php';
+	/**
+	 * Load custom style
+	 */
+	require get_template_directory() . '/inc/custom-styles.php';
 
-/**
- * Menu icons
- */
-require get_template_directory() . '/inc/menu-icons.php';
+	/**
+	 * Menu icons
+	 */
+	require get_template_directory() . '/inc/menu-icons.php';
 
-/**
- * Social Widget
- */
-require get_template_directory() . '/inc/widget-social.php';
+	/**
+	 * Social Widget
+	 */
+	require get_template_directory() . '/inc/widget-social.php';
 
-/**
- * Address widget
- */
-require get_template_directory() . '/inc/address-widget.php';
+	/**
+	 * Address widget
+	 */
+	require get_template_directory() . '/inc/address-widget.php';
 
-/**
- * Image widget
- */
-require get_template_directory() . '/inc/widget-image.php';
+	/**
+	 * Image widget
+	 */
+	require get_template_directory() . '/inc/widget-image.php';
 
-/**
- * Add custom buttons and formating to Tinymce
- */
-require get_template_directory() . '/inc/extend-tinymce.php';
+	/**
+	 * Add custom buttons and formating to Tinymce
+	 */
+	require get_template_directory() . '/inc/extend-tinymce.php';
 
-/**
- * Plugins compatibility
- */
-require get_template_directory() . '/inc/plugins-compatibility.php';
+	/**
+	 * Plugins compatibility
+	 */
+	require get_template_directory() . '/inc/plugins-compatibility.php';
 
-/**
- * Google Font
- */
-require get_template_directory() . '/inc/google-font.php';
+	/**
+	 * Google Font
+	 */
+	require get_template_directory() . '/inc/google-font.php';
 
-/**
- * Custom protected form markup
- */
-require get_template_directory() . '/inc/custom-protected-form.php';
+	/**
+	 * Custom protected form markup
+	 */
+	require get_template_directory() . '/inc/custom-protected-form.php';
 
-/**
- * Custom contact form
- */
-require get_template_directory() . '/inc/contact-form.php';
+	/**
+	 * Custom contact form
+	 */
+	require get_template_directory() . '/inc/contact-form.php';
+endif; // if_function_exits
