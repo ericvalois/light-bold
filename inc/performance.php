@@ -1,10 +1,4 @@
 <?php
-
-/**
- * Responsive images sizes
- */
-//require get_template_directory() . '/inc/responsive-images.php';
-
 /**
  * Lazy Load
  */
@@ -256,6 +250,3 @@ function perf_critical_admin() {
         echo $critical_syle;
     }
 }
-
-
-
