@@ -53,12 +53,25 @@ function perf_register_required_plugins() {
 			'source'    => 'https://github.com/jrfnl/WP-adminbar-comments-to-pending/archive/master.zip',
 		),*/
 
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
+		// This is an example of how to include a plugin bundled with a theme.
 		array(
+			'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+			'source'             => get_template_directory() . '/lib/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+			'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
+			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		),
+
+		// This is an example of how to include a plugin from the WordPress Plugin Repository.
+		/*array(
 			'name'      => 'W3 Total Cache',
 			'slug'      => 'w3-total-cache',
 			'required'  => false,
-		),
+		),*/
 
 		array(
 			'name'      => 'Compress JPEG & PNG images',
