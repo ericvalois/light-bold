@@ -31,4 +31,4 @@ function my_remove_menu_icons_type( $types ) {
 add_filter( 'menu_icons_types', 'my_remove_menu_icons_type' );
 
 // Remove menu icon setting
-add_filter( 'menu_icons_disable_settings', '__return_true' );
+//add_filter( 'menu_icons_disable_settings', '__return_true' );
