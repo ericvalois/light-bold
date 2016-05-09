@@ -9,7 +9,7 @@
 $disable_lazy_load = get_field("perf_disable_lazy_load","option");
 if( !is_array($disable_lazy_load) ) $disable_lazy_load = array();
 
-if ( !in_array("disable_img", $disable_lazy_load, true) ) {
+if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
 	add_filter( 'get_avatar'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'add_image_placeholders', PHP_INT_MAX );
 	add_filter( 'widget_text'			, 'add_image_placeholders', PHP_INT_MAX );
@@ -23,7 +23,7 @@ if ( !in_array("disable_img", $disable_lazy_load, true) ) {
 	add_filter( 'post_thumbnail_html'	, 'add_responsive_class', PHP_INT_MAX );
 }
 
-if ( !in_array("disable_iframe", $disable_lazy_load, true) ) {
+if ( !in_array("disable_iframe", $disable_lazy_load, true) && !is_admin() ) {
 	add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
 	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );
 }
