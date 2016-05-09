@@ -32,7 +32,7 @@ function perf_html_form_code() {
 	 		<div>
 	 	<?php endif; ?>
 
-		<input type="submit" name="cf-submitted" class="perf_btn mb2 mt2" value="Send">
+		<input type="submit" name="cf-submitted" class="perf_btn mb2 mt2" value="<?php _e("Send","perf"); ?>">
 
 	</form>
 	<?php
