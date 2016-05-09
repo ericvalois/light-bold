@@ -433,9 +433,6 @@ input.search-field{ padding-right: 40px; }
 .nav-next{ text-align: right;}
 
 @include media-query(sm) {
-    .entry-meta{
-        display: block;
-    }
 
     .address_contact_cell{ display: table-cell; }
 }
@@ -464,6 +461,8 @@ input.search-field{ padding-right: 40px; }
         padding-top: 20.66666666vh;
         padding-bottom: 24.66666666vh;
     }
+
+    .entry-meta{ display: block; }
 
     .entry-meta span{
         display: block;
