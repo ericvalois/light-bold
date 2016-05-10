@@ -37,17 +37,7 @@ function perf_inline_styles() {
 add_action( 'perf_mobile_styles', 'perf_sm_hero' );
 function perf_sm_hero() {
 
-    global $post;
-
-    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
-        $hero = get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
-        $hero = get_field("perf_hero_blog_archive", "option");
-    }elseif( is_404() && get_field("perf_hero_404", "option") ){
-        $hero = get_field("perf_hero_404", "option");
-    }else{
-        $hero = get_field("perf_hero_image", "option");
-    }
+    $hero = perf_select_hero_image();
 
 ?>
     #perf-main-hero{
@@ -62,17 +52,7 @@ function perf_sm_hero() {
 add_action( 'perf_md_styles', 'perf_md_hero' );
 function perf_md_hero() {
 
-    global $post;
-
-    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
-        $hero = get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
-        $hero = get_field("perf_hero_blog_archive", "option");
-    }elseif( is_404() && get_field("perf_hero_404", "option") ){
-        $hero = get_field("perf_hero_404", "option");
-    }else{
-        $hero = get_field("perf_hero_image", "option");
-    }
+    $hero = perf_select_hero_image();
 ?>
     #perf-main-hero{
         background-image: url(<?php echo $hero['sizes']['perfthemes-hero-md']; ?>);
@@ -86,18 +66,7 @@ function perf_md_hero() {
 add_action( 'perf_lg_styles', 'perf_lg_hero' );
 function perf_lg_hero() {
 
-    global $post;
-
-    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
-        $hero = get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
-        $hero = get_field("perf_hero_blog_archive", "option");
-    }elseif( is_404() && get_field("perf_hero_404", "option") ){
-        $hero = get_field("perf_hero_404", "option");
-    }else{
-        $hero = get_field("perf_hero_image", "option");
-    }
-    
+    $hero = perf_select_hero_image();
 
 ?>
     #perf-main-hero{
@@ -209,7 +178,7 @@ function perf_mobile_logo() {
 /*
 * Tablet logo
 */
-add_action( 'perf_sm_styles', 'perf_tablet_logo' );
+//add_action( 'perf_sm_styles', 'perf_tablet_logo' );
 function perf_tablet_logo() {
 ?>
     #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); }

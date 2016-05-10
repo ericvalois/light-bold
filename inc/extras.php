@@ -267,4 +267,22 @@ function perf_content_animation(){
     }
 }
 
+/*
+* Hero image selection
+*/
+function perf_select_hero_image(){
+   global $post;
+
+    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
+        $hero = get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
+        $hero = get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && get_field("perf_hero_404", "option") ){
+        $hero = get_field("perf_hero_404", "option");
+    }else{
+        $hero = get_field("perf_hero_image", "option");
+    }
+
+    return $hero;
+}
 
