@@ -70,13 +70,11 @@ function perf_inject_loadcss_script() {
 * Critical CSS
 */
 if( !in_array("disable_theme_critical_css", $perf_disable_css_optimisation, true) ){
-    add_action('wp_print_styles','perf_critical_css', 5);
+    add_action('perf_mobile_styles','perf_critical_css', 5);
 }
 function perf_critical_css()
 {
-    $critical_syle = "<style>";
-
-    $critical_syle .= '/* Critical CSS */ ';
+    $critical_syle = '/* Critical CSS */ ';
 
     if( is_page_template("page-templates/template-front.php") ){
         $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/home.min.css");
@@ -94,8 +92,6 @@ function perf_critical_css()
         $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
         $critical_syle .= $temp_css['body'];
     }
-
-    $critical_syle .= "</style>";
 
     echo $critical_syle;
 
@@ -187,6 +183,12 @@ function perf_critical_mobile_fix() {
         padding-top: 10vh;
         padding-bottom: 15vh;
     }
+
+    @media (min-width: 96em){
+        .h0-responsive {
+            font-size: 5.76rem;
+        }
+    }
 <?php
 }
 
@@ -203,6 +205,10 @@ function perf_critical_md_fix() {
 
     .front-hero, .front-hero-content {
         min-height: 58.33333vh;
+    }
+
+    .h0-responsive {
+        font-size: 6vw;
     }
 <?php
 }
