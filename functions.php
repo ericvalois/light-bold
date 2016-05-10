@@ -55,11 +55,6 @@ function perf_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	/*add_theme_support( 'custom-logo', array(
-		'size'        => 'large',
-		'header-text' => array( 'site-title', 'site-description' ),
-	) );*/
-
 	add_image_size( 'perfthemes-hero-xl', 1630, 612, true );
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
@@ -67,7 +62,7 @@ function perf_setup() {
 	
 	//add_image_size( 'perfthemes-thumbnail-avatar', 100, 100, true );
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'perf' ),
 		'sub-footer' => esc_html__( 'sub-footer', 'perf' ),
@@ -198,10 +193,6 @@ function perf_scripts() {
 add_action( 'wp_enqueue_scripts', 'perf_scripts' );
 
 if( function_exists( 'get_field' ) ):
-	/**
-	 * Implement the Custom Header feature.
-	 */
-	require get_template_directory() . '/inc/custom-header.php';
 
 	/**
 	 * Custom template tags for this theme.
