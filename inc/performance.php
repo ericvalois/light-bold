@@ -184,6 +184,10 @@ function perf_critical_mobile_fix() {
         padding-bottom: 15vh;
     }
 
+    .small-p, .comment-meta, .textwidget {
+        font-size: 16px;
+    }
+
     @media (min-width: 96em){
         .h0-responsive {
             font-size: 5.76rem;
