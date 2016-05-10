@@ -207,12 +207,6 @@ function perf_critical_mobile_fix() {
     .small-p, .comment-meta, .textwidget {
         font-size: 16px;
     }
-
-    @media (min-width: 96em){
-        .h0-responsive {
-            font-size: 5.76rem;
-        }
-    }
 <?php
 }
 
@@ -232,7 +226,7 @@ function perf_critical_md_fix() {
     }
 
     .h0-responsive {
-        font-size: 6vw;
+        font-size: 5.76rem;
     }
 <?php
 }
