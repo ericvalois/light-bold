@@ -201,12 +201,14 @@ footer .icons_social{
 .perf-main-hero{
     min-height: 150px;
     min-height: 24.99999999vh;
+    background: #282e34;
+    position: relative;
+    z-index: 1;
 }
 
 h1.entry-title{
     padding-top: 10vh;
     padding-bottom: 15vh;
-    text-shadow: 0 1px 0 #777575;
 }
 
 .perf_breadcrumbs {
@@ -431,8 +433,17 @@ input.search-field{ padding-right: 40px; }
 
 .nav-next{ text-align: right;}
 
-@include media-query(sm) {
+#perf-main-hero {
+    z-index: -999998;
+    height: 100%;
+    opacity: 0.8;
+}
 
+.home #perf-main-hero {
+    opacity: 1;
+}
+
+@include media-query(sm) {
     .address_contact_cell{ display: table-cell; }
 }
 

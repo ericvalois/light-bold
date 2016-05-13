@@ -7,7 +7,9 @@
 ?>
 
 <section class="clearfix table col-12">
-	<div id="perf-main-hero" class="md-table-cell md-col-7 relative front-hero bg-cover bg-center"></div>
+	<div class="md-table-cell md-col-7 front-hero relative">
+        <div id="perf-main-hero" class="bg-cover bg-center absolute top-0 left-0 col-12 overflow-hidden m0 p0"></div> 
+    </div>
 	
   	<div class="md-table-cell md-col-5 dark-bg front-hero-content ">
   		<div class="table col-12 front-hero-content">
@@ -18,4 +20,7 @@
   			</div>
   		</div>
   	</div>
+
+    
+
 </section>
