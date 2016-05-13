@@ -199,7 +199,7 @@ footer .icons_social{
 .width40{ width: 40px; }
 
 .perf-main-hero{
-    min-height: 150px;
+    min-height: 200px;
     min-height: 24.99999999vh;
     background: #282e34;
     position: relative;
@@ -237,9 +237,7 @@ h1.entry-title{
 
 
 .entry-meta{
-    font-size: 13px;
-    bottom: 50px;
-    text-shadow: 0 1px 0 #777575;
+    font-size: 14px;
     display: none;
     max-width: 80%;
 }
@@ -455,21 +453,16 @@ input.search-field{ padding-right: 40px; }
     .md-table-cell{ display: table-cell;}
 
     .perf_breadcrumbs {
-        top: 50px;
-        top: 8.33333333vh;
-        position: absolute;
         font-size: 14px;
         font-weight: normal;
-        letter-spacing: 1.4px;
-        line-height: 1;
-        z-index: 1;
-        display: block;
+        line-height: 1.5;
         max-width: 80%;
+        display: block;
     }
 
     h1.entry-title{
-        padding-top: 20.66666666vh;
-        padding-bottom: 24.66666666vh;
+        padding-top: 12.66666666vh;
+        padding-bottom: 14.66666666vh;
     }
 
     .entry-meta{ display: block; }
@@ -497,11 +490,6 @@ input.search-field{ padding-right: 40px; }
     }
 
     .section2{ min-height: 600px;}
-
-    .perf-main-hero{
-        min-height: 600px;
-        min-height: 58.33333331vh;
-    }
 
     .calendar_wrap th, .calendar_wrap td {
         padding: .7rem 0.3rem;

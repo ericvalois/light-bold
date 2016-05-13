@@ -7,7 +7,7 @@
 ?>
 
 
-<section class="relative px2 sm-px3 md-px4 perf-main-hero break-word">
+<section class="relative px2 sm-px3 md-px4 md-py3 perf-main-hero break-word">
 
 	<?php perf_breadcrumbs(); ?>
 
@@ -39,7 +39,7 @@
 	</h1>
 
 	<?php if( is_single() ): ?>
-		<div class="entry-meta white-color upper absolute">
+		<div class="entry-meta white-color upper">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php perf_posted_on(); ?>
 			<?php endwhile; // End of the loop. ?>
