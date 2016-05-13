@@ -85,9 +85,12 @@ function perf_critical_css()
     }elseif( is_archive() || is_home() || is_search() ){
         $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/archive.min.css");
         $critical_syle .= $temp_css['body'];
-    }elseif( is_404() ){
+    }elseif( is_single() ){
+        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/single.min.css");
+        $critical_syle .= $temp_css['body'];
+    /*}elseif( is_404() ){
         $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/404.min.css");
-        $critical_syle .= $temp_css['body']; 
+        $critical_syle .= $temp_css['body']; */
     }else{
         $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
         $critical_syle .= $temp_css['body'];
@@ -183,13 +186,13 @@ function perf_preload() {
     }
 
     if( get_field("perf_log_lg","option") ){
-        //echo '<link rel="preload" as="image" href="' . get_field("perf_log_lg","option") . '" media="(min-width: 1200px)">';
+        echo '<link rel="preload" as="image" href="' . get_field("perf_log_lg","option") . '" media="(min-width: 1200px)">';
     }
 
     $hero = perf_select_hero_image();
 
-    //echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-sm'] . '" media="(max-width: 52em)">';
-    //echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-md'] . '" media="(min-width: 52em) and (max-width: 64em)">';
+    echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-sm'] . '" media="(max-width: 52em)">';
+    echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-md'] . '" media="(min-width: 52em) and (max-width: 64em)">';
     echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-lg'] . '" media="(min-width: 64em)">';
 }
 
@@ -217,16 +220,12 @@ add_action( 'perf_md_styles', 'perf_critical_md_fix' );
 function perf_critical_md_fix() {
 ?>
     h1.entry-title {
-        padding-top: 20.66666666vh;
-        padding-bottom: 24.66666666vh;
+        padding-top: 12.66666666vh;
+        padding-bottom: 14.66666666vh;
     }
 
     .front-hero, .front-hero-content {
         min-height: 58.33333vh;
-    }
-
-    .h0-responsive {
-        font-size: 5.76rem;
     }
 <?php
 }

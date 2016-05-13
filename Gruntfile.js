@@ -54,6 +54,17 @@ module.exports = function(grunt) {
                     ignoreConsole: false
                 }
             },
+            single: {
+                options: {
+                    url: "http://perf.dev/lorem-ipsum-dolor-sit-amet/",
+                    width: 1200,
+                    height: 900,
+                    outputfile: "critical/single.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    ignoreConsole: false
+                }
+            },
             contact: {
                 options: {
                     url: "http://perf.dev/contact-us/",
@@ -65,7 +76,7 @@ module.exports = function(grunt) {
                     ignoreConsole: false
                 }
             },
-            404: {
+            page_404: {
                 options: {
                     url: "http://perf.dev/abcdefgh/",
                     width: 1200,
