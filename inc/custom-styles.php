@@ -108,7 +108,9 @@ function perf_custom_color(){
     .perf_btn,
     .submit{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     .perf_btn:hover,
-    .submit:hover{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .perf_btn:focus,
+    .submit:hover,
+    .submit:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu > li.menu-item-has-children:hover,
     #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
     .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}
