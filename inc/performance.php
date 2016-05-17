@@ -179,7 +179,7 @@ function perf_manual_async_css(){
 /*
 * Preload logo
 */
-add_action( 'wp_head', 'perf_preload' );
+add_action( 'wp_head', 'perf_preload', 1 );
 function perf_preload() {
     if( get_field("perf_log_sm","option") ){
         echo '<link rel="preload" as="image" href="' . get_field("perf_log_sm","option") . '" media="(max-width: 1200px)">';
