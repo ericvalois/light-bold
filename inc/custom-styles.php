@@ -28,6 +28,11 @@ function perf_inline_styles() {
         echo '@media (min-width: 1200px)  {';
             do_action( 'perf_1200_styles' );
         echo '}';
+
+        echo '@media (min-width: 96em)  {';
+            do_action( 'perf_96em_styles' );
+        echo '}';
+        
     echo '</style>';
 }
 

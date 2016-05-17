@@ -179,7 +179,7 @@ function perf_manual_async_css(){
 /*
 * Preload logo
 */
-add_action( 'perf_head_open', 'perf_preload' );
+add_action( 'wp_head', 'perf_preload' );
 function perf_preload() {
     if( get_field("perf_log_sm","option") ){
         echo '<link rel="preload" as="image" href="' . get_field("perf_log_sm","option") . '" media="(max-width: 1200px)">';
@@ -224,9 +224,8 @@ function perf_critical_md_fix() {
         padding-bottom: 14.66666666vh;
     }
 
-    .front-hero, .front-hero-content {
-        min-height: 58.33333vh;
-    }
+    .front-hero, .front-hero-content { min-height: 58.33333vh; }
+    .h0-responsive { font-size: 6vw; }
 <?php
 }
 
@@ -236,13 +235,9 @@ function perf_critical_md_fix() {
 add_action( 'perf_lg_styles', 'perf_critical_lg_fix' );
 function perf_critical_lg_fix() {
 ?>
-    #primary-menu a, .main-search input[type="search"] {
-        min-height: 8.33333vh;
-    }
+    #primary-menu a, .main-search input[type="search"] { min-height: 8.33333vh; }
 
-    .perf-main-hero {
-        min-height: 58.33333331vh;
-    }
+    .perf-main-hero { min-height: 58.33333331vh; }
 <?php
 }
 
@@ -259,6 +254,16 @@ function perf_critical_1200_fix() {
     .nav-container {
         margin-top: 16.66667vh;
     }
+<?php
+}
+
+/*
+* Critical 96em fix
+*/
+add_action( 'perf_96em_styles', 'perf_critical_96em_fix' );
+function perf_critical_96em_fix() {
+?>
+    .h0-responsive { font-size: 5.76rem; }
 <?php
 }
 
