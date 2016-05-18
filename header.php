@@ -12,7 +12,8 @@
 <html <?php language_attributes(); ?>>
 
 	<head>
-	
+		<?php do_action('perf_head_open'); ?>
+
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
