@@ -285,4 +285,3 @@ function perf_select_hero_image(){
 
     return $hero;
 }
-
