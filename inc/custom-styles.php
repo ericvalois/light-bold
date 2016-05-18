@@ -6,7 +6,7 @@
 /*
 * Inline styles
 */
-add_action( 'wp_head', 'perf_inline_styles' );
+add_action( 'perf_head_open', 'perf_inline_styles' );
 function perf_inline_styles() {
 
     echo '<style>';

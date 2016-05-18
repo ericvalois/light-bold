@@ -30,9 +30,9 @@ if ( !in_array("disable_iframe", $disable_lazy_load, true) && !is_admin() ) {
 
 add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
 function perf_lazysizes_script() {
-	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/js/picturefill.min.js', '', '', false );
-	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', false );
-	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/lazysizes/lazysizes.min.js', '', '', false );
+	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/js/picturefill.min.js', '', '', true );
+	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', true );
+	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/lazysizes/lazysizes.min.js', '', '', true );
 }
 
 /*

@@ -179,21 +179,26 @@ function perf_manual_async_css(){
 /*
 * Preload logo
 */
-add_action( 'wp_head', 'perf_preload', 1 );
+add_action( 'perf_head_open', 'perf_preload' );
 function perf_preload() {
     if( get_field("perf_log_sm","option") ){
-        echo '<link rel="preload" as="image" href="' . get_field("perf_log_sm","option") . '" media="(max-width: 1200px)">';
+    ?>
+        <link rel="preload" as="image" href="<?php echo get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
+	<?php
     }
 
     if( get_field("perf_log_lg","option") ){
-        echo '<link rel="preload" as="image" href="' . get_field("perf_log_lg","option") . '" media="(min-width: 1200px)">';
+    ?>
+        <link rel="preload" as="image" href="<?php echo get_field("perf_log_lg","option"); ?>" media="(min-width: 1200px)">
+	<?php
     }
 
     $hero = perf_select_hero_image();
-
-    echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-sm'] . '" media="(max-width: 52em)">';
-    echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-md'] . '" media="(min-width: 52em) and (max-width: 64em)">';
-    echo '<link rel="preload" as="image" href="' . $hero['sizes']['perfthemes-hero-lg'] . '" media="(min-width: 64em)">';
+    ?>
+    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-sm']; ?>" media="(max-width: 52em)">
+    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-md']; ?>" media="(min-width: 52em) and (max-width: 64em)">
+    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-lg']; ?>" media="(min-width: 64em)">
+    <?php
 }
 
 /*
