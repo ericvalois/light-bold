@@ -71,7 +71,6 @@ function perf_deliver_mail() {
 		}
 		
 		if ( $recaptcha && wp_mail( $to, $subject, $message, $headers ) ) {
-			//echo '<pre>';print_r($_POST);echo '</pre>';
 			echo '<div>';
 			if( get_field("perf_contact_success_message","option") ){
 				echo '<p id="contact_form" class="green-color">' . get_field("perf_contact_success_message","option") . '</p>';
