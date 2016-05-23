@@ -177,7 +177,7 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 }
 body{ padding-top: 64px; }
 .site-content{ min-height: 100%; }
-.perf-main-hero{ min-height: 200px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
+.perf-main-hero{ background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
 h1.entry-title{ }
 .perf_breadcrumbs{ display: none; }
  input[type="search"]{ padding-top: 0px; padding-right: 1rem; padding-bottom: 0px; padding-left: 1rem; height: 45px; box-sizing: border-box; width: 100%; }

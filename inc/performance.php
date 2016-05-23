@@ -208,7 +208,7 @@ add_action( 'perf_mobile_styles', 'perf_critical_mobile_fix' );
 function perf_critical_mobile_fix() {
 ?>
     h1.entry-title {
-        padding-top: 10vh;
+        padding-top: 13vh;
         padding-bottom: 15vh;
     }
 

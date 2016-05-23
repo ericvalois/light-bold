@@ -151,7 +151,7 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 #logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 body{ padding-top: 64px; }
 .site-content{ min-height: 100%; }
-.perf-main-hero{ min-height: 200px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
+.perf-main-hero{ background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
 h1.entry-title{ }
 .perf_breadcrumbs{ display: none; }
 .entry-meta{ font-size: 14px; display: none; max-width: 80%; }
