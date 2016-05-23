@@ -88,8 +88,10 @@ function perf_custom_color(){
 
     if( get_field("perf_main_site_color","option") != 'other' ){
         $perf_main_color = get_field("perf_main_site_color","option");
-    }else{
+    }elseif( get_field("perf_custom_color","option") ){
         $perf_main_color = get_field("perf_custom_color","option");
+    }else{
+        $perf_main_color = '#3498db';
     }
     
     ?>
