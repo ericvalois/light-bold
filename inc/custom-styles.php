@@ -6,7 +6,7 @@
 /*
 * Inline styles
 */
-add_action( 'perf_head_open', 'perf_inline_styles' );
+add_action( 'perf_head_open', 'perf_inline_styles', 50 );
 function perf_inline_styles() {
 
     echo '<style>';
@@ -42,11 +42,11 @@ function perf_inline_styles() {
 add_action( 'perf_mobile_styles', 'perf_sm_hero' );
 function perf_sm_hero() {
 
-    $hero = perf_select_hero_image();
-
+    $image_id = perf_select_hero_image();
+    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-sm' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $hero['sizes']['perfthemes-hero-sm']; ?>);
+        background-image: url(<?php echo $image_src[0]; ?>);
     }
 <?php
 }
@@ -57,10 +57,11 @@ function perf_sm_hero() {
 add_action( 'perf_md_styles', 'perf_md_hero' );
 function perf_md_hero() {
 
-    $hero = perf_select_hero_image();
+    $image_id = perf_select_hero_image();
+    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-md' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $hero['sizes']['perfthemes-hero-md']; ?>);
+        background-image: url(<?php echo $image_src[0]; ?>);
     }
 <?php
 }
@@ -71,11 +72,11 @@ function perf_md_hero() {
 add_action( 'perf_lg_styles', 'perf_lg_hero' );
 function perf_lg_hero() {
 
-    $hero = perf_select_hero_image();
-
+    $image_id = perf_select_hero_image();
+    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-lg' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $hero['sizes']['perfthemes-hero-lg']; ?>);
+        background-image: url(<?php echo $image_src[0]; ?>);
     }
 <?php
 }
@@ -144,6 +145,7 @@ function perf_section1_bg_lg(){
 
             $cpt = 1;
             foreach($section1 as $box ){
+
             ?>
                 .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-md']; ?>); }
             <?php
