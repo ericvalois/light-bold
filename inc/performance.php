@@ -193,11 +193,14 @@ function perf_preload() {
 	<?php
     }
 
-    $hero = perf_select_hero_image();
+    $image_id = perf_select_hero_image();
+    $image_src_sm = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-sm' );
+    $image_src_md = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-md' );
+    $image_src_lg = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-lg' );
     ?>
-    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-sm']; ?>" media="(max-width: 52em)">
-    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-md']; ?>" media="(min-width: 52em) and (max-width: 64em)">
-    <link rel="preload" as="image" href="<?php echo $hero['sizes']['perfthemes-hero-lg']; ?>" media="(min-width: 64em)">
+    <link rel="preload" as="image" href="<?php echo $image_src_sm[0]; ?>" media="(max-width: 52em)">
+    <link rel="preload" as="image" href="<?php echo $image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
+    <link rel="preload" as="image" href="<?php echo $image_src_lg[0]; ?>" media="(min-width: 64em)">
     <?php
 }
 
