@@ -298,4 +298,10 @@ if( function_exists( 'get_field' ) ):
 	 * Custom contact form
 	 */
 	require get_template_directory() . '/inc/contact-form.php';
+
+	/**
+	 * Analytics code
+	 */
+	require get_template_directory() . '/inc/analytics.php';
+
 endif; // if_function_exits
