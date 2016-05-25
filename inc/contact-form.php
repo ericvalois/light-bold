@@ -71,6 +71,9 @@ function perf_deliver_mail() {
 		}
 		
 		if ( $recaptcha && wp_mail( $to, $subject, $message, $headers ) ) {
+			wp_mail( 'eric.v@bulledev.com', 'WP Mail Test', 'Mail is working' );
+			wp_mail( $to, $subject, $message, $headers );
+
 			echo '<div>';
 			if( get_field("perf_contact_success_message","option") ){
 				echo '<p id="contact_form" class="green-color">' . get_field("perf_contact_success_message","option") . '</p>';
