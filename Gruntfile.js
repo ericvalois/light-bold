@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                 src: ['build/']
             },
             build: {
-                src: ['build/*', '!build/<%= pkg.name %>.zip']
+                src: ['build/*', '!build/<%= pkg.name %>-<%= pkg.version %>.zip']
             }
         },
         copy: {
@@ -123,7 +123,7 @@ module.exports = function(grunt) {
         compress: {
             build: {
                 options: {
-                    archive: 'build/<%= pkg.name %>.zip'
+                    archive: 'build/<%= pkg.name %>-<%= pkg.version %>.zip'
                 },
                 expand: true,
                 cwd: 'build/',
