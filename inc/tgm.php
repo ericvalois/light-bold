@@ -58,8 +58,8 @@ function perf_register_required_plugins() {
 			'name'               => 'Advanced Custom Fields Pro', // The plugin name.
 			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
 			'source'             => get_template_directory() . '/lib/plugins/advanced-custom-fields-pro.zip', // The plugin source.
-			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-			'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
+			//'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
@@ -67,11 +67,11 @@ function perf_register_required_plugins() {
 		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		/*array(
-			'name'      => 'W3 Total Cache',
-			'slug'      => 'w3-total-cache',
+		array(
+			'name'      => 'Cache Enabler - WordPress Cache',
+			'slug'      => 'cache-enabler',
 			'required'  => false,
-		),*/
+		),
 
 		array(
 			'name'      => 'Compress JPEG & PNG images',
@@ -89,6 +89,12 @@ function perf_register_required_plugins() {
 			'name'      => 'Advanced Custom Fields: Font Awesome',
 			'slug'      => 'advanced-custom-fields-font-awesome',
 			'required'  => true,
+		),
+
+		array(
+			'name'      => 'Post Duplicator',
+			'slug'      => 'post-duplicator',
+			'required'  => false,
 		),
 
 	);
