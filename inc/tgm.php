@@ -83,14 +83,8 @@ function perf_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'Cache Enabler - WordPress Cache',
-			'slug'      => 'cache-enabler',
-			'required'  => false,
-		),
-
-		array(
-			'name'      => 'CDN Enabler - WordPress CDN Plugin',
-			'slug'      => 'cdn-enabler',
+			'name'      => 'W3 Total Cache',
+			'slug'      => 'w3-total-cache',
 			'required'  => false,
 		),
 
