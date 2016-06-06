@@ -192,6 +192,11 @@ function perf_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'perf_scripts' );
 
+/**
+ * Load TGM class
+ */
+require get_template_directory() . '/inc/tgm.php';
+	
 if( function_exists( 'get_field' ) ):
 
 	/**
@@ -238,11 +243,6 @@ if( function_exists( 'get_field' ) ):
 	 * Performances optimizations
 	 */
 	require get_template_directory() . '/inc/performance.php';
-
-	/**
-	 * Load TGM class
-	 */
-	require get_template_directory() . '/inc/tgm.php';
 
 	/**
 	 * Load Breadcrumb helper
