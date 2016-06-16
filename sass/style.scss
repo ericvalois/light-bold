@@ -154,9 +154,11 @@ footer .icons_social{
 }
 
 .site-footer p { font-size: 14px; }
-.site-footer .menu{ padding: 0; list-style-type: none;}
-.site-footer .menu-item a,
-.site-footer .menu-item { font-size: 14px; text-transform: uppercase; line-height: 1.7; margin-bottom: 10px; }
+.site-footer .menu,
+.site-footer ul{ padding: 0 0 0 20px; }
+
+.copy a{ color: #ccc; }
+.copy a:hover{border-color: #ccc; }
 
 #sub-footer{ margin: 0; }
 
