@@ -105,7 +105,9 @@ function perf_custom_color(){
     .tags:hover,
     .widget_categories a:hover, 
     .widget_archive a:hover,
-    .comment-reply-link:hover{ color: <?php echo $perf_main_color; ?> }
+    .comment-reply-link:hover,
+    .icons_social:hover, 
+    .icons_social:focus{ color: <?php echo $perf_main_color; ?> }
     #primary-menu i,
     #primary-menu a:hover,
     .address_row i { color: <?php echo $perf_main_color; ?>; }
