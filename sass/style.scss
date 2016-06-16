@@ -95,6 +95,8 @@ a.white-color{
     z-index: 2;
 }
 
+body, .smooth-container { scroll-behavior: smooth }
+
 #logo{
     display: block;
     width: 140px;
@@ -189,8 +191,7 @@ footer .icons_social{
 
 .copy{ font-size: 12px; font-weight: lighter; color: #ccc; }
 
-#to_top{ font-size: 20px; outline: none; }
-//.address_row i{ font-size: 16px;}
+#to_top{ font-size: 20px; outline: none; color:  #ccc; }
 
 .width30{ width: 30px; }
 .width40{ width: 40px; }
