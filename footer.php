@@ -39,7 +39,7 @@
 
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix">
 		<div class="md-col md-col-6 mb1 md-mb0">
-			<div class="white-color copy">@ <?php echo date("Y"); ?> <?php echo get_field("perf_footer_copy","option"); ?></div>
+			<div class="white-color copy">© <?php echo date("Y"); ?><?php echo get_field("perf_footer_copy","option"); ?></div>
 		</div>
 		
 		<div class="md-col md-col-6">
