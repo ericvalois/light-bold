@@ -58,10 +58,10 @@ add_filter( 'icon_picker_icon_type_stylesheet_uri', 'perf_font_awesome_css_from_
 /**
  * Add default options
  */
-function perf_after_setup_theme() {
+/*function perf_after_setup_theme() {
     if( !isset( get_option( 'menu-icons' ) ) ){
         add_option( 'menu-icons', 'a:2:{s:6:"global";a:1:{s:10:"icon_types";a:1:{i:0;s:2:"fa";}}s:6:"menu_2";a:6:{s:10:"hide_label";s:0:"";s:8:"position";s:5:"after";s:14:"vertical_align";s:6:"middle";s:9:"font_size";s:3:"1.2";s:9:"svg_width";s:1:"1";s:10:"image_size";s:9:"thumbnail";}}', '', 'yes' );
     }
 }
 add_action( 'after_setup_theme', 'perf_after_setup_theme' );
-
+*/
