@@ -1,4 +1,9 @@
 <?php
+/**
+ * Template part for displaying sticky posts.
+ *
+ * @package perfthemes
+ */
 	$sticky = get_option( 'sticky_posts' );
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
