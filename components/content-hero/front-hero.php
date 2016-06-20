@@ -7,7 +7,7 @@
 ?>
 
 <section class="clearfix table col-12">
-	<div class="md-table-cell md-col-7 front-hero relative">
+    <div class="md-table-cell md-col-7 front-hero relative hide-print">
         <div id="perf-main-hero" class="bg-cover bg-center absolute top-0 left-0 col-12 overflow-hidden m0 p0"></div> 
     </div>
 	

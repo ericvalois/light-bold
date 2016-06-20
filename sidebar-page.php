@@ -12,6 +12,6 @@ if ( ! is_active_sidebar( 'page-sidebar' ) ) {
 }
 ?>
 
-<div class="widget-area lg-col lg-col-4 mt4 lg-mt0" role="complementary">
+<div class="widget-area lg-col lg-col-4 mt4 lg-mt0 hide-print" role="complementary">
 	<?php dynamic_sidebar( 'page-sidebar' ); ?>
 </div><!-- #secondary -->

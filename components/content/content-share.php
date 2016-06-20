@@ -7,9 +7,9 @@
 
 ?>
 
-<h5 class="mb1 mt2"><?php _e("Share this","perf"); ?></h5>
+<h5 class="mb1 mt2 hide-print"><?php _e("Share this","perf"); ?></h5>
 
-<div id="social_widget" class=" clearfix mb2">
+<div id="social_widget" class="clearfix mb2 hide-print">
 	<div class="left table mb1 mr1">
 		<a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php echo get_permalink(); ?>&t=<?php echo get_the_title(); ?>" class="table-cell social_share"><i class="fa fa-facebook"></i></a>
 	</div>

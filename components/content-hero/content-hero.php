@@ -50,5 +50,5 @@
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 
-	<div id="perf-main-hero" class="bg-cover bg-top absolute top-0 left-0 col-12 overflow-hidden m0 p0"></div>
+	<div id="perf-main-hero" class="bg-cover bg-top absolute top-0 left-0 col-12 overflow-hidden m0 p0 hide-print"></div>
 </section>

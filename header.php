@@ -34,7 +34,7 @@
 
 	<header class="main-header site-sidebar bg-white">
 
-		<div class="main-header_container">
+		<div class="main-header_container hide-print">
 
 			<?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
 

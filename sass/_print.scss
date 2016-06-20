@@ -1,0 +1,47 @@
+@media print {
+
+	body{ 
+		color: #000 !important;
+		padding: 0 !important; 
+	}
+
+	body *{ 
+		color: #000 !important;
+		display: block !important;
+	}
+
+	.entry-meta{ color: #000 !important; }
+
+	h1.entry-title{ padding: 0 0 2rem 0 !important;}
+
+	.perf-main-hero{ 
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		min-height: 1px !important;
+		background-color: #fff;
+	}
+
+	.hide-print,
+	#wpadminbar{
+		display: none !important;
+	}
+
+	#main{
+		width: 100%;
+		margin: 0;
+		float: none;
+	}
+
+	.front-hero-content,
+	.section2,
+	.section3,
+	.section4{
+		padding: 0 !important;
+		min-height: 1px !important;
+		color: #000 !important;
+	}
+
+	.thumb_section1{ height: auto !important;}
+
+	.section1 h3{ padding: 0 !important;}
+}

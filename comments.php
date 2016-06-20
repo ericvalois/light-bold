@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area hide-print">
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title mt3 mb3 separator">

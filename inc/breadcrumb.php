@@ -3,7 +3,7 @@ function perf_breadcrumbs() {
     global $post;
 	$separator = '<span class="white-color upper"> | </span>'; // Simply change the separator to what ever you need e.g. / or >
 	
-    echo '<nav class="perf_breadcrumbs">';
+    echo '<nav class="perf_breadcrumbs hide-print">';
 	if (!is_front_page()) {
 		echo '<a class="fa fa-home white-color" href="';
 		echo esc_url( home_url( '/' ) );
