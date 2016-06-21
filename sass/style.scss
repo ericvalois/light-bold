@@ -225,11 +225,12 @@ h1.entry-title{
     vertical-align: middle;
     width: 65px;
     height: 65px;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
 
     &:hover,
     &:focus{
-        opacity: 0.8;
+        color: #3e3e3e;
+        border-color: #3e3e3e;
     }
 }
 
