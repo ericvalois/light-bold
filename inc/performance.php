@@ -201,8 +201,6 @@ function perf_preload() {
     <link rel="preload" as="image" href="<?php echo $image_src_sm[0]; ?>" media="(max-width: 52em)">
     <link rel="preload" as="image" href="<?php echo $image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
     <link rel="preload" as="image" href="<?php echo $image_src_lg[0]; ?>" media="(min-width: 64em)">
-
-    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/inc/font-awesome/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" media="(min-width: 1200px)" crossorigin>
     <?php
 }
 
