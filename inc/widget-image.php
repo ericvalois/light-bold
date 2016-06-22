@@ -37,7 +37,7 @@ class perf_image_widget extends WP_Widget {
       <?php if( $link ): ?>
         <a href="<?php echo $link; ?>" <?php if( $nofollow ){ echo 'rel="nofollow"'; } ?> target="_blank" class="border-none">
       <?php endif; ?>
-        <img data-src="<?php echo $image['sizes']['medium']; ?>" title="<?php echo $image['title']; ?>" alt="<?php echo $image['alt']; ?>" class="lazyload">
+        <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php echo $image['sizes']['medium']; ?>" title="<?php echo $image['title']; ?>" alt="<?php echo $image['alt']; ?>" class="lazyload">
       <?php if( $link ): ?>
         </a>
       <?php endif; ?>

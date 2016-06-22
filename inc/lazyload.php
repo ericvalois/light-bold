@@ -20,8 +20,8 @@ if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
 }
 
 if ( !in_array("disable_iframe", $disable_lazy_load, true) && !is_admin() ) {
-	add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
-	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );
+	/*add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
+	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );*/
 }
 
 add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
