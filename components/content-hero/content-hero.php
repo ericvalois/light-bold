@@ -7,7 +7,7 @@
 ?>
 
 
-<section class="relative px2 sm-px3 md-px4 md-py3 perf-main-hero break-word">
+<div class="relative px2 sm-px3 md-px4 md-py3 perf-main-hero break-word">
 
 	<?php perf_breadcrumbs(); ?>
 
@@ -51,4 +51,4 @@
 	<?php endif; ?>
 
 	<div id="perf-main-hero" class="bg-cover bg-top absolute top-0 left-0 col-12 overflow-hidden m0 p0 hide-print"></div>
-</section>
+</div>

@@ -27,6 +27,6 @@
 	</div>
 
 	<div class="left table mr1">
-		<a target="_blank" href=http://pinterest.com/pin/create/bookmarklet/?media=article&url=<?php echo get_permalink(); ?>&is_video=false&description=<?php echo urlencode(get_the_title()); ?>"" class="table-cell social_share"><i class="fa fa-pinterest"></i></a>
+		<a target="_blank" href=<?php echo esc_url('http://pinterest.com/pin/create/bookmarklet/?media=article&url=' . get_permalink() . '&is_video=false&description=' .  get_the_title() ); ?>" class="table-cell social_share"><i class="fa fa-pinterest"></i></a>
 	</div>
 </div>
