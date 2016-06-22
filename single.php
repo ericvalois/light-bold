@@ -15,7 +15,7 @@ get_header(); ?>
 
 		<div class="lg-col lg-col-8 lg-col-right">
 
-			<main id="main" class="site-main break-word lg-ml4" role="main" >
+			<main id="main" class="site-main break-word lg-ml4">
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php get_template_part( 'template-parts/content', 'single' ); ?>

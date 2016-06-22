@@ -15,7 +15,7 @@ get_header(); ?>
 
 		<div class="lg-col lg-col-8 lg-col-right">
 
-			<main id="main" class="site-main break-word lg-ml4" role="main">
+			<main id="main" class="site-main break-word lg-ml4">
 
 				<?php if ( have_posts() ) : ?>
 

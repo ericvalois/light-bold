@@ -13,7 +13,7 @@
 
 	
 	<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
-		<footer class="site-footer clearfix dark-bg hide-print" role="contentinfo">
+		<footer class="site-footer clearfix dark-bg hide-print">
 
 			<div class="clearfix mt3 mb3 lg-mt4 px2 lg-px3 ">
 				<div class="md-col md-col-3">
