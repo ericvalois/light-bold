@@ -7,7 +7,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 			<?php get_template_part( 'components/content-hero/front-hero' ); ?>
 
 			<?php get_template_part( 'components/front-sections/section1' ); ?>

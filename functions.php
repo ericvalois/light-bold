@@ -55,7 +55,7 @@ function perf_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'perfthemes-hero-xl', 1630, 612, true );
+	//add_image_size( 'perfthemes-hero-xl', 1630, 612, true );
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
 	add_image_size( 'perfthemes-hero-sm', 595, 448, true );
@@ -305,3 +305,31 @@ if( function_exists( 'get_field' ) ):
 	require get_template_directory() . '/inc/analytics.php';
 
 endif; // if_function_exits
+
+/**
+ * Add custom image sizes attribute to enhance responsive image functionality
+ * for content images
+ *
+ * @since Twenty Sixteen 1.0
+ *
+ * @param string $sizes A source size value for use in a 'sizes' attribute.
+ * @param array  $size  Image size. Accepts an array of width and height
+ *                      values in pixels (in that order).
+ * @return string A source size value for use in a content image 'sizes' attribute.
+ */
+function twentysixteen_content_image_sizes_attr( $sizes, $size ) {
+	$width = $size[0];
+
+	840 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px';
+
+	if ( 'page' === get_post_type() ) {
+		840 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
+	} else {
+		840 > $width && 600 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 61vw, (max-width: 1362px) 45vw, 600px';
+		600 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
+	}
+
+	return $sizes;
+}
+add_filter( 'wp_calculate_image_sizes', 'twentysixteen_content_image_sizes_attr', 10 , 2 );
+

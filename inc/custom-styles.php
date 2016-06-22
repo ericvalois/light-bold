@@ -131,6 +131,7 @@ function perf_custom_color(){
     ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
     .opacity-zero{ opacity: 0; }
+    img{max-width: 100%;height: auto;}
     <?php
 }
 

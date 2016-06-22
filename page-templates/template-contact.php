@@ -12,7 +12,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4 <?php echo perf_content_animation(); ?>">
 
-		<main id="main" class="site-main col col-12 break-word" role="main">
+		<main id="main" class="site-main col col-12 break-word">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
