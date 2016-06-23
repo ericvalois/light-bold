@@ -17,7 +17,7 @@ if( !is_admin() ){
 	  function get_field(){
 				return;
 			}
-	} 
+	}
 }
 
 if ( ! function_exists( 'perf_setup' ) ) :
@@ -59,7 +59,7 @@ function perf_setup() {
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
 	add_image_size( 'perfthemes-hero-sm', 595, 448, true );
-	
+
 	//add_image_size( 'perfthemes-thumbnail-avatar', 100, 100, true );
 
 	// This theme uses wp_nav_menu() in two locations.
@@ -196,7 +196,7 @@ add_action( 'wp_enqueue_scripts', 'perf_scripts' );
  * Load TGM class
  */
 require get_template_directory() . '/inc/tgm.php';
-	
+
 if( function_exists( 'get_field' ) ):
 
 	/**
@@ -220,7 +220,7 @@ if( function_exists( 'get_field' ) ):
 	require get_template_directory() . '/inc/jetpack.php';
 
 	/**
-	 * Load ACF 
+	 * Load ACF
 	 */
 	//require get_template_directory() . '/inc/acf.php';
 
@@ -295,11 +295,6 @@ if( function_exists( 'get_field' ) ):
 	require get_template_directory() . '/inc/custom-protected-form.php';
 
 	/**
-	 * Custom contact form
-	 */
-	require get_template_directory() . '/inc/contact-form.php';
-
-	/**
 	 * Analytics code
 	 */
 	require get_template_directory() . '/inc/analytics.php';
@@ -332,4 +327,3 @@ function twentysixteen_content_image_sizes_attr( $sizes, $size ) {
 	return $sizes;
 }
 add_filter( 'wp_calculate_image_sizes', 'twentysixteen_content_image_sizes_attr', 10 , 2 );
-

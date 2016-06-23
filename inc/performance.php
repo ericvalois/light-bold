@@ -25,21 +25,21 @@ if( !in_array("disable_js_auto_async", $disable_js_optimisation, true) && !is_ad
     add_filter( 'script_loader_tag', 'perf_manual_async_js', 10, 2 );
 }
 function perf_add_async( $tag, $handle ) {
-    return str_replace( ' src', ' async src', $tag );     
+    return str_replace( ' src', ' async src', $tag );
 }
 
 function perf_manual_async_js( $tag, $handle ) {
     global $wp_scripts;
- 
+
     $manual_async = get_field("perf_manual_async_js","option");
     $current_script = $wp_scripts->registered[$handle]->src;
- 
+
     if( perf_array_find($current_script,  $manual_async) ){
         return str_replace( ' src', ' async src', $tag );
     }else{
         return $tag;
     }
-        
+
 }
 
 function perf_array_find($needle, array $haystack){
@@ -140,18 +140,18 @@ function perf_dequeue_all_stylesheets( ) {
 
 
 if( is_array($perf_manual_async_stylesheets) && !is_admin() ){
-    add_action('wp_print_styles', 'perf_manual_async_css', 100); 
+    add_action('wp_print_styles', 'perf_manual_async_css', 100);
 }
 
 function perf_manual_async_css(){
-    
+
     global $wp_styles;
 
     $perf_manual_async_stylesheets = get_field("perf_manual_async_stylesheets","option");
 
     $dequeue = array();
     foreach( $wp_styles->queue as $handle ) :
-        
+
         $current_src = $wp_styles->registered[$handle]->src;
 
         if( perf_array_find($current_src,  $perf_manual_async_stylesheets) ){
@@ -160,7 +160,7 @@ function perf_manual_async_css(){
     endforeach;
 
     if( count($dequeue) > 0 ){
-        
+
         echo '<script>';
             foreach( $dequeue as $handle ) {
                 wp_dequeue_style( $handle);
@@ -173,11 +173,11 @@ function perf_manual_async_css(){
         }
 
     }
-    
+
 }
 
 /*
-* Preload 
+* Preload
 */
 add_action( 'perf_head_open', 'perf_preload' );
 function perf_preload() {
@@ -197,11 +197,14 @@ function perf_preload() {
     $image_src_sm = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-sm' );
     $image_src_md = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-md' );
     $image_src_lg = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-lg' );
+
+    if( $image_id ){
     ?>
-    <link rel="preload" as="image" href="<?php echo $image_src_sm[0]; ?>" media="(max-width: 52em)">
-    <link rel="preload" as="image" href="<?php echo $image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
-    <link rel="preload" as="image" href="<?php echo $image_src_lg[0]; ?>" media="(min-width: 64em)">
+        <link rel="preload" as="image" href="<?php echo $image_src_sm[0]; ?>" media="(max-width: 52em)">
+        <link rel="preload" as="image" href="<?php echo $image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
+        <link rel="preload" as="image" href="<?php echo $image_src_lg[0]; ?>" media="(min-width: 64em)">
     <?php
+    }
 }
 
 /*
