@@ -295,7 +295,7 @@ body.navigation-opened {
 @media (min-width: 1200px){
 
 
-    
+
     .site-content{
         padding: 0 0 0 230px;
     }
@@ -312,7 +312,7 @@ body.navigation-opened {
         -webkit-transition: none;
         transition: none;
     }
-    
+
     .main_nav_toggle {
         display: none;
     }
@@ -337,9 +337,9 @@ body.navigation-opened {
         height: 16.66667vh;
     }
 
-    .site-logo{ 
-        float: none; 
-        margin: 0 auto; 
+    .site-logo{
+        float: none;
+        margin: 0 auto;
         padding-left: 2rem;
         padding-right: 2rem;
     }
@@ -366,7 +366,7 @@ body.navigation-opened {
         //overflow:visible;
         border-left: 2px solid #f4f3f3;
     }
-    
+
     #primary-menu li  {
 
         overflow:  visible;
@@ -380,7 +380,7 @@ body.navigation-opened {
         transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
 
     }
-    
+
 }
 
 @media (min-width: 1650px){
@@ -391,5 +391,9 @@ body.navigation-opened {
 
     .site-content{
         padding: 0 0 0 320px;
+    }
+
+    #text-logo{
+        padding-left: 1rem;
     }
 }

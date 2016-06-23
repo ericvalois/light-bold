@@ -53,7 +53,7 @@ $alt-dark-bg: #2c2c2c;
 .dark-bg{ background-color: $dark-bg; }
 .alt-dark-bg{ background-color: $alt-dark-bg; }
 .dark-color{ color: $text-color; }
-a.dark-color{ 
+a.dark-color{
     &:hover,
     &:focus{
         border-color: transparent;
@@ -64,7 +64,7 @@ a.dark-color{
 .red-color{ color: red; }
 .green-color{ color: green; }
 
-a.white-color{ 
+a.white-color{
     &:hover,
     &:focus{
         border-color: transparent;
@@ -75,7 +75,7 @@ a.white-color{
     font-size: 140%;
 }
 
-.px{ 
+.px{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
@@ -119,7 +119,7 @@ body, .smooth-container { scroll-behavior: smooth }
         min-height: 58.33333vh;
     }
 
-    .section1{ 
+    .section1{
         min-height: 200px;
         min-height: 33.33333vh;
     }
@@ -142,12 +142,12 @@ body{
 
 .neg_bm1{ margin-bottom: -2rem;}
 
-.icons_social{ 
-    font-size: 25px; 
+.icons_social{
+    font-size: 25px;
     border: none;
 }
 
-footer .icons_social{ 
+footer .icons_social{
     color: #fff;
 }
 
@@ -166,20 +166,20 @@ footer .icons_social{
 
 #sub-footer{ margin: 0; }
 
-#sub-footer li{ 
+#sub-footer li{
     display: inline;
-    color: #ccc; 
+    color: #ccc;
 }
 
-#sub-footer li:after{ 
+#sub-footer li:after{
     content: ' | ';
 }
 
-#sub-footer li:last-child:after{ 
+#sub-footer li:last-child:after{
     content: '';
 }
-#sub-footer a{ 
-    color: #ccc; 
+#sub-footer a{
+    color: #ccc;
     margin: 0 0.5rem;
     text-transform: none;
     font-weight: lighter;
@@ -250,18 +250,18 @@ h1.entry-title{
 
 }
 
-input[type=text], 
-input[type=date], 
-input[type=datetime], 
-input[type=datetime-local], 
-input[type=email], 
-input[type=month], 
-input[type=number], 
-input[type=password], 
-input[type=search], 
-input[type=tel], 
-input[type=time], 
-input[type=url], 
+input[type=text],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=time],
+input[type=url],
 input[type=week],
 select,
 textarea{
@@ -395,7 +395,7 @@ input.search-field{ padding-right: 40px; }
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
     display: inline-block;
-   
+
 }
 
 .widget-area ul,
@@ -465,12 +465,12 @@ input.search-field{ padding-right: 40px; }
         line-height: 1.5;
     }
 
-   
+
 
     .site-footer .menu-item { margin-bottom: 0; }
 
     .front-hero{ min-height: 33.33333vh;}
-    
+
 }
 
 @include media-query(lg) {
@@ -487,19 +487,20 @@ input.search-field{ padding-right: 40px; }
         padding: .7rem 0.3rem;
     }
 
-    #logo{ 
+    #logo{
         width: 180px;
     }
+
 
 }
 
 @media (min-width: 1200px){
-    body{ 
-        padding-top: 0; 
+    body{
+        padding-top: 0;
         font-size: 110%;
     }
 
-    #logo{ width: 100%; height: 80px; background-position: center center;} 
+    #logo{ width: 100%; height: 80px; background-position: center center;}
 }
 
 @include media-query(xlg) {
@@ -507,4 +508,3 @@ input.search-field{ padding-right: 40px; }
 }
 
 @import 'print';
-
