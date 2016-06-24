@@ -24,74 +24,6 @@ function perf_body_classes( $classes ) {
 add_filter( 'body_class', 'perf_body_classes' );
 
 
-function perf_add_classes_on_li($classes, $item, $args) {
-  $classes[] = 'relative';
-  return $classes;
-}
-//add_filter('nav_menu_css_class','perf_add_classes_on_li',1,3);
-
-
-/*
-* Custom menu markup
-*/
-function perf_clean_custom_menu( $theme_location ) {
-    if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
-        $menu = get_term( $locations[$theme_location], 'nav_menu' );
-        $menu_items = wp_get_nav_menu_items($menu->term_id);
- 
-        $menu_list = '<ul id="primary-menu" class="list-reset">' ."\n";
- 
-        $count = 0;
-        $submenu = false;
-        
-        //print_r($menu_items); exit();
-        foreach( $menu_items as $menu_item ) {
-             
-            $link = $menu_item->url;
-            $title = $menu_item->title;
-             
-            if ( !$menu_item->menu_item_parent ) {
-                $parent_id = $menu_item->ID;
-                 
-                $menu_list .= '<li class="item p2 border relative">' ."\n";
-                $menu_list .= '<a href="'.$link.'" class="title">'.$title.'</a>' ."\n";
-            }
- 
-            if ( $parent_id == $menu_item->menu_item_parent ) {
- 
-                if ( !$submenu ) {
-                    $submenu = true;
-                    $menu_list .= '<ul class="sub-menu">' ."\n";
-                }
- 
-                $menu_list .= '<li class="item">' ."\n";
-                $menu_list .= '<a href="'.$link.'" class="title">'.$title.'</a>' ."\n";
-                $menu_list .= '</li>' ."\n";
-                     
- 
-                if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id && $submenu ){
-                    $menu_list .= '</ul>' ."\n";
-                    $submenu = false;
-                }
- 
-            }
- 
-            if ( is_object( isset($menu_items[ $count + 1 ]) ) && $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { 
-                $menu_list .= '</li>' ."\n";      
-                $submenu = false;
-            }
- 
-            $count++;
-        }
-         
-        $menu_list .= '</ul>' ."\n";
- 
-    } else {
-        $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
-    }
-    echo $menu_list;
-}
-
 /**
  * Add a parent CSS class for nav menu items.
  *
@@ -101,7 +33,7 @@ function perf_clean_custom_menu( $theme_location ) {
 add_filter( 'wp_nav_menu_objects', 'perf_href_Return_false' );
 function perf_href_Return_false( $items ) {
     $parents = array();
- 
+
     // Collect menu items with parents.
     foreach ( $items as $item ) {
         if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
@@ -109,13 +41,13 @@ function perf_href_Return_false( $items ) {
         }
     }
     //print_r($items); exit();
- 
+
     // Add class.
     foreach ( $items as $item ) {
         if ( in_array( $item->ID, $parents ) ) {
             $item->url = 'javascript:void(0);';
             //print_r($item); exit();
-            
+
         }
     }
     return $items;
@@ -134,7 +66,7 @@ function perf_add_search_menu() {
     // get nav items as configured in /wp-admin/
     $wrap .= '%3$s';
 
-    // the static link 
+    // the static link
     if( get_field("perf_hide_search","option") != 1 ){
         $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="' . __("Search","perf") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
     }
@@ -171,7 +103,7 @@ add_filter('widget_tag_cloud_args','perf_tag_cloud_sizes');
 function perf_tag_cloud_sizes($args) {
     $args['smallest'] = 13;
     $args['largest'] = 13;
-    return $args; 
+    return $args;
 }
 
 
@@ -179,7 +111,7 @@ function perf_tag_cloud_sizes($args) {
  * Menu Custom walker class.
  */
 class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
- 
+
     /**
      * Starts the list before the elements are added.
      *
@@ -200,11 +132,11 @@ class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
             'menu-depth-' . $display_depth
         );
         $class_names = implode( ' ', $classes );
- 
+
         // Build HTML for output.
         $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
     }
- 
+
     /**
      * Start the element output.
      *
@@ -217,9 +149,10 @@ class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
      * @param int    $id     Current item ID.
      */
     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+
         global $wp_query;
         $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
- 
+
         // Depth-dependent classes.
         $depth_classes = array(
             ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
@@ -228,32 +161,63 @@ class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
             'menu-item-depth-' . $depth
         );
         $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
- 
+
         // Passed classes.
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
         $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
- 
+
         // Build HTML.
         $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="relative ' . $depth_class_names . ' ' . $class_names . '">';
- 
+
         // Link attributes.
         $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
         $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
         $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
- 
-        // Build HTML output and pass through the proper filter.
-        $item_output = sprintf( '%1$s<a%2$s><span>%3$s%4$s%5$s</span></a>%6$s',
-            $args->before,
-            $attributes,
-            $args->link_before,
-            apply_filters( 'the_title', $item->title, $item->ID ),
-            $args->link_after,
-            $args->after
-        );
+
+		if( is_object($args) && is_object($item) ) {
+			// Build HTML output and pass through the proper filter.
+	        $item_output = sprintf( '%1$s<a%2$s><span>%3$s%4$s%5$s</span></a>%6$s',
+	            $args->before,
+	            $attributes,
+	            $args->link_before,
+	            apply_filters( 'the_title', $item->title, $item->ID ),
+	            $args->link_after,
+	            $args->after
+	        );
+		}else{
+			$item_output = sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+	            $item->url,
+	            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
+	            $item->title
+	        );
+		}
+
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
+}
+
+class perf_Default_Walker extends Walker {
+
+    // Tell Walker where to inherit it's parent and id values
+    var $db_fields = array(
+        'parent' => 'menu_item_parent',
+        'id'     => 'db_id'
+    );
+    /**
+     * At the start of each element, output a <li> and <a> tag structure.
+     *
+     * Note: Menu objects include url and title properties, so we will use those.
+     */
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $output .= sprintf( "\n<li class='relative'><a href='%s'%s><span>%s</span></a></li>\n",
+            $item->url,
+            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
+            $item->title
+        );
+    }
+
 }
 
 /*
