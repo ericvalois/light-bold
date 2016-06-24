@@ -10,7 +10,7 @@ $disable_lazy_load = get_field("perf_disable_lazy_load","option");
 if( !is_array($disable_lazy_load) ) $disable_lazy_load = array();
 
 if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
-	
+
 	add_filter( 'get_avatar'			, 'perf_lazy_load_image', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'perf_lazy_load_image', PHP_INT_MAX );
 	add_filter( 'widget_text'			, 'perf_lazy_load_image', PHP_INT_MAX );
@@ -39,12 +39,12 @@ function perf_lazy_load_image( $content ){
     if( !empty($content) ){
     	$document->loadHTML(utf8_decode($content));
     }else{
-    	return; 
+    	return;
     }
-    	
+
 
     $imgs = $document->getElementsByTagName('img');
-    foreach ($imgs as $img) { 
+    foreach ($imgs as $img) {
 
     	// add data-sizes
     	$img->setAttribute('data-size', "auto");
@@ -56,6 +56,8 @@ function perf_lazy_load_image( $content ){
     	if($img->hasAttribute('src')){
     		$existing_src = $img->getAttribute('src');
     		$img->setAttribute('src', "data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=");
+
+			$img->setAttribute('data-src', $existing_src);
         }
 
     	// srcset
@@ -63,8 +65,6 @@ function perf_lazy_load_image( $content ){
     		$existing_srcset = $img->getAttribute('srcset');
     		$img->removeAttribute('srcset');
     		$img->setAttribute('data-srcset', "$existing_srcset");
-        }else{
-        	$img->setAttribute('data-src', $existing_src);
         }
 
     	// Class
@@ -75,7 +75,7 @@ function perf_lazy_load_image( $content ){
 		// noscript
 		$noscript = $document->createElement('noscript');
 		$img->parentNode->insertBefore($noscript);
-		
+
 		$image = $document->createElement('image');
 		$imageAttribute = $document->createAttribute('src');
 		$imageAttribute->value = $existing_src;
@@ -86,7 +86,7 @@ function perf_lazy_load_image( $content ){
     }
 
     $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $document->saveHTML()));
-    return $html_fragment;  
+    return $html_fragment;
 }
 
 /**
@@ -103,13 +103,13 @@ function perf_lazyload_iframes( $html ) {
 		if ( strpos( $iframe, 'gform_ajax_frame' ) ) {
 			continue;
 		}
-		
+
 		$placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
-		
+
 		$iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload blur-up" data-src=', $iframe );
 
 		$html = str_replace( $matches[0][ $k ], $iframe, $html );
-		
+
 	}
 
 	return $html;
