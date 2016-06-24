@@ -176,10 +176,19 @@ add_action( 'widgets_init', 'perf_widgets_init' );
  * Enqueue scripts and styles.
  */
 function perf_scripts() {
+	// main stylesheet
 	wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
 
-	wp_dequeue_style( 'menu-icons-extra' );
+	if( class_exists("Menu_Icons") ){
+		// remove extra css fron Menu icons plugin
+		wp_dequeue_style( 'menu-icons-extra' );
+	}else{
+		// add fontawsome even if Menu icons is not activated
+		wp_enqueue_style( 'perf-fontawsome', get_template_directory_uri() . '/inc/font-awesome/css/font-awesome.min.css'  );
+	}
 
+
+	// main script
 	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );
 
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {

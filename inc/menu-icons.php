@@ -31,7 +31,7 @@ function my_remove_menu_icons_type( $types ) {
 add_filter( 'menu_icons_types', 'my_remove_menu_icons_type' );
 
 // Remove menu icon setting
-add_filter( 'menu_icons_disable_settings', '__return_true' );
+//add_filter( 'menu_icons_disable_settings', '__return_true' );
 
 
 /**
@@ -54,4 +54,3 @@ function perf_font_awesome_css_from_cdn( $stylesheet_uri, $icon_type_id, $icon_t
     return $stylesheet_uri;
 }
 add_filter( 'icon_picker_icon_type_stylesheet_uri', 'perf_font_awesome_css_from_cdn', 10, 3 );
-
