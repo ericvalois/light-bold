@@ -39,12 +39,12 @@
 			<?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
 
 			<?php get_template_part( 'components/site-logo/site-logo' ); ?>
-			
+
 		</div>
 
 	</header>
 
 	<?php get_template_part( 'components/main-navigation/main-navigation' ); ?>
-	
+
 
 		<div id="content" class="site-content clearfix">

@@ -179,14 +179,16 @@ function perf_scripts() {
 	// main stylesheet
 	wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
 
-	if( class_exists("Menu_Icons") ){
+	if( wp_style_is( 'font-awesome', 'enqueued' ) ){
 		// remove extra css fron Menu icons plugin
 		wp_dequeue_style( 'menu-icons-extra' );
-	}else{
-		// add fontawsome even if Menu icons is not activated
-		wp_enqueue_style( 'perf-fontawsome', get_template_directory_uri() . '/inc/font-awesome/css/font-awesome.min.css'  );
+		
+		// remove font-awesome from menu icon
+		wp_dequeue_style( 'font-awesome' );
 	}
 
+	// add fontawsome even if Menu icons is not activated
+	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/font-awesome/css/font-awesome.min.css'  );
 
 	// main script
 	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );
