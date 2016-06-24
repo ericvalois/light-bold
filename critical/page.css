@@ -2,7 +2,7 @@ html{ box-sizing: border-box; }
 *{ box-sizing: inherit; }
 html{ font-family: sans-serif; }
 body{ margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; }
-article, header, main, nav, section{ display: block; }
+article, header, main, nav{ display: block; }
 a{ background-color: transparent; }
  strong{ font-weight: bold; }
 h1{ font-size: 2em; margin-top: 0.67em; margin-right: 0px; margin-bottom: 0.67em; margin-left: 0px; }
@@ -153,6 +153,7 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 .dark-bg{ background-color: rgb(30, 30, 30); }
 .white-color{ color: rgb(255, 255, 255); }
 .upper{ text-transform: uppercase; }
+body{ }
 #logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 body{ padding-top: 64px; }
 .site-content{ min-height: 100%; }
@@ -176,4 +177,12 @@ body{ padding-top: 0px; font-size: 110%; }
 }
 @media (min-width: 1650px){
 body{ font-size: 130%; }
+}
+@media print{
+body{ color: rgb(0, 0, 0) !important; padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; }
+body *{ color: rgb(0, 0, 0) !important; display: block !important; }
+h1.entry-title{ padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 2rem !important; padding-left: 0px !important; }
+.perf-main-hero{ padding-top: 0px !important; padding-bottom: 0px !important; min-height: 1px !important; background-color: rgb(255, 255, 255); }
+.hide-print{ display: none !important; }
+#main{ width: 100%; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; float: none; }
 }

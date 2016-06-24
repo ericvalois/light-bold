@@ -142,6 +142,7 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 .dark-bg{ background-color: rgb(30, 30, 30); }
 .alt-dark-bg{ background-color: rgb(44, 44, 44); }
 .white-color{ color: rgb(255, 255, 255); }
+body{ }
 #logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 .front-hero{ min-height: 360px; }
 .front-hero-content{ min-height: 300px; }
@@ -171,4 +172,13 @@ body{ padding-top: 0px; font-size: 110%; }
 }
 @media (min-width: 1650px){
 body{ font-size: 130%; }
+}
+@media print{
+body{ color: rgb(0, 0, 0) !important; padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; }
+body *{ color: rgb(0, 0, 0) !important; display: block !important; }
+.hide-print{ display: none !important; }
+#main{ width: 100%; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; float: none; }
+.front-hero-content{ padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; min-height: 1px !important; color: rgb(0, 0, 0) !important; }
+.thumb_section1{ height: auto !important; }
+.section1 h3{ padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; }
 }
