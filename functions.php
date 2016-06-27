@@ -231,11 +231,6 @@ if( function_exists( 'get_field' ) ):
 	require get_template_directory() . '/inc/jetpack.php';
 
 	/**
-	 * Load ACF
-	 */
-	//require get_template_directory() . '/inc/acf.php';
-
-	/**
 	 * Load ACF fields
 	 */
 	require get_template_directory() . '/inc/acf-fields.php';
