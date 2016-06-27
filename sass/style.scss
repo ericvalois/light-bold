@@ -433,6 +433,11 @@ input.search-field{ padding-right: 40px; }
     opacity: 1;
 }
 
+.text-logo{
+    font-size: 16px;
+    padding-left: 1rem;
+}
+
 @include media-query(sm) {
     .address_contact_cell{ display: table-cell; }
 }
@@ -490,7 +495,6 @@ input.search-field{ padding-right: 40px; }
     #logo{
         width: 180px;
     }
-
 
 }
 
