@@ -11,7 +11,7 @@
 
 ?>
 
-	
+
 	<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
 		<footer class="site-footer clearfix dark-bg hide-print">
 
@@ -41,13 +41,13 @@
 		<div class="md-col md-col-6 mb1 md-mb0">
 			<div class="white-color copy">© <?php echo date("Y"); ?><?php echo get_field("perf_footer_copy","option"); ?></div>
 		</div>
-		
+
 		<div class="md-col md-col-6">
-			<?php if( !get_field("perf_disble_top_anchor") ){ echo '<a href="#primary" id="to_top" class="right ml2 bg-black border-none"><i class="fa fa-chevron-up"></i></a>'; } ?>
-			<?php 
+			<?php if( !get_field("perf_disble_top_anchor") ){ echo '<a href="#content" id="to_top" class="right ml2 bg-black border-none"><i class="fa fa-chevron-up"></i></a>'; } ?>
+			<?php
 				wp_nav_menu( array( 'theme_location' => 'sub-footer', 'menu_id' => 'sub-footer', 'container' => '', 'fallback_cb' => false, 'menu_class' => 'list-reset md-right' ) );
 			?>
-			
+
 		</div>
 	</div><!-- .site-info -->
 
