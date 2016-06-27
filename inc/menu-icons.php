@@ -26,6 +26,9 @@ function my_remove_menu_icons_type( $types ) {
     // Image
     unset( $types['image'] );
 
+    // Image
+    unset( $types['svg'] );
+
     return $types;
 }
 add_filter( 'menu_icons_types', 'my_remove_menu_icons_type' );
