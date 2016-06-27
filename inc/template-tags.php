@@ -28,9 +28,9 @@ function perf_posted_on() {
 
 	$byline = '<span class="author vcard">' . __("By","perf") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
-	
+
 	echo $posted_on;
-	
+
 	echo $byline;
 
 	$categories = get_the_category();
@@ -41,14 +41,14 @@ function perf_posted_on() {
 		echo '<span class="cat">' . __("Categories", "perf") . ': ';
 
 	    foreach( $categories as $category ) {
-	        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+	        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
 	    }
 	    echo trim( $output, $cat_separator );
 
 	    echo '</span>';
 
 	}
-	
+
 
 	$posttags = get_the_tags();
 	if ($posttags) {
@@ -61,7 +61,7 @@ function perf_posted_on() {
 			}
 			echo '<a class="white-color upper" href="' . get_tag_link($tag->term_id) . '">';
 			echo $tag->name;
-			echo '</a> '; 
+			echo '</a> ';
 			$cpt++;
 		}
 

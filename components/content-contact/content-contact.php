@@ -3,15 +3,15 @@
 	<?php $cpt = 1; foreach( $locations as $location ): ?>
 		<section class="break-word table col-12">
 
-			<?php 
+			<?php
 				if( $cpt % 2 == 0 ){
-					include( get_template_directory() . '/components/content-contact/img-location.php'); 
+					include( get_template_directory() . '/components/content-contact/img-location.php');
 				}
 			?>
 
 			<div class="<?php if( $location['image_place'] ){ echo 'md-col-12 lg-col-7 lg-table-cell'; } ?> align-top dark-bg px2 sm-px3 py3 featured">
 
-				<h5 class="entry-title separator mb3 mt0 upper white-color regular md-ml2"><?php echo $location['title']; ?></a></h5>
+				<h5 class="entry-title separator mb3 mt0 upper white-color regular md-ml2"><?php echo $location['title']; ?></h5>
 
 				<div class="clearfix">
 					<div class=" sm-col sm-col-5">
@@ -34,7 +34,7 @@
 										<p class="mb0"><?php echo $infos['contact_content']; ?></p>
 									</div>
 								</div>
-      
+
 							<?php endforeach; ?>
 						<?php endif; ?>
 
@@ -44,9 +44,9 @@
 				<?php //echo '<pre>'; print_r($location); echo '</pre>'; ?>
 			</div>
 
-			<?php 
+			<?php
 				if( $cpt % 2 != 0 ){
-					include( get_template_directory() . '/components/content-contact/img-location.php'); 
+					include( get_template_directory() . '/components/content-contact/img-location.php');
 				}
 			?>
 		</section>
