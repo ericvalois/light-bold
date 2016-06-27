@@ -70,14 +70,15 @@ if ( post_password_required() ) {
 	<?php endif; ?>
 
 	<?php
-	
+
 		comment_form( array(
 			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title separator mb2">',
 			'title_reply_after'  => '</h3>',
 			'class_form' => ' clearfix',
 			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
+			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . __("Comment","perf") . '</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>',
 		) );
-		
+
 	?>
 
 </div><!-- .comments-area -->
