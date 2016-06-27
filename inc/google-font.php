@@ -59,7 +59,7 @@
     			$font_face .= $temp_css['body'];
 		        break;
 		}
-	?>	
+	?>
 		<?php echo $font_face; ?>
 
 	    body,h1,h2,h3,h4,h5,h6{
@@ -67,4 +67,3 @@
 	    }
 	<?php
 	}
-	

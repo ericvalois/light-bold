@@ -182,7 +182,7 @@ function perf_scripts() {
 	if( wp_style_is( 'font-awesome', 'enqueued' ) ){
 		// remove extra css fron Menu icons plugin
 		wp_dequeue_style( 'menu-icons-extra' );
-		
+
 		// remove font-awesome from menu icon
 		wp_dequeue_style( 'font-awesome' );
 	}
