@@ -249,3 +249,7 @@ function perf_select_hero_image(){
 
     return $hero;
 }
+
+if( !get_field("perf_show_acf","option") ){
+	add_filter('acf/settings/show_admin', '__return_false');
+}
