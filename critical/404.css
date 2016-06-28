@@ -41,6 +41,10 @@ h2{ font-size: 190%; }
 .absolute{ position: absolute; }
 .top-0{ top: 0px; }
 .left-0{ left: 0px; }
+.sm-show{ display: none !important; }
+@media (min-width: 40em){
+.sm-show{ display: block !important; }
+}
 .col{ float: left; box-sizing: border-box; }
 .col-12{ width: 100%; }
 @media (min-width: 40em){
@@ -134,16 +138,18 @@ h2{ font-size: 190%; }
 @media (min-width: 1650px){
 .site-sidebar{ width: 320px; max-width: 320px; }
 .site-content{ padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 320px; }
+#text-logo{ padding-left: 1rem; }
 }
 .accessibility{ position: absolute !important; height: 1px; width: 1px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-style: initial; border-color: initial; clip: rect(0px 0px 0px 0px); }
 body{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; color: rgb(62, 62, 62); }
 h1, h2, #primary a{ -webkit-font-smoothing: antialiased; }
 a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08em; border-bottom-color: transparent; }
+.small-p{ font-size: 16px; }
 .animated{ -webkit-animation-duration: 0.5s; -webkit-animation-fill-mode: both; }
+.dark-color{ color: rgb(62, 62, 62); }
 .white-color{ color: rgb(255, 255, 255); }
 .upper{ text-transform: uppercase; }
 body{ }
-#logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 body{ padding-top: 64px; }
 .site-content{ min-height: 100%; }
 .perf-main-hero{ background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
@@ -163,11 +169,9 @@ h1.entry-title{ }
 }
 @media (min-width: 64em){
 body{ font-size: 105%; }
-#logo{ width: 180px; }
 }
 @media (min-width: 1200px){
 body{ padding-top: 0px; font-size: 110%; }
-#logo{ width: 100%; height: 80px; background-position: 50% 50%; }
 }
 @media (min-width: 1650px){
 body{ font-size: 130%; }
