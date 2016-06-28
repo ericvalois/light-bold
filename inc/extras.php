@@ -79,21 +79,32 @@ function perf_add_search_menu() {
 }
 
 /*
-* Wrap all table for responsive table
+* Wrap all table for a better responsive world
 */
-add_filter( 'the_content', 'perf_add_wrap_table', PHP_INT_MAX );
-function perf_add_wrap_table( $content ) {
+add_filter( 'the_content', 'filter_tableContentWrapper' );
+function filter_tableContentWrapper($content) {
+	$doc = new DOMDocument();
+	$doc->loadHTML($content);
 
-    if( is_feed() || is_preview() )
-        return $content;
 
-    // This is a pretty simple regex, but it works
-    //$content = preg_replace( '/(<table[^>]*>(?:.|\n)*(?=<\/table>))/', '<div class="overflow-scroll">${1}</div>', $content );
-    $content = str_replace('<table', '<div class="overflow-scroll"><table', $content);
-    $content = str_replace('</table>', '</table></div>', $content);
+	$items = $doc->getElementsByTagName('table');
+	foreach ($items as $item) {
 
-    return $content;
+		if( $item->parentNode->tagName == 'body' ) {
+
+			$wrapperDiv = $doc->createElement('div');
+			$wrapperDiv->setAttribute('class', 'overflow-scroll');
+
+			$item->parentNode->replaceChild($wrapperDiv, $item);
+    		$wrapperDiv->appendChild($item);
+
+		}
+	}
+
+	$content = $doc->saveXml();
+	return $content;
 }
+
 
 
 /*
