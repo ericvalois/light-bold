@@ -83,8 +83,21 @@ function perf_add_search_menu() {
 */
 add_filter( 'the_content', 'filter_tableContentWrapper' );
 function filter_tableContentWrapper($content) {
+
+	/*
 	$doc = new DOMDocument();
 	$doc->loadHTML($content);
+	*/
+
+	$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $doc = new DOMDocument();
+
+    libxml_use_internal_errors(true);
+    if( !empty($content) ){
+    	$doc->loadHTML(utf8_decode($content));
+    }else{
+    	return;
+    }
 
 
 	$items = $doc->getElementsByTagName('table');
@@ -101,8 +114,8 @@ function filter_tableContentWrapper($content) {
 		}
 	}
 
-	$content = $doc->saveXml();
-	return $content;
+	$html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $doc->saveHTML()));
+    return $html_fragment;
 }
 
 
