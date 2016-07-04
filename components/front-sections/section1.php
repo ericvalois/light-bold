@@ -32,7 +32,7 @@
 			</div>
 			<?php $cpt++; ?>
 		<?php endforeach; ?>
-	  	
+
 	</section>
 
 <?php endif; ?>
