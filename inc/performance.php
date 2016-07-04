@@ -1,4 +1,7 @@
 <?php
+
+
+
 /**
  * Lazy Load
  */
@@ -24,17 +27,30 @@ if( !in_array("disable_js_auto_async", $disable_js_optimisation, true) && !is_ad
 }elseif( is_array($manual_async) ){
     add_filter( 'script_loader_tag', 'perf_manual_async_js', 10, 2 );
 }
+
 function perf_add_async( $tag, $handle ) {
-    return str_replace( ' src', ' async src', $tag );
+    global $post;
+
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+
+    if( !in_array('js', $perf_disable_options) ){
+        return str_replace( ' src', ' async src', $tag );
+    }else{
+        return $tag;
+    }
+
 }
 
 function perf_manual_async_js( $tag, $handle ) {
+
+    global $post;
     global $wp_scripts;
 
     $manual_async = get_field("perf_manual_async_js","option");
     $current_script = $wp_scripts->registered[$handle]->src;
 
-    if( perf_array_find($current_script,  $manual_async) ){
+    if( perf_array_find($current_script,  $manual_async) && !in_array('js', get_field('perf_disable_options', $post->ID)) ){
         return str_replace( ' src', ' async src', $tag );
     }else{
         return $tag;
@@ -63,7 +79,15 @@ if( ( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) 
     add_filter('wp_print_styles', 'perf_inject_loadcss_script', 10);
 }
 function perf_inject_loadcss_script() {
-    echo '<script>!function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>';
+
+    global $post;
+
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+
+    if( !in_array('css', $perf_disable_options) ){
+        echo '<script>!function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>';
+    }
 }
 
 /*
@@ -74,29 +98,36 @@ if( !in_array("disable_theme_critical_css", $perf_disable_css_optimisation, true
 }
 function perf_critical_css()
 {
-    $critical_syle = '/* Critical CSS */ ';
+    global $post;
 
-    if( is_page_template("page-templates/template-front.php") ){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/home.min.css");
-        $critical_syle .= $temp_css['body'];
-    }elseif( is_page_template("page-templates/template-contact.php") ){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/contact.min.css");
-        $critical_syle .= $temp_css['body'];
-    }elseif( is_archive() || is_home() || is_search() ){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/archive.min.css");
-        $critical_syle .= $temp_css['body'];
-    }elseif( is_single() ){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/single.min.css");
-        $critical_syle .= $temp_css['body'];
-    /*}elseif( is_404() ){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/404.min.css");
-        $critical_syle .= $temp_css['body']; */
-    }else{
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
-        $critical_syle .= $temp_css['body'];
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+
+    if( !in_array('css', $perf_disable_options) ){
+        $critical_syle = '/* Critical CSS */ ';
+
+        if( is_page_template("page-templates/template-front.php") ){
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/home.min.css");
+            $critical_syle .= $temp_css['body'];
+        }elseif( is_page_template("page-templates/template-contact.php") ){
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/contact.min.css");
+            $critical_syle .= $temp_css['body'];
+        }elseif( is_archive() || is_home() || is_search() ){
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/archive.min.css");
+            $critical_syle .= $temp_css['body'];
+        }elseif( is_single() ){
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/single.min.css");
+            $critical_syle .= $temp_css['body'];
+        /*}elseif( is_404() ){
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/404.min.css");
+            $critical_syle .= $temp_css['body']; */
+        }else{
+            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
+            $critical_syle .= $temp_css['body'];
+        }
+
+        echo $critical_syle;
     }
-
-    echo $critical_syle;
 
 }
 
@@ -110,30 +141,44 @@ if( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) ){
 
 function perf_loadcss_all(){
     global $wp_styles;
+    global $post;
 
-    $queue = $wp_styles->queue;
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
 
-    // Print loadcss function
-    echo '<script>';
-    foreach( $queue as $stylesheet ){
+    if( !in_array('css', $perf_disable_options) ){
 
-        echo 'loadCSS( "' . $wp_styles->registered[$stylesheet]->src . '" );';
-    }
-    echo '</script>';
+        $queue = $wp_styles->queue;
 
-    // Print <noscript>
-    foreach( $queue as $stylesheet ){
-        echo '<noscript><link href="' . $wp_styles->registered[$stylesheet]->src . '" rel="stylesheet"></noscript>';
+        // Print loadcss function
+        echo '<script>';
+        foreach( $queue as $stylesheet ){
+
+            echo 'loadCSS( "' . $wp_styles->registered[$stylesheet]->src . '" );';
+        }
+        echo '</script>';
+
+        // Print <noscript>
+        foreach( $queue as $stylesheet ){
+            echo '<noscript><link href="' . $wp_styles->registered[$stylesheet]->src . '" rel="stylesheet"></noscript>';
+        }
     }
 }
 
 function perf_dequeue_all_stylesheets( ) {
     global $wp_styles;
+    global $post;
 
-    $queue = $wp_styles->queue;
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
 
-    foreach( $queue as $handle ){
-        wp_dequeue_style( $handle );
+    if( !in_array('css', $perf_disable_options) ){
+
+        $queue = $wp_styles->queue;
+
+        foreach( $queue as $handle ){
+            wp_dequeue_style( $handle );
+        }
     }
 }
 
@@ -146,32 +191,39 @@ if( is_array($perf_manual_async_stylesheets) && !is_admin() ){
 function perf_manual_async_css(){
 
     global $wp_styles;
+    global $post;
 
-    $perf_manual_async_stylesheets = get_field("perf_manual_async_stylesheets","option");
+    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
 
-    $dequeue = array();
-    foreach( $wp_styles->queue as $handle ) :
+    if( !in_array('css', $perf_disable_options) ){
 
-        $current_src = $wp_styles->registered[$handle]->src;
+        $perf_manual_async_stylesheets = get_field("perf_manual_async_stylesheets","option");
 
-        if( perf_array_find($current_src,  $perf_manual_async_stylesheets) ){
-            $dequeue[] = $handle;
-        }
-    endforeach;
+        $dequeue = array();
+        foreach( $wp_styles->queue as $handle ) :
 
-    if( count($dequeue) > 0 ){
+            $current_src = $wp_styles->registered[$handle]->src;
 
-        echo '<script>';
-            foreach( $dequeue as $handle ) {
-                wp_dequeue_style( $handle);
-                echo 'loadCSS( "' . $wp_styles->registered[$handle]->src . '" );';
+            if( perf_array_find($current_src,  $perf_manual_async_stylesheets) ){
+                $dequeue[] = $handle;
             }
-        echo '</script>';
+        endforeach;
 
-        foreach( $dequeue as $handle ) {
-            echo '<noscript><link href="' . $wp_styles->registered[$handle]->src . '" rel="stylesheet"></noscript>';
+        if( count($dequeue) > 0 ){
+
+            echo '<script>';
+                foreach( $dequeue as $handle ) {
+                    wp_dequeue_style( $handle);
+                    echo 'loadCSS( "' . $wp_styles->registered[$handle]->src . '" );';
+                }
+            echo '</script>';
+
+            foreach( $dequeue as $handle ) {
+                echo '<noscript><link href="' . $wp_styles->registered[$handle]->src . '" rel="stylesheet"></noscript>';
+            }
+
         }
-
     }
 
 }

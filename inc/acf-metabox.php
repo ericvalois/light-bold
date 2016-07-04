@@ -1,6 +1,6 @@
 <?php
 /*
-* Version 0.4
+* Version 0.5
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
@@ -4500,6 +4500,61 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 		),
 		'menu_order' => 0,
 		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => 1,
+		'description' => '',
+	));
+
+	acf_add_local_field_group(array (
+		'key' => 'group_577905b05e4de',
+		'title' => 'Disable theme options',
+		'fields' => array (
+			array (
+				'key' => 'field_577905ca175b7',
+				'label' => 'DIsable the following options',
+				'name' => 'perf_disable_options',
+				'type' => 'checkbox',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array (
+					'js' => 'JS Optimisation',
+					'css' => 'CSS Optimisation',
+					'lazy' => 'Lazy Load',
+					'share' => 'Share Link',
+				),
+				'default_value' => array (
+				),
+				'layout' => 'vertical',
+				'toggle' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+				),
+			),
+		),
+		'menu_order' => 1,
+		'position' => 'side',
 		'style' => 'default',
 		'label_placement' => 'top',
 		'instruction_placement' => 'label',
