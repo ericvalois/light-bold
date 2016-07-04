@@ -40,7 +40,8 @@ a{
 .ultra-small{ font-size: 13px; }
 
 .perf_btn,
-.submit{
+.submit,
+.gform_button{
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
@@ -56,7 +57,7 @@ a{
     -ms-touch-action: manipulation;	/* IE10  */
 	touch-action: manipulation;		/* IE11+ */
     -webkit-font-smoothing: antialiased;
-   
+
     &:hover,
     &:focus{
         text-decoration: none;
@@ -67,7 +68,7 @@ a{
 .perf_btn.alt{
     color: #fff;
     border-color: #fff;
-   
+
     &:hover,
     &:focus{
         text-decoration: none;

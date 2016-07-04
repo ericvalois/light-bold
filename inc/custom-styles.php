@@ -10,9 +10,9 @@ add_action( 'perf_head_open', 'perf_inline_styles', 50 );
 function perf_inline_styles() {
 
     echo '<style>';
-        
+
         do_action( 'perf_mobile_styles' );
-        
+
         echo '@media (min-width: 40em)  {';
             do_action( 'perf_sm_styles' );
         echo '}';
@@ -32,7 +32,7 @@ function perf_inline_styles() {
         echo '@media (min-width: 96em)  {';
             do_action( 'perf_96em_styles' );
         echo '}';
-        
+
     echo '</style>';
 }
 
@@ -94,7 +94,7 @@ function perf_custom_color(){
     }else{
         $perf_main_color = '#3498db';
     }
-    
+
     ?>
 
     .main-color{ color: <?php echo $perf_main_color; ?>; }
@@ -103,10 +103,10 @@ function perf_custom_color(){
     a.dark-color:hover,
     a.white-color:hover,
     .tags:hover,
-    .widget_categories a:hover, 
+    .widget_categories a:hover,
     .widget_archive a:hover,
     .comment-reply-link:hover,
-    .icons_social:hover, 
+    .icons_social:hover,
     .icons_social:focus{ color: <?php echo $perf_main_color; ?> }
     #primary-menu i,
     #primary-menu a:hover,
@@ -116,17 +116,20 @@ function perf_custom_color(){
     .separator:after,
     .perf_btn.alt2{ background-color: <?php echo $perf_main_color; ?>; }
     .perf_btn,
-    .submit{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .submit,
+    .gform_button{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     .perf_btn:hover,
     .perf_btn:focus,
     .submit:hover,
-    .submit:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .submit:focus,
+    .gform_button:hover,
+    .gform_button:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu > li.menu-item-has-children:hover,
     #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
     .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}
     blockquote, .perf_alert_default{ border-left-color: <?php echo $perf_main_color; ?>}
     .social_share{ border-color: <?php echo $perf_main_color; ?>; }
-    input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?>; }
+    input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?> !important; }
     ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
     .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
@@ -210,18 +213,18 @@ function perf_desktop_logo() {
 }
 
 function perf_hex2rgba($color, $opacity = false) {
- 
+
     $default = 'rgb(0,0,0)';
- 
+
     //Return default if no color provided
     if(empty($color))
-          return $default; 
- 
-    //Sanitize $color if "#" is provided 
+          return $default;
+
+    //Sanitize $color if "#" is provided
         if ($color[0] == '#' ) {
             $color = substr( $color, 1 );
         }
- 
+
         //Check if color has 6 or 3 characters and get values
         if (strlen($color) == 6) {
                 $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
@@ -230,10 +233,10 @@ function perf_hex2rgba($color, $opacity = false) {
         } else {
                 return $default;
         }
- 
+
         //Convert hexadec to rgb
         $rgb =  array_map('hexdec', $hex);
- 
+
         //Check if opacity is set(rgba or rgb)
         if($opacity){
             if(abs($opacity) > 1)
@@ -242,8 +245,7 @@ function perf_hex2rgba($color, $opacity = false) {
         } else {
             $output = 'rgb('.implode(",",$rgb).')';
         }
- 
+
         //Return rgb(a) color string
         return $output;
 }
-
