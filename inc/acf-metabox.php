@@ -1,6 +1,6 @@
 <?php
 /*
-* Version 0.5
+* Version 0.6
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
@@ -1565,6 +1565,27 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 				'disabled' => 0,
 			),
 			array (
+				'key' => 'field_5798ecfcb2139',
+				'label' => 'Button text',
+				'name' => 'perf_main_button_text',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => 25,
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+				'readonly' => 0,
+				'disabled' => 0,
+			),
+			array (
 				'key' => 'field_56c73afae8aef',
 				'label' => 'Main link',
 				'name' => 'perf_main_link',
@@ -1573,12 +1594,28 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array (
-					'width' => '',
+					'width' => 50,
 					'class' => '',
 					'id' => '',
 				),
 				'default_value' => '',
 				'placeholder' => '',
+			),
+			array (
+				'key' => 'field_5798f0d20a596',
+				'label' => 'Open in a new window?',
+				'name' => 'perf_main_new_window',
+				'type' => 'true_false',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => 25,
+					'class' => '',
+					'id' => '',
+				),
+				'message' => '',
+				'default_value' => 0,
 			),
 			array (
 				'key' => 'field_56c7805eb9fcf',
@@ -1609,9 +1646,10 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 					'class' => '',
 					'id' => '',
 				),
+				'collapsed' => '',
 				'min' => '',
 				'max' => 3,
-				'layout' => 'table',
+				'layout' => 'block',
 				'button_label' => 'Add a section',
 				'sub_fields' => array (
 					array (
@@ -1623,7 +1661,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '',
+							'width' => 25,
 							'class' => '',
 							'id' => '',
 						),
@@ -1647,7 +1685,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '',
+							'width' => 75,
 							'class' => '',
 							'id' => '',
 						),
@@ -1668,7 +1706,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '',
+							'width' => 100,
 							'class' => '',
 							'id' => '',
 						),
@@ -1689,7 +1727,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '',
+							'width' => 25,
 							'class' => '',
 							'id' => '',
 						),
@@ -1710,15 +1748,30 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '',
+							'width' => 50,
 							'class' => '',
 							'id' => '',
 						),
 						'default_value' => '',
 						'placeholder' => '',
 					),
+					array (
+						'key' => 'field_5798ee93ab5ce',
+						'label' => 'Open in a new window?',
+						'name' => 'open_in_a_new_window',
+						'type' => 'true_false',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => 25,
+							'class' => '',
+							'id' => '',
+						),
+						'message' => '',
+						'default_value' => 0,
+					),
 				),
-				'collapsed' => '',
 			),
 			array (
 				'key' => 'field_56d45b498acc9',
@@ -1749,6 +1802,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 					'class' => '',
 					'id' => '',
 				),
+				'collapsed' => '',
 				'min' => '',
 				'max' => 3,
 				'layout' => 'table',
@@ -1859,7 +1913,6 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 						'placeholder' => '',
 					),
 				),
-				'collapsed' => '',
 			),
 			array (
 				'key' => 'field_56d5bca971980',
