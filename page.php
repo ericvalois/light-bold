@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-	
+
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
 	<div id="primary" class="content-area clearfix py3 md-py4 px2 sm-px3 md-px3 lg-px4 <?php echo perf_content_animation(); ?>">
@@ -29,7 +29,7 @@ get_header(); ?>
 					<?php get_template_part( 'components/content/content-share' ); ?>
 
 					<?php
-						// If comments are open or we have at least one comment, load up the comment template.
+						// If comments are open or we have at least one comment load up the comment template.
 						if ( comments_open() || get_comments_number() ) :
 							comments_template();
 						endif;
@@ -45,5 +45,5 @@ get_header(); ?>
 
 	</div><?php // #primary ?>
 
-	
+
 <?php get_footer(); ?>

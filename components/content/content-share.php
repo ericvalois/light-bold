@@ -6,7 +6,6 @@
  */
 
 ?>
-
 <?php
 	$perf_disable_options = get_field('perf_disable_options', $post->ID);
 	if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
