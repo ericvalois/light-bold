@@ -117,13 +117,16 @@ function perf_custom_color(){
     .perf_btn.alt2{ background-color: <?php echo $perf_main_color; ?>; }
     .perf_btn,
     .submit,
-    .gform_button{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .gform_button,
+    input[type="submit"]{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     .perf_btn:hover,
     .perf_btn:focus,
     .submit:hover,
     .submit:focus,
     .gform_button:hover,
-    .gform_button:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
+    .gform_button:focus,
+    input[type="submit"]:hover,
+    input[type="submit"]:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
     #primary-menu > li.menu-item-has-children:hover,
     #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
     .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}

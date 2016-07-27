@@ -41,7 +41,8 @@ a{
 
 .perf_btn,
 .submit,
-.gform_button{
+.gform_button,
+input[type="submit"]{
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
