@@ -1,6 +1,6 @@
 <?php
 /*
-* Version 0.6
+* Version 0.7
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
@@ -4567,7 +4567,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 		'fields' => array (
 			array (
 				'key' => 'field_577905ca175b7',
-				'label' => 'DIsable the following options',
+				'label' => 'Disable these options on this post:',
 				'name' => 'perf_disable_options',
 				'type' => 'checkbox',
 				'instructions' => '',
@@ -4582,7 +4582,7 @@ if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != '
 					'js' => 'JS Optimisation',
 					'css' => 'CSS Optimisation',
 					'lazy' => 'Lazy Load',
-					'share' => 'Share Link',
+					'share' => 'Share Links',
 				),
 				'default_value' => array (
 				),
