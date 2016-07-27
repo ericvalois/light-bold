@@ -380,6 +380,9 @@ input.search-field{ padding-right: 40px; }
     padding-left: 1rem;
 }
 
+.site-footer .menu-item,
+.site-footer .page_item { margin-bottom: 5px; }
+
 @include media-query(sm) {
     .address_contact_cell{ display: table-cell; }
 }
@@ -414,9 +417,8 @@ input.search-field{ padding-right: 40px; }
 
 
 
-    .site-footer .menu-item { margin-bottom: 0; }
-
-    //.front-hero{ min-height: 33.33333vh;}
+    .site-footer .menu-item,
+    .site-footer .page_item { margin-bottom: 0; }
 
 }
 

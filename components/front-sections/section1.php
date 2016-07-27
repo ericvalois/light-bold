@@ -26,7 +26,7 @@
 				<div class="ml2 mr2 px2 py2 lg-py3 alt-dark-bg mb2">
 					<p class="white-color mb2 lg-mb3 small-p"><?php echo $box['content']; ?></p>
 
-					<a href="<?php echo $box['button_link']; ?>" class="perf_btn"><?php echo $box['button_text']; ?></a>
+					<a href="<?php echo $box['button_link']; ?>" class="perf_btn" <?php if( $box['open_in_a_new_window'] ){ echo 'target="_blank"'; } ?>><?php echo $box['button_text']; ?></a>
 				</div>
 
 			</div>
