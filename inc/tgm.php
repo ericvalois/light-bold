@@ -93,22 +93,22 @@ function perf_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'W3 Total Cache',
-			'slug'      => 'w3-total-cache',
+			'name'      => 'Cache Enabler - WordPress Cache',
+			'slug'      => 'cache-enabler',
 			'required'  => false,
 		),
 
 		array(
-			'name'      => 'Optimus - WordPress Image Optimizer',
-			'slug'      => 'optimus',
+			'name'      => 'Compress JPEG & PNG images',
+			'slug'      => 'tiny-compress-images',
 			'required'  => false,
 		),
 
-		array(
-			'name'      => 'Post Duplicator',
-			'slug'      => 'post-duplicator',
+		/*array(
+			'name'      => 'CDN Enabler - WordPress CDN Plugin',
+			'slug'      => 'cdn-enabler',
 			'required'  => false,
-		),
+		),*/
 
 	);
 
