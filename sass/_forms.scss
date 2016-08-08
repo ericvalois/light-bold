@@ -54,14 +54,8 @@ input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
-.comment-subscription-form label{
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+/*
+* Gravityform
+*/
 
-.gfield.tech-notice{
-    font-size: 80%;
-    background-color: #dedede;
-    padding: 2rem !important;
-}
+.gform_confirmation_message{ color: green; }
