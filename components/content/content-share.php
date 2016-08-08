@@ -8,9 +8,10 @@
 ?>
 <?php
 	$perf_disable_options = get_field('perf_disable_options', $post->ID);
-	if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+	$perf_disable_all_ss = get_field("perf_disable_all_ss","option");
 
-	if( !in_array('share', $perf_disable_options) || get_field("perf_disable_all_ss","option") != 1  ):
+	if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+	if( !in_array('share', $perf_disable_options) && $perf_disable_all_ss != 1  ):
 ?>
 
 	<h5 class="mb1 mt2 hide-print"><?php _e("Share this","perf"); ?></h5>
