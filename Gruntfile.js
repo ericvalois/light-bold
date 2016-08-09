@@ -105,8 +105,11 @@ module.exports = function(grunt) {
             init: {
                 src: ['build/']
             },
-            build: {
+            first: {
                 src: ['build/*', '!build/<%= pkg.name %>-<%= pkg.version %>.zip']
+            },
+            second: {
+                src: ['build/*', '!build/lightbold.zip']
             }
         },
         copy: {
@@ -118,12 +121,34 @@ module.exports = function(grunt) {
                 expand: true,
                 src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json' ],
                 dest: 'build/'
-            }
+            },
+            demo: {
+                src: '../../uploads/demo/demo-lightbold.xml',
+                dest: 'build/demo-lightbold.xml'
+            },
         },
         compress: {
-            build: {
+            parent: {
                 options: {
                     archive: 'build/<%= pkg.name %>-<%= pkg.version %>.zip'
+                },
+                expand: true,
+                cwd: 'build/',
+                src: ['**/*'],
+                dest: '<%= pkg.name %>/'
+            },
+            child: {
+                options: {
+                    archive: 'build/<%= pkg.name %>-child.zip'
+                },
+                expand: true,
+                cwd: '../lightbold-child/',
+                src: ['**/*'],
+                dest: '<%= pkg.name %>-child/'
+            },
+            full: {
+                options: {
+                    archive: 'build/lightbold.zip'
                 },
                 expand: true,
                 cwd: 'build/',
@@ -166,6 +191,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-perfbudget');
 
     grunt.registerTask('critical', ['criticalcss', 'cssmin']);
-    grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:build', 'clean:build']);
+    grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'compress:full', 'clean:second']);
 
 };

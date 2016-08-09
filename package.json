@@ -1,5 +1,5 @@
 {
-  "name": "light-bold",
+  "name": "lightbold",
   "version": "0.1.15",
   "devDependencies": {
     "grunt": "^0.4.5",
