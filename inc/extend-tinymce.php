@@ -20,7 +20,7 @@ function perf_styles_dropdown( $settings ) {
 	// Create array of new styles
 	$new_styles = array(
 		array(
-			'title'	=> __( 'Custom Styles', 'wpex' ),
+			'title'	=> __( 'Custom Styles', 'lightbold' ),
 			'items'	=> array(
 				array(
 			        'title' => 'Intro text',

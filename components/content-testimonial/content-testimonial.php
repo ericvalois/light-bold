@@ -17,5 +17,5 @@
 		<div class="post-thumbnail"><?php the_post_thumbnail( 'perfthemes-thumbnail-avatar' ); ?></div>
 	<?php endif; ?>
 
-	<?php edit_post_link( __( 'Edit', 'perfthemes' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
+	<?php edit_post_link( __( 'Edit', 'lightbold' ), '<footer class="entry-meta"><span class="edit-link">', '</span></footer>' ); ?>
 </article><!-- #post-## -->

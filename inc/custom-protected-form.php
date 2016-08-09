@@ -12,7 +12,7 @@ function perf_custom_password_form() {
 	
 	$o .= '<p>' . __( "This content is password protected. To view it please enter your password below:","lightbold" ) . '</p>';
 
-	$o .= '<label for="' . $label . '">' . __( "Password:" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" /><input type="submit" class="perf_btn mt1 mb1" name="Submit" value="' . esc_attr__( "Submit" ) . '" />
+	$o .= '<label for="' . $label . '">' . __( "Password:","lightbold" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" /><input type="submit" class="perf_btn mt1 mb1" name="Submit" value="' . esc_attr__( "Submit","lightbold" ) . '" />
 	</form>';
 	return $o;
 }

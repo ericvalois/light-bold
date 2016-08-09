@@ -1,6 +1,6 @@
 {
   "name": "light-bold",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "~0.1.13",
