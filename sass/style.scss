@@ -36,7 +36,7 @@ $alt-dark-bg: #2c2c2c;
 
 @import 'accessibility';
 
-//@import 'admin-bar';
+@import 'admin-bar';
 
 @import 'typo';
 
@@ -343,6 +343,14 @@ input.search-field{ padding-right: 40px; }
 .widget-area ul,
 .widget-area ol,
 .widget_categories ul{ margin-bottom: 0; padding: 0; }
+
+@include media-query(max-lg) {
+    .widget_recent_entries li,
+    .widget_recent_comments li,
+    .widget_meta li{
+        margin-bottom: 10px;
+    }
+}
 
 /*
 * Contact

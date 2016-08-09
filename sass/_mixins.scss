@@ -11,6 +11,9 @@
   @else if $point == xlg { // 400px
     @media (min-width: 1650px)  { @content; }
   }
+  @else if $point == max-lg { // 400px
+    @media (max-width: 64em)  { @content; }
+  }
   @else if $point == max-xlg { // 400px
     @media (max-width: 1650px)  { @content; }
   }
