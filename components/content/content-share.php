@@ -14,7 +14,7 @@
 	if( !in_array('share', $perf_disable_options) && $perf_disable_all_ss != 1  ):
 ?>
 
-	<h5 class="mb1 mt2 hide-print"><?php _e("Share this","perf"); ?></h5>
+	<h5 class="mb1 mt2 hide-print"><?php _e("Share this","lightbold"); ?></h5>
 
 	<div id="social_widget" class="clearfix mb2 hide-print">
 		<div class="left table mb1 mr1">

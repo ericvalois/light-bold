@@ -12,9 +12,9 @@ if ( ! function_exists( 'perf_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function perf_posted_on() {
-	$time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","perf") . ': ' .'%2$s</time></span> ';
+	$time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .'%2$s</time></span> ';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","perf") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","perf") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
+		$time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","lightbold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
 	}
 
 	$time_string = sprintf( $time_string,
@@ -26,7 +26,7 @@ function perf_posted_on() {
 
 	$posted_on = $time_string;
 
-	$byline = '<span class="author vcard">' . __("By","perf") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$byline = '<span class="author vcard">' . __("By","lightbold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 
 	echo $posted_on;
@@ -38,7 +38,7 @@ function perf_posted_on() {
 	$output = '';
 	if ( ! empty( $categories ) ) {
 
-		echo '<span class="cat">' . __("Categories", "perf") . ': ';
+		echo '<span class="cat">' . __("Categories", "lightbold") . ': ';
 
 	    foreach( $categories as $category ) {
 	        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
@@ -53,7 +53,7 @@ function perf_posted_on() {
 	$posttags = get_the_tags();
 	if ($posttags) {
 
-		echo '<span class="tag">' . __("Tags", "perf") . ': ';
+		echo '<span class="tag">' . __("Tags", "lightbold") . ': ';
 		$cpt = 1;
 		foreach($posttags as $tag) {
 			if( $cpt != 1){
@@ -79,25 +79,25 @@ function perf_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'perf' ) );
+		$categories_list = get_the_category_list( esc_html__( ', ', 'lightbold' ) );
 		if ( $categories_list && perf_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'perf' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lightbold' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'perf' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'lightbold' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'perf' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'lightbold' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'perf' ), esc_html__( '1 Comment', 'perf' ), esc_html__( '% Comments', 'perf' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'lightbold' ), esc_html__( '1 Comment', 'lightbold' ), esc_html__( '% Comments', 'lightbold' ) );
 		echo '</span>';
 	}
 
-	edit_post_link( esc_html__( 'Edit', 'perf' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( esc_html__( 'Edit', 'lightbold' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 

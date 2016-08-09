@@ -24,15 +24,15 @@
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 				if( $paged > 1 ){
-					echo '&nbsp;' . __("page ","perf") . $paged;
+					echo '&nbsp;' . __("page ","lightbold") . $paged;
 				}
 			?>
 		<?php elseif( is_archive() ): ?>
 			<?php the_archive_title(); ?>
 		<?php elseif( is_404() ): ?>
-			<?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'perf' ); ?>
+			<?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'lightbold' ); ?>
 		<?php elseif( is_search() ): ?>
-			<?php printf( esc_html__( 'Search Results for: %s', 'perf' ), '<span>' . get_search_query() . '</span>' ); ?>
+			<?php printf( esc_html__( 'Search Results for: %s', 'lightbold' ), '<span>' . get_search_query() . '</span>' ); ?>
 		<?php else: ?>
 			<?php the_title(); ?>
 		<?php endif; ?>

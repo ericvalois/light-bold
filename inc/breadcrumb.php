@@ -48,10 +48,10 @@ function perf_breadcrumbs() {
 		} elseif ( is_archive() ) {
 			echo '<span class="white-color upper">' . get_the_archive_title() . '</span>';
 		} elseif (is_404()) {
-			echo '<span class="white-color upper">' . __("404 page","perf") . '</span>';
+			echo '<span class="white-color upper">' . __("404 page","lightbold") . '</span>';
 		} elseif (is_search()) {
 			echo '<span class="white-color upper">';
-			printf( esc_html__( 'Search Results for: %s', 'perf' ),  get_search_query() );
+			printf( esc_html__( 'Search Results for: %s', 'lightbold' ),  get_search_query() );
 			echo '</span>';
 		}
 	} else {

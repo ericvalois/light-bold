@@ -10,8 +10,8 @@ class perf_social_profiles extends WP_Widget {
   function __construct() {
     parent::__construct(
       'perf_social_profiles', // Base ID
-      __('Perf Social profiles', 'perf'), // Name
-      array( 'description' => __( 'Social profiles widget for Light and Bold', 'perf' ), ) // Args
+      __('Perf Social profiles', 'lightbold'), // Name
+      array( 'description' => __( 'Social profiles widget for Light and Bold', 'lightbold' ), ) // Args
     );
   }
 

@@ -10,8 +10,8 @@ class perf_image_widget extends WP_Widget {
   function __construct() {
     parent::__construct(
       'perf_image_widget', // Base ID
-      __('Perf Image', 'perf'), // Name
-      array( 'description' => __( 'Image widget for Light and Bold', 'perf' ), ) // Args
+      __('Perf Image', 'lightbold'), // Name
+      array( 'description' => __( 'Image widget for Light and Bold', 'lightbold' ), ) // Args
     );
   }
 

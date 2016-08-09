@@ -54,7 +54,7 @@
 					?>
 				</p>
 
-				<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","perf"); ?></a>
+				<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","lightbold"); ?></a>
 			</div>
 
 			<?php if( has_post_thumbnail() ): ?>

@@ -6,7 +6,7 @@ if ( class_exists( 'autoptimizeConfig' ) ){
 function sample_admin_notice__error() {
 	?>
     <div class="notice notice-error is-dismissible clear">
-        <p class="clear"><strong>Light & Bold:</strong> <?php _e("Autoptimize is not compatible with Light & Bold and will generate unexpected results.", "perf"); ?></p>
+        <p class="clear"><strong>Light & Bold:</strong> <?php _e("Autoptimize is not compatible with Light & Bold and will generate unexpected results.", "lightbold"); ?></p>
     	<br>
     </div>
     <?php

@@ -33,9 +33,9 @@ function perf_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on perfthemes, use a find and replace
-	 * to change 'perf' to the name of your theme in all the template files.
+	 * to change 'lightbold' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'perf', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'lightbold', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -64,8 +64,8 @@ function perf_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'perf' ),
-		'sub-footer' => esc_html__( 'sub-footer', 'perf' ),
+		'primary' => esc_html__( 'Primary Menu', 'lightbold' ),
+		'sub-footer' => esc_html__( 'sub-footer', 'lightbold' ),
 	) );
 
 	/*
@@ -111,7 +111,7 @@ add_action( 'after_setup_theme', 'perf_setup' );
  */
 function perf_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 1', 'perf' ),
+		'name'          => esc_html__( 'Footer 1', 'lightbold' ),
 		'id'            => 'footer-1',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
@@ -121,7 +121,7 @@ function perf_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 2', 'perf' ),
+		'name'          => esc_html__( 'Footer 2', 'lightbold' ),
 		'id'            => 'footer-2',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
@@ -131,7 +131,7 @@ function perf_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 3', 'perf' ),
+		'name'          => esc_html__( 'Footer 3', 'lightbold' ),
 		'id'            => 'footer-3',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
@@ -141,7 +141,7 @@ function perf_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Footer 4', 'perf' ),
+		'name'          => esc_html__( 'Footer 4', 'lightbold' ),
 		'id'            => 'footer-4',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 white-color %2$s clearfix">',
@@ -151,7 +151,7 @@ function perf_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Blog sidebar', 'perf' ),
+		'name'          => esc_html__( 'Blog sidebar', 'lightbold' ),
 		'id'            => 'blog-sidebar',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
@@ -161,7 +161,7 @@ function perf_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Page sidebar', 'perf' ),
+		'name'          => esc_html__( 'Page sidebar', 'lightbold' ),
 		'id'            => 'page-sidebar',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',

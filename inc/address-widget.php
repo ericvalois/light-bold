@@ -10,8 +10,8 @@ class perf_address_widget extends WP_Widget {
   function __construct() {
     parent::__construct(
       'perf_address_widget', // Base ID
-      __('Perf Address', 'perf'), // Name
-      array( 'description' => __( 'Address widget for Light and Bold', 'perf' ), ) // Args
+      __('Perf Address', 'lightbold'), // Name
+      array( 'description' => __( 'Address widget for Light and Bold', 'lightbold' ), ) // Args
     );
   }
 
