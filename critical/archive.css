@@ -186,7 +186,7 @@ body{ padding-top: 64px; }
 .perf-main-hero{ background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(40, 46, 52); position: relative; z-index: 1; background-position: initial initial; background-repeat: initial initial; }
 h1.entry-title{ }
 .perf_breadcrumbs{ display: none; }
-.search-icon{ font-size: 24px; color: rgb(171, 171, 171); top: 10px; right: 15px; }
+.search-icon{ font-size: 24px; color: rgb(171, 171, 171); top: 13px; right: 15px; }
 input.search-field{ padding-right: 40px; }
 #perf-main-hero{ z-index: -999998; height: 100%; opacity: 0.8; }
 @media (min-width: 52em){
