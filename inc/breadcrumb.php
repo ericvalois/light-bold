@@ -10,21 +10,24 @@ function perf_breadcrumbs() {
 		echo '">';
 		echo "</a> ".$separator;
 		if ( is_category() || is_single() ) {
-			echo '<span class="white-color">';
-			
-			$categories = get_the_category();
-			$cat_separator = ', ';
-			$output = '';
-			if ( ! empty( $categories ) ) {
-			    foreach( $categories as $category ) {
-			        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'lightbold' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
-			    }
-			    echo trim( $output, $cat_separator );
-			}
+			if ( get_post_type() == 'post' ) {
+				echo '<span class="white-color">';
+				
+				$categories = get_the_category();
+				$cat_separator = ', ';
+				$output = '';
+				if ( ! empty( $categories ) ) {
+				    foreach( $categories as $category ) {
+				        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'lightbold' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+				    }
+				    echo trim( $output, $cat_separator );
+				}
 
-			echo '</span>';
-			if ( is_single() ) {
+				echo '</span>';
+
 				echo $separator;
+			}
+			if ( is_single() ) {
 				echo '<span class="white-color upper">';
 				the_title();
 				echo '</span>';

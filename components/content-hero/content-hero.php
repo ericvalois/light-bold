@@ -38,7 +38,7 @@
 		<?php endif; ?>
 	</h1>
 
-	<?php if( is_single() ): ?>
+	<?php if( is_single() && get_post_type() == 'post' ): ?>
 		<div class="entry-meta white-color upper">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php perf_posted_on(); ?>
