@@ -66,7 +66,7 @@ function perf_register_required_plugins() {
 			'source'             => get_template_directory() . '/lib/plugins/advanced-custom-fields-pro.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			//'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
 
@@ -76,7 +76,7 @@ function perf_register_required_plugins() {
 			'source'             => 'https://github.com/perfthemes/perf-contact-form/archive/master.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			//'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			//'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
 
