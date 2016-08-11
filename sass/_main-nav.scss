@@ -141,6 +141,7 @@ body.navigation-opened {
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
+    padding-right: 2rem;
     height: 80px;
     display: table;
     width: 100%;
@@ -223,7 +224,7 @@ body.navigation-opened {
 
 .main-search {
     padding-left: 1rem;
-    padding-right: 20px;
+    padding-right: 3rem;
     border-top: 2px solid #f4f3f3;
     border-bottom: 2px solid #f4f3f3;
 }
@@ -391,13 +392,5 @@ body.navigation-opened {
 
     #text-logo{
         padding-left: 1rem;
-    }
-
-    #primary-menu a{
-        padding-right: 2rem;
-    }
-
-    .main-search  {
-        padding-right: 3rem;
     }
 }
