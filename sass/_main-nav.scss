@@ -141,7 +141,6 @@ body.navigation-opened {
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
-    padding-right: 2rem;
     height: 80px;
     display: table;
     width: 100%;
@@ -152,8 +151,10 @@ body.navigation-opened {
     transition: color .3s ease;
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
-    z-index: 3;
     position: relative;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    z-index: 3;
 }
 
 #primary-menu a:before {
@@ -211,15 +212,6 @@ body.navigation-opened {
 
 .main-header {
     height: 64px;
-}
-
-.nav-container {
-   // top: 64px;
-}
-
-#primary-menu a  {
-    padding-left: 2rem;
-    z-index: 3;
 }
 
 .main-search {
