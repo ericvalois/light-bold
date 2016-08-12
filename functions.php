@@ -65,7 +65,7 @@ function perf_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'lightbold' ),
-		'sub-footer' => esc_html__( 'sub-footer', 'lightbold' ),
+		'sub-footer' => esc_html__( 'Sub-footer', 'lightbold' ),
 	) );
 
 	/*
