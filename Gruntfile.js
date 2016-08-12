@@ -126,6 +126,12 @@ module.exports = function(grunt) {
                 src: '../../uploads/demo/demo-lightbold.xml',
                 dest: 'build/demo-lightbold.xml'
             },
+            doc: {
+                src: '/Users/bulledev/Google\ Drive/perfthemes.com/themes/light\&bold/documentation.pdf',
+                dest: 'build/documentation.pdf'
+            },
+
+
         },
         compress: {
             parent: {
@@ -191,6 +197,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-perfbudget');
 
     grunt.registerTask('critical', ['criticalcss', 'cssmin']);
-    grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };
