@@ -196,16 +196,6 @@ function perf_mobile_logo() {
 }
 
 /*
-* Tablet logo
-*/
-//add_action( 'perf_sm_styles', 'perf_tablet_logo' );
-function perf_tablet_logo() {
-?>
-    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); }
-<?php
-}
-
-/*
 * Desktop logo
 */
 add_action( 'perf_1200_styles', 'perf_desktop_logo' );
