@@ -17,8 +17,8 @@ function perf_remove_wp_ver_css_js( $src ) {
 /*
 * ASYNC scripts
 */
-$disable_js_optimisation = get_field("perf_disable_js_optimisation","option");
-$manual_async = get_field("perf_manual_async_js","option");
+$disable_js_optimisation = perf_get_field("perf_disable_js_optimisation","option");
+$manual_async = perf_get_field("perf_manual_async_js","option");
 
 if( !is_array($disable_js_optimisation) ) $disable_js_optimisation = array();
 if( !in_array("disable_js_auto_async", $disable_js_optimisation, true) && !is_admin() ){
@@ -29,7 +29,7 @@ function perf_add_async( $tag, $handle ) {
     global $post;
 
     if( is_object( $post ) ){
-        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
     }
 
     if( !is_array($perf_disable_options) ){
@@ -57,8 +57,8 @@ function perf_array_find($needle, array $haystack){
 * Inject loadcss function to load stylesheet async
 * @link https://github.com/filamentgroup/loadCSS
 */
-$perf_disable_css_optimisation = get_field("perf_disable_css_optimisation","option");
-$perf_manual_async_stylesheets = get_field("perf_manual_async_stylesheets","option");
+$perf_disable_css_optimisation = perf_get_field("perf_disable_css_optimisation","option");
+$perf_manual_async_stylesheets = perf_get_field("perf_manual_async_stylesheets","option");
 
 if( !is_array($perf_disable_css_optimisation) ) $perf_disable_css_optimisation = array();
 if( ( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) || is_array($perf_manual_async_stylesheets)) && !is_admin() ){
@@ -69,7 +69,7 @@ function perf_inject_loadcss_script() {
     global $post;
 
     if( is_object( $post ) ){
-        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
     }
 
     if( !is_array($perf_disable_options) ){
@@ -91,7 +91,7 @@ function perf_critical_css()
 {
     global $post;
 
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
     if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
 
     if( !in_array('css', $perf_disable_options) ){
@@ -132,7 +132,7 @@ function perf_async_stylsheets(){
     global $post;
 
     if( is_object( $post ) ){
-        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
     }
 
     if( !is_array($perf_disable_options) ){
@@ -163,7 +163,7 @@ function perf_dequeue_stylesheets( ) {
     global $post;
 
     if( is_object( $post ) ){
-        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
     }
 
     if( !is_array($perf_disable_options) ){
@@ -180,23 +180,20 @@ function perf_dequeue_stylesheets( ) {
     }
 }
 
-
-
-
 /*
 * Preload
 */
 add_action( 'perf_head_open', 'perf_preload' );
 function perf_preload() {
-    if( get_field("perf_log_sm","option") ){
+    if( perf_get_field("perf_log_sm","option") ){
     ?>
-        <link rel="preload" as="image" href="<?php echo get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
+        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
 	<?php
     }
 
-    if( get_field("perf_log_lg","option") ){
+    if( perf_get_field("perf_log_lg","option") ){
     ?>
-        <link rel="preload" as="image" href="<?php echo get_field("perf_log_lg","option"); ?>" media="(min-width: 1200px)">
+        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1200px)">
 	<?php
     }
 

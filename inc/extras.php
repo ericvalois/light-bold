@@ -66,8 +66,8 @@ function perf_add_search_menu() {
     // get nav items as configured in /wp-admin/
     $wrap .= '%3$s';
 
-    // the static link
-    if( get_field("perf_hide_search","option") != 1 ){
+    // the search form
+    if( perf_get_field("perf_hide_search","option") != 1 ){
         $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="' . __("Search","lightbold") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
     }
 
@@ -248,7 +248,7 @@ class perf_Default_Walker extends Walker {
 * Show or hide content animation
 */
 function perf_content_animation(){
-    if( get_field("perf_hide_fade","option") != 1 ){
+    if( perf_get_field("perf_hide_fade","option") != 1 ){
         return 'animated fadeIn opacity-zero';
     }else{
         return;
@@ -261,19 +261,19 @@ function perf_content_animation(){
 function perf_select_hero_image(){
    global $post;
 
-    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
-        $hero = get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
-        $hero = get_field("perf_hero_blog_archive", "option");
-    }elseif( is_404() && get_field("perf_hero_404", "option") ){
-        $hero = get_field("perf_hero_404", "option");
+    if( is_object( $post ) && perf_get_field("perf_hero_image", $post->ID) ){
+        $hero = perf_get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && perf_get_field("perf_hero_blog_archive", "option") ){
+        $hero = perf_get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && perf_get_field("perf_hero_404", "option") ){
+        $hero = perf_get_field("perf_hero_404", "option");
     }else{
-        $hero = get_field("perf_hero_image", "option");
+        $hero = perf_get_field("perf_hero_image", "option");
     }
 
     return $hero;
 }
 
-if( !get_field("perf_show_acf","option") ){
+if( !perf_get_field("perf_show_acf","option") ){
 	add_filter('acf/settings/show_admin', '__return_false');
 }

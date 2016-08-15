@@ -5,7 +5,7 @@
  * @since 1.0
  */
 
-$disable_lazy_load = get_field("perf_disable_lazy_load","option");
+$disable_lazy_load = perf_get_field("perf_disable_lazy_load","option");
 if( !is_array($disable_lazy_load) ) $disable_lazy_load = array();
 
 if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
@@ -35,7 +35,7 @@ function perf_lazy_load_image( $content ){
 	global $post;
 
 	if( is_object( $post ) ){
-        $perf_page_disable_lazy_load = get_field('perf_disable_options', $post->ID);
+        $perf_page_disable_lazy_load = perf_get_field('perf_disable_options', $post->ID);
     }
 
     if( !is_array($perf_page_disable_lazy_load) ){
@@ -110,7 +110,7 @@ function perf_lazyload_iframes( $html ) {
 
 	global $post;
 
-	$perf_page_disable_lazy_load = get_field("perf_disable_options", $post->ID);
+	$perf_page_disable_lazy_load = perf_get_field("perf_disable_options", $post->ID);
 	if( !is_array($perf_page_disable_lazy_load) ) $perf_page_disable_lazy_load = array();
 
 	if( !in_array("lazy", $perf_page_disable_lazy_load) ){

@@ -20,6 +20,17 @@ if( !is_admin() ){
 	}
 }
 
+/*
+* Custom ACF function
+*/
+function perf_get_field($field_name, $post_id = false, $format_value = true){
+	if( function_exists("get_field") ){
+		return get_field($field_name, $post_id, $format_value);
+	}else{
+		return false;
+	}
+}
+
 if ( ! function_exists( 'perf_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -220,97 +231,93 @@ add_action( 'wp_enqueue_scripts', 'perf_scripts' );
  */
 require get_template_directory() . '/inc/tgm.php';
 
-if( function_exists( 'get_field' ) ):
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
 
-	/**
-	 * Custom template tags for this theme.
-	 */
-	require get_template_directory() . '/inc/template-tags.php';
+/**
+ * Custom functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/extras.php';
 
-	/**
-	 * Custom functions that act independently of the theme templates.
-	 */
-	require get_template_directory() . '/inc/extras.php';
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
-	/**
-	 * Customizer additions.
-	 */
-	require get_template_directory() . '/inc/customizer.php';
+/**
+ * Load Jetpack compatibility file.
+ */
+require get_template_directory() . '/inc/jetpack.php';
 
-	/**
-	 * Load Jetpack compatibility file.
-	 */
-	require get_template_directory() . '/inc/jetpack.php';
+/**
+ * Load ACF fields
+ */
+require get_template_directory() . '/inc/acf-fields.php';
 
-	/**
-	 * Load ACF fields
-	 */
-	require get_template_directory() . '/inc/acf-fields.php';
+/**
+ * Load ACF metabox
+ */
+require get_template_directory() . '/inc/acf-metabox.php';
 
-	/**
-	 * Load ACF metabox
-	 */
-	require get_template_directory() . '/inc/acf-metabox.php';
+/**
+ * WordPress cleanup
+ */
+require get_template_directory() . '/inc/clean.php';
 
-	/**
-	 * WordPress cleanup
-	 */
-	require get_template_directory() . '/inc/clean.php';
+/**
+ * Performances optimizations
+ */
+require get_template_directory() . '/inc/performance.php';
 
-	/**
-	 * Performances optimizations
-	 */
-	require get_template_directory() . '/inc/performance.php';
+/**
+ * Load Breadcrumb helper
+ */
+require get_template_directory() . '/inc/breadcrumb.php';
 
-	/**
-	 * Load Breadcrumb helper
-	 */
-	require get_template_directory() . '/inc/breadcrumb.php';
+/**
+ * Load custom style
+ */
+require get_template_directory() . '/inc/custom-styles.php';
 
-	/**
-	 * Load custom style
-	 */
-	require get_template_directory() . '/inc/custom-styles.php';
+/**
+ * Menu icons
+ */
+require get_template_directory() . '/inc/menu-icons.php';
 
-	/**
-	 * Menu icons
-	 */
-	require get_template_directory() . '/inc/menu-icons.php';
+/**
+ * Social Widget
+ */
+require get_template_directory() . '/inc/widget-social.php';
 
-	/**
-	 * Social Widget
-	 */
-	require get_template_directory() . '/inc/widget-social.php';
+/**
+ * Address widget
+ */
+require get_template_directory() . '/inc/address-widget.php';
 
-	/**
-	 * Address widget
-	 */
-	require get_template_directory() . '/inc/address-widget.php';
+/**
+ * Image widget
+ */
+require get_template_directory() . '/inc/widget-image.php';
 
-	/**
-	 * Image widget
-	 */
-	require get_template_directory() . '/inc/widget-image.php';
+/**
+ * Add custom buttons and formating to Tinymce
+ */
+require get_template_directory() . '/inc/extend-tinymce.php';
 
-	/**
-	 * Add custom buttons and formating to Tinymce
-	 */
-	require get_template_directory() . '/inc/extend-tinymce.php';
+/**
+ * Plugins compatibility
+ */
+require get_template_directory() . '/inc/plugins-compatibility.php';
 
-	/**
-	 * Plugins compatibility
-	 */
-	require get_template_directory() . '/inc/plugins-compatibility.php';
-	
 
-	/**
-	 * Custom protected form markup
-	 */
-	require get_template_directory() . '/inc/custom-protected-form.php';
+/**
+ * Custom protected form markup
+ */
+require get_template_directory() . '/inc/custom-protected-form.php';
 
-	/**
-	 * Analytics code
-	 */
-	require get_template_directory() . '/inc/analytics.php';
-
-endif; // if_function_exits
+/**
+ * Analytics code
+ */
+require get_template_directory() . '/inc/analytics.php';
