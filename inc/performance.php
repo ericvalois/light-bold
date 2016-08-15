@@ -6,7 +6,8 @@
 require get_template_directory() . '/inc/lazyload.php';
 
 // remove WP version from css
-add_filter( 'style_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
+add_filter( 'style_loader_src', 'perf_remove_wp_ver_css_js', 9999 ); 
+
 // remove Wp version from scripts
 add_filter( 'script_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
 function perf_remove_wp_ver_css_js( $src ) {
@@ -22,33 +23,16 @@ $manual_async = get_field("perf_manual_async_js","option");
 if( !is_array($disable_js_optimisation) ) $disable_js_optimisation = array();
 if( !in_array("disable_js_auto_async", $disable_js_optimisation, true) && !is_admin() ){
     add_filter( 'script_loader_tag', 'perf_add_async', 10, 2 );
-}elseif( is_array($manual_async) ){
-    add_filter( 'script_loader_tag', 'perf_manual_async_js', 10, 2 );
 }
 
 function perf_add_async( $tag, $handle ) {
     global $post;
 
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
-
-    if( !in_array('js', $perf_disable_options) ){
-        return str_replace( ' src', ' async src', $tag );
-    }else{
-        return $tag;
+    if( is_object( $post ) ){
+        $perf_disable_options = get_field('perf_disable_options', $post->ID);
     }
 
-}
-
-function perf_manual_async_js( $tag, $handle ) {
-
-    global $post;
-    global $wp_scripts;
-
-    $manual_async = get_field("perf_manual_async_js","option");
-    $current_script = $wp_scripts->registered[$handle]->src;
-
-    if( perf_array_find($current_script,  $manual_async) && !in_array('js', get_field('perf_disable_options', $post->ID)) ){
+    if( is_search() || !in_array('js', $perf_disable_options) ){
         return str_replace( ' src', ' async src', $tag );
     }else{
         return $tag;
@@ -80,10 +64,11 @@ function perf_inject_loadcss_script() {
 
     global $post;
 
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+    if( is_object( $post ) ){
+        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    }
 
-    if( !in_array('css', $perf_disable_options) ){
+    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
         echo '<script>!function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>';
     }
 }
@@ -116,9 +101,6 @@ function perf_critical_css()
         }elseif( is_single() ){
             $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/single.min.css");
             $critical_syle .= $temp_css['body'];
-        /*}elseif( is_404() ){
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/404.min.css");
-            $critical_syle .= $temp_css['body']; */
         }else{
             $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
             $critical_syle .= $temp_css['body'];
@@ -130,21 +112,22 @@ function perf_critical_css()
 }
 
 /*
-* Async all stylsheets by default with loadcss.js
+* Async all stylsheets with loadcss.js
 */
 if( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) ){
-    add_filter('wp_print_styles', 'perf_loadcss_all', 20); // Inject loadcss.js call for each stylesheets
-    add_filter('wp_print_styles', 'perf_dequeue_all_stylesheets', 30); // Dequeue all stylesheets
+    add_filter('wp_print_styles', 'perf_async_stylsheets', 20); // Inject loadcss.js call for each stylesheets
+    add_filter('wp_print_styles', 'perf_dequeue_stylesheets', 30); // Dequeue all stylesheets
 }
 
-function perf_loadcss_all(){
+function perf_async_stylsheets(){
     global $wp_styles;
     global $post;
 
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+    if( is_object( $post ) ){
+        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    }
 
-    if( !in_array('css', $perf_disable_options) ){
+    if( is_search() || !in_array('css', $perf_disable_options) ){
 
         $queue = $wp_styles->queue;
 
@@ -163,14 +146,15 @@ function perf_loadcss_all(){
     }
 }
 
-function perf_dequeue_all_stylesheets( ) {
+function perf_dequeue_stylesheets( ) {
     global $wp_styles;
     global $post;
 
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
+    if( is_object( $post ) ){
+        $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    }
 
-    if( !in_array('css', $perf_disable_options) ){
+    if( is_search() || !in_array('css', $perf_disable_options) ){
 
         $queue = $wp_styles->queue;
 
@@ -182,49 +166,6 @@ function perf_dequeue_all_stylesheets( ) {
 
 
 
-if( is_array($perf_manual_async_stylesheets) && !is_admin() ){
-    add_action('wp_print_styles', 'perf_manual_async_css', 100);
-}
-
-function perf_manual_async_css(){
-
-    global $wp_styles;
-    global $post;
-
-    $perf_disable_options = get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
-
-    if( !in_array('css', $perf_disable_options) ){
-
-        $perf_manual_async_stylesheets = get_field("perf_manual_async_stylesheets","option");
-
-        $dequeue = array();
-        foreach( $wp_styles->queue as $handle ) :
-
-            $current_src = $wp_styles->registered[$handle]->src;
-
-            if( perf_array_find($current_src,  $perf_manual_async_stylesheets) ){
-                $dequeue[] = $handle;
-            }
-        endforeach;
-
-        if( count($dequeue) > 0 ){
-
-            echo '<script>';
-                foreach( $dequeue as $handle ) {
-                    wp_dequeue_style( $handle);
-                    echo 'loadCSS( "' . $wp_styles->registered[$handle]->src . '" );';
-                }
-            echo '</script>';
-
-            foreach( $dequeue as $handle ) {
-                echo '<noscript><link href="' . $wp_styles->registered[$handle]->src . '" rel="stylesheet"></noscript>';
-            }
-
-        }
-    }
-
-}
 
 /*
 * Preload
