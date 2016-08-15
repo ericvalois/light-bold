@@ -38,6 +38,10 @@ function perf_lazy_load_image( $content ){
         $perf_page_disable_lazy_load = get_field('perf_disable_options', $post->ID);
     }
 
+    if( !is_array($perf_page_disable_lazy_load) ){
+        $perf_page_disable_lazy_load = array();
+    }
+
 	if( is_search() || !in_array("lazy", $perf_page_disable_lazy_load) ){
 		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
 	    $document = new DOMDocument();

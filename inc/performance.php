@@ -32,6 +32,10 @@ function perf_add_async( $tag, $handle ) {
         $perf_disable_options = get_field('perf_disable_options', $post->ID);
     }
 
+    if( !is_array($perf_disable_options) ){
+        $perf_disable_options = array();
+    }
+
     if( is_search() || !in_array('js', $perf_disable_options) ){
         return str_replace( ' src', ' async src', $tag );
     }else{
@@ -66,6 +70,10 @@ function perf_inject_loadcss_script() {
 
     if( is_object( $post ) ){
         $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    }
+
+    if( !is_array($perf_disable_options) ){
+        $perf_disable_options = array();
     }
 
     if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
@@ -127,6 +135,10 @@ function perf_async_stylsheets(){
         $perf_disable_options = get_field('perf_disable_options', $post->ID);
     }
 
+    if( !is_array($perf_disable_options) ){
+        $perf_disable_options = array();
+    }
+
     if( is_search() || !in_array('css', $perf_disable_options) ){
 
         $queue = $wp_styles->queue;
@@ -152,6 +164,10 @@ function perf_dequeue_stylesheets( ) {
 
     if( is_object( $post ) ){
         $perf_disable_options = get_field('perf_disable_options', $post->ID);
+    }
+
+    if( !is_array($perf_disable_options) ){
+        $perf_disable_options = array();
     }
 
     if( is_search() || !in_array('css', $perf_disable_options) ){
