@@ -301,11 +301,7 @@ if( function_exists( 'get_field' ) ):
 	 * Plugins compatibility
 	 */
 	require get_template_directory() . '/inc/plugins-compatibility.php';
-
-	/**
-	 * Google Font
-	 */
-	require get_template_directory() . '/inc/google-font.php';
+	
 
 	/**
 	 * Custom protected form markup
