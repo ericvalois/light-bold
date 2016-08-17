@@ -219,10 +219,6 @@ function perf_scripts() {
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	if( function_exists( 'get_field' ) && get_field("perf_contact_recaptcha","option") && is_page_template("page-templates/template-contact.php") ){
-		wp_enqueue_script( 'perf-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '', true );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'perf_scripts' );
 
