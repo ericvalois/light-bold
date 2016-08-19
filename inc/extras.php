@@ -61,21 +61,21 @@ function perf_add_search_menu() {
     // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
 
     // open the <ul>, set 'menu_class' and 'menu_id' values
-    $wrap  = '<ul id="%1$s" class="%2$s">';
+    $perf_wrap  = '<ul id="%1$s" class="%2$s">';
 
     // get nav items as configured in /wp-admin/
-    $wrap .= '%3$s';
+    $perf_wrap .= '%3$s';
 
     // the search form
     if( perf_get_field("perf_hide_search","option") != 1 ){
-        $wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12" name="s" type="search" placeholder="' . __("Search","lightbold") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
+        $perf_wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12 p0" name="s" type="search" placeholder="' . __("Search","lightbold") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
     }
 
     // close the <ul>
-    $wrap .= '</ul>';
+    $perf_wrap .= '</ul>';
 
     // return the result
-    return $wrap;
+    return $perf_wrap;
 }
 
 /*
@@ -84,28 +84,23 @@ function perf_add_search_menu() {
 add_filter( 'the_content', 'filter_tableContentWrapper' );
 function filter_tableContentWrapper($content) {
 
-	/*
-	$doc = new DOMDocument();
-	$doc->loadHTML($content);
-	*/
-
-	$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-    $doc = new DOMDocument();
+	$perf_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $perf_doc = new DOMDocument();
 
     libxml_use_internal_errors(true);
-    if( !empty($content) ){
-    	$doc->loadHTML(utf8_decode($content));
+    if( !empty($perf_content) ){
+    	$perf_doc->loadHTML(utf8_decode($perf_content));
     }else{
     	return;
     }
 
 
-	$items = $doc->getElementsByTagName('table');
+	$items = $perf_doc->getElementsByTagName('table');
 	foreach ($items as $item) {
 
 		if( $item->parentNode->tagName == 'body' ) {
 
-			$wrapperDiv = $doc->createElement('div');
+			$wrapperDiv = $perf_doc->createElement('div');
 			$wrapperDiv->setAttribute('class', 'overflow-scroll');
 
 			$item->parentNode->replaceChild($wrapperDiv, $item);
@@ -114,11 +109,9 @@ function filter_tableContentWrapper($content) {
 		}
 	}
 
-	$html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $doc->saveHTML()));
-    return $html_fragment;
+	$perf_html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $perf_doc->saveHTML()));
+    return $perf_html_fragment;
 }
-
-
 
 /*
 * Same tag cloud font size
@@ -262,16 +255,16 @@ function perf_select_hero_image(){
    global $post;
 
     if( is_object( $post ) && perf_get_field("perf_hero_image", $post->ID) ){
-        $hero = perf_get_field("perf_hero_image", $post->ID);
+        $perf_hero = perf_get_field("perf_hero_image", $post->ID);
     }elseif( ( is_home() || is_archive() ) && perf_get_field("perf_hero_blog_archive", "option") ){
-        $hero = perf_get_field("perf_hero_blog_archive", "option");
+        $perf_hero = perf_get_field("perf_hero_blog_archive", "option");
     }elseif( is_404() && perf_get_field("perf_hero_404", "option") ){
-        $hero = perf_get_field("perf_hero_404", "option");
+        $perf_hero = perf_get_field("perf_hero_404", "option");
     }else{
-        $hero = perf_get_field("perf_hero_image", "option");
+        $perf_hero = perf_get_field("perf_hero_image", "option");
     }
 
-    return $hero;
+    return $perf_hero;
 }
 
 if( !perf_get_field("perf_show_acf","option") ){

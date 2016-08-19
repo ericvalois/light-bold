@@ -12,50 +12,50 @@ if ( ! function_exists( 'perf_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function perf_posted_on() {
-	$time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .'%2$s</time></span> ';
+	$perf_time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .'%2$s</time></span> ';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","lightbold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
+		$perf_time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","lightbold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
 	}
 
-	$time_string = sprintf( $time_string,
+	$perf_time_string = sprintf( $perf_time_string,
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = $time_string;
+	$perf_posted_on = $perf_time_string;
 
-	$byline = '<span class="author vcard">' . __("By","lightbold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$perf_byline = '<span class="author vcard">' . __("By","lightbold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 
-	echo $posted_on;
+	echo $perf_posted_on;
 
-	echo $byline;
+	echo $perf_byline;
 
-	$categories = get_the_category();
+	$perf_categories = get_the_category();
 	$cat_separator = ', ';
-	$output = '';
-	if ( ! empty( $categories ) ) {
+	$perf_output = '';
+	if ( ! empty( $perf_categories ) ) {
 
 		echo '<span class="cat">' . __("Categories", "lightbold") . ': ';
 
-	    foreach( $categories as $category ) {
-	        $output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+	    foreach( $perf_categories as $category ) {
+	        $perf_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
 	    }
-	    echo trim( $output, $cat_separator );
+	    echo trim( $perf_output, $cat_separator );
 
 	    echo '</span>';
 
 	}
 
 
-	$posttags = get_the_tags();
-	if ($posttags) {
+	$perf_posttags = get_the_tags();
+	if ($perf_posttags) {
 
 		echo '<span class="tag">' . __("Tags", "lightbold") . ': ';
 		$cpt = 1;
-		foreach($posttags as $tag) {
+		foreach($perf_posttags as $tag) {
 			if( $cpt != 1){
 				echo ', ';
 			}
@@ -79,9 +79,9 @@ function perf_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'lightbold' ) );
-		if ( $categories_list && perf_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lightbold' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		$perf_categories_list = get_the_category_list( esc_html__( ', ', 'lightbold' ) );
+		if ( $perf_categories_list && perf_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lightbold' ) . '</span>', $perf_categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
@@ -107,9 +107,9 @@ endif;
  * @return bool
  */
 function perf_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'perf_categories' ) ) ) {
+	if ( false === ( $perf_all_the_cool_cats = get_transient( 'perf_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
-		$all_the_cool_cats = get_categories( array(
+		$perf_all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
 			'hide_empty' => 1,
 
@@ -118,12 +118,12 @@ function perf_categorized_blog() {
 		) );
 
 		// Count the number of categories that are attached to the posts.
-		$all_the_cool_cats = count( $all_the_cool_cats );
+		$perf_all_the_cool_cats = count( $perf_all_the_cool_cats );
 
-		set_transient( 'perf_categories', $all_the_cool_cats );
+		set_transient( 'perf_categories', $perf_all_the_cool_cats );
 	}
 
-	if ( $all_the_cool_cats > 1 ) {
+	if ( $perf_all_the_cool_cats > 1 ) {
 		// This blog has more than 1 category so perf_categorized_blog should return true.
 		return true;
 	} else {

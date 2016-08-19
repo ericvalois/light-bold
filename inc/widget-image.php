@@ -29,16 +29,16 @@ class perf_image_widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
     }
     
-    $nofollow = get_field('perf_image_noffolow_widget', 'widget_' . $args['widget_id']);
-    $link = get_field('perf_image_link_widget', 'widget_' . $args['widget_id']);
-    $image = get_field('perf_image_widget', 'widget_' . $args['widget_id']);
+    $perf_nofollow = perf_get_field('perf_image_noffolow_widget', 'widget_' . $args['widget_id']);
+    $perf_link = perf_get_field('perf_image_link_widget', 'widget_' . $args['widget_id']);
+    $perf_image = perf_get_field('perf_image_widget', 'widget_' . $args['widget_id']);
   
     ?>
-      <?php if( $link ): ?>
-        <a href="<?php echo $link; ?>" <?php if( $nofollow ){ echo 'rel="nofollow"'; } ?> target="_blank" class="border-none">
+      <?php if( $perf_link ): ?>
+        <a href="<?php echo $perf_link; ?>" <?php if( $perf_nofollow ){ echo 'rel="nofollow"'; } ?> target="_blank" class="border-none">
       <?php endif; ?>
-        <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php echo $image['sizes']['medium']; ?>" title="<?php echo $image['title']; ?>" alt="<?php echo $image['alt']; ?>" class="lazyload">
-      <?php if( $link ): ?>
+        <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php echo $perf_image['sizes']['medium']; ?>" title="<?php echo $perf_image['title']; ?>" alt="<?php echo $perf_image['alt']; ?>" class="lazyload">
+      <?php if( $perf_link ): ?>
         </a>
       <?php endif; ?>
     <?php
@@ -56,15 +56,15 @@ class perf_image_widget extends WP_Widget {
    */
   public function form( $instance ) {
     if ( isset($instance['title']) ) {
-      $title = $instance['title'];
+      $perf_title = $instance['title'];
     }
     else {
-      $title = __( 'New title', 'lightbold' );
+      $perf_title = __( 'New title', 'lightbold' );
     }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
     </p>
     <?php
   }
@@ -80,10 +80,10 @@ class perf_image_widget extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $instance = array();
-    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $perf_instance = array();
+    $perf_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-    return $instance;
+    return $perf_instance;
   }
 
 } // class perf_image_widget

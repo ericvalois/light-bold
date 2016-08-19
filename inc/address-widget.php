@@ -30,10 +30,10 @@ class perf_address_widget extends WP_Widget {
     }
     
 
-    $sections = get_field('perf_address_widget', 'widget_' . $args['widget_id']);
+    $perf_sections = get_field('perf_address_widget', 'widget_' . $args['widget_id']);
 
-    if( is_array($sections) && count($sections) > 0 ){
-      foreach( $sections as $section ){
+    if( is_array($perf_sections) && count($perf_sections) > 0 ){
+      foreach( $perf_sections as $section ){
       	?>
       		<div class="table col-12 address_row ">
             <div class="table-cell width30">
@@ -60,15 +60,15 @@ class perf_address_widget extends WP_Widget {
    */
   public function form( $instance ) {
     if ( isset($instance['title']) ) {
-      $title = $instance['title'];
+      $perf_title = $instance['title'];
     }
     else {
-      $title = __( 'New title', 'lightbold' );
+      $perf_title = __( 'New title', 'lightbold' );
     }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
     </p>
     <?php
   }

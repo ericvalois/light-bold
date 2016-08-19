@@ -199,6 +199,12 @@ add_action( 'widgets_init', 'perf_widgets_init' );
  * Enqueue scripts and styles.
  */
 function perf_scripts() {
+
+	/* If using a child theme, auto-load the parent theme style. */
+    if ( is_child_theme() ) {
+        wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style.css' );
+    }
+    
 	// main stylesheet
 	wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
 
@@ -211,7 +217,7 @@ function perf_scripts() {
 	}
 
 	// add fontawsome even if Menu icons is not activated
-	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/font-awesome/css/font-awesome.min.css'  );
+	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
 
 	// main script
 	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );

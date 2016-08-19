@@ -30,9 +30,9 @@ class perf_social_profiles extends WP_Widget {
     }
     
 
-    $icons = get_field('icons_social', 'widget_' . $args['widget_id']);
+    $perf_icons = perf_get_field('icons_social', 'widget_' . $args['widget_id']);
 
-    foreach( $icons as $icon ){
+    foreach( $perf_icons as $icon ){
     	?>
     		<a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><?php echo $icon['icon']; ?></a>
     	<?php
@@ -50,15 +50,15 @@ class perf_social_profiles extends WP_Widget {
    */
   public function form( $instance ) {
     if ( isset($instance['title']) ) {
-      $title = $instance['title'];
+      $perf_title = $instance['title'];
     }
     else {
-      $title = __( 'New title', 'lightbold' );
+      $perf_title = __( 'New title', 'lightbold' );
     }
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
     </p>
     <?php
   }
@@ -74,10 +74,10 @@ class perf_social_profiles extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $instance = array();
-    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $perf_instance = array();
+    $perf_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-    return $instance;
+    return $perf_instance;
   }
 
 } // class perf_social_profiles

@@ -18,7 +18,6 @@
     transition: transform .6s,opacity .3s;
 }
 
-
 /*
 * Main menu
 */
@@ -106,6 +105,7 @@ body.navigation-opened {
     height: 100%;
     z-index: 9;
     position: relative;
+    text-align: left;
 }
 
 .main_nav_toggle {
@@ -127,6 +127,7 @@ body.navigation-opened {
     margin: 0;
     padding: 0;
     z-index: 1;
+    display: block; /* Fix fout on page load */
 }
 
 #primary-menu > li  {
@@ -155,6 +156,7 @@ body.navigation-opened {
     padding-right: 2rem;
     padding-left: 2rem;
     z-index: 3;
+
 }
 
 #primary-menu a:before {
@@ -215,21 +217,21 @@ body.navigation-opened {
 }
 
 .main-search {
-    padding-left: 1rem;
+    padding-left: 2rem;
     padding-right: 3rem;
     border-top: 2px solid #f4f3f3;
     border-bottom: 2px solid #f4f3f3;
 }
 
-.main-search input[type="search"]{
+#primary-menu .main-search input[type="search"]{
     font-size: 13px;
-    padding-right: 1rem;
     height: 80px;
     color: #3e3e3e;
     transition: color .3s ease;
     box-sizing: border-box;
     letter-spacing: 0;
     border: none;
+    padding: 0;
 }
 
 @include media-query(md) {
@@ -273,17 +275,7 @@ body.navigation-opened {
     }
 }
 
-@include media-query(xlg) {
-    #primary-menu a  {
-        padding-left: 3rem;
-    }
-
-    .main-search { padding-left: 2rem;}
-}
-
 @media (min-width: 1200px){
-
-
 
     .site-content{
         padding: 0 0 0 230px;
@@ -356,8 +348,11 @@ body.navigation-opened {
         border-left: 2px solid #f4f3f3;
     }
 
-    #primary-menu li  {
+    #primary-menu a  {
+        padding-right: 1rem;
+    }
 
+    #primary-menu li  {
         overflow:  visible;
     }
 
@@ -367,12 +362,24 @@ body.navigation-opened {
         visibility: visible;
         -webkit-transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
         transition: all .2s cubic-bezier(.86,0,.07,1) .2s;
+    }
 
+    .main-search {
+        padding-right: 2rem;
     }
 
 }
 
-@media (min-width: 1650px){
+@include media-query(xlg) {
+    #primary-menu a  {
+        padding-left: 3rem;
+        padding-right: 2rem;
+    }
+
+    .main-search { 
+        padding: 0 3rem;
+    }
+
    .site-sidebar {
         width: 320px;
         max-width: 320px;

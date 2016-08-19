@@ -42,11 +42,11 @@ function perf_inline_styles() {
 add_action( 'perf_mobile_styles', 'perf_sm_hero' );
 function perf_sm_hero() {
 
-    $image_id = perf_select_hero_image();
-    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-sm' );
+    $perf_image_id = perf_select_hero_image();
+    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-sm' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $image_src[0]; ?>);
+        background-image: url(<?php echo $perf_image_src[0]; ?>);
     }
 <?php
 }
@@ -57,11 +57,11 @@ function perf_sm_hero() {
 add_action( 'perf_md_styles', 'perf_md_hero' );
 function perf_md_hero() {
 
-    $image_id = perf_select_hero_image();
-    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-md' );
+    $perf_image_id = perf_select_hero_image();
+    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $image_src[0]; ?>);
+        background-image: url(<?php echo $perf_image_src[0]; ?>);
     }
 <?php
 }
@@ -72,11 +72,11 @@ function perf_md_hero() {
 add_action( 'perf_lg_styles', 'perf_lg_hero' );
 function perf_lg_hero() {
 
-    $image_id = perf_select_hero_image();
-    $image_src = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-lg' );
+    $perf_image_id = perf_select_hero_image();
+    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
 ?>
     #perf-main-hero{
-        background-image: url(<?php echo $image_src[0]; ?>);
+        background-image: url(<?php echo $perf_image_src[0]; ?>);
     }
 <?php
 }
@@ -148,12 +148,12 @@ function perf_section1_bg_lg(){
     if( is_page_template("page-templates/template-front.php") ){
         global $post;
 
-        $section1 = get_field("perf_section_1", $post->ID);
+        $perf_section1 = get_field("perf_section_1", $post->ID);
 
-        if( is_array($section1) && count($section1) > 0 ){
+        if( is_array($perf_section1) && count($perf_section1) > 0 ){
 
             $cpt = 1;
-            foreach($section1 as $box ){
+            foreach($perf_section1 as $box ){
 
             ?>
                 .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-md']; ?>); }
@@ -170,12 +170,12 @@ function perf_section1_bg_sm(){
     if( is_page_template("page-templates/template-front.php") ){
         global $post;
 
-        $section1 = get_field("perf_section_1", $post->ID);
+        $perf_section1 = get_field("perf_section_1", $post->ID);
 
-        if( is_array($section1) && count($section1) > 0 ){
+        if( is_array($perf_section1) && count($perf_section1) > 0 ){
 
             $cpt = 1;
-            foreach($section1 as $box ){
+            foreach($perf_section1 as $box ){
             ?>
                 .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-sm']; ?>); }
             <?php
@@ -207,11 +207,11 @@ function perf_desktop_logo() {
 
 function perf_hex2rgba($color, $opacity = false) {
 
-    $default = 'rgb(0,0,0)';
+    $perf_default = 'rgb(0,0,0)';
 
     //Return default if no color provided
     if(empty($color))
-          return $default;
+          return $perf_default;
 
     //Sanitize $color if "#" is provided
         if ($color[0] == '#' ) {
@@ -220,23 +220,23 @@ function perf_hex2rgba($color, $opacity = false) {
 
         //Check if color has 6 or 3 characters and get values
         if (strlen($color) == 6) {
-                $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+                $perf_hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
         } elseif ( strlen( $color ) == 3 ) {
-                $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+                $perf_hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
         } else {
-                return $default;
+                return $perf_default;
         }
 
         //Convert hexadec to rgb
-        $rgb =  array_map('hexdec', $hex);
+        $perf_rgb =  array_map('hexdec', $perf_hex);
 
         //Check if opacity is set(rgba or rgb)
         if($opacity){
             if(abs($opacity) > 1)
                 $opacity = 1.0;
-            $output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+            $output = 'rgba('.implode(",",$perf_rgb).','.$opacity.')';
         } else {
-            $output = 'rgb('.implode(",",$rgb).')';
+            $output = 'rgb('.implode(",",$perf_rgb).')';
         }
 
         //Return rgb(a) color string

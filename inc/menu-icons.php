@@ -49,7 +49,7 @@ add_filter( 'menu_icons_types', 'my_remove_menu_icons_type' );
 function perf_font_awesome_css_from_cdn( $stylesheet_uri, $icon_type_id, $icon_type ) {
     if ( 'fa' === $icon_type_id ) {
         $stylesheet_uri = sprintf(
-            get_template_directory_uri() . '/inc/font-awesome/css/font-awesome.min.css',
+            get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css',
             $icon_type->version
         );
     }

@@ -1,14 +1,15 @@
 <?php
 /**
- * Add Lazy Load JavaScript
+ * Lazy load module
  *
+ * @package perfthemes
  * @since 1.0
  */
 
-$disable_lazy_load = perf_get_field("perf_disable_lazy_load","option");
-if( !is_array($disable_lazy_load) ) $disable_lazy_load = array();
+$perf_disable_lazy_load = perf_get_field("perf_disable_lazy_load","option");
+if( !is_array($perf_disable_lazy_load) ) $perf_disable_lazy_load = array();
 
-if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
+if ( !in_array("disable_img", $perf_disable_lazy_load, true) && !is_admin() ) {
 
 	add_filter( 'get_avatar'			, 'perf_lazy_load_image', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'perf_lazy_load_image', PHP_INT_MAX );
@@ -18,16 +19,16 @@ if ( !in_array("disable_img", $disable_lazy_load, true) && !is_admin() ) {
 
 }
 
-if ( !in_array("disable_iframe", $disable_lazy_load, true) && !is_admin() ) {
+if ( !in_array("disable_iframe", $perf_disable_lazy_load, true) && !is_admin() ) {
 	add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
 	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );
 }
 
 add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
 function perf_lazysizes_script() {
-	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/js/picturefill.min.js', '', '', true );
-	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', true );
-	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/lazysizes/lazysizes.min.js', '', '', true );
+	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/inc/3rd-party/picturefill.min.js', '', '', true );
+	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/inc/3rd-party/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', true );
+	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/inc/3rd-party/lazysizes/lazysizes.min.js', '', '', true );
 }
 
 function perf_lazy_load_image( $content ){
@@ -36,25 +37,29 @@ function perf_lazy_load_image( $content ){
 
 	if( is_object( $post ) ){
         $perf_page_disable_lazy_load = perf_get_field('perf_disable_options', $post->ID);
-    }
 
-    if( !is_array($perf_page_disable_lazy_load) ){
+        if( !is_array($perf_page_disable_lazy_load) ){
+        	$perf_page_disable_lazy_load = array();
+        }
+    }else{
         $perf_page_disable_lazy_load = array();
     }
 
-	if( is_search() || !in_array("lazy", $perf_page_disable_lazy_load) ){
-		$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-	    $document = new DOMDocument();
+
+
+	if( is_search() || is_array($perf_page_disable_lazy_load) && !in_array("lazy", $perf_page_disable_lazy_load) ){
+		$perf_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+	    $perf_document = new DOMDocument();
 
 	    libxml_use_internal_errors(true);
-	    if( !empty($content) ){
-	    	$document->loadHTML(utf8_decode($content));
+	    if( !empty($perf_content) ){
+	    	$perf_document->loadHTML(utf8_decode($perf_content));
 	    }else{
 	    	return;
 	    }
 
 
-	    $imgs = $document->getElementsByTagName('img');
+	    $imgs = $perf_document->getElementsByTagName('img');
 	    foreach ($imgs as $img) {
 
 	    	// add data-sizes
@@ -84,11 +89,11 @@ function perf_lazy_load_image( $content ){
 
 
 			// noscript
-			$noscript = $document->createElement('noscript');
+			$noscript = $perf_document->createElement('noscript');
 			$img->parentNode->insertBefore($noscript);
 
-			$image = $document->createElement('image');
-			$imageAttribute = $document->createAttribute('src');
+			$image = $perf_document->createElement('image');
+			$imageAttribute = $perf_document->createAttribute('src');
 			$imageAttribute->value = $existing_src;
 			$image->appendChild($imageAttribute);
 
@@ -96,10 +101,10 @@ function perf_lazy_load_image( $content ){
 
 	    }
 
-	    $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $document->saveHTML()));
+	    $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $perf_document->saveHTML()));
 	    return $html_fragment;
 	}else{
-		return $content;
+		return $perf_content;
 	}
 }
 
@@ -115,21 +120,21 @@ function perf_lazyload_iframes( $html ) {
 
 	if( !in_array("lazy", $perf_page_disable_lazy_load) ){
 
-		$matches = array();
-		preg_match_all( '/<iframe\s+.*?>/', $html, $matches );
+		$perf_matches = array();
+		preg_match_all( '/<iframe\s+.*?>/', $html, $perf_matches );
 
-		foreach ( $matches[0] as $k=>$iframe ) {
+		foreach ( $perf_matches[0] as $k=>$perf_iframe ) {
 
 			// Don't mess with the Gravity Forms ajax iframe
-			if ( strpos( $iframe, 'gform_ajax_frame' ) ) {
+			if ( strpos( $perf_iframe, 'gform_ajax_frame' ) ) {
 				continue;
 			}
 
-			$placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
+			$perf_placeholder = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
 
-			$iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $placeholder . '" class="lazyload blur-up" data-src=', $iframe );
+			$perf_iframe = preg_replace( '/<iframe(.*?)src=/is', '<iframe$1src="' . $perf_placeholder . '" class="lazyload blur-up" data-src=', $perf_iframe );
 
-			$html = str_replace( $matches[0][ $k ], $iframe, $html );
+			$html = str_replace( $perf_matches[0][ $k ], $perf_iframe, $html );
 
 		}
 	}

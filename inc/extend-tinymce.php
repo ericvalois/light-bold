@@ -18,7 +18,7 @@ add_filter( 'tiny_mce_before_init', 'perf_styles_dropdown' );
 function perf_styles_dropdown( $settings ) {
 
 	// Create array of new styles
-	$new_styles = array(
+	$perf_new_styles = array(
 		array(
 			'title'	=> __( 'Custom Styles', 'lightbold' ),
 			'items'	=> array(
@@ -66,7 +66,7 @@ function perf_styles_dropdown( $settings ) {
 	$settings['style_formats_merge'] = true;
 
 	// Add new styles
-	$settings['style_formats'] = json_encode( $new_styles );
+	$settings['style_formats'] = json_encode( $perf_new_styles );
 
 	// Return New Settings
 	return $settings;

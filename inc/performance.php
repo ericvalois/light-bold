@@ -1,4 +1,9 @@
 <?php
+/**
+ * Performance module
+ *
+ * @package perfthemes
+ */
 
 /**
  * Lazy Load
@@ -17,11 +22,10 @@ function perf_remove_wp_ver_css_js( $src ) {
 /*
 * ASYNC scripts
 */
-$disable_js_optimisation = perf_get_field("perf_disable_js_optimisation","option");
-$manual_async = perf_get_field("perf_manual_async_js","option");
+$perf_disable_js_optimisation = perf_get_field("perf_disable_js_optimisation","option");
 
-if( !is_array($disable_js_optimisation) ) $disable_js_optimisation = array();
-if( !in_array("disable_js_auto_async", $disable_js_optimisation, true) && !is_admin() ){
+if( !is_array($perf_disable_js_optimisation) ) $perf_disable_js_optimisation = array();
+if( !in_array("disable_js_auto_async", $perf_disable_js_optimisation, true) && !is_admin() ){
     add_filter( 'script_loader_tag', 'perf_add_async', 10, 2 );
 }
 
@@ -30,13 +34,15 @@ function perf_add_async( $tag, $handle ) {
 
     if( is_object( $post ) ){
         $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-    }
 
-    if( !is_array($perf_disable_options) ){
+        if( !is_array($perf_disable_options) ){
+            $perf_disable_options = array();
+        }
+    }else{
         $perf_disable_options = array();
     }
 
-    if( is_search() || !in_array('js', $perf_disable_options) ){
+    if( is_search() || is_array($perf_disable_options) && !in_array('js', $perf_disable_options) ){
         return str_replace( ' src', ' async src', $tag );
     }else{
         return $tag;
@@ -70,9 +76,11 @@ function perf_inject_loadcss_script() {
 
     if( is_object( $post ) ){
         $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-    }
 
-    if( !is_array($perf_disable_options) ){
+        if( !is_array($perf_disable_options) ){
+            $perf_disable_options = array();
+        }
+    }else{
         $perf_disable_options = array();
     }
 
@@ -133,28 +141,35 @@ function perf_async_stylsheets(){
 
     if( is_object( $post ) ){
         $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-    }
 
-    if( !is_array($perf_disable_options) ){
+        if( !is_array($perf_disable_options) ){
+            $perf_disable_options = array();
+        }
+    }else{
         $perf_disable_options = array();
     }
 
-    if( is_search() || !in_array('css', $perf_disable_options) ){
+    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
 
         $queue = $wp_styles->queue;
 
         // Print loadcss function
         echo '<script>';
         foreach( $queue as $stylesheet ){
-
-            echo 'loadCSS( "' . $wp_styles->registered[$stylesheet]->src . '" );';
+            if( $stylesheet != "admin-bar" ){
+                echo 'loadCSS( "' . $wp_styles->registered[$stylesheet]->src . '" );';
+            }
         }
         echo '</script>';
 
         // Print <noscript>
         foreach( $queue as $stylesheet ){
-            echo '<noscript><link href="' . $wp_styles->registered[$stylesheet]->src . '" rel="stylesheet"></noscript>';
+            if( $stylesheet != "admin-bar" ){
+                echo '<noscript><link href="' . $wp_styles->registered[$stylesheet]->src . '" rel="stylesheet"></noscript>';
+            }
         }
+
+        //echo '<pre>'; print_r($queue); echo '</pre>'; exit();
     }
 }
 
@@ -164,18 +179,22 @@ function perf_dequeue_stylesheets( ) {
 
     if( is_object( $post ) ){
         $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-    }
 
-    if( !is_array($perf_disable_options) ){
+        if( !is_array($perf_disable_options) ){
+            $perf_disable_options = array();
+        }
+    }else{
         $perf_disable_options = array();
     }
 
-    if( is_search() || !in_array('css', $perf_disable_options) ){
+    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
 
         $queue = $wp_styles->queue;
 
         foreach( $queue as $handle ){
-            wp_dequeue_style( $handle );
+            if( $handle != "admin-bar" ){
+                wp_dequeue_style( $handle );
+            }
         }
     }
 }
@@ -183,7 +202,10 @@ function perf_dequeue_stylesheets( ) {
 /*
 * Preload
 */
-add_action( 'perf_head_open', 'perf_preload' );
+if( !perf_get_field("perf_disable_preload","option") ){
+    add_action( 'perf_head_open', 'perf_preload' );
+    add_action( 'perf_head_open', 'perf_more_preload' );
+}
 function perf_preload() {
     if( perf_get_field("perf_log_sm","option") ){
     ?>
@@ -197,19 +219,29 @@ function perf_preload() {
 	<?php
     }
 
-    $image_id = perf_select_hero_image();
-    $image_src_sm = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-sm' );
-    $image_src_md = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-md' );
-    $image_src_lg = wp_get_attachment_image_src( $image_id, 'perfthemes-hero-lg' );
+    $perf_image_id = perf_select_hero_image();
+    $perf_image_src_sm = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-sm' );
+    $perf_image_src_md = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
+    $perf_image_src_lg = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
 
-    if( $image_id ){
+    if( $perf_image_id ){
     ?>
-        <link rel="preload" as="image" href="<?php echo $image_src_sm[0]; ?>" media="(max-width: 52em)">
-        <link rel="preload" as="image" href="<?php echo $image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
-        <link rel="preload" as="image" href="<?php echo $image_src_lg[0]; ?>" media="(min-width: 64em)">
+        <link rel="preload" as="image" href="<?php echo $perf_image_src_sm[0]; ?>" media="(max-width: 52em)">
+        <link rel="preload" as="image" href="<?php echo $perf_image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
+        <link rel="preload" as="image" href="<?php echo $perf_image_src_lg[0]; ?>" media="(min-width: 64em)">
     <?php
     }
 }
+
+/*
+* More preload added by user
+*/
+function perf_more_preload() {
+    if( perf_get_field("perf_add_preload","option") ){
+        echo perf_get_field("perf_add_preload","option");
+    }
+}
+
 
 /*
 * Critical mobile fix
@@ -268,7 +300,13 @@ function perf_critical_1200_fix() {
 
     .nav-container {
         margin-top: 16.66667vh;
+        overflow: hidden; /* Fix critical fout */
     }
+
+    .sub-menu {
+        display: none; /* Fix fout on page load */
+    }
+
 <?php
 }
 

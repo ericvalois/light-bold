@@ -1,4 +1,9 @@
 <?php
+/**
+ * Plugin compatibility module
+ *
+ * @package perfthemes
+ */
 if ( class_exists( 'autoptimizeConfig' ) ){
 	add_action( 'admin_notices', 'sample_admin_notice__error' );
 }
