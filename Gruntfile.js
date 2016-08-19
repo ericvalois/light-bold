@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                 src: ['build/']
             },
             first: {
-                src: ['build/*', '!build/<%= pkg.name %>-parent-<%= pkg.version %>.zip']
+                src: ['build/*', '!build/<%= pkg.name %>-parent.zip']
             },
             second: {
                 src: ['build/*', '!build/lightbold.zip']
@@ -136,7 +136,7 @@ module.exports = function(grunt) {
         compress: {
             parent: {
                 options: {
-                    archive: 'build/<%= pkg.name %>-parent-<%= pkg.version %>.zip'
+                    archive: 'build/<%= pkg.name %>-parent.zip'
                 },
                 expand: true,
                 cwd: 'build/',
