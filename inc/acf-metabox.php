@@ -1,9 +1,10 @@
 <?php
 /*
-* Version 0.9
+* Version 0.10
 */
 
 if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
+
 acf_add_local_field_group(array (
 	'key' => 'group_56d9ba6a92d0c',
 	'title' => 'Address widget',
@@ -2843,6 +2844,81 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
+	'key' => 'group_57b2006930370',
+	'title' => 'Light & Bold',
+	'fields' => array (
+		array (
+			'key' => 'field_57b2009d9babb',
+			'label' => 'Need help ?',
+			'name' => '',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'If you have questions or are experiencing any difficulties, please don\'t hesitate to consult the <a href="http://corpo.perfthemes.com/docs/" target="_blank">theme documentation.</a>',
+			'new_lines' => 'wpautop',
+			'esc_html' => 0,
+		),
+		array (
+			'key' => 'field_57b2053e9599c',
+			'label' => 'Help us',
+			'name' => '',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'If you appreciate Light & Bold, please help us by giving five stars on <a href="" target="_blank">ThemeForest</a>.',
+			'new_lines' => 'wpautop',
+			'esc_html' => 0,
+		),
+		array (
+			'key' => 'field_57b205b7b5d8a',
+			'label' => 'Features request',
+			'name' => '',
+			'type' => 'message',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'You appreciate Light & Bold and want some of your idea added in our themes? At Perfthemes we are listening to our clients, submit your <a href="http://corpo.perfthemes.com/feature-request/" target="_blank">feature request.</a>',
+			'new_lines' => 'wpautop',
+			'esc_html' => 0,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'options_page',
+				'operator' => '==',
+				'value' => 'perfthemes-settings',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'side',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
 	'key' => 'group_56055ca795f6f',
 	'title' => 'Perfthemes general options',
 	'fields' => array (
@@ -4400,8 +4476,61 @@ acf_add_local_field_group(array (
 ));
 
 acf_add_local_field_group(array (
+	'key' => 'group_56ddb077ad78a',
+	'title' => 'Page configuration',
+	'fields' => array (
+		array (
+			'key' => 'field_56ddb077b08e7',
+			'label' => 'Hero image',
+			'name' => 'perf_hero_image',
+			'type' => 'image',
+			'instructions' => 'Must be at least 1660px wide and 612px height',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'id',
+			'preview_size' => 'thumbnail',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'page',
+			),
+			array (
+				'param' => 'page_template',
+				'operator' => '!=',
+				'value' => 'page-templates/template-front.php',
+			),
+		),
+	),
+	'menu_order' => 1,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+acf_add_local_field_group(array (
 	'key' => 'group_577905b05e4de',
-	'title' => 'Disable theme options',
+	'title' => 'Performance options',
 	'fields' => array (
 		array (
 			'key' => 'field_577905ca175b7',
@@ -4447,59 +4576,6 @@ acf_add_local_field_group(array (
 	),
 	'menu_order' => 1,
 	'position' => 'side',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
-
-acf_add_local_field_group(array (
-	'key' => 'group_56ddb077ad78a',
-	'title' => 'Page configuration',
-	'fields' => array (
-		array (
-			'key' => 'field_56ddb077b08e7',
-			'label' => 'Hero image',
-			'name' => 'perf_hero_image',
-			'type' => 'image',
-			'instructions' => 'Must be at least 1660px wide and 612px height',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'return_format' => 'id',
-			'preview_size' => 'thumbnail',
-			'library' => 'all',
-			'min_width' => '',
-			'min_height' => '',
-			'min_size' => '',
-			'max_width' => '',
-			'max_height' => '',
-			'max_size' => '',
-			'mime_types' => '',
-		),
-	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'page',
-			),
-			array (
-				'param' => 'page_template',
-				'operator' => '!=',
-				'value' => 'page-templates/template-front.php',
-			),
-		),
-	),
-	'menu_order' => 1,
-	'position' => 'acf_after_title',
 	'style' => 'default',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
