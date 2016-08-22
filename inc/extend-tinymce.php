@@ -77,6 +77,17 @@ function perf_styles_dropdown( $settings ) {
 * Add editor styles
 */
 function perf_theme_add_editor_styles() {
-    add_editor_style( 'inc/tinymce.php' );
+    add_editor_style( array('inc/tinymce.php') );
 }
-add_action( 'admin_init', 'perf_theme_add_editor_styles' );
+//add_action( 'admin_init', 'perf_theme_add_editor_styles' );
+
+function wpse120831_mce_css( $mce_css ) {
+    if ( ! empty( $mce_css ) )
+        $mce_css .= ',';
+
+    $mce_css .= get_template_directory_uri() . "/inc/tinymce.php";
+
+    return $mce_css;
+}
+
+add_filter( 'mce_css', 'wpse120831_mce_css' );

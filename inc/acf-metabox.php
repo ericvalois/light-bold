@@ -1,11 +1,9 @@
 <?php
 /*
-* Version 0.8
+* Version 0.9
 */
 
-//if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
-if( function_exists('acf_add_local_field_group') ):
-
+if( function_exists('acf_add_local_field_group') && $_SERVER['SERVER_NAME'] != 'perf.dev' ):
 acf_add_local_field_group(array (
 	'key' => 'group_56d9ba6a92d0c',
 	'title' => 'Address widget',
