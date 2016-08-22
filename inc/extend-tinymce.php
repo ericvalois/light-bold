@@ -76,11 +76,6 @@ function perf_styles_dropdown( $settings ) {
 /*
 * Add editor styles
 */
-function perf_theme_add_editor_styles() {
-    add_editor_style( array('inc/tinymce.php') );
-}
-//add_action( 'admin_init', 'perf_theme_add_editor_styles' );
-
 function wpse120831_mce_css( $mce_css ) {
     if ( ! empty( $mce_css ) )
         $mce_css .= ',';
