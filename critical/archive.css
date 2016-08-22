@@ -50,10 +50,6 @@ h2, .h2{ font-size: 190%; }
 .absolute{ position: absolute; }
 .top-0{ top: 0px; }
 .left-0{ left: 0px; }
-.sm-show{ display: none !important; }
-@media (min-width: 40em){
-.sm-show{ display: block !important; }
-}
 .col-12{ width: 100%; }
 @media (min-width: 52em){
 .md-col-5{ width: 41.66667%; }
@@ -160,7 +156,6 @@ h2, .h2{ font-size: 190%; }
 .main-search{ padding-top: 0px; padding-right: 3rem; padding-bottom: 0px; padding-left: 3rem; }
 .site-sidebar{ width: 320px; max-width: 320px; }
 .site-content{ padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 320px; }
-#text-logo{ padding-left: 1rem; }
 }
 .lazyloaded{ opacity: 1; }
 img{ height: auto; }
@@ -172,13 +167,13 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 .small-p{ font-size: 16px; }
 .ultra-small{ font-size: 13px; }
 .perf_btn{ display: inline-block; font-size: 14px; font-weight: bold; text-transform: uppercase; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; text-decoration: none; padding-top: 0.8rem; padding-right: 2.3rem; padding-bottom: 0.8rem; padding-left: 2.3rem; line-height: 1; background-color: transparent; -webkit-font-smoothing: antialiased; }
-.animated{ -webkit-animation-duration: 0.5s; -webkit-animation-fill-mode: both; }
 .dark-bg{ background-color: rgb(30, 30, 30); }
 .dark-color{ color: rgb(62, 62, 62); }
 .white-color{ color: rgb(255, 255, 255); }
 .px{ padding-left: 0.5rem; padding-right: 0.5rem; }
 .upper{ text-transform: uppercase; }
 body{ }
+#logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 @media (min-width: 52em){
 .sticky{ min-height: 300px; }
 }
@@ -198,9 +193,11 @@ h1.entry-title{ }
 }
 @media (min-width: 64em){
 body{ font-size: 105%; }
+#logo{ width: 180px; }
 }
 @media (min-width: 1200px){
 body{ padding-top: 0px; font-size: 110%; }
+#logo{ width: 100%; height: 80px; background-position: 50% 50%; }
 }
 @media (min-width: 1650px){
 body{ font-size: 130%; }
