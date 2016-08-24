@@ -81,6 +81,16 @@ function perf_register_required_plugins() {
 		),
 
 		array(
+			'name'               => 'Perfthemes Browser Cache', // The plugin name.
+			'slug'               => 'perf-browser-cache', // The plugin slug (typically the folder name).
+			'source'             => 'https://github.com/perfthemes/perf-browser-cache/archive/master.zip', // The plugin source.
+			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+			//'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			//'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		),
+
+		array(
 			'name'      => 'Advanced Custom Fields: Font Awesome',
 			'slug'      => 'advanced-custom-fields-font-awesome',
 			'required'  => true,
