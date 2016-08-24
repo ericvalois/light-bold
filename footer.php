@@ -39,11 +39,11 @@
 
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix hide-print">
 		<div class="md-col md-col-6 mb1 md-mb0">
-			<div class="white-color copy">© <?php echo date("Y"); ?><?php echo get_field("perf_footer_copy","option"); ?></div>
+			<div class="white-color copy">&copy; <?php echo date("Y"); ?><?php echo perf_get_field("perf_footer_copy","option"); ?></div>
 		</div>
 
 		<div class="md-col md-col-6">
-			<?php if( get_field("perf_disble_top_anchor","option") != 1 ){ echo '<a href="#content" id="to_top" class="right ml2 bg-black border-none"><i class="fa fa-chevron-up"></i></a>'; } ?>
+			<?php if( perf_get_field("perf_disble_top_anchor","option") != 1 ){ echo '<a href="#content" id="to_top" class="right ml2 bg-black border-none"><i class="fa fa-chevron-up"></i></a>'; } ?>
 			<?php
 				wp_nav_menu( array( 'theme_location' => 'sub-footer', 'menu_id' => 'sub-footer', 'container' => '', 'fallback_cb' => false, 'menu_class' => 'list-reset md-right' ) );
 			?>

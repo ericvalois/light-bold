@@ -66,7 +66,6 @@ function perf_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	//add_image_size( 'perfthemes-hero-xl', 1630, 612, true );
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
 	add_image_size( 'perfthemes-hero-sm', 595, 448, true );
