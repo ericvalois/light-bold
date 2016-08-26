@@ -58,6 +58,12 @@ function perf_styles_dropdown( $settings ) {
 			        'classes' => 'perf_btn',
 			        'wrapper' => true,
 		        ),
+		        array(
+			        'title' => 'Perf button2',
+			        'block' => 'a',
+			        'classes' => 'perf_btn alt2',
+			        'wrapper' => true,
+		        ),
 			),
 		),
 	);
