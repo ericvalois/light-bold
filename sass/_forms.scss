@@ -55,6 +55,14 @@ input:focus, textarea:focus, select:focus {
 }
 
 /*
+* Footer widgets
+*/
+.site-footer input[type="text"],
+.site-footer input[type="email"],
+.site-footer input[type="tel"],
+.site-footer textarea{ color: #3e3e3e; }
+
+/*
 * Gravityform
 */
 
