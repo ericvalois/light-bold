@@ -82,6 +82,10 @@ body.navigation-opened {
     top: 0;
     z-index: 1;
     height: 100%;
+    display: flex;
+    align-items: center;
+    display: -ms-flexbox; 
+    -ms-flex-align: center;
 }
 
 .main-header.navigation-opened .main-nav__toggle__line--1 {
