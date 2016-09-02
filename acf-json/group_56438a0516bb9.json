@@ -1,0 +1,119 @@
+{
+    "key": "group_56438a0516bb9",
+    "title": "Perfthemes styles",
+    "fields": [
+        {
+            "key": "field_56438a051ad53",
+            "label": "Style",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_56438a051add3",
+            "label": "Main site color",
+            "name": "perf_main_site_color",
+            "type": "radio",
+            "instructions": "Color description: <a href=\"https:\/\/flatuicolors.com\/\" target=\"_blank\">https:\/\/flatuicolors.com\/<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "#1abc9c": "<span style=\"background-color: #1abc9c; display: inline-block; width: 15px; height: 15px;\"><\/span> Turquoise",
+                "#2ecc71": "<span style=\"background-color: #2ecc71; display: inline-block; width: 15px; height: 15px;\"><\/span> Peter-river",
+                "#3498db": "<span style=\"background-color: #3498db; display: inline-block; width: 15px; height: 15px;\"><\/span> Wet-asphalt",
+                "#16a085": "<span style=\"background-color: #16a085; display: inline-block; width: 15px; height: 15px;\"><\/span> Nephritis",
+                "#27ae60": "<span style=\"background-color: #27ae60; display: inline-block; width: 15px; height: 15px;\"><\/span> Belize-hole",
+                "#2980b9": "<span style=\"background-color: #2980b9; display: inline-block; width: 15px; height: 15px;\"><\/span> Midnight-blue",
+                "#f1c40f": "<span style=\"background-color: #f1c40f; display: inline-block; width: 15px; height: 15px;\"><\/span> Sun-flower",
+                "#e67e22": "<span style=\"background-color: #e67e22; display: inline-block; width: 15px; height: 15px;\"><\/span> Alizarin",
+                "#e74c3c": "<span style=\"background-color: #e74c3c; display: inline-block; width: 15px; height: 15px;\"><\/span> Concrete",
+                "#f39c12": "<span style=\"background-color: #f39c12; display: inline-block; width: 15px; height: 15px;\"><\/span> Orange",
+                "#d35400": "<span style=\"background-color: #d35400; display: inline-block; width: 15px; height: 15px;\"><\/span> Pomegranate",
+                "#c0392b": "<span style=\"background-color: #c0392b; display: inline-block; width: 15px; height: 15px;\"><\/span> Asbestos",
+                "other": "Other"
+            },
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "allow_null": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_56438a051ae52",
+            "label": "Custom color",
+            "name": "perf_custom_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_56438a051add3",
+                        "operator": "==",
+                        "value": "other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_56438a051aed8",
+            "label": "Custom CSS styles",
+            "name": "perf_custom_css_styles",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-styles"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1472841083
+}

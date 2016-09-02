@@ -258,11 +258,6 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/acf-fields.php';
 
 /**
- * Load ACF metabox
- */
-require get_template_directory() . '/inc/acf-metabox.php';
-
-/**
  * WordPress cleanup
  */
 require get_template_directory() . '/inc/clean.php';

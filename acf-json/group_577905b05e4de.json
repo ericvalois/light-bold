@@ -1,0 +1,57 @@
+{
+    "key": "group_577905b05e4de",
+    "title": "Performance options",
+    "fields": [
+        {
+            "key": "field_577905ca175b7",
+            "label": "Disable these options on this post:",
+            "name": "perf_disable_options",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "js": "JS Optimisation",
+                "css": "CSS Optimisation",
+                "lazy": "Lazy Load",
+                "share": "Share Links"
+            },
+            "default_value": [
+
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1472841033
+}

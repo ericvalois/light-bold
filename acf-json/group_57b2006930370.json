@@ -1,0 +1,75 @@
+{
+    "key": "group_57b2006930370",
+    "title": "Light & Bold",
+    "fields": [
+        {
+            "key": "field_57b2009d9babb",
+            "label": "Need help ?",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "If you have questions or are experiencing any difficulties, please don't hesitate to consult the <a href=\"http:\/\/corpo.perfthemes.com\/docs\/\" target=\"_blank\">theme documentation.<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_57b2053e9599c",
+            "label": "Help us",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "If you appreciate Light & Bold, please help us by giving five stars on <a href=\"\" target=\"_blank\">ThemeForest<\/a>.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_57b205b7b5d8a",
+            "label": "Features request",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "You appreciate Light & Bold and want some of your idea added in our themes? At Perfthemes we are listening to our clients, submit your <a href=\"http:\/\/corpo.perfthemes.com\/feature-request\/\" target=\"_blank\">feature request.<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "perfthemes-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1472841111
+}
