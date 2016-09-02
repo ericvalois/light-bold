@@ -75,7 +75,14 @@ body.navigation-opened {
     transform: translate(0,0);
 }
 
-.site-logo{ float: right; margin-right: 1rem; }
+.site-logo{ 
+    right: 10px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+}
 
 .main-header.navigation-opened .main-nav__toggle__line--1 {
     -webkit-transform: rotate(42deg);
@@ -116,10 +123,6 @@ body.navigation-opened {
     z-index: 1;
     height: 100%;
 }
-
-
-.main-header{ display: table; }
-.main-header_container{ display: table-cell; vertical-align: middle; }
 
 .sub-menu {
     max-height: 0;
@@ -313,16 +316,14 @@ body.navigation-opened {
         width: 230px;
     }
 
-    .main-header_container {
-        height: 100px;
-        height: 16.66667vh;
-    }
-
     .site-logo{
         float: none;
         margin: 0 auto;
         padding-left: 2rem;
         padding-right: 2rem;
+        height: 100px;
+        height: 16.66667vh;
+        position: static;
     }
 
     .navigation-opened .site-content{

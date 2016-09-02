@@ -43,6 +43,7 @@ h2, .h2{ font-size: 190%; }
 .mb2{ margin-bottom: 2rem; }
 .mb3{ margin-bottom: 4rem; }
 .mt4{ margin-top: 6rem; }
+.mx-auto{ margin-left: auto; margin-right: auto; }
 .p0{ padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; }
 .px2{ padding-left: 2rem; padding-right: 2rem; }
 .py3{ padding-top: 4rem; padding-bottom: 4rem; }
@@ -106,10 +107,8 @@ h2, .h2{ font-size: 190%; }
 .border-none{ border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; }
 .outline-0{ outline-width: 0px; outline-style: initial; outline-color: initial; }
 .nav-container{ top: 66px; -webkit-transform: translateX(-100%); bottom: 0px; color: rgb(254, 254, 254); position: fixed; z-index: 9; width: 90%; max-width: 280px; height: 100%; overflow-y: auto; box-shadow: rgb(222, 222, 222) 0px 3px 3px; }
-.site-logo{ float: right; margin-right: 1rem; }
+.site-logo{ right: 10px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; position: absolute; top: 0px; z-index: 1; height: 100%; }
 .main_nav_toggle{ left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; position: absolute; top: 0px; z-index: 1; height: 100%; }
-.main-header{ display: table; }
-.main-header_container{ display: table-cell; vertical-align: middle; }
 .sub-menu{ max-height: 0px; width: 100%; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; z-index: 1; display: block; }
 #primary-menu > li{ }
 #primary-menu li{ list-style-type: none; overflow-x: hidden; overflow-y: hidden; }
@@ -120,6 +119,7 @@ h2, .h2{ font-size: 190%; }
 #primary-menu i{ font-size: 20px; }
 #primary-menu i.fa{ display: table-cell !important; vertical-align: middle !important; }
 #primary-menu li a span{ display: table-cell !important; vertical-align: middle !important; width: 100%; padding-right: 20px; }
+#primary-menu i._before{ padding-right: 2rem; }
 #primary-menu .sub-sub-menu a{ border-top-color: rgb(214, 212, 212); }
 #primary-menu .sub-menu a{ width: 100%; }
 .main-header{ height: 64px; }
@@ -144,8 +144,7 @@ h2, .h2{ font-size: 190%; }
 .main_nav_toggle{ display: none; }
 .main-header{ background-color: rgb(255, 255, 255); left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; overflow-x: hidden; overflow-y: hidden; position: fixed; top: 0px; z-index: 10; height: auto; }
 .site-sidebar{ width: 230px; }
-.main-header_container{ height: 100px; }
-.site-logo{ float: none; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-left: auto; padding-left: 2rem; padding-right: 2rem; }
+.site-logo{ float: none; margin-top: 0px; margin-right: auto; margin-bottom: 0px; margin-left: auto; padding-left: 2rem; padding-right: 2rem; height: 100px; position: static; }
 .sub-menu{ left: 80%; opacity: 0; position: absolute; top: 0px; visibility: hidden; width: 320px; z-index: 1; background-color: rgb(255, 255, 255); -webkit-transition-property: all; -webkit-transition-duration: 0.2s; -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1); -webkit-transition-delay: 0.2s; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; max-height: 1000px; border-left-width: 2px; border-left-style: solid; border-left-color: rgb(244, 243, 243); }
 #primary-menu a { padding-right: 1rem; }
 #primary-menu li{ overflow-x: visible; overflow-y: visible; }
@@ -173,7 +172,6 @@ a{ text-decoration: none; border-bottom-style: solid; border-bottom-width: 0.08e
 .px{ padding-left: 0.5rem; padding-right: 0.5rem; }
 .upper{ text-transform: uppercase; }
 body{ }
-#logo{ display: block; width: 140px; height: 50px; background-size: contain; background-position: 100% 50%; background-repeat: no-repeat no-repeat; }
 @media (min-width: 52em){
 .sticky{ min-height: 300px; }
 }
@@ -193,11 +191,9 @@ h1.entry-title{ }
 }
 @media (min-width: 64em){
 body{ font-size: 105%; }
-#logo{ width: 180px; }
 }
 @media (min-width: 1200px){
 body{ padding-top: 0px; font-size: 110%; }
-#logo{ width: 100%; height: 80px; background-position: 50% 50%; }
 }
 @media (min-width: 1650px){
 body{ font-size: 130%; }

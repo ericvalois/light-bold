@@ -294,8 +294,13 @@ function perf_critical_lg_fix() {
 add_action( 'perf_1200_styles', 'perf_critical_1200_fix' );
 function perf_critical_1200_fix() {
 ?>
-    .main-header_container {
+    .main-header_container,
+    .site-logo {
         height: 16.66667vh;
+        display: flex;
+        align-items: center;
+        display: -ms-flexbox; 
+        -ms-flex-align: center;
     }
 
     .nav-container {

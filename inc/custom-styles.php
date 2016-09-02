@@ -185,26 +185,6 @@ function perf_section1_bg_sm(){
     }
 }
 
-/*
-* Mobile logo
-*/
-add_action( 'perf_mobile_styles', 'perf_mobile_logo' );
-function perf_mobile_logo() {
-?>
-    #logo{ background-image: url(<?php echo get_field("perf_log_sm","option"); ?>); }
-<?php
-}
-
-/*
-* Desktop logo
-*/
-add_action( 'perf_1200_styles', 'perf_desktop_logo' );
-function perf_desktop_logo() {
-?>
-    #logo{ background-image: url(<?php echo get_field("perf_log_lg","option"); ?>); min-height: 80px; }
-<?php
-}
-
 function perf_hex2rgba($color, $opacity = false) {
 
     $perf_default = 'rgb(0,0,0)';
