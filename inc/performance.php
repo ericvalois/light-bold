@@ -213,9 +213,15 @@ function perf_preload() {
 	<?php
     }
 
+    if( perf_get_field("perf_log_md","option") ){
+    ?>
+        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_md","option"); ?>" media="(min-width: 1200px) and (max-width: 1650px)">
+    <?php
+    }
+
     if( perf_get_field("perf_log_lg","option") ){
     ?>
-        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1200px)">
+        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1650px)">
 	<?php
     }
 
