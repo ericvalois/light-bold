@@ -255,7 +255,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Load ACF fields
  */
-require get_template_directory() . '/inc/acf-fields.php';
+require get_template_directory() . '/inc/acf-extra.php';
 
 /**
  * WordPress cleanup
