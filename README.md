@@ -1,2 +1,2 @@
 # Light & Bold
-Starter theme for perfthemes.com
+Performance First WordPress Theme
