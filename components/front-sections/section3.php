@@ -8,7 +8,7 @@
 
 <?php 
 	$section3 = get_field("perf_section_3"); 
-	$nb_per_row = get_field("perf_section3_items_row"); 
+	$nb_per_row = get_field("perf_section3_layout"); 
 ?>
 
 <?php if( is_array($section3) && count($section3) > 0 ): ?>
