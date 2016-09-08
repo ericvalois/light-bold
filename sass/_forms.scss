@@ -67,3 +67,27 @@ input:focus, textarea:focus, select:focus {
 */
 
 .gform_confirmation_message{ color: green; }
+
+/*
+* Mailchimp for WordPress
+*/
+.mc4wp-alert.mc4wp-success{
+    margin-top: 1rem;
+    color: green;
+    font-size: 16px;
+    padding: 1rem;
+    border: 1px solid green;  
+}
+
+.mc4wp-alert.mc4wp-error{
+    margin-top: 1rem;
+    color: red;
+    font-size: 16px;
+    padding: 1rem;
+    border: 1px solid red;  
+}
+
+.mc4wp-alert p{
+    margin-bottom: 0;
+}
+

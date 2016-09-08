@@ -324,7 +324,7 @@
             },
             "button_label": "Add a section",
             "min": "",
-            "max": "",
+            "max": 3,
             "layouts": [
                 {
                     "key": "57d04d6f63aa5",
@@ -451,11 +451,54 @@
                 },
                 {
                     "key": "57d04db26afbc",
-                    "name": "",
-                    "label": "",
+                    "name": "mailchimp_form",
+                    "label": "Mailchimp Form",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_57d1778e8f770",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_57d177958f771",
+                            "label": "Form",
+                            "name": "form",
+                            "type": "relationship",
+                            "instructions": "If you don't see any form, please verify the plugin MailChimp for WordPress is installed and activated.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "mc4wp-form"
+                            ],
+                            "taxonomy": [
 
+                            ],
+                            "filters": "",
+                            "elements": "",
+                            "min": 1,
+                            "max": 1,
+                            "return_format": "id"
+                        }
                     ],
                     "min": "",
                     "max": ""
@@ -1335,5 +1378,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1473275029
+    "modified": 1473358953
 }
