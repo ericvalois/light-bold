@@ -10,7 +10,7 @@
 
 <?php if( is_array($section1) && count($section1) > 0 ): ?>
 	<?php $col_width = 12 / count($section1);  ?>
-	<section class="clearfix section1 dark-bg">
+	<section class="clearfix section1 dark-bg ">
 
 		<?php $cpt = 1; ?>
 		<?php foreach($section1 as $box ): ?>

@@ -3,8 +3,8 @@
     "title": "Light & Bold",
     "fields": [
         {
-            "key": "field_57b2009d9babb",
-            "label": "Need help ?",
+            "key": "field_57d16184f3398",
+            "label": "",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -15,42 +15,8 @@
                 "class": "",
                 "id": ""
             },
-            "message": "If you have questions or are experiencing any difficulties, please don't hesitate to consult the <a href=\"http:\/\/corpo.perfthemes.com\/docs\/\" target=\"_blank\">theme documentation.<\/a>",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
-            "key": "field_57b2053e9599c",
-            "label": "Help us",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "If you appreciate Light & Bold, please help us by giving five stars on <a href=\"\" target=\"_blank\">ThemeForest<\/a>.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
-            "key": "field_57b205b7b5d8a",
-            "label": "Features request",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "You appreciate Light & Bold and want some of your idea added in our themes? At Perfthemes we are listening to our clients, submit your <a href=\"http:\/\/corpo.perfthemes.com\/feature-request\/\" target=\"_blank\">feature request.<\/a>",
-            "new_lines": "wpautop",
+            "message": "<h3>PerfThemes Updates<\/h3>\r\n\r\n<p>Get the latest news about Perfthemes. Be the first to know when we release new themes and new features. <a target=\"_blank\" href=\"http:\/\/eepurl.com\/b1x9T1\">Subscribe &#x2192;<\/a><\/p>\r\n\r\n<hr>\r\n\r\n<h3>Rate Light & Bold<\/h3>\r\n\r\n<p>If you appreciate Light &amp; Bold, please help us by giving five stars on <a href=\"\" target=\"_blank\">ThemeForest<\/a>.<\/p>\r\n\r\n<hr>\r\n\r\n<h3>Looking for help?<\/h3>\r\n\r\n<p>We have some resources available to help you in the right direction.<\/p>\r\n\r\n<ul>\r\n<li><a href=\"https:\/\/perfthemes.com\/docs\/\" target=\"_blank\">Knowledge Base<\/a><\/li>\r\n<li><a href=\"https:\/\/perfthemes.com\/cat-doc\/frequent-questions\/\" target=\"_blank\">Frequently Asked Questions<\/a><\/li>\r\n<li><a href=\"https:\/\/perfthemes.com\/features-request\/\" target=\"_blank\">Features request<\/a><\/li>\r\n<\/ul>\r\n\r\n<p>If your answer can not be found in the resources listed above, please use the <a href=\"https:\/\/perfthemes.com\/support\/\" target=\"_blank\">support form<\/a>.<\/p>",
+            "new_lines": "",
             "esc_html": 0
         }
     ],
@@ -65,11 +31,11 @@
     ],
     "menu_order": 0,
     "position": "side",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1472841111
+    "modified": 1473344212
 }
