@@ -543,7 +543,7 @@
             "allow_null": 0,
             "other_choice": 0,
             "save_other_choice": 0,
-            "default_value": "",
+            "default_value": 3,
             "layout": "horizontal",
             "return_format": "value"
         },
@@ -1378,5 +1378,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1473358953
+    "modified": 1473426019
 }
