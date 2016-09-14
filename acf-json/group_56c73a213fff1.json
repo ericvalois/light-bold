@@ -1550,18 +1550,18 @@
                                 "id": ""
                             },
                             "post_type": [
-                                "post",
-                                "page"
+                                "post"
                             ],
                             "taxonomy": [
 
                             ],
                             "filters": [
                                 "search",
-                                "post_type",
                                 "taxonomy"
                             ],
-                            "elements": "",
+                            "elements": [
+                                "featured_image"
+                            ],
                             "min": "",
                             "max": "",
                             "return_format": "id"
@@ -1592,5 +1592,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1473863718
+    "modified": 1473875191
 }

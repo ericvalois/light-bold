@@ -40,6 +40,10 @@ get_header(); ?>
 
 					        	get_template_part( 'components/front-sections/hero_section' );
 
+					        elseif( get_row_layout() == 'posts_section' ): 
+
+					        	get_template_part( 'components/front-sections/posts_section' );
+
 					        endif;
 
 					    endwhile;

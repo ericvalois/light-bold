@@ -317,3 +317,8 @@ require get_template_directory() . '/inc/custom-protected-form.php';
  * Analytics code
  */
 require get_template_directory() . '/inc/analytics.php';
+
+function wpdocs_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
