@@ -33,20 +33,30 @@
 			$latest_posts = new WP_Query( $args );
 		?>
 		<?php if ( $latest_posts->have_posts() ) : ?>
+
 			<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
-				<article class="<?php echo $col_class; ?> border-box px2 break-word">
-					<span class="small-p"><?php the_category( ", " ); ?> </span>
+
+				<article <?php post_class("border-box px2 break-word mb3 " . $col_class); ?> id="post-<?php the_ID(); ?>">
+
+					<?php if( get_sub_field("show_post_thumbnail") ): ?>
+						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity"><?php the_post_thumbnail( "perfthemes-blog", array("class" => "lazyload mb1 rounded") ); ?></a>
+					<?php endif; ?>
+
+					<div class="small-p"><?php the_category( ", " ); ?> </div>
+
 					<h2 class="h3 mb1 mt0"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-					<p class="small-p">
-						<?php 
-						  $content = get_the_content(); 
-						  echo substr(strip_tags($content), 0, 200) . '...'; 
-						?><br>
-						<a href="" class="mt1 inline-block">Read more</a>
-					</p>
+
+					<div class="small-p">
+						<strong><?php _e("By","lightbold"); ?> <?php echo get_the_author(); ?></strong><br>
+						<?php the_date(); ?>
+					</div><!-- .entry-meta -->
+
 				</article>
+
 			<?php endwhile; ?>
+
 			<?php wp_reset_postdata(); ?>
+
 		<?php endif; ?>	
 	</div>
 	

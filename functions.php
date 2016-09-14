@@ -70,7 +70,7 @@ function perf_setup() {
 	add_image_size( 'perfthemes-hero-md', 767, 612, true );
 	add_image_size( 'perfthemes-hero-sm', 595, 448, true );
 
-	//add_image_size( 'perfthemes-thumbnail-avatar', 100, 100, true );
+	add_image_size( 'perfthemes-blog', 760, 360, true );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
@@ -317,8 +317,3 @@ require get_template_directory() . '/inc/custom-protected-form.php';
  * Analytics code
  */
 require get_template_directory() . '/inc/analytics.php';
-
-function wpdocs_custom_excerpt_length( $length ) {
-    return 20;
-}
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );

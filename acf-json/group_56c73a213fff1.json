@@ -1484,7 +1484,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -1498,6 +1498,22 @@
                             "default_value": "latest",
                             "layout": "horizontal",
                             "return_format": "value"
+                        },
+                        {
+                            "key": "field_57d9a86099969",
+                            "label": "Show Post Thumbnail",
+                            "name": "show_post_thumbnail",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0
                         },
                         {
                             "key": "field_57d95ee9a9b7f",
@@ -1592,5 +1608,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1473875191
+    "modified": 1473882455
 }

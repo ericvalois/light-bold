@@ -70,7 +70,8 @@ a.dark-color{
 .red-color{ color: red; }
 .green-color{ color: green; }
 
-a.white-color{
+a.white-color,
+a.no-border{
     &:hover,
     &:focus{
         border-color: transparent;
@@ -347,6 +348,11 @@ input.search-field{ padding-right: 40px; }
     }
 }
 
+.hover-opacity{
+    transition: opacity 0.2s ease;
+
+    &:hover{ opacity: 0.8; }
+}
 /*
 * Contact
 */
