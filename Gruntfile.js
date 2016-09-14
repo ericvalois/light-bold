@@ -175,13 +175,24 @@ module.exports = function(grunt) {
             }
         },
 
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions']
+            },
+            dist: {
+                files: {
+                    'style.css': 'style.css'
+                }
+            }
+        },
+
         // running `grunt watch` will watch for changes
         watch: {
             sass: {
                 files: ['sass/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass', 'autoprefixer'],
                 options: {
-                  livereload: true,
+                  livereload: false,
                 },
             },
         }
@@ -195,6 +206,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-perfbudget');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     grunt.registerTask('critical', ['criticalcss', 'cssmin']);
     grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
