@@ -1,19 +1,18 @@
 <?php
 /**
- * The template used for displaying section1 content.
+ * The template used for displaying sub_sections content.
  *
  * @package perfthemes
  */
 ?>
 
-<?php $section1 = get_field("perf_section_1"); ?>
+<?php $sub_sections = get_field("perf_above_fold_sub_section"); ?>
 
-<?php if( is_array($section1) && count($section1) > 0 ): ?>
-	<?php $col_width = 12 / count($section1);  ?>
+<?php if( is_array($sub_sections) && count($sub_sections) > 0 ): ?>
+	<?php $col_width = 12 / count($sub_sections);  ?>
 	<section class="clearfix section1 dark-bg ">
-
 		<?php $cpt = 1; ?>
-		<?php foreach($section1 as $box ): ?>
+		<?php foreach($sub_sections as $box ): ?>
 
 			<div class="md-col md-col-<?php echo $col_width; ?> ">
 

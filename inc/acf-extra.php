@@ -66,5 +66,14 @@ function perf_my_custom_acf_style() {
 	.acf-image-select label.selected img {
 		border: 6px solid #DDDDDD;
 	}
+
+	.acf-title{
+		font-size: 20px;
+		padding: 15px;
+		color: #eee;
+		background-color: #23282d;
+		font-weight: 400;
+		line-height: 1;
+	}
   </style>';
 }

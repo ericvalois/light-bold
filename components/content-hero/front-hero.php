@@ -12,13 +12,13 @@
         $perf_full_width = true;
     }
 ?>
-<div class="clearfix table col-12">
-    <div class="<?php if( !$perf_full_width ){ echo 'md-table-cell md-col-7'; }else{ echo 'front-hero-content col-12';} ?> front-hero relative hide-print">
+<div class="clearfix md-flex md-flex-stretch col-12">
+    <div class="<?php if( !$perf_full_width ){ echo 'md-col-7'; }else{ echo 'front-hero-content col-12';} ?> front-hero relative hide-print">
         <div id="perf-main-hero" class="bg-cover bg-center absolute top-0 left-0 col-12 overflow-hidden m0 p0"></div>
     </div>
 
     <?php if( !$perf_full_width ): ?>
-      	<div class="md-table-cell md-col-5 dark-bg front-hero-content ">
+      	<div class="md-col-5 dark-bg front-hero-content ">
       		<div class="table col-12 front-hero-content">
       			<div class="px2 md-px3 table-cell align-middle py2">
       				<h1 class="h3 separator white-color mt2"><?php echo get_field("perf_main_title"); ?></h1>

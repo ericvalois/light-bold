@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying section2 content.
+ * The template used for displaying text_and_button content.
  *
  * @package perfthemes
  */
@@ -8,17 +8,17 @@
 
 
 
-<?php if( have_rows('perf_section_2') ): ?>
+<?php $items = get_sub_field("repeater_text_and_button"); ?>
+
+<?php if( have_rows('repeater_text_and_button') ): ?>
 	<?php 
-		$section2 = get_field("perf_section_2");
-		$col_width = 12 / count($section2);  
+		$col_width = 12 / count($items);  
 	?>
 
 	<section class="clearfix section2 alt-dark-bg lg-flex flex-stretch col-12 ">
 
-		<?php while ( have_rows('perf_section_2') ) : the_row(); ?>
+		<?php while ( have_rows('repeater_text_and_button') ) : the_row(); ?>
 
-        	<?php if( get_row_layout() == 'text_and_button' ): ?>
 
 				<?php
 					if( get_sub_field('image') ){
@@ -49,23 +49,6 @@
 					</div>
 					
 				</div>
-
-			<?php elseif( get_row_layout() == 'mailchimp_form' ): ?>
-
-				<div class="py4 flex flex-center lg-col-<?php echo $col_width; ?>">
-
-					<div class="px2 lg-px3">
-						<h4 class="mt0 separator alt white-color h3"><?php the_sub_field('title'); ?></h4>
-						
-						<?php 
-							$form = get_sub_field('form');
-							echo do_shortcode('[mc4wp_form id="'. $form[0] .'"]'); 
-						?>
-					</div>
-					
-				</div>
-        	
-        	<?php endif; ?>
 
         <?php endwhile; ?>
 	  	
