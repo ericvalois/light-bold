@@ -3,13 +3,13 @@ ol.children{ padding-left: 0; }
 @include media-query(sm) {
 
 	ol.children{
-		padding-left: 60px;
+		padding-left: 67px;
 	}
-
+/*
 	.comment-author-admin > .children{
 		padding-left: 90px;
 	}
-
+*/
 }
 
 ol.children{
@@ -33,13 +33,6 @@ ol.children{
 	font-size: 16px;
 }
 
-.avatar{
-	position: absolute;
-	top: 0;
-	left: -60px;
-	border-radius: 2px;
-}
-
 .comment-meta{
 	@extend .small-p;
 	font-weight: normal;
@@ -58,18 +51,6 @@ ol.children{
 
 .comment-metadata{ margin-bottom: 0.5rem;}
 
-.comment-author-admin > article{
-	padding: 30px 30px 30px 90px;
-}
-
-.comment-author-admin .comment-body{
-	//margin-bottom: 0;
-}
-
-.comment-author-admin .children{
-	margin-top: 2rem;
-}
-
 
 .comment-reply-title small a {
     border: 0;
@@ -85,3 +66,69 @@ ol.children{
     content: "×";
     font-size: 32px;
 }
+
+#commentform input,
+#commentform textarea{margin-top: 5px;}
+
+#commentform p{margin-bottom: 1rem;}
+
+.form-submit #submit{
+	transition: all 0.2s ease;
+}
+
+.form-submit #submit:hover{
+	background-color: #3a3a3a;
+	border-color: #3a3a3a;
+	color: #fff;
+}
+
+
+.comment-reply-link, .comment-edit-link{
+    font-size: .5em;
+    color: #fff;
+    background: #dbdbdb;
+    border: 1px solid #dbdbdb;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    padding: 3px 5px;
+    letter-spacing: 2px;
+    line-height: 1em;
+    position: relative;
+    top: -3px;
+    margin-left: 3px;
+    transition: all 0.2s ease;
+
+    &:hover{
+    	color: #fff;
+    	background-color: #3a3a3a;
+    	border: 1px solid #3a3a3a;
+    }
+}
+
+.comment_author{
+    font-size: .5em;
+    color: #fff;
+    background: #3a3a3a;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    padding: 3px 5px;
+    letter-spacing: 2px;
+    line-height: 1em;
+    position: relative;
+    top: -3px;
+    margin-left: 3px;
+}
+
+li.comment.depth-1 {
+    margin-bottom: 1rem;
+}
+
+.children li{
+	padding-bottom: 0 !important;
+}
+
+.comment-list li:first-child{ padding-top: 0; }

@@ -239,6 +239,7 @@ body.navigation-opened {
     letter-spacing: 0;
     border: none;
     padding: 0;
+    background-color: #fff;
 }
 
 @include media-query(md) {

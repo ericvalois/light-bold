@@ -23,7 +23,7 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area hide-print">
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title mt3 mb3 separator">
+		<h4 class="comments-title mt3 mb3">
 			<?php
 				$comments_number = get_comments_number();
 				if ( 1 === $comments_number ) {
@@ -44,7 +44,7 @@ if ( post_password_required() ) {
 					);
 				}
 			?>
-		</h2>
+		</h4>
 
 		<?php the_comments_navigation(); ?>
 
@@ -53,7 +53,8 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'       => 'ol',
 					'short_ping'  => true,
-					'avatar_size' => 42,
+					'avatar_size' => 56,
+					'callback'	  => 'perf_custom_comments',
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -74,9 +75,31 @@ if ( post_password_required() ) {
 		comment_form( array(
 			'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title separator mb2">',
 			'title_reply_after'  => '</h3>',
+			'class_submit'		 => 'perf_btn alt2 col-12 mb2 btn_comment',
 			'class_form' => ' clearfix',
 			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>','lightbold' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
-			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . __("Comment","lightbold") . '</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>',
+			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 'lightbold' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ></textarea></p>',
+			'fields' => apply_filters( 'comment_form_default_fields', array(
+
+			'author' =>
+				'<div class="clearfix mxn1"><div class="lg-col lg-col-4 px1"><p class="comment-form-author">' .
+				'<label for="author">' . __( 'Name', 'lightbold' ) . '</label> ' .
+				( $req ? '<span class="required">*</span>' : '' ) .
+				'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+				'" size="30" aria-required="true" required /></p></div>',
+
+			'email' =>
+				'<div class="lg-col lg-col-4 px1"><p class="comment-form-email"><label for="email">' . __( 'Email', 'lightbold' ) . '</label> ' .
+				( $req ? '<span class="required">*</span>' : '' ) .
+				'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+				'" size="30" aria-required="true" required /></p></div>',
+
+			'url' =>
+				'<div class="lg-col lg-col-4 px1"><p class="comment-form-url"><label for="url">' .
+				__( 'Website', 'lightbold' ) . '</label>' .
+				'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+				'" size="30" /></p></div></div>'
+			))
 		) );
 
 	?>

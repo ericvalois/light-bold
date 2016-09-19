@@ -312,21 +312,28 @@ input.search-field{ padding-right: 40px; }
 
 .tagcloud a,
 .tags,
-.widget_categories a, .widget_archive a,
-.comment-reply-link, .comment-edit-link{
+.widget_categories a, .widget_archive a{
     font-weight: normal;
     font-style: normal;
-    color: rgba(0,0,0,.44);
+    color: #fff;
     font-size: 13px;
     letter-spacing: 0;
     text-decoration: none;
-    background: #fafafa;
+    background: #3a3a3a;
     border: 1px solid #f4f3f3;
     padding: 5px 10px;
-    font-size: 17px;
     display: inline-block;
     border-radius: 2px;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+
+    &:hover{
+        color: #3a3a3a;
+        border: 1px solid #3a3a3a;
+        background-color: #fff;
+    }
 }
+
 
 .tagcloud a,
 .widget_categories li, .widget_archive li{

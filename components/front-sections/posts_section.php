@@ -6,9 +6,9 @@
  */
 ?>
 
-<section class="clearfix posts_section px4 py3 lg-py4 white-bg ">
+<section class="clearfix posts_section px4 py1 lg-py2 white-bg ">
 
-	<h2 class="mt0 upper mb1 block center"><?php echo get_sub_field("title"); ?></h2>
+	<h2 class="mt2 lg-mt3 upper mb1 block center"><?php echo get_sub_field("title"); ?></h2>
 	<span class="separator seprarator-center"></span>
 	
 	<div class="flex flex-wrap mxn2 mt2">
@@ -29,12 +29,11 @@
 
 			$col_class = "md-col-" . $layout;
 
-			
-			$latest_posts = new WP_Query( $args );
+			$posts = new WP_Query( $args );
 		?>
-		<?php if ( $latest_posts->have_posts() ) : ?>
+		<?php if ( $posts->have_posts() ) : ?>
 
-			<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
+			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
 				<article <?php post_class("border-box px2 break-word mb3 " . $col_class); ?> id="post-<?php the_ID(); ?>">
 

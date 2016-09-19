@@ -267,6 +267,66 @@ function perf_select_hero_image(){
     return $perf_hero;
 }
 
+/**
+ * Show ACF options if the user want to
+ */
 if( !perf_get_field("perf_show_acf","option") ){
 	add_filter('acf/settings/show_admin', '__return_false');
 }
+
+
+/**
+ * Move Comment field to the end
+ */
+add_filter( 'comment_form_fields', 'perf_move_comment_field_to_bottom' );
+function perf_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+
+/**
+ * Remove novalidate to comment form
+ */
+add_action( 'wp_footer', 'perf_enable_comment_form_validation' );
+function perf_enable_comment_form_validation() {
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') && current_theme_supports( 'html5' ) )  {
+        echo '<script>document.getElementById("commentform").removeAttribute("novalidate");</script>' . PHP_EOL;
+    }
+}
+
+/**
+ * Custom comment markup
+ */
+function perf_custom_comments($comment, $args, $depth) {
+    global $post;
+   
+    $post_author = get_userdata($post->post_author);
+    $GLOBALS['comment'] = $comment; ?>
+
+
+    <li <?php comment_class("py1"); ?> id="comment-<?php comment_ID() ?>">
+            
+        <div class="comment-intro clearfix">
+            <div class="left mr1 mb1 "><?php echo get_avatar( $comment->comment_author_email, 57, "", "", array("class" => "rounded") ); ?></div> 
+            <span class="small-p bold upper"><?php printf(__('%s'), get_comment_author_link()) ?> </span>
+            <strong><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?></strong>
+            <?php 
+                if( $comment->comment_author_email == $post_author->user_email ){
+                    echo '<span class="comment_author">' . __("Author","lightbold") . '</span>';
+                }
+            ?>
+            <br>
+            <span class="comment_date upper small-p"><?php printf(__('%1$s'), get_comment_date(), get_comment_time()) ?></span>
+        </div>
+        
+        <?php if ($comment->comment_approved == '0') : ?>
+            <em><php _e('Your comment is awaiting moderation.') ?></em><br />
+        <?php endif; ?>
+
+        <div class="small-p">
+            <?php comment_text(); ?>
+        </div>
+        
+<?php } ?>
