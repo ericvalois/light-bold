@@ -263,6 +263,33 @@ function perf_critical_mobile_fix() {
     .small-p, .comment-meta, .textwidget {
         font-size: 16px;
     }
+
+    .main-carousel.is-hidden {
+      display: none;
+    }
+
+    .main-carousel.flickity-enabled {
+      opacity: 1;
+    }
+
+    .nav-container{transform: translateX(-100%);}
+
+    .button-row{
+        display: flex;
+        display: -ms-flexbox;
+        align-items: stretch;
+    }
+
+    .button-row button{
+      border-right: 1px solid #403e3e;
+    }
+
+    .button-row button.button--previous{
+      border-left: 1px solid #403e3e;
+    }
+
+    .perf-main-hero { box-sizing: border-box; }
+
 <?php
 }
 
@@ -277,8 +304,10 @@ function perf_critical_md_fix() {
         padding-bottom: 14.66666666vh;
     }
 
-    .front-hero, .front-hero-content { min-height: 58.33333vh; }
+    .front-hero, .front-hero-content { min-height: 58.33333vh; height: 600px; }
     .h0-responsive { font-size: 6vw; }
+
+    .front-hero-section { display: flex; align-items: stretch; display: -ms-flexbox; -ms-flex-align: center; }
 <?php
 }
 
@@ -290,7 +319,7 @@ function perf_critical_lg_fix() {
 ?>
     #primary-menu a, .main-search input[type="search"] { min-height: 8.33333vh; }
 
-    .perf-main-hero { min-height: 58.33333331vh; }
+    .perf-main-hero { height: 58.33333331vh; box-sizing: border-box; }
 <?php
 }
 
@@ -317,6 +346,8 @@ function perf_critical_1200_fix() {
     .sub-menu {
         display: none; /* Fix fout on page load */
     }
+
+    .nav-container{transform: translateX(0);}
 
 <?php
 }

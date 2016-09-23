@@ -1,56 +1,14 @@
 ol.children{ padding-left: 0; }
 
 @include media-query(sm) {
-
 	ol.children{
 		padding-left: 67px;
 	}
-/*
-	.comment-author-admin > .children{
-		padding-left: 90px;
-	}
-*/
 }
 
 ol.children{
 	list-style-type: none;
 }
-
-.comment .comment-respond{ padding-left: 60px; }
-
-.comment-list {
-	padding-left: 0;
-}
-
-.comment-body{
-	padding-left: 60px;
-	position: relative;
-	margin-bottom: 2rem;
-	
-}
-
-.comment-content{
-	font-size: 16px;
-}
-
-.comment-meta{
-	@extend .small-p;
-	font-weight: normal;
-	position: relative;
-}
-
-.comment-content *:last-child,{
-	margin-bottom: 0;
-}
-
-.comment-reply-link{
-    margin-top: 1rem;
-}
-
-.edit-link .comment-edit-link{ font-size: 13px; padding: 3px 10px; }
-
-.comment-metadata{ margin-bottom: 0.5rem;}
-
 
 .comment-reply-title small a {
     border: 0;

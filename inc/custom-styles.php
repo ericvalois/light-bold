@@ -107,7 +107,8 @@ function perf_custom_color(){
     .widget_archive a:hover,
     .comment-reply-link:hover,
     .icons_social:hover,
-    .icons_social:focus{ color: <?php echo $perf_main_color; ?> }
+    .icons_social:focus,
+    .button-row button{ color: <?php echo $perf_main_color; ?> }
     #primary-menu i,
     #primary-menu a:hover,
     .address_row i { color: <?php echo $perf_main_color; ?>; }
@@ -138,6 +139,11 @@ function perf_custom_color(){
     .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
     .opacity-zero{ opacity: 0; }
     img{max-width: 100%;height: auto;}
+    .main-carousel{
+      opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+    }
     <?php
 }
 

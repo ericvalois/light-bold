@@ -217,11 +217,11 @@ function perf_scripts() {
 
 	// add fontawsome even if Menu icons is not activated
 	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
-
+	
 	// main script
 	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );
 
-	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }

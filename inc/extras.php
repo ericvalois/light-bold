@@ -329,4 +329,33 @@ function perf_custom_comments($comment, $args, $depth) {
             <?php comment_text(); ?>
         </div>
         
-<?php } ?>
+<?php } 
+
+/**
+ * Flickity slider custom behavior
+ */
+function perf_add_flickity_listener(){
+    ?>
+    <script>
+        // Custom previous button
+        var previousButton = document.querySelector('.button--previous');
+        previousButton.addEventListener( 'click', function() {
+          flkty.previous();
+          flkty.pausePlayer();
+        });
+
+        // Custom Next button
+        var nextButton = document.querySelector('.button--next');
+        nextButton.addEventListener( 'click', function() {
+          flkty.next();
+          flkty.pausePlayer();
+        });
+
+        // Mouse leave unpausePlayer
+        var buttonRow = document.querySelector('.button-row');
+        buttonRow.addEventListener( 'mouseout', function() {
+          flkty.unpausePlayer();
+        });
+    </script>
+    <?php
+}

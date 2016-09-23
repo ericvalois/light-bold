@@ -38,7 +38,9 @@
 				<article <?php post_class("border-box px2 break-word mb3 " . $col_class); ?> id="post-<?php the_ID(); ?>">
 
 					<?php if( get_sub_field("show_post_thumbnail") ): ?>
-						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity"><?php the_post_thumbnail( "perfthemes-blog", array("class" => "lazyload mb1 rounded") ); ?></a>
+						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
+							<img data-src="<?php the_post_thumbnail_url("perfthemes-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
+						</a>
 					<?php endif; ?>
 
 					<div class="small-p"><?php the_category( ", " ); ?> </div>
