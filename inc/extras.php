@@ -291,7 +291,7 @@ function perf_move_comment_field_to_bottom( $fields ) {
  */
 add_action( 'wp_footer', 'perf_enable_comment_form_validation' );
 function perf_enable_comment_form_validation() {
-    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') && current_theme_supports( 'html5' ) )  {
+    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') && current_theme_supports( 'html5' ) && !is_page_template("page-templates/template-front.php") )  {
         echo '<script>document.getElementById("commentform").removeAttribute("novalidate");</script>' . PHP_EOL;
     }
 }
