@@ -29,9 +29,10 @@ if( function_exists('acf_add_options_page') ) {
 /*
 * Add custom image for ACF layout
 */
-add_filter('acf/load_field/name=perf_section3_layout', 'perf_layout_options');
+add_filter('acf/load_field/key=field_57d05562c6d38', 'perf_layout_options');
+add_filter('acf/load_field/key=field_57d95e15a9b7c', 'perf_layout_options');
 function perf_layout_options( $field ) {
-    $field['choices'] = array(
+	$field['choices'] = array(
 	    "1" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/one-column.png">',
 	    "2" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/two-columns.png">',
 	    "3" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/three-columns.png">',

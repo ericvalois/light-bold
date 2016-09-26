@@ -701,10 +701,10 @@
                                 "id": ""
                             },
                             "choices": {
-                                "1": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/one-column.png\">",
-                                "2": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/two-columns.png\">",
-                                "3": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/three-columns.png\">",
-                                "4": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/four-columns.png\">"
+                                "1": "Lorem ipsum",
+                                "2": "Lorem ipsum",
+                                "3": "Lorem ipsum",
+                                "4": "Lorem ipsum"
                             },
                             "allow_null": 1,
                             "other_choice": 0,
@@ -1609,10 +1609,10 @@
                                 "id": ""
                             },
                             "choices": {
-                                "1": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/one-column.png\">",
-                                "2": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/two-columns.png\">",
-                                "3": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/three-columns.png\">",
-                                "4": "<img src=\"http:\/\/perf.dev\/wp-content\/themes\/lightbold\/images\/four-columns.png\">"
+                                "1": "Lorem ipsum",
+                                "2": "Lorem ipsum",
+                                "3": "Lorem ipsum",
+                                "4": "Lorem ipsum"
                             },
                             "allow_null": 1,
                             "other_choice": 0,
@@ -1773,5 +1773,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1474469975
+    "modified": 1474904193
 }
