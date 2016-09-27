@@ -6,8 +6,8 @@
  */
 ?>
 
-<div class="front-hero-section clearfix md-flex md-flex-stretch">
-    <div class="md-col md-col-7 front-hero relative hide-print">
+<div class="front-hero-section clearfix table col-12">
+    <div class="md-col-7 front-hero relative hide-print md-table-cell">
         <div id="perf-main-hero" class="bg-cover bg-center absolute top-0 left-0 col-12 overflow-hidden m0 p0 "></div>
     </div>
 

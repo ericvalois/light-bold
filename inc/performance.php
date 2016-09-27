@@ -307,7 +307,6 @@ function perf_critical_md_fix() {
     .front-hero, .front-hero-content { min-height: 58.33333vh; height: 600px; }
     .h0-responsive { font-size: 6vw; }
 
-    .front-hero-section { display: flex; align-items: stretch; display: -ms-flexbox; -ms-flex-align: center; }
 <?php
 }
 
