@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="md-col-5 dark-bg relative">
+<div class="md-col-5 dark-bg relative md-table-cell">
 	<div class="table col-12 front-hero-content">
 		<div class="table-cell align-middle px2 md-px3 py3">
 			<?php

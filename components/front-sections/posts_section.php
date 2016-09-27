@@ -43,7 +43,7 @@
 						</a>
 					<?php endif; ?>
 
-					<div class="small-p mb1 md-mb0"><?php the_category( ", " ); ?> </div>
+					<div class="small-p mb1 md-mb0 sm-show"><?php the_category( ", " ); ?> </div>
 
 					<h2 class="h3 mb1 mt0"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 

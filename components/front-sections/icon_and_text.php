@@ -24,7 +24,7 @@
 					$col_class = "md-col-" . $col_width;
 				}
 			?>
-			<div class="section3_box md-col <?php echo $col_class; ?> px2 lg-px3 mt1 mb1 lg-mt2 lg-mb2">
+			<div class="section3_box md-col <?php echo $col_class; ?> px2 lg-px3 py2">
 
 				<div class="table">
 					<div class="table-cell align-top white-color">
