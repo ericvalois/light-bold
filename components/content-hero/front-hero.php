@@ -7,8 +7,8 @@
 ?>
 
 <div class="front-hero-section clearfix table col-12">
-    <div class="md-col-7 front-hero relative hide-print md-table-cell">
-        <div id="perf-main-hero" class="bg-cover bg-center absolute top-0 left-0 col-12 overflow-hidden m0 p0 "></div>
+    <div id="perf-main-hero" class="md-col-7 front-hero relative hide-print md-table-cell bg-cover bg-center">
+        
     </div>
 
     <?php
