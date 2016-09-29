@@ -304,7 +304,13 @@ function perf_critical_md_fix() {
         padding-bottom: 14.66666666vh;
     }
 
-    .front-hero, .front-hero-content { min-height: 58.33333vh; height: 600px; }
+    .front-hero, .front-hero-content { min-height: 58.33333vh; }
+
+    @-moz-document url-prefix() { 
+        .front-hero-section{ height: 600px; min-height: 58.33333vh;  }
+    }
+
+    
     .h0-responsive { font-size: 6vw; }
 
 <?php
@@ -318,7 +324,6 @@ function perf_critical_lg_fix() {
 ?>
     #primary-menu a, .main-search input[type="search"] { min-height: 8.33333vh; }
 
-    .perf-main-hero { height: 58.33333331vh; box-sizing: border-box; }
 <?php
 }
 

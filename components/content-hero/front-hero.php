@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="front-hero-section clearfix table col-12">
+<div class="front-hero-section clearfix md-table col-12">
     <div id="perf-main-hero" class="md-col-7 front-hero relative hide-print md-table-cell bg-cover bg-center">
         
     </div>
