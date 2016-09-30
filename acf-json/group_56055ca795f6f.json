@@ -232,6 +232,23 @@
             "endpoint": 0
         },
         {
+            "key": "field_57ee70b4726be",
+            "label": "Form Shortcode",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Copy and paste the following Shortcode where you want the contact form.\r\n\r\n<strong>[perf_contact_form]<\/strong>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_56face1214440",
             "label": "Success message",
             "name": "perf_contact_success_message",
@@ -431,7 +448,7 @@
         },
         {
             "key": "field_572a589d9b488",
-            "label": "Disable content fadeIn at page load",
+            "label": "Disable content fadeIn on page load",
             "name": "perf_hide_fade",
             "type": "true_false",
             "instructions": "This can result to a \"Fout\" of the content.",
@@ -447,7 +464,7 @@
         },
         {
             "key": "field_57718bd0eb589",
-            "label": "Show ACF Custom Fields Options",
+            "label": "Show Advanced Custom Fields Options",
             "name": "perf_show_acf",
             "type": "true_false",
             "instructions": "",
@@ -516,5 +533,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1472841095
+    "modified": 1475244352
 }
