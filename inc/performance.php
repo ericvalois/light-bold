@@ -64,10 +64,9 @@ function perf_array_find($needle, array $haystack){
 * @link https://github.com/filamentgroup/loadCSS
 */
 $perf_disable_css_optimisation = perf_get_field("perf_disable_css_optimisation","option");
-$perf_manual_async_stylesheets = perf_get_field("perf_manual_async_stylesheets","option");
 
 if( !is_array($perf_disable_css_optimisation) ) $perf_disable_css_optimisation = array();
-if( ( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) || is_array($perf_manual_async_stylesheets)) && !is_admin() ){
+if( ( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) ) && !is_admin() ){
     add_filter('wp_print_styles', 'perf_inject_loadcss_script', 10);
 }
 function perf_inject_loadcss_script() {

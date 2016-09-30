@@ -1,6 +1,6 @@
 {
     "key": "group_577905b05e4de",
-    "title": "Performance options",
+    "title": "Performance Options",
     "fields": [
         {
             "key": "field_577905ca175b7",
@@ -53,5 +53,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1472841033
+    "modified": 1475253478
 }

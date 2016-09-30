@@ -366,11 +366,22 @@ function perf_add_flickity_listener(){
 add_action('admin_head', 'perf_custom_switch');
 function perf_custom_switch() {
   echo '<style>
+    .acf-bl li{
+      clear: both;
+    }
+
     .switch {
       position: relative;
       display: inline-block !important;
       width: 60px;
       height: 34px;
+      float: left;
+    }
+
+    .switch-label{
+      float: left;
+      margin-left: 10px;
+      line-height: 34px;
     }
 
     /* Hide default HTML checkbox */
@@ -427,8 +438,25 @@ function perf_custom_switch() {
 
 echo '<script>
     jQuery(document).ready(function($) {
-        $(".acf-bl label").addClass("switch");
-        $(".acf-bl label").append( "<div class=slider></div>" );
+        $( ".acf-bl label,.acf-hl label" ).each(function( index ) {
+          var input = $(this).children("input");
+          var label = $(this).clone().children().remove().end().text();
+
+          // Clean the li
+          $(this).empty();
+
+          // Add the input
+          $(this).html(input);
+
+          // Add the new label
+          $(this).after( "<div class=switch-label>" + label + "</div>" );
+
+          // Add Css class
+          $(this).addClass("switch");
+
+          // Add the slider markup
+          $(this).append( "<div class=slider></div>" );
+        });
     });
 </script>';
 }
