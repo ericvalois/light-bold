@@ -438,7 +438,7 @@ function perf_custom_switch() {
 
 echo '<script>
     jQuery(document).ready(function($) {
-        $( ".acf-bl label,.acf-hl label" ).each(function( index ) {
+        $( ".acf-checkbox-list label" ).each(function( index ) {
           var input = $(this).children("input");
           var label = $(this).clone().children().remove().end().text();
 
