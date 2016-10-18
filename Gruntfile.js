@@ -13,8 +13,7 @@ module.exports = function(grunt) {
                     noCache: true,
                 },
                 files: {
-                    "style.css": "sass/style.scss",
-                    "critical/critical-admin.css": "sass/critical-admin.scss"
+                    "style.css": "sass/style.scss"
                 }
             }
         },
@@ -175,7 +174,7 @@ module.exports = function(grunt) {
             }
         },
 
-        autoprefixer: {
+        /*autoprefixer: {
             options: {
                 browsers: ['last 2 versions']
             },
@@ -184,13 +183,13 @@ module.exports = function(grunt) {
                     'style.css': 'style.css'
                 }
             }
-        },
+        },*/
 
         // running `grunt watch` will watch for changes
         watch: {
             sass: {
                 files: ['sass/*.scss'],
-                tasks: ['sass', 'autoprefixer'],
+                tasks: ['sass'],
                 options: {
                   livereload: false,
                 },

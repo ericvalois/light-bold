@@ -29,7 +29,7 @@ function perf_inline_styles() {
             do_action( 'perf_1200_styles' );
         echo '}';
 
-        echo '@media (min-width: 96em)  {';
+        echo '@media (min-width: 1650px)  {';
             do_action( 'perf_96em_styles' );
         echo '}';
 
@@ -109,11 +109,12 @@ function perf_custom_color(){
     .icons_social:hover,
     .icons_social:focus,
     .button-row button{ color: <?php echo $perf_main_color; ?> }
-    #primary-menu i,
-    #primary-menu a:hover,
+    .menu__item i,
+    .menu__link:hover,
+    .menu__breadcrumbs a,
     .address_row i { color: <?php echo $perf_main_color; ?>; }
     a:hover,a:focus{ border-color: <?php echo $perf_main_color; ?>; }
-    #primary-menu a:before,
+    .menu__link:before,
     .separator:after,
     .perf_btn.alt2{ background-color: <?php echo $perf_main_color; ?>; }
     .perf_btn,
@@ -145,50 +146,6 @@ function perf_custom_color(){
   transition: opacity 0.4s;
     }
     <?php
-}
-
-
-add_action('perf_lg_styles','perf_section1_bg_lg', 10);
-function perf_section1_bg_lg(){
-
-    if( is_page_template("page-templates/template-front.php") ){
-        global $post;
-
-        $perf_section1 = get_field("perf_section_1", $post->ID);
-
-        if( is_array($perf_section1) && count($perf_section1) > 0 ){
-
-            $cpt = 1;
-            foreach($perf_section1 as $box ){
-
-            ?>
-                .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-md']; ?>); }
-            <?php
-                $cpt++;
-            }
-        }
-    }
-}
-
-add_action('perf_mobile_styles','perf_section1_bg_sm', 10);
-function perf_section1_bg_sm(){
-
-    if( is_page_template("page-templates/template-front.php") ){
-        global $post;
-
-        $perf_section1 = get_field("perf_section_1", $post->ID);
-
-        if( is_array($perf_section1) && count($perf_section1) > 0 ){
-
-            $cpt = 1;
-            foreach($perf_section1 as $box ){
-            ?>
-                .section1_box<?php echo $cpt; ?>{ background-image: url(<?php echo $box['image']['sizes']['perfthemes-hero-sm']; ?>); }
-            <?php
-                $cpt++;
-            }
-        }
-    }
 }
 
 function perf_hex2rgba($color, $opacity = false) {

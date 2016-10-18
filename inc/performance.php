@@ -334,7 +334,7 @@ function perf_critical_1200_fix() {
 ?>
     .main-header_container,
     .site-logo {
-        height: 16.66667vh;
+        height: 223px;
         display: flex;
         align-items: center;
         display: -ms-flexbox; 
@@ -342,7 +342,6 @@ function perf_critical_1200_fix() {
     }
 
     .nav-container {
-        margin-top: 16.66667vh;
         overflow: hidden; /* Fix critical fout */
     }
 
@@ -362,6 +361,11 @@ add_action( 'perf_96em_styles', 'perf_critical_96em_fix' );
 function perf_critical_96em_fix() {
 ?>
     .h0-responsive { font-size: 5.76rem; }
+
+    .main-header_container,
+    .site-logo {
+        height: 273px;
+    }
 <?php
 }
 

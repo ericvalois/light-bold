@@ -123,10 +123,6 @@ function perf_tag_cloud_sizes($args) {
     return $args;
 }
 
-
-/**
- * Menu Custom walker class.
- */
 class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
 
     /**
@@ -193,49 +189,29 @@ class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
         $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
 
-		if( is_object($args) && is_object($item) ) {
-			// Build HTML output and pass through the proper filter.
-	        $item_output = sprintf( '%1$s<a%2$s><span>%3$s%4$s%5$s</span></a>%6$s',
-	            $args->before,
-	            $attributes,
-	            $args->link_before,
-	            apply_filters( 'the_title', $item->title, $item->ID ),
-	            $args->link_after,
-	            $args->after
-	        );
-		}else{
-			$item_output = sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
-	            $item->url,
-	            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-	            $item->title
-	        );
-		}
+    if( is_object($args) && is_object($item) ) {
+      // Build HTML output and pass through the proper filter.
+          $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+              $args->before,
+              $attributes,
+              $args->link_before,
+              apply_filters( 'the_title', $item->title, $item->ID ),
+              $args->link_after,
+              $args->after
+          );
+    }else{
+      $item_output = sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+              $item->url,
+              ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
+              $item->title
+          );
+    }
 
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
 }
 
-class perf_Default_Walker extends Walker {
 
-    // Tell Walker where to inherit it's parent and id values
-    var $db_fields = array(
-        'parent' => 'menu_item_parent',
-        'id'     => 'db_id'
-    );
-    /**
-     * At the start of each element, output a <li> and <a> tag structure.
-     *
-     * Note: Menu objects include url and title properties, so we will use those.
-     */
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-        $output .= sprintf( "\n<li class='relative'><a href='%s'%s><span>%s</span></a></li>\n",
-            $item->url,
-            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-            $item->title
-        );
-    }
-
-}
 
 /*
 * Show or hide content animation
@@ -460,3 +436,159 @@ echo '<script>
     });
 </script>';
 }
+
+function perf_custom_menu( $theme_location ) {
+    if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
+        $menu = wp_get_nav_menu_items($theme_location);
+        $menu_zero_with_child = array();
+        
+        // Menu
+        $html_menu = '<ul data-menu="main" class="menu__level ' . (( !perf_main_menu_has_child() )?'visible':'') . '">';
+
+            foreach( $menu as $item ):
+
+                if( perf_menu_item_has_child($item->ID) ){
+                    $menu_zero_with_child[] = $item->ID;
+                    $has_child = true;
+                }else{
+                    $has_child = false;
+                }
+
+                $menu_icon = get_field( 'perf_menu_icon', $item->ID );
+
+                if( $item->menu_item_parent == 0 ):
+                    
+                    $html_menu .= '<li class="menu__item flex flex-center">';
+                        $html_menu .= '<a class="menu__link flex flex-auto flex-column"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '</a>';
+                            $html_menu .= $item->title;
+                        $html_menu .= '</a>';
+                        if( $menu_icon ){ 
+                            $html_menu .= '<i class="mr2 fa '. $menu_icon .'"></i>'; 
+                        }
+                    $html_menu .= '</li>';
+                    
+                endif;
+
+            endforeach;
+        $html_menu .= '</ul>';
+
+        echo $html_menu;
+
+        $menu_sub_with_child = array();
+
+        // Sub menu
+        if( count( $menu_zero_with_child ) > 0 ):
+
+            foreach( $menu_zero_with_child as $item ):
+                echo '<ul data-menu="submenu-' . $item . '" class="menu__level">';
+                    foreach( $menu as $starter_item ):
+
+                        if(  $starter_item->menu_item_parent == $item ):
+
+                            if( perf_menu_item_has_child($starter_item->ID) ){
+                                $menu_sub_with_child[] = $starter_item->ID;
+                                $has_child = true;
+                            }else{
+                                $has_child = false;
+                            }
+
+                            $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
+
+                            ?>
+                                <li class="menu__item flex flex-center"><a class="menu__link flex flex-auto flex-column" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>><?php echo $starter_item->title; ?></a><?php if( $menu_icon ){ echo '<i class="mr2 fa '. $menu_icon .'"></i>'; } ?></li>
+                            <?php
+                        endif;
+
+                    endforeach;
+                echo '</ul>';
+            endforeach;
+        endif;
+
+        // Sub sub menu
+        if( count( $menu_sub_with_child ) > 0 ):
+
+            foreach( $menu_sub_with_child as $item ):
+                echo '<ul data-menu="submenu-' . $item . '" class="menu__level">';
+                    foreach( $menu as $starter_item ):
+
+                        if(  $starter_item->menu_item_parent == $item ):
+                            ?>
+                                <li class="menu__item"><a class="menu__link" <?php echo 'href="'. $starter_item->url .'"'; ?>><?php echo $starter_item->title; ?></a></li>
+                            <?php
+                        endif;
+
+                    endforeach;
+                echo '</ul>';
+            endforeach;
+         
+        endif;
+ 
+    } else {
+        $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
+    }
+
+}
+
+/**
+ * Detect if primary menu item has child
+ */
+function perf_menu_item_has_child( $item_id ){
+    $menu = wp_get_nav_menu_items('primary');
+
+    foreach( $menu as $item ){
+        if( $item->menu_item_parent == $item_id ){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Detect if primary menu has child
+ */
+function perf_main_menu_has_child() {
+    $menu = wp_get_nav_menu_items('primary');
+
+    foreach( $menu as $item ):
+
+        if( $item->menu_item_parent ){
+            return true;
+        }
+
+    endforeach;
+
+    return false;
+}
+
+add_action("wp_footer","perf_menu_toggle");
+function perf_menu_toggle(){
+    ?>
+    <script>
+        // Open main nav
+        document.getElementById("main_nav_toggle").addEventListener("click", function () {
+            
+            var main_nav = document.getElementById("ml-menu");
+            
+            if (main_nav.classList.contains("menu--open")) {
+                main_nav.classList.remove("menu--open");
+            } else {
+                main_nav.classList.add("menu--open");
+            }
+
+        });
+
+        // Close main nav
+        document.querySelector('.action--close').addEventListener("click", function () {
+            
+            var main_nav = document.getElementById("ml-menu");
+            
+            if (main_nav.classList.contains("menu--open")) {
+                main_nav.classList.remove("menu--open");
+            }
+
+        });
+    </script>
+    <?php
+}
+

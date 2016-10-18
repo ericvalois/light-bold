@@ -33,8 +33,8 @@
 							<h3 class="h3 separator white-color mt0"><?php the_title(); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
 				  				<?php 
-								  $content = get_the_content(); 
-								  echo substr(strip_tags($content), 0, 250) . '...'; 
+								  	$content = wp_trim_words( get_the_content(), 45, '…' ); 
+									echo $content;
 								?>
 				  			</p>
 				  			<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","lightbold"); ?></a>

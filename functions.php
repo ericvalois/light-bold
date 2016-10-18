@@ -207,19 +207,13 @@ function perf_scripts() {
 	// main stylesheet
 	wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
 
-	if( wp_style_is( 'font-awesome', 'enqueued' ) ){
-		// remove extra css fron Menu icons plugin
-		wp_dequeue_style( 'menu-icons-extra' );
-
-		// remove font-awesome from menu icon
-		wp_dequeue_style( 'font-awesome' );
-	}
-
-	// add fontawsome even if Menu icons is not activated
+	// add fontawsome
 	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
 	
-	// main script
-	wp_enqueue_script( 'perf-main-script', get_template_directory_uri() . '/js/main.js', array(), '', true );
+	// Main menu script
+	if ( perf_main_menu_has_child() ){
+		wp_enqueue_script( 'perf-menu-script', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -276,11 +270,6 @@ require get_template_directory() . '/inc/breadcrumb.php';
  * Load custom style
  */
 require get_template_directory() . '/inc/custom-styles.php';
-
-/**
- * Menu icons
- */
-require get_template_directory() . '/inc/menu-icons.php';
 
 /**
  * Social Widget
