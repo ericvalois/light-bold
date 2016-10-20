@@ -5,7 +5,7 @@
 				<source srcset="<?php echo perf_get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
 				<source srcset="<?php echo perf_get_field("perf_log_md","option"); ?>" media="(min-width: 1200px) and (max-width: 1650px)">
 				<source srcset="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1650px)">
- 				<img class="block mx-auto" src="<?php echo perf_get_field("perf_log_sm","option"); ?>" alt="Logo">
+ 				<img class="block mx-auto" src="<?php echo perf_get_field("perf_log_md","option"); ?>" alt="Logo">
 			</picture>
 		</a>
 	<?php else: ?>

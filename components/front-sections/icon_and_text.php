@@ -27,14 +27,14 @@
 			<div class="section3_box md-col <?php echo $col_class; ?> px2 lg-px3 py2">
 
 				<div class="table">
-					<div class="table-cell align-top white-color">
+					<div class="table-cell align-top white-color text-shadow">
 						<?php echo get_sub_field('icon'); ?>
 					</div>
 				
 					<div class="table-cell align-top white-color pl2">
-						<h4 class="mt0 h4"><?php echo get_sub_field('title'); ?></h4>
+						<h4 class="mt0 h4 text-shadow"><?php echo get_sub_field('title'); ?></h4>
 
-						<p class="small-p mb0"><?php echo get_sub_field('content'); ?></p>
+						<p class="small-p mb0 text-shadow"><?php echo get_sub_field('content'); ?></p>
 					</div>
 				</div>
 				

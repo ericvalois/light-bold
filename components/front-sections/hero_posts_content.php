@@ -5,23 +5,23 @@
  * @package perfthemes
  */
 ?>
+<?php
+	$args = array(
+		'post_type' => 'post',
+	);
+
+	if( get_sub_field("latest_posts_or_manual_selection") == "latest" ){
+		$args['posts_per_page'] = get_sub_field("how_many_posts");
+	}else{
+		$args['post__in'] = get_sub_field("manual_selection");
+	}
+
+	$posts = new WP_Query( $args );
+?>
 <div class="md-col-5 dark-bg relative md-table-cell">
-	<div class="table col-12 front-hero-content">
+	<div class="table col-12 front-hero-content<?php if( $posts->post_count == 1 ){ echo ' single-slide'; } ?>">
 		<div class="table-cell align-middle px2 md-px3 py3">
-			<?php
-				$args = array(
-					'post_type' => 'post',
-				);
-
-				if( get_sub_field("latest_posts_or_manual_selection") == "latest" ){
-					$args['posts_per_page'] = get_sub_field("how_many_posts");
-				}else{
-					$args['post__in'] = get_sub_field("manual_selection");
-				}
-
-				$posts = new WP_Query( $args );
-			?>
-
+			
 			<div <?php if( $posts->post_count > 1 ){ echo 'class="main-carousel is-hidden"'; } ?>>
 				
 				<?php if ( $posts->have_posts() ) : ?>
@@ -59,13 +59,6 @@
 				<a href="<?php echo get_post_type_archive_link("post"); ?>" class="archive-link upper px2"><?php _e("Archive","lightbold"); ?></a>
 			<?php endif; ?>
 		</div>
-
-		<?php
-			wp_enqueue_script( 'perf-flickity', get_template_directory_uri() . '/inc/3rd-party/flickity/flickity.min.js', array(), '', true );
-
-			// Custom Flickity Listener
-			add_action("wp_footer","perf_add_flickity_listener"); 				
-		?>
 	<?php endif; ?>
 
 </div>

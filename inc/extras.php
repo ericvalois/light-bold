@@ -312,27 +312,25 @@ function perf_custom_comments($comment, $args, $depth) {
  */
 function perf_add_flickity_listener(){
     ?>
-    <script>
-        // Custom previous button
-        var previousButton = document.querySelector('.button--previous');
-        previousButton.addEventListener( 'click', function() {
-          flkty.previous();
-          flkty.pausePlayer();
-        });
+    // Custom previous button
+    var previousButton = document.querySelector('.button--previous');
+    previousButton.addEventListener( 'click', function() {
+      flkty.previous();
+      flkty.pausePlayer();
+    });
 
-        // Custom Next button
-        var nextButton = document.querySelector('.button--next');
-        nextButton.addEventListener( 'click', function() {
-          flkty.next();
-          flkty.pausePlayer();
-        });
+    // Custom Next button
+    var nextButton = document.querySelector('.button--next');
+    nextButton.addEventListener( 'click', function() {
+      flkty.next();
+      flkty.pausePlayer();
+    });
 
-        // Mouse leave unpausePlayer
-        var buttonRow = document.querySelector('.button-row');
-        buttonRow.addEventListener( 'mouseout', function() {
-          flkty.unpausePlayer();
-        });
-    </script>
+    // Mouse leave unpausePlayer
+    var buttonRow = document.querySelector('.button-row');
+    buttonRow.addEventListener( 'mouseout', function() {
+      flkty.unpausePlayer();
+    });
     <?php
 }
 
@@ -458,13 +456,17 @@ function perf_custom_menu( $theme_location ) {
 
                 if( $item->menu_item_parent == 0 ):
                     
-                    $html_menu .= '<li class="menu__item flex flex-center">';
-                        $html_menu .= '<a class="menu__link flex flex-auto flex-column"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '</a>';
-                            $html_menu .= $item->title;
-                        $html_menu .= '</a>';
+                    $html_menu .= '<li class="menu__item">';
+                        $html_menu .= '<a class="menu__link flex flex-center"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
+                        
+                        $html_menu .= '<span class="flex-auto"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
+                        
                         if( $menu_icon ){ 
-                            $html_menu .= '<i class="mr2 fa '. $menu_icon .'"></i>'; 
+                            $html_menu .= '<i class="fa flex-none '. $menu_icon .'"></i>'; 
                         }
+
+                        $html_menu .= '</a>';
+
                     $html_menu .= '</li>';
                     
                 endif;
@@ -495,7 +497,19 @@ function perf_custom_menu( $theme_location ) {
                             $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
 
                             ?>
-                                <li class="menu__item flex flex-center"><a class="menu__link flex flex-auto flex-column" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>><?php echo $starter_item->title; ?></a><?php if( $menu_icon ){ echo '<i class="mr2 fa '. $menu_icon .'"></i>'; } ?></li>
+                                <li class="menu__item">
+                                    <a class="menu__link flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>>
+                                        <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID . '"'; } ?>>
+                                            <?php echo $starter_item->title; ?> 
+                                        </span>
+
+                                        <?php 
+                                            if( $menu_icon ){ 
+                                                echo '<i class="fa flex-none '. $menu_icon .'"></i>'; 
+                                            }
+                                        ?>
+                                    </a>
+                                </li>
                             <?php
                         endif;
 
@@ -511,9 +525,23 @@ function perf_custom_menu( $theme_location ) {
                 echo '<ul data-menu="submenu-' . $item . '" class="menu__level">';
                     foreach( $menu as $starter_item ):
 
+                        $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
+                    
                         if(  $starter_item->menu_item_parent == $item ):
                             ?>
-                                <li class="menu__item"><a class="menu__link" <?php echo 'href="'. $starter_item->url .'"'; ?>><?php echo $starter_item->title; ?></a></li>
+                                <li class="menu__item">
+                                    <a class="menu__link flex flex-center" <?php echo 'href="'. $starter_item->url .'"'; ?>>
+                                        <span class="flex-auto">
+                                            <?php echo $starter_item->title; ?>
+                                        </span>
+
+                                        <?php 
+                                            if( $menu_icon ){ 
+                                                echo '<i class="fa flex-none '. $menu_icon .'"></i>'; 
+                                            }
+                                        ?>
+                                    </a>
+                                </li>
                             <?php
                         endif;
 
@@ -561,34 +589,41 @@ function perf_main_menu_has_child() {
     return false;
 }
 
-add_action("wp_footer","perf_menu_toggle");
+add_action("perf_footer_scripts","perf_menu_toggle");
 function perf_menu_toggle(){
     ?>
-    <script>
-        // Open main nav
-        document.getElementById("main_nav_toggle").addEventListener("click", function () {
-            
-            var main_nav = document.getElementById("ml-menu");
-            
-            if (main_nav.classList.contains("menu--open")) {
-                main_nav.classList.remove("menu--open");
-            } else {
-                main_nav.classList.add("menu--open");
-            }
+    // Open main nav
+    document.getElementById("main_nav_toggle").addEventListener("click", function () {
+        
+        var main_nav = document.getElementById("ml-menu");
+        
+        if (main_nav.classList.contains("menu--open")) {
+            main_nav.classList.remove("menu--open");
+        } else {
+            main_nav.classList.add("menu--open");
+        }
 
-        });
+    });
 
-        // Close main nav
-        document.querySelector('.action--close').addEventListener("click", function () {
-            
-            var main_nav = document.getElementById("ml-menu");
-            
-            if (main_nav.classList.contains("menu--open")) {
-                main_nav.classList.remove("menu--open");
-            }
+    // Close main nav
+    document.querySelector('.action--close').addEventListener("click", function () {
+        
+        var main_nav = document.getElementById("ml-menu");
+        
+        if (main_nav.classList.contains("menu--open")) {
+            main_nav.classList.remove("menu--open");
+        }
 
-        });
-    </script>
+    });
     <?php
+}
+
+add_action("wp_footer","perf_custom_js", 99);
+function perf_custom_js(){
+  echo '<script>';
+
+  do_action('perf_footer_scripts');
+
+  echo '</script>';
 }
 

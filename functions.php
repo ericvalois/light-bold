@@ -210,6 +210,55 @@ function perf_scripts() {
 	// add fontawsome
 	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
 	
+	if ( is_page_template("page-templates/template-front.php") ){
+
+		$flickity = false;
+		$post_id = get_the_ID();
+		$rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
+
+		foreach( (array) $rows as $count => $row ) {
+			switch( $row ) {
+			
+				// Custom content
+				case 'custom_content':
+					if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
+						$flickity = true;
+					}else{
+						$flickity = false;
+					}
+				break;
+				
+				// Posts content
+				case 'posts_content':
+					$args = array(
+						'post_type' => 'post',
+					);
+
+					if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
+						$args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
+					}else{
+						$args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
+					}
+
+					$posts = new WP_Query( $args );
+
+					if( $posts->post_count > 1 ){
+						$flickity = true;
+					}else{
+						$flickity = false;
+					}
+				break;
+			}
+		}
+
+		if ( $flickity ){
+			// Flickity Script
+			wp_enqueue_script( 'perf-flickity', get_template_directory_uri() . '/inc/3rd-party/flickity/flickity.min.js', array(), '', true );
+			// Custom Flickity Listener
+			add_action("perf_footer_scripts","perf_add_flickity_listener"); 
+		}
+	}
+
 	// Main menu script
 	if ( perf_main_menu_has_child() ){
 		wp_enqueue_script( 'perf-menu-script', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );

@@ -26,7 +26,7 @@ if ( !in_array("disable_iframe", $perf_disable_lazy_load, true) && !is_admin() )
 
 add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
 function perf_lazysizes_script() {
-	wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/inc/3rd-party/picturefill.min.js', '', '', true );
+	//wp_enqueue_script( 'perf-picturefill', get_template_directory_uri() . '/inc/3rd-party/picturefill.min.js', '', '', true );
 	wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/inc/3rd-party/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', true );
 	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/inc/3rd-party/lazysizes/lazysizes.min.js', '', '', true );
 }
@@ -140,4 +140,21 @@ function perf_lazyload_iframes( $html ) {
 	}
 
 	return $html;
+}
+
+add_action("perf_footer_scripts","perf_img_picturefill");
+function perf_img_picturefill(){
+?>
+// Lazyload picturefill
+function perf_loadJS(u) {
+    var r = document.getElementsByTagName("script")[0],
+        s = document.createElement("script");
+    s.src = u;
+    r.parentNode.insertBefore(s, r);
+}
+
+if (!window.HTMLPictureElement || document.msElementsFromPoint) {
+    perf_loadJS("<?php echo get_template_directory_uri(); ?>/inc/3rd-party/lazysizes/plugins/respimg/ls.respimg.min.js");
+}
+<?php
 }

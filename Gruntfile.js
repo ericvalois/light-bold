@@ -174,7 +174,7 @@ module.exports = function(grunt) {
             }
         },
 
-        /*autoprefixer: {
+        autoprefixer: {
             options: {
                 browsers: ['last 2 versions']
             },
@@ -183,13 +183,13 @@ module.exports = function(grunt) {
                     'style.css': 'style.css'
                 }
             }
-        },*/
+        },
 
         // running `grunt watch` will watch for changes
         watch: {
             sass: {
                 files: ['sass/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass', 'autoprefixer'],
                 options: {
                   livereload: false,
                 },

@@ -45,7 +45,7 @@
 					
 						<p class="<?php echo $text_class; ?>"><?php echo get_sub_field('content'); ?></p>
 
-						<a href="<?php echo get_sub_field('button_link'); ?>" class="<?php echo $button_class; ?>" <?php if( get_sub_field('external_link') == 1 ){echo 'target="_blank"';} ?>><?php echo get_sub_field('button_text'); ?></a>
+						<a href="<?php echo get_sub_field('button_link'); ?>" class="<?php echo $button_class; ?>" <?php if( get_sub_field('external_link') == 1 ){echo 'rel="noopener noreferrer" target="_blank"';} ?>><?php echo get_sub_field('button_text'); ?></a>
 					</div>
 					
 				</div>

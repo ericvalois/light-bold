@@ -1,4 +1,4 @@
-<nav id="ml-menu" class="menu nav-container site-sidebar bg-white hide-print">
+<nav id="ml-menu" class="menu nav-container site-sidebar hide-print">
 	<a class="accessibility skip-link" href="#content"><?php _e("Skip to main content","lightbold"); ?></a>
 	<button class="action action--close flex flex-center" aria-label="Close Menu">
 		<span class="main-nav__toggle__icon block ">

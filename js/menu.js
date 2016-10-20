@@ -359,7 +359,13 @@ if ( typeof define === 'function' && define.amd ) {
         }
 
         var bc = document.createElement('a');
-        bc.innerHTML = idx ? this.menusArr[idx].name : this.options.initialBreadcrumb;
+
+        
+        if( idx ){
+            var StrippedString = this.menusArr[idx].name.replace(/(<([^>]+)>)/ig,"");
+        }
+
+        bc.innerHTML = idx ? StrippedString : this.options.initialBreadcrumb;
         this.breadcrumbsCtrl.appendChild(bc);
 
         var self = this;

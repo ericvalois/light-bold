@@ -94,8 +94,8 @@ function perf_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'Menu Icons',
-			'slug'      => 'menu-icons',
+			'name'      => 'Location "Nav Menu" for ACF',
+			'slug'      => 'location-nav-menu-for-acf',
 			'required'  => true,
 		),
 
