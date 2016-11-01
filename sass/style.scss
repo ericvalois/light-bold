@@ -1,10 +1,10 @@
 /*!
-Theme Name: LightBold
+Theme Name: Light & Bold
 Theme URI: https://lightbold.perfthemes.com
 Author: Perfthemes
 Author URI: https://perfthemes.com
 Description: Performance First WordPress Theme
-Version: 1.1.0
+Version: 1.0.0
 Text Domain: lightbold
 Tags: two-columns, left-sidebar, right-sidebar, custom-colors, custom-menu, featured-images, full-width-template, post-formats, theme-options, translation-ready
 
@@ -178,12 +178,33 @@ footer .icons_social{
 
 .site-footer p { font-size: 14px; }
 .site-footer .menu,
-.site-footer ul{ padding: 0 0 0 20px; }
+.site-footer ul{ padding: 0; }
 
 .widget_archive ul{padding: 0;}
 
 .copy a{ color: #ccc; }
 .copy a:hover{border-color: #ccc; }
+
+
+.site-footer li{
+    list-style-type: none;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 12px;
+}
+
+.site-footer li a {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+}
+
+.site-footer p {
+    color: #fff;
+}
 
 #sub-footer{ margin: 0; }
 
@@ -427,9 +448,6 @@ input.search-field{ padding-right: 40px; }
     padding-left: 1rem;
 }
 
-.site-footer .menu-item,
-.site-footer .page_item { margin-bottom: 5px; }
-
 @include media-query(sm) {
     .address_contact_cell{ display: table-cell; }
 }
@@ -462,11 +480,6 @@ input.search-field{ padding-right: 40px; }
         line-height: 1.5;
     }
 
-
-
-    .site-footer .menu-item,
-    .site-footer .page_item { margin-bottom: 0; }
-
 }
 
 @include media-query(lg) {
@@ -488,6 +501,11 @@ input.search-field{ padding-right: 40px; }
 
 @include media-query(xlg) {
     body{ font-size: 130%; }
+
+    .site-footer li,
+    .site-footer li a{
+        font-size: 14px;
+    }
 }
 
 @import 'print';
