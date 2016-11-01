@@ -106,6 +106,7 @@ function perf_custom_color(){
     .widget_categories a:hover,
     .widget_archive a:hover,
     .comment-reply-link:hover,
+    .site-footer li a:hover,
     .icons_social:hover,
     .icons_social:focus,
     .button-row button{ color: <?php echo $perf_main_color; ?> }

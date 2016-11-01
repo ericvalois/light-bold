@@ -314,6 +314,7 @@
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
+
 }
 
 .main-header {
@@ -467,6 +468,7 @@ body.navigation-opened {
         top: 0;
         z-index: 1;
         height: auto;
+        border-right: 2px solid #f4f3f3;
     }
 
     .site-sidebar {
@@ -495,7 +497,10 @@ body.navigation-opened {
         width: 90%;
         max-width: 230px;
         overflow-y: auto;
-        box-shadow: 0px 3px 3px #dedede;
+    }
+
+    .menu__wrap {
+        border-right: 2px solid #f4f3f3;
     }
 }
 

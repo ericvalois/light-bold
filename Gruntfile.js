@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                     noCache: true,
                 },
                 files: {
-                    "style.css": "sass/style.scss"
+                    "temp.css": "sass/style.scss"
                 }
             }
         },
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 1500,
                     outputfile: "critical/home.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1500,
                     forceInclude: [],
                     ignoreConsole: false
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/archive.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/page.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/single.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/contact.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
                     width: 1200,
                     height: 900,
                     outputfile: "critical/404.css",
-                    filename: "style.css",
+                    filename: "style-<%= pkg.version %>.css",
                     buffer: 800*1024,
                     ignoreConsole: false
                 }
@@ -109,8 +109,15 @@ module.exports = function(grunt) {
             },
             second: {
                 src: ['build/*', '!build/lightbold.zip']
+            },
+            style: {
+                src: ['style-*']
+            },
+            temp: {
+                src: ['temp.css']
             }
         },
+
         copy: {
             readme: {
                 src: 'readme.md',
@@ -129,9 +136,14 @@ module.exports = function(grunt) {
                 src: '/Users/bulledev/Google\ Drive/perfthemes.com/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
             },
+            stylesheet: {
+                src: 'temp.css',
+                dest: 'style-<%= pkg.version %>.css'
+            },
 
 
         },
+
         compress: {
             parent: {
                 options: {
@@ -161,6 +173,7 @@ module.exports = function(grunt) {
                 dest: '<%= pkg.name %>/'
             }
         },
+
         perfbudget: {
             default: {
                 options: {
@@ -180,16 +193,33 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'style.css': 'style.css'
+                    'temp.css': 'temp.css'
                 }
             }
+        },
+
+        'string-replace': {
+          dist: {
+            files: [{
+              //expand: true,
+              cwd: '',
+              src: 'functions.php',
+              dest: 'functions.php'
+            }],
+            options: {
+              replacements: [{
+                pattern: /(style-)(\*|\d+(\.\d+){0,3}(\.\*)?)(.css)/ig,
+                replacement: 'style-<%= pkg.version %>.css'
+              }]
+            }
+          }
         },
 
         // running `grunt watch` will watch for changes
         watch: {
             sass: {
                 files: ['sass/*.scss'],
-                tasks: ['sass', 'autoprefixer'],
+                tasks: ['clean:style', 'sass', 'string-replace', 'autoprefixer', 'copy:stylesheet', 'clean:temp'],
                 options: {
                   livereload: false,
                 },
@@ -206,8 +236,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-perfbudget');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-string-replace');
 
     grunt.registerTask('critical', ['criticalcss', 'cssmin']);
+    //grunt.registerTask('cleanstyle', ['clean:style']);
     grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

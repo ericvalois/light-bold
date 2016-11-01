@@ -436,8 +436,16 @@ echo '<script>
 }
 
 function perf_custom_menu( $theme_location ) {
+
+$menu_name = $theme_location;
+$locations = get_nav_menu_locations();
+$menu_id = $locations[ $menu_name ] ;
+$menu_object = wp_get_nav_menu_object($menu_id);
+
+//print_r($menu_object);
+//exit();
     if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
-        $menu = wp_get_nav_menu_items($theme_location);
+        $menu = wp_get_nav_menu_items( $menu_object->slug );
         $menu_zero_with_child = array();
         
         // Menu
@@ -561,11 +569,18 @@ function perf_custom_menu( $theme_location ) {
  * Detect if primary menu item has child
  */
 function perf_menu_item_has_child( $item_id ){
-    $menu = wp_get_nav_menu_items('primary');
+    $menu_name = 'primary';
+    $locations = get_nav_menu_locations();
+    $menu_id = $locations[ $menu_name ] ;
+    $menu_object = wp_get_nav_menu_object($menu_id);
 
-    foreach( $menu as $item ){
-        if( $item->menu_item_parent == $item_id ){
-            return true;
+    $menu = wp_get_nav_menu_items( $menu_object->slug );
+
+    if( is_array($menu) ){
+        foreach( $menu as $item ){
+            if( $item->menu_item_parent == $item_id ){
+                return true;
+            }
         }
     }
 
@@ -576,15 +591,23 @@ function perf_menu_item_has_child( $item_id ){
  * Detect if primary menu has child
  */
 function perf_main_menu_has_child() {
-    $menu = wp_get_nav_menu_items('primary');
 
-    foreach( $menu as $item ):
+    $menu_name = 'primary';
+    $locations = get_nav_menu_locations();
+    $menu_id = $locations[ $menu_name ] ;
+    $menu_object = wp_get_nav_menu_object($menu_id);
 
-        if( $item->menu_item_parent ){
-            return true;
-        }
+    $menu = wp_get_nav_menu_items( $menu_object->slug );
 
-    endforeach;
+    if( is_array($menu) ){
+      foreach( $menu as $item ):
+
+          if( $item->menu_item_parent ){
+              return true;
+          }
+
+      endforeach;
+    }
 
     return false;
 }

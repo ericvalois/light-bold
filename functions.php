@@ -136,9 +136,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 1', 'lightbold' ),
 		'id'            => 'footer-1',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -146,9 +146,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 2', 'lightbold' ),
 		'id'            => 'footer-2',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -156,9 +156,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 3', 'lightbold' ),
 		'id'            => 'footer-3',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -166,9 +166,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 4', 'lightbold' ),
 		'id'            => 'footer-4',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 white-color %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 main-color %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator alt upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -201,11 +201,11 @@ function perf_scripts() {
 
 	/* If using a child theme, auto-load the parent theme style. */
     if ( is_child_theme() ) {
-        wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style.css' );
+        wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
+        wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
+    }else{
+    	wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
     }
-    
-	// main stylesheet
-	wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
 
 	// add fontawsome
 	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
