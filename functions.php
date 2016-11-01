@@ -301,6 +301,11 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/acf-extra.php';
 
 /**
+ * Load ACF Metabox
+ */
+require get_template_directory() . '/inc/acf-data.php';
+
+/**
  * WordPress cleanup
  */
 require get_template_directory() . '/inc/clean.php';

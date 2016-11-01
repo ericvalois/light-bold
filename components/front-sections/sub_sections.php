@@ -17,7 +17,7 @@
 			<?php $image = $box['image']; ?>
 
 			<div class="md-flex md-col-4">
-				<div class="md-flex flex-column max-width-100">
+				<div class="md-flex flex-column fit col-12">
 					<div class="thumb_section1 bg-cover bg-center relative lazyload"  	data-sizes="auto"
 																						data-bgset="<?php echo $image['sizes']['perfthemes-hero-md']; ?> [(min-width: 60em)] |
 																						<?php echo $image['sizes']['perfthemes-hero-sm']; ?> [(min-width: 52em)] |
