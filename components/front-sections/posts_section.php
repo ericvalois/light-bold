@@ -39,7 +39,7 @@
 
 					<?php if( get_sub_field("show_post_thumbnail") ): ?>
 						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
-							<img data-src="<?php the_post_thumbnail_url("perfthemes-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
+							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php the_post_thumbnail_url("perfthemes-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
 						</a>
 					<?php endif; ?>
 

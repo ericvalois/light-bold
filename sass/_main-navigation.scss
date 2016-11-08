@@ -295,7 +295,7 @@
     height: 75px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1199px) {
     .action--open,
     .action--close {
         display: block;
@@ -453,6 +453,12 @@ body.navigation-opened {
         top: auto;
         bottom: auto;
         margin-top: 148px;
+
+        position: fixed;
+        z-index: 9;
+        width: 90%;
+        max-width: 230px;
+        overflow-y: auto;
     }
 
     .main_nav_toggle {
@@ -489,14 +495,6 @@ body.navigation-opened {
         -webkit-transform: none;
         -ms-transform: none;
         transform: none;
-    }
-
-     .nav-container{
-        position: fixed;
-        z-index: 9;
-        width: 90%;
-        max-width: 230px;
-        overflow-y: auto;
     }
 
     .menu__wrap {

@@ -465,9 +465,9 @@ $menu_object = wp_get_nav_menu_object($menu_id);
                 if( $item->menu_item_parent == 0 ):
                     
                     $html_menu .= '<li class="menu__item">';
-                        $html_menu .= '<a class="menu__link flex flex-center"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
+                        $html_menu .= '<a class="menu__link flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
                         
-                        $html_menu .= '<span class="flex-auto"' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
+                        $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
                         
                         if( $menu_icon ){ 
                             $html_menu .= '<i class="fa flex-none '. $menu_icon .'"></i>'; 
