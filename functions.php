@@ -201,10 +201,12 @@ function perf_scripts() {
 
 	/* If using a child theme, auto-load the parent theme style. */
     if ( is_child_theme() ) {
-        wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
+        //wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
+        wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style.css' );
         wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
     }else{
-    	wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
+    	//wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
+    	wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style.css' );
     }
 
 	// add fontawsome

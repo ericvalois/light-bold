@@ -49,6 +49,39 @@ function perf_add_async( $tag, $handle ) {
     }
 
 }
+/*
+function pm_remove_all_scripts() {
+    global $wp_scripts;
+    $wp_scripts->queue = array();
+}
+add_action('wp_print_scripts', 'pm_remove_all_scripts', 100);
+
+add_action("wp_head","perf_complex_async_script");
+function perf_complex_async_script(){
+    ?>
+        
+        <script type="text/javascript">
+            function myinitscript(){
+                [
+                  'http://imac-de-eric.local:5757/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1',
+                  //'http://imac-de-eric.local:5757/wp-content/plugins/easy-digital-downloads/assets/js/edd-ajax.min.js?ver=2.6.13',
+                  'http://localhost:8888/perfthemes/wp-content/plugins/easy-digital-downloads/assets/js/edd-checkout-global.min.js?ver=2.6.13',
+                  'http://imac-de-eric.local:5757/wp-content/themes/lightbold/js/menu.min.js',
+                  'http://imac-de-eric.local:5757/wp-content/themes/lightbold/inc/3rd-party/lazysizes/lazysizes-all.min.js',
+                  'http://imac-de-eric.local:5757/wp-includes/js/wp-embed.min.js'
+                ].forEach(function(src) {
+                  var script = document.createElement('script');
+                  script.src = src;
+                  script.async = false;
+                  document.head.appendChild(script);
+                });
+            }
+
+            
+        </script>
+        <script src="http://imac-de-eric.local:5757/wp-includes/js/jquery/jquery.js?ver=1.12.4" async onload="myinitscript()"></script>
+    <?php
+}*/
 
 function perf_array_find($needle, array $haystack){
     foreach ($haystack as $key => $value) {
