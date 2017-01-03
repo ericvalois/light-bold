@@ -3,10 +3,15 @@
     "title": "Page Options",
     "fields": [
         {
-            "key": "field_577905ca175b7",
-            "label": "Disable these options on this post:",
-            "name": "perf_disable_options",
-            "type": "checkbox",
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated",
+            "key": "field_584d929d059ff",
+            "label": "Disable JS Optimisation",
+            "name": "perf_on_page_js_optimisation_disabled",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -14,19 +19,64 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "js": "JS Optimisation",
-                "css": "CSS Optimisation",
-                "lazy": "Lazy Load",
-                "share": "Share Links"
-            },
-            "default_value": [
-
-            ],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value"
+            }
+        },
+        {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated",
+            "key": "field_584da0e2f4c8d",
+            "label": "Disable CSS Optimisation",
+            "name": "perf_on_page_css_optimisation_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated",
+            "key": "field_584da0f7f4c8e",
+            "label": "Disable Lazyload",
+            "name": "perf_on_page_lazyload_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated",
+            "key": "field_584da111f4c8f",
+            "label": "Disable Share Liinks",
+            "name": "perf_on_page_share_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
         }
     ],
     "location": [
@@ -53,5 +103,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1475260413
+    "menu_item_level": "all",
+    "modified": 1481548804
 }

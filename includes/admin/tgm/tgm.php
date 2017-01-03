@@ -31,7 +31,7 @@
  * Plugin:
  * require_once dirname( __FILE__ ) . '/path/to/class-tgm-plugin-activation.php';
  */
-require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+require_once get_template_directory() . '/includes/admin/tgm/class-tgm-plugin-activation.php';
 
 add_action( 'tgmpa_register', 'perf_register_required_plugins' );
 
@@ -85,6 +85,12 @@ function perf_register_required_plugins() {
 			'slug'               => 'perf-browser-cache', 
 			'source'             => 'https://github.com/perfthemes/perf-browser-cache/archive/master.zip',
 			'required'           => false,
+		),
+
+		array(
+			'name'      => 'Advanced Custom Fields: Font Awesome',
+			'slug'      => 'advanced-custom-fields-font-awesome',
+			'required'  => true,
 		),
 
 		array(

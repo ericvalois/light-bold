@@ -11,7 +11,7 @@
 
 	<?php perf_breadcrumbs(); ?>
 
-	<h1 class="h0-responsive regular white-color m0 entry-title">
+	<h1 class="h0-responsive white-color m0 entry-title">
 		<?php if ( is_home() ) : ?>
 			<?php global $post; ?>
 			<?php
@@ -39,13 +39,13 @@
 	</h1>
 
 	<?php if( is_single() && get_post_type() == 'post' ): ?>
-		<div class="entry-meta white-color upper">
+		<div class="entry-meta white-color upper normal-weight">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php perf_posted_on(); ?>
 			<?php endwhile; // End of the loop. ?>
 		</div><!-- .entry-meta -->
 	<?php elseif( is_archive() ): ?>
-		<div class="entry-meta white-color upper absolute">
+		<div class="entry-meta white-color upper absolute normal-weight">
 			<?php the_archive_description(); ?>
 		</div><!-- .entry-meta -->
 	<?php endif; ?>

@@ -15,108 +15,64 @@ add_filter( 'style_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
 
 // remove Wp version from scripts
 add_filter( 'script_loader_src', 'perf_remove_wp_ver_css_js', 9999 );
+
 function perf_remove_wp_ver_css_js( $src ) {
     return rtrim( str_replace( array( 'ver='.$GLOBALS['wp_version'], '?&', '&&' ), array( '', '?', '&' ), $src ), '?&' );
 }
 
-/*
-* ASYNC scripts
-*/
-$perf_disable_js_optimisation = perf_get_field("perf_disable_js_optimisation","option");
+function on_page_css_optimisation(){
 
-if( !is_array($perf_disable_js_optimisation) ) $perf_disable_js_optimisation = array();
-if( !in_array("disable_js_auto_async", $perf_disable_js_optimisation, true) && !is_admin() ){
-    add_filter( 'script_loader_tag', 'perf_add_async', 10, 2 );
-}
-
-function perf_add_async( $tag, $handle ) {
     global $post;
 
     if( is_object( $post ) ){
-        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-
-        if( !is_array($perf_disable_options) ){
-            $perf_disable_options = array();
-        }
+        $on_page_css_optimisation_disabled = get_field('perf_on_page_css_optimisation_disabled', $post->ID);
     }else{
-        $perf_disable_options = array();
+        $on_page_css_optimisation_disabled = false;  
     }
 
-    if( is_search() || is_array($perf_disable_options) && !in_array('js', $perf_disable_options) ){
+    return $on_page_css_optimisation_disabled;
+}
+
+function on_page_js_optimisation(){
+
+    global $post;
+
+    if( is_object( $post ) ){
+        $on_page_js_optimisation_disabled = get_field('perf_on_page_js_optimisation_disabled', $post->ID);
+    }else{
+        $on_page_js_optimisation_disabled = false;
+    }
+
+    return $on_page_js_optimisation_disabled;
+}
+
+/*
+$global_js_optimisation_disabled = get_field('perf_js_optimisation_disabled', 'option');
+$global_css_optimisation_disabled = get_field('perf_css_optimisation_disabled', 'option');
+*/
+
+/*
+* ASYNC scripts
+*/
+add_filter( 'script_loader_tag', 'perf_add_async', 10, 2 );
+function perf_add_async( $tag, $handle ) {
+
+    if( !on_page_js_optimisation() && get_field('perf_js_optimisation_active', 'option') && !is_admin() ){
         return str_replace( ' src', ' async src', $tag );
     }else{
         return $tag;
     }
 
 }
-/*
-function pm_remove_all_scripts() {
-    global $wp_scripts;
-    $wp_scripts->queue = array();
-}
-add_action('wp_print_scripts', 'pm_remove_all_scripts', 100);
-
-add_action("wp_head","perf_complex_async_script");
-function perf_complex_async_script(){
-    ?>
-        
-        <script type="text/javascript">
-            function myinitscript(){
-                [
-                  'http://imac-de-eric.local:5757/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1',
-                  //'http://imac-de-eric.local:5757/wp-content/plugins/easy-digital-downloads/assets/js/edd-ajax.min.js?ver=2.6.13',
-                  'http://localhost:8888/perfthemes/wp-content/plugins/easy-digital-downloads/assets/js/edd-checkout-global.min.js?ver=2.6.13',
-                  'http://imac-de-eric.local:5757/wp-content/themes/lightbold/js/menu.min.js',
-                  'http://imac-de-eric.local:5757/wp-content/themes/lightbold/inc/3rd-party/lazysizes/lazysizes-all.min.js',
-                  'http://imac-de-eric.local:5757/wp-includes/js/wp-embed.min.js'
-                ].forEach(function(src) {
-                  var script = document.createElement('script');
-                  script.src = src;
-                  script.async = false;
-                  document.head.appendChild(script);
-                });
-            }
-
-            
-        </script>
-        <script src="http://imac-de-eric.local:5757/wp-includes/js/jquery/jquery.js?ver=1.12.4" async onload="myinitscript()"></script>
-    <?php
-}*/
-
-function perf_array_find($needle, array $haystack){
-    foreach ($haystack as $key => $value) {
-        if (false !== stripos($value['perf_add_asset'], $needle)) {
-            return true;
-        }
-    }
-    return false;
-}
 
 /*
 * Inject loadcss function to load stylesheet async
 * @link https://github.com/filamentgroup/loadCSS
 */
-$perf_disable_css_optimisation = perf_get_field("perf_disable_css_optimisation","option");
-
-if( !is_array($perf_disable_css_optimisation) ) $perf_disable_css_optimisation = array();
-if( ( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) ) && !is_admin() ){
-    add_filter('wp_print_styles', 'perf_inject_loadcss_script', 10);
-}
+add_filter('wp_print_styles', 'perf_inject_loadcss_script', 10);
 function perf_inject_loadcss_script() {
 
-    global $post;
-
-    if( is_object( $post ) ){
-        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-
-        if( !is_array($perf_disable_options) ){
-            $perf_disable_options = array();
-        }
-    }else{
-        $perf_disable_options = array();
-    }
-
-    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
         echo '<script>!function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);</script>';
     }
 }
@@ -124,34 +80,23 @@ function perf_inject_loadcss_script() {
 /*
 * Critical CSS
 */
-if( !in_array("disable_theme_critical_css", $perf_disable_css_optimisation, true) ){
-    add_action('perf_mobile_styles','perf_critical_css', 5);
-}
+
+add_action('perf_mobile_styles','perf_critical_css', 5);
 function perf_critical_css()
 {
-    global $post;
-
-    $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-    if( !is_array($perf_disable_options) ){ $perf_disable_options = array(); }
-
-    if( !in_array('css', $perf_disable_options) ){
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
         $critical_syle = '/* Critical CSS */ ';
 
         if( is_page_template("page-templates/template-front.php") ){
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/home.min.css");
-            $critical_syle .= $temp_css['body'];
+            $critical_syle .= perf_get_response( get_template_directory_uri() . "/critical/home.min.css");
         }elseif( is_page_template("page-templates/template-contact.php") ){
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/contact.min.css");
-            $critical_syle .= $temp_css['body'];
+            $critical_syle .= perf_get_response( get_template_directory_uri() . "/critical/contact.min.css");
         }elseif( is_archive() || is_home() || is_search() ){
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/archive.min.css");
-            $critical_syle .= $temp_css['body'];
+            $critical_syle .= perf_get_response( get_template_directory_uri() . "/critical/archive.min.css");
         }elseif( is_single() ){
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/single.min.css");
-            $critical_syle .= $temp_css['body'];
+            $critical_syle .= perf_get_response( get_template_directory_uri() . "/critical/single.min.css");
         }else{
-            $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/page.min.css");
-            $critical_syle .= $temp_css['body'];
+            $critical_syle .= perf_get_response( get_template_directory_uri() . "/critical/page.min.css");
         }
 
         echo $critical_syle;
@@ -162,26 +107,13 @@ function perf_critical_css()
 /*
 * Async all stylsheets with loadcss.js
 */
-if( !in_array("disable_css_auto_async", $perf_disable_css_optimisation, true) ){
-    add_filter('wp_print_styles', 'perf_async_stylsheets', 20); // Inject loadcss.js call for each stylesheets
-    add_filter('wp_print_styles', 'perf_dequeue_stylesheets', 30); // Dequeue all stylesheets
-}
 
+add_filter('wp_print_styles', 'perf_async_stylsheets', 20); // Inject loadcss.js call for each stylesheets
 function perf_async_stylsheets(){
-    global $wp_styles;
-    global $post;
+    
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
 
-    if( is_object( $post ) ){
-        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-
-        if( !is_array($perf_disable_options) ){
-            $perf_disable_options = array();
-        }
-    }else{
-        $perf_disable_options = array();
-    }
-
-    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
+        global $wp_styles;
 
         $queue = $wp_styles->queue;
 
@@ -205,22 +137,10 @@ function perf_async_stylsheets(){
     }
 }
 
+add_filter('wp_print_styles', 'perf_dequeue_stylesheets', 30); // Dequeue all stylesheets
 function perf_dequeue_stylesheets( ) {
-    global $wp_styles;
-    global $post;
-
-    if( is_object( $post ) ){
-        $perf_disable_options = perf_get_field('perf_disable_options', $post->ID);
-
-        if( !is_array($perf_disable_options) ){
-            $perf_disable_options = array();
-        }
-    }else{
-        $perf_disable_options = array();
-    }
-
-    if( is_search() || is_array($perf_disable_options) && !in_array('css', $perf_disable_options) ){
-
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+        global $wp_styles;
         $queue = $wp_styles->queue;
 
         foreach( $queue as $handle ){
@@ -234,24 +154,27 @@ function perf_dequeue_stylesheets( ) {
 /*
 * Preload
 */
-if( !perf_get_field("perf_disable_preload","option") ){
-    add_action( 'perf_head_open', 'perf_preload' );
-    add_action( 'perf_head_open', 'perf_more_preload' );
-}
+
+add_action( 'perf_head_open', 'perf_preload' );
 function perf_preload() {
-    if( perf_get_field("perf_log_sm","option") ){
+    $active_preload = get_field("perf_preload_active","option");
+    $logo_sm = get_field("perf_log_sm","option");
+    $logo_md = get_field("perf_log_md","option");
+    $logo_lg = get_field("perf_log_lg","option");
+
+    if( $active_preload && $logo_sm ){
     ?>
-        <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
+        <link rel="preload" as="image" href="<?php echo get_field("perf_log_sm","option"); ?>" media="(max-width: 1200px)">
 	<?php
     }
 
-    if( perf_get_field("perf_log_md","option") ){
+    if( $active_preload && $logo_md ){
     ?>
         <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_md","option"); ?>" media="(min-width: 1200px) and (max-width: 1650px)">
     <?php
     }
 
-    if( perf_get_field("perf_log_lg","option") ){
+    if( $active_preload && $logo_lg ){
     ?>
         <link rel="preload" as="image" href="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1650px)">
 	<?php
@@ -262,7 +185,7 @@ function perf_preload() {
     $perf_image_src_md = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
     $perf_image_src_lg = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
 
-    if( $perf_image_id ){
+    if( $perf_image_id && $active_preload ){
     ?>
         <link rel="preload" as="image" href="<?php echo $perf_image_src_sm[0]; ?>" media="(max-width: 52em)">
         <link rel="preload" as="image" href="<?php echo $perf_image_src_md[0]; ?>" media="(min-width: 52em) and (max-width: 64em)">
@@ -274,8 +197,9 @@ function perf_preload() {
 /*
 * More preload added by user
 */
+add_action( 'perf_head_open', 'perf_more_preload' );
 function perf_more_preload() {
-    if( perf_get_field("perf_add_preload","option") ){
+    if( get_field("perf_preload_active","option") && !empty( get_field("perf_add_preload","option") ) ){
         echo perf_get_field("perf_add_preload","option");
     }
 }
@@ -286,43 +210,45 @@ function perf_more_preload() {
 */
 add_action( 'perf_mobile_styles', 'perf_critical_mobile_fix' );
 function perf_critical_mobile_fix() {
-?>
-    h1.entry-title {
-        padding-top: 13vh;
-        padding-bottom: 15vh;
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+    ?>
+        h1.entry-title {
+            padding-top: 13vh;
+            padding-bottom: 15vh;
+        }
+
+        .small-p, .comment-meta, .textwidget {
+            font-size: 16px;
+        }
+
+        .main-carousel.is-hidden {
+          display: none;
+        }
+
+        .main-carousel.flickity-enabled {
+          opacity: 1;
+        }
+
+        .nav-container{transform: translateX(-100%);}
+
+        .button-row{
+            display: flex;
+            display: -ms-flexbox;
+            align-items: stretch;
+        }
+
+        .button-row button{
+          border-right: 1px solid #403e3e;
+        }
+
+        .button-row button.button--previous{
+          border-left: 1px solid #403e3e;
+        }
+
+        .perf-main-hero { box-sizing: border-box; }
+
+    <?php
     }
-
-    .small-p, .comment-meta, .textwidget {
-        font-size: 16px;
-    }
-
-    .main-carousel.is-hidden {
-      display: none;
-    }
-
-    .main-carousel.flickity-enabled {
-      opacity: 1;
-    }
-
-    .nav-container{transform: translateX(-100%);}
-
-    .button-row{
-        display: flex;
-        display: -ms-flexbox;
-        align-items: stretch;
-    }
-
-    .button-row button{
-      border-right: 1px solid #403e3e;
-    }
-
-    .button-row button.button--previous{
-      border-left: 1px solid #403e3e;
-    }
-
-    .perf-main-hero { box-sizing: border-box; }
-
-<?php
 }
 
 /*
@@ -330,22 +256,24 @@ function perf_critical_mobile_fix() {
 */
 add_action( 'perf_md_styles', 'perf_critical_md_fix' );
 function perf_critical_md_fix() {
-?>
-    h1.entry-title {
-        padding-top: 12.66666666vh;
-        padding-bottom: 14.66666666vh;
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+    ?>
+        h1.entry-title {
+            padding-top: 12.66666666vh;
+            padding-bottom: 14.66666666vh;
+        }
+
+        .front-hero, .front-hero-content { min-height: 58.33333vh; }
+
+        @-moz-document url-prefix() { 
+            .front-hero-section{ height: 600px; min-height: 58.33333vh;  }
+        }
+
+        
+        .h0-responsive { font-size: 6vw; }
+
+    <?php
     }
-
-    .front-hero, .front-hero-content { min-height: 58.33333vh; }
-
-    @-moz-document url-prefix() { 
-        .front-hero-section{ height: 600px; min-height: 58.33333vh;  }
-    }
-
-    
-    .h0-responsive { font-size: 6vw; }
-
-<?php
 }
 
 /*
@@ -353,10 +281,12 @@ function perf_critical_md_fix() {
 */
 add_action( 'perf_lg_styles', 'perf_critical_lg_fix' );
 function perf_critical_lg_fix() {
-?>
-    #primary-menu a, .main-search input[type="search"] { min-height: 8.33333vh; }
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+    ?>
+        #primary-menu a, .main-search input[type="search"] { min-height: 8.33333vh; }
 
-<?php
+    <?php
+    }
 }
 
 /*
@@ -364,27 +294,28 @@ function perf_critical_lg_fix() {
 */
 add_action( 'perf_1200_styles', 'perf_critical_1200_fix' );
 function perf_critical_1200_fix() {
-?>
-    .main-header_container,
-    .site-logo {
-        height: 223px;
-        display: flex;
-        align-items: center;
-        display: -ms-flexbox; 
-        -ms-flex-align: center;
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+    ?>
+        .main-header_container,
+        .site-logo {
+            display: flex;
+            align-items: center;
+            display: -ms-flexbox; 
+            -ms-flex-align: center;
+        }
+
+        .nav-container {
+            overflow: hidden; /* Fix critical fout */
+        }
+
+        .sub-menu {
+            display: none; /* Fix fout on page load */
+        }
+
+        .nav-container{transform: translateX(0);}
+
+    <?php
     }
-
-    .nav-container {
-        overflow: hidden; /* Fix critical fout */
-    }
-
-    .sub-menu {
-        display: none; /* Fix fout on page load */
-    }
-
-    .nav-container{transform: translateX(0);}
-
-<?php
 }
 
 /*
@@ -392,14 +323,12 @@ function perf_critical_1200_fix() {
 */
 add_action( 'perf_96em_styles', 'perf_critical_96em_fix' );
 function perf_critical_96em_fix() {
-?>
-    .h0-responsive { font-size: 5.76rem; }
+    if( !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+    ?>
+        .h0-responsive { font-size: 5.76rem; }
 
-    .main-header_container,
-    .site-logo {
-        height: 273px;
+    <?php
     }
-<?php
 }
 
 /*
@@ -407,9 +336,8 @@ function perf_critical_96em_fix() {
 */
 add_action( 'perf_mobile_styles', 'perf_critical_admin' );
 function perf_critical_admin() {
-    if (is_user_logged_in()){
-        $temp_css = wp_remote_get( get_template_directory_uri() . "/critical/critical-admin.css");
-        $critical_syle = $temp_css['body'];
+    if ( is_user_logged_in() && !on_page_css_optimisation() && get_field("perf_css_optimisation_active","option") && !is_admin() ){
+        $critical_syle = perf_get_response( get_template_directory_uri() . "/critical/critical-admin.css");
         echo $critical_syle;
     }
 }

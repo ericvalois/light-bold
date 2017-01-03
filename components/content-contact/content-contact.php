@@ -27,7 +27,7 @@
 
 								<div class="table sm-col-12 address_contact white-color mt0 mb1">
 									<div class="table-cell width40 main-color contact_icons">
-										<?php echo $infos['icon']; ?>
+										<svg class="fa <?php echo $infos['icon']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $infos['icon']; ?>"></use></svg>
 									</div>
 
 									<div class="table-cell small-p align-middle">

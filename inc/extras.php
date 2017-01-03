@@ -23,61 +23,6 @@ function perf_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'perf_body_classes' );
 
-
-/**
- * Add a parent CSS class for nav menu items.
- *
- * @param array  $items The menu items, sorted by each menu item's menu order.
- * @return array (maybe) modified parent CSS class.
- */
-add_filter( 'wp_nav_menu_objects', 'perf_href_Return_false' );
-function perf_href_Return_false( $items ) {
-    $parents = array();
-
-    // Collect menu items with parents.
-    foreach ( $items as $item ) {
-        if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
-            $parents[] = $item->menu_item_parent;
-        }
-    }
-    //print_r($items); exit();
-
-    // Add class.
-    foreach ( $items as $item ) {
-        if ( in_array( $item->ID, $parents ) ) {
-            $item->url = 'javascript:void(0);';
-            //print_r($item); exit();
-
-        }
-    }
-    return $items;
-}
-
-
-/**
-* Add search in main menu
-*/
-function perf_add_search_menu() {
-    // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
-
-    // open the <ul>, set 'menu_class' and 'menu_id' values
-    $perf_wrap  = '<ul id="%1$s" class="%2$s">';
-
-    // get nav items as configured in /wp-admin/
-    $perf_wrap .= '%3$s';
-
-    // the search form
-    if( perf_get_field("perf_hide_search","option") != 1 ){
-        $perf_wrap .= '<li id="menu-item-search" class="menu-item menu-item-type-post_type menu-item-object-page"><form role="search" method="get" action="' . esc_url( home_url( '/' ) ) . '" class="main-search table col-12"><input class="border-none bold caps table-cell col-12 p0" name="s" type="search" placeholder="' . __("Search","lightbold") . '" required><i class="_mi _after fa fa-search table-cell align-middle"></i></form></li>';
-    }
-
-    // close the <ul>
-    $perf_wrap .= '</ul>';
-
-    // return the result
-    return $perf_wrap;
-}
-
 /*
 * Wrap all table for a better responsive world
 */
@@ -121,94 +66,6 @@ function perf_tag_cloud_sizes($args) {
     $args['smallest'] = 13;
     $args['largest'] = 13;
     return $args;
-}
-
-class perf_Walker_Nav_Menu extends Walker_Nav_Menu {
-
-    /**
-     * Starts the list before the elements are added.
-     *
-     * Adds classes to the unordered list sub-menus.
-     *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
-     */
-    function start_lvl( &$output, $depth = 0, $args = array() ) {
-        // Depth-dependent classes.
-        $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
-        $display_depth = ( $depth + 1); // because it counts the first submenu as 0
-        $classes = array(
-            'sub-menu',
-            ( $display_depth % 2  ? 'menu-odd' : 'menu-even' ),
-            ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
-            'menu-depth-' . $display_depth
-        );
-        $class_names = implode( ' ', $classes );
-
-        // Build HTML for output.
-        $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
-    }
-
-    /**
-     * Start the element output.
-     *
-     * Adds main/sub-classes to the list items and links.
-     *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param object $item   Menu item data object.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
-     * @param int    $id     Current item ID.
-     */
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
-        global $wp_query;
-        $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-
-        // Depth-dependent classes.
-        $depth_classes = array(
-            ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
-            ( $depth >=2 ? 'sub-sub-menu-item' : '' ),
-            ( $depth % 2 ? 'menu-item-odd' : 'menu-item-even' ),
-            'menu-item-depth-' . $depth
-        );
-        $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
-
-        // Passed classes.
-        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
-        $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-
-        // Build HTML.
-        $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="relative ' . $depth_class_names . ' ' . $class_names . '">';
-
-        // Link attributes.
-        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-        $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-        $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-        $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-
-    if( is_object($args) && is_object($item) ) {
-      // Build HTML output and pass through the proper filter.
-          $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
-              $args->before,
-              $attributes,
-              $args->link_before,
-              apply_filters( 'the_title', $item->title, $item->ID ),
-              $args->link_after,
-              $args->after
-          );
-    }else{
-      $item_output = sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
-              $item->url,
-              ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-              $item->title
-          );
-    }
-
-        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-    }
 }
 
 
@@ -263,7 +120,7 @@ function perf_move_comment_field_to_bottom( $fields ) {
 }
 
 /**
- * Remove novalidate to comment form
+ * Remove novalidate from comment form
  */
 add_action( 'wp_footer', 'perf_enable_comment_form_validation' );
 function perf_enable_comment_form_validation() {
@@ -335,151 +192,66 @@ function perf_add_flickity_listener(){
 }
 
 /**
- * ACF Custom Switch True or False
+ * Custom WordPress Menu Markup
  */
-add_action('admin_head', 'perf_custom_switch');
-function perf_custom_switch() {
-  echo '<style>
-    .acf-bl li{
-      clear: both;
-    }
-
-    .switch {
-      position: relative;
-      display: inline-block !important;
-      width: 60px;
-      height: 34px;
-      float: left;
-    }
-
-    .switch-label{
-      float: left;
-      margin-left: 10px;
-      line-height: 34px;
-    }
-
-    /* Hide default HTML checkbox */
-    .switch input {display:none;}
-
-    /* The slider */
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    input:checked + .slider {
-      background-color: #2196F3;
-    }
-
-    input:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-      border-radius: 34px;
-    }
-
-    .slider.round:before {
-      border-radius: 50%;
-    }
-</style>';
-
-echo '<script>
-    jQuery(document).ready(function($) {
-        $( ".acf-checkbox-list label" ).each(function( index ) {
-          var input = $(this).children("input");
-          var label = $(this).clone().children().remove().end().text();
-
-          // Clean the li
-          $(this).empty();
-
-          // Add the input
-          $(this).html(input);
-
-          // Add the new label
-          $(this).after( "<div class=switch-label>" + label + "</div>" );
-
-          // Add Css class
-          $(this).addClass("switch");
-
-          // Add the slider markup
-          $(this).append( "<div class=slider></div>" );
-        });
-    });
-</script>';
-}
-
 function perf_custom_menu( $theme_location ) {
 
-$menu_name = $theme_location;
-$locations = get_nav_menu_locations();
-$menu_id = $locations[ $menu_name ] ;
-$menu_object = wp_get_nav_menu_object($menu_id);
+    $menu_name = $theme_location;
+    $locations = get_nav_menu_locations();
+    $menu_id = $locations[ $menu_name ] ;
+    $menu_object = wp_get_nav_menu_object($menu_id);
 
-//print_r($menu_object);
-//exit();
+
     if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
         $menu = wp_get_nav_menu_items( $menu_object->slug );
         $menu_zero_with_child = array();
         
+        if( is_home() ){
+            $post = get_post( get_option( 'page_for_posts' ) );
+        }else{
+           global $post; 
+        }
+        
+
         // Menu
         $html_menu = '<ul data-menu="main" class="menu__level ' . (( !perf_main_menu_has_child() )?'visible':'') . '">';
 
-            foreach( $menu as $item ):
+        foreach( $menu as $item ):
 
-                if( perf_menu_item_has_child($item->ID) ){
-                    $menu_zero_with_child[] = $item->ID;
-                    $has_child = true;
-                }else{
-                    $has_child = false;
-                }
+            if( perf_menu_item_has_child($item->ID) ){
+                $menu_zero_with_child[] = $item->ID;
+                $has_child = true;
+            }else{
+                $has_child = false;
+            }
 
-                $menu_icon = get_field( 'perf_menu_icon', $item->ID );
+            $menu_icon = get_field( 'perf_icon_name', $item->ID );
 
-                if( $item->menu_item_parent == 0 ):
+            if(  $item->object_id == $post->ID ){
+                $current_page = 'active';
+            }else{
+                $current_page = '';
+            }
+
+            if( $item->menu_item_parent == 0 ):
+                
+                $html_menu .= '<li class="menu__item '. $current_page .'">';
+                    $html_menu .= '<a class="menu__link flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
                     
-                    $html_menu .= '<li class="menu__item">';
-                        $html_menu .= '<a class="menu__link flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
-                        
-                        $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
-                        
-                        if( $menu_icon ){ 
-                            $html_menu .= '<i class="fa flex-none '. $menu_icon .'"></i>'; 
-                        }
-
-                        $html_menu .= '</a>';
-
-                    $html_menu .= '</li>';
+                    $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
                     
-                endif;
+                    if( $menu_icon ){ 
+                        $html_menu .= '<svg class="fa flex-none '. $menu_icon .'"><use xlink:href="#'. $menu_icon .'"></use></svg>'; 
+                    }
 
-            endforeach;
+                    $html_menu .= '</a>';
+
+                $html_menu .= '</li>';
+                
+            endif;
+
+        endforeach;
+
         $html_menu .= '</ul>';
 
         echo $html_menu;
@@ -502,10 +274,16 @@ $menu_object = wp_get_nav_menu_object($menu_id);
                                 $has_child = false;
                             }
 
-                            $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
+                            $menu_icon = get_field( 'perf_icon_name', $starter_item->ID );
+
+                            if(  $starter_item->object_id == $post->ID ){
+                                $current_page = 'active';
+                            }else{
+                                $current_page = '';
+                            }
 
                             ?>
-                                <li class="menu__item">
+                                <li class="menu__item <?php echo $current_page; ?>">
                                     <a class="menu__link flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>>
                                         <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID . '"'; } ?>>
                                             <?php echo $starter_item->title; ?> 
@@ -513,7 +291,7 @@ $menu_object = wp_get_nav_menu_object($menu_id);
 
                                         <?php 
                                             if( $menu_icon ){ 
-                                                echo '<i class="fa flex-none '. $menu_icon .'"></i>'; 
+                                                echo '<svg class="fa flex-none '. $menu_icon .'"><use xlink:href="#'. $menu_icon .'"></use></svg>'; 
                                             }
                                         ?>
                                     </a>
@@ -534,10 +312,18 @@ $menu_object = wp_get_nav_menu_object($menu_id);
                     foreach( $menu as $starter_item ):
 
                         $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
+
+                        if(  $starter_item->object_id == $post->ID ){
+                            $current_page = 'active';
+                        }else{
+                            $current_page = '';
+                        } 
+
+
                     
                         if(  $starter_item->menu_item_parent == $item ):
                             ?>
-                                <li class="menu__item">
+                                <li class="menu__item  <?php echo $current_page; ?>">
                                     <a class="menu__link flex flex-center" <?php echo 'href="'. $starter_item->url .'"'; ?>>
                                         <span class="flex-auto">
                                             <?php echo $starter_item->title; ?>
@@ -641,6 +427,22 @@ function perf_menu_toggle(){
     <?php
 }
 
+add_action("perf_footer_scripts","perf_call_sprite_fontawesome");
+function perf_call_sprite_fontawesome(){
+    ?>
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET", "<?php echo get_bloginfo("stylesheet_directory"); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
+    ajax.send();
+    ajax.onload = function(e) {
+      var div = document.createElement("div");
+      div.innerHTML = ajax.responseText;
+      document.body.insertBefore(div, document.body.childNodes[0]);
+    }
+    <?php
+}
+
+
+
 add_action("wp_footer","perf_custom_js", 99);
 function perf_custom_js(){
   echo '<script>';
@@ -649,4 +451,45 @@ function perf_custom_js(){
 
   echo '</script>';
 }
+
+/**
+ * Retrieves the response from the specified URL using one of PHP's outbound request facilities.
+ *
+ * @params  $url  The URL of the feed to retrieve.
+ * @returns The response from the URL; null if empty.
+ */
+function perf_get_response( $url ) {
+    $response = null;
+
+    // First, we try to use wp_remote_get
+    $response = wp_remote_get( $url );
+
+    if( is_wp_error( $response ) ) {
+
+        // If that doesn't work, then we'll try file_get_contents
+        $response = file_get_contents( $url );
+
+        if( false == $response ) {
+
+            // And if that doesn't work, then we'll try curl
+            $response = $this->curl( $url );
+
+            if( null == $response ) {
+                $response = 0;
+            } // end if/else
+
+        } 
+
+    } 
+
+    // If the response is an array, it's coming from wp_remote_get,
+    // so we just want to capture to the body index for json_decode.
+    if( is_array( $response ) ) {
+        $response = $response['body'];
+    }
+
+    return $response;
+}
+
+
 

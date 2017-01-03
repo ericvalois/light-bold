@@ -20,6 +20,12 @@ if( !is_admin() ){
 	}
 }
 
+/* Admin functionality */
+if ( is_admin() ) {
+	// Getting Started page and EDD update class
+	require_once( get_template_directory() . '/includes/admin/updater/theme-updater.php' );
+}
+
 /*
 * Custom ACF function
 */
@@ -138,7 +144,7 @@ function perf_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -148,7 +154,7 @@ function perf_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -158,7 +164,7 @@ function perf_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -168,7 +174,7 @@ function perf_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="mb2 main-color %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 small-p">',
+		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -208,9 +214,6 @@ function perf_scripts() {
     	//wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
     	wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style.css' );
     }
-
-	// add fontawsome
-	wp_enqueue_style( 'perf-font-awesome', get_template_directory_uri() . '/inc/3rd-party/font-awesome/css/font-awesome.min.css'  );
 	
 	if ( is_page_template("page-templates/template-front.php") ){
 
@@ -275,7 +278,7 @@ add_action( 'wp_enqueue_scripts', 'perf_scripts' );
 /**
  * Load TGM class
  */
-require get_template_directory() . '/inc/tgm.php';
+require get_template_directory() . '/includes/admin/tgm/tgm.php';
 
 /**
  * Custom template tags for this theme.
@@ -301,11 +304,6 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load ACF fields
  */
 require get_template_directory() . '/inc/acf-extra.php';
-
-/**
- * Load ACF Metabox
- */
-require get_template_directory() . '/inc/acf-data.php';
 
 /**
  * WordPress cleanup

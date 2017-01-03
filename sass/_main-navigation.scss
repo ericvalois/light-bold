@@ -1,5 +1,5 @@
 .menu__wrap {
-   position: absolute;
+    position: absolute;
     top: 75px;
     bottom: 0;
     width: 100%;
@@ -36,12 +36,11 @@
 }
 
 .menu__link {
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: none;
     height: 80px;
     min-height: 8.33333vh;
-    //display: inline-block;
     text-decoration: none;
     color: #3e3e3e;
     transition: color .3s ease;
@@ -65,6 +64,11 @@
     content: "";
     top: 0;
     opacity: 0;
+}
+
+.menu__link:hover:before {
+    left: 0;
+    opacity: 1;
 }
 
 .menu__link:hover:before {
@@ -203,11 +207,12 @@
 .menu__breadcrumbs a {
     border: none;
     color: #3498db;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     cursor: pointer;
     display: inline-block;
     flex: 0 0 auto;
+    font-weight: 300;
 }
 
 .menu__breadcrumbs a:last-child {
@@ -434,12 +439,16 @@ body.navigation-opened {
 }
 
 @media (min-width: 1200px){
+    .menu__wrap {
+        top: 0;
+    }
 
     .menu__breadcrumbs {
-        //display: none;
         position: absolute;
         top: 0;
         z-index: 9999999999999;
+        width: 100%;
+        border-right: 2px solid #f4f3f3;
     }
 
     .menu__back{ display: block;}
@@ -452,13 +461,23 @@ body.navigation-opened {
         background-color: transparent;
         top: auto;
         bottom: auto;
-        margin-top: 148px;
+        //margin-top: 148px;
+        //margin-top: 166px;
+        margin-top: 200px;
 
         position: fixed;
         z-index: 9;
         width: 90%;
         max-width: 230px;
-        overflow-y: auto;
+        overflow-y: visible;
+    }
+
+    .nav-container.multi_level {
+        margin-top: 225px;
+    }
+
+    .nav-container.multi_level .menu__breadcrumbs{
+        top: -75px;
     }
 
     .main_nav_toggle {
@@ -487,7 +506,7 @@ body.navigation-opened {
         padding-left: 2rem;
         padding-right: 2rem;
         height: 100px;
-        height: 16.66667vh;
+        height: 200px;
         position: static;
     }
 
@@ -521,8 +540,20 @@ body.navigation-opened {
     }
 
     .nav-container {
-        margin-top: 200px;
+        margin-top: 255px;
     }
+
+    .site-logo {
+        height: 255px;
+    }
+
+    .nav-container.multi_level {
+        margin-top: 275px;
+    }
+/*
+    .nav-container.multi_level .menu__breadcrumbs{
+        top: -75px;
+    }*/
 }
 
 .action--close .main-nav__toggle__icon{

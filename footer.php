@@ -16,19 +16,19 @@
 		<footer class="site-footer clearfix dark-bg hide-print">
 
 			<div class="clearfix mt3 mb3 lg-mt4 px2 lg-px3 ">
-				<div class="md-col md-col-3">
+				<div class="lg-col lg-col-3">
 					<?php dynamic_sidebar( 'footer-1' ); ?>
 				</div>
 
-				<div class="md-col md-col-3">
+				<div class="lg-col lg-col-3">
 					<?php dynamic_sidebar( 'footer-2' ); ?>
 				</div>
 
-				<div class="md-col md-col-3">
+				<div class="lg-col lg-col-3">
 					<?php dynamic_sidebar( 'footer-3' ); ?>
 				</div>
 
-				<div class="md-col md-col-3">
+				<div class="lg-col lg-col-3">
 					<?php dynamic_sidebar( 'footer-4' ); ?>
 				</div>
 			</div>

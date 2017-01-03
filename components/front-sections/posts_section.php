@@ -8,7 +8,7 @@
 
 <section class="clearfix posts_section px4 py1 lg-py2 white-bg ">
 
-	<h2 class="mt2 lg-mt3 upper mb1 block center"><?php echo get_sub_field("title"); ?></h2>
+	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo get_sub_field("title"); ?></h2>
 	<span class="separator seprarator-center"></span>
 	
 	<div class="flex flex-wrap mxn2 mt2">
@@ -45,7 +45,7 @@
 
 					<div class="small-p mb1 md-mb0 sm-show"><?php the_category( ", " ); ?> </div>
 
-					<h2 class="h3 mb1 mt0"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					<h3 class="h3 mb1 mt0 entry-title"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 					<div class="small-p">
 						<strong><?php _e("By","lightbold"); ?> <?php echo get_the_author(); ?></strong><br>

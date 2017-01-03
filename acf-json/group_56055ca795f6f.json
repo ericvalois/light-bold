@@ -3,6 +3,8 @@
     "title": "Perfthemes general options",
     "fields": [
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56055cee1dad1",
             "label": "General",
             "name": "",
@@ -14,11 +16,19 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "return_format": "url",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
             "key": "field_560961fa510ed",
             "label": "Large logo",
             "name": "perf_log_lg",
@@ -30,7 +40,9 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
+            }
+        },
+        {
             "return_format": "url",
             "preview_size": "full",
             "library": "all",
@@ -40,9 +52,7 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
-        },
-        {
+            "mime_types": "",
             "key": "field_57c99fc8ecb1f",
             "label": "Medium logo",
             "name": "perf_log_md",
@@ -54,7 +64,9 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
+            }
+        },
+        {
             "return_format": "url",
             "preview_size": "full",
             "library": "all",
@@ -64,9 +76,7 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
-        },
-        {
+            "mime_types": "",
             "key": "field_56bb9ed6c85bb",
             "label": "Small logo",
             "name": "perf_log_sm",
@@ -78,19 +88,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "return_format": "url",
-            "preview_size": "full",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56ddd6de01e55",
             "label": "Hero images",
             "name": "",
@@ -102,11 +104,19 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
             "key": "field_56ddd70b01e56",
             "label": "Default hero image",
             "name": "perf_hero_image",
@@ -118,8 +128,10 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "return_format": "id",
+            }
+        },
+        {
+            "return_format": "array",
             "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
@@ -128,9 +140,7 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
-        },
-        {
+            "mime_types": "",
             "key": "field_56ddd73901e57",
             "label": "Blog and archive hero image",
             "name": "perf_hero_blog_archive",
@@ -142,7 +152,9 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
+            }
+        },
+        {
             "return_format": "array",
             "preview_size": "thumbnail",
             "library": "all",
@@ -152,9 +164,7 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
-        },
-        {
+            "mime_types": "",
             "key": "field_56ddd75f01e58",
             "label": "404 hero image",
             "name": "perf_hero_404",
@@ -166,19 +176,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56d9e12280e09",
             "label": "Footer",
             "name": "",
@@ -190,11 +192,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_56d9e12e80e0a",
             "label": "Copyright",
             "name": "perf_footer_copy",
@@ -207,15 +212,12 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56face051443f",
             "label": "Contact form",
             "name": "",
@@ -227,11 +229,12 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "message": "Copy and paste the following Shortcode where you want the contact form.\r\n\r\n<strong>[perf_contact_form]<\/strong>",
+            "esc_html": 0,
+            "new_lines": "wpautop",
             "key": "field_57ee70b4726be",
             "label": "Form Shortcode",
             "name": "",
@@ -243,12 +246,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "Copy and paste the following Shortcode where you want the contact form.\r\n\r\n<strong>[perf_contact_form]<\/strong>",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            }
         },
         {
+            "default_value": "",
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": "",
             "key": "field_56face1214440",
             "label": "Success message",
             "name": "perf_contact_success_message",
@@ -261,15 +266,15 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "default_value": "",
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": "",
             "key": "field_56face2b14441",
             "label": "Error message",
             "name": "perf_contact_error_message",
@@ -282,15 +287,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "br",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_56face4114442",
             "label": "Notification email",
             "name": "perf_contact_notification_email",
@@ -302,15 +306,16 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Activated",
+            "ui_off_text": "Disabled",
             "key": "field_56face7e14443",
-            "label": "Activate Google reCAPTCHA?",
+            "label": "Google reCAPTCHA?",
             "name": "perf_contact_recaptcha",
             "type": "true_false",
             "instructions": "If you get spam submission, activate that option.",
@@ -320,11 +325,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_56faceea14444",
             "label": "Google reCAPTCHA public key",
             "name": "perf_contact_public_key",
@@ -345,15 +353,15 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
             "key": "field_56facf6e14445",
             "label": "Google reCAPTCHA secret key",
             "name": "perf_contact_private_key_copy",
@@ -374,18 +382,15 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_572a58639b487",
             "label": "Hide\/Show",
-            "name": "hideshow",
+            "name": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -394,14 +399,17 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_57237510a97d6",
-            "label": "Disable all social share",
-            "name": "perf_disable_all_ss",
+            "label": "Disable Social share",
+            "name": "perf_disable_social_share",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -410,14 +418,17 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Activated",
+            "ui_off_text": "Disabled",
             "key": "field_56d9e9953bd91",
-            "label": "Disable go to top link",
-            "name": "perf_disble_top_anchor",
+            "label": "Go to top link",
+            "name": "perf_top_anchor",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -426,46 +437,36 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
-            "key": "field_56d5cb6806e42",
-            "label": "Hide search form from nav menu",
-            "name": "perf_hide_search",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "default_value": 1,
             "message": "",
-            "default_value": 0
-        },
-        {
+            "ui": 1,
+            "ui_on_text": "Activated",
+            "ui_off_text": "Disabled",
             "key": "field_572a589d9b488",
-            "label": "Disable content fadeIn on page load",
-            "name": "perf_hide_fade",
+            "label": "Content fadeIn on page load",
+            "name": "perf_content_fade",
             "type": "true_false",
-            "instructions": "This can result to a \"Fout\" of the content.",
+            "instructions": "This may cause a \"Fout\" of the content.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "default_value": 1,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Activated",
+            "ui_off_text": "Disabled",
             "key": "field_57718bd0eb589",
-            "label": "Show Advanced Custom Fields Options",
-            "name": "perf_show_acf",
+            "label": "Hide Advanced Custom Fields Options",
+            "name": "perf_hide_acf",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -474,14 +475,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_5730d3f38fef9",
             "label": "Analytics",
-            "name": "analytics",
+            "name": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -490,11 +491,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": "",
             "key": "field_57448290742ba",
             "label": "Add your analytics code below",
             "name": "perf_analytics",
@@ -507,11 +511,6 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
             "readonly": 0,
             "disabled": 0
         }
@@ -533,5 +532,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1475244352
+    "menu_item_level": "all",
+    "modified": 1483461731
 }

@@ -1,0 +1,44 @@
+{
+    "key": "group_5866b96f7cd3a",
+    "title": "Menu icon",
+    "fields": [
+        {
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Ex: fa-home",
+            "prepend": "",
+            "append": "",
+            "key": "field_5866b99465749",
+            "label": "Icon name",
+            "name": "perf_icon_name",
+            "type": "text",
+            "instructions": "Copy and paste an icon name from the <a target=\"_blank\" href=\"https:\/\/perfthemes.com\/doc\/all-available-icons\/\">complete icons list<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "menu",
+                "operator": "==",
+                "value": "2"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "modified": 1483127378
+}

@@ -109,7 +109,8 @@ function perf_custom_color(){
     .site-footer li a:hover,
     .icons_social:hover,
     .icons_social:focus,
-    .button-row button{ color: <?php echo $perf_main_color; ?> }
+    .button-row button,
+    .active .menu__link{ color: <?php echo $perf_main_color; ?> }
     .menu__item i,
     .menu__link:hover,
     .menu__breadcrumbs a,

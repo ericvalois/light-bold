@@ -6,10 +6,10 @@
  * @since 1.0
  */
 
-$perf_disable_lazy_load = perf_get_field("perf_disable_lazy_load","option");
-if( !is_array($perf_disable_lazy_load) ) $perf_disable_lazy_load = array();
+$perf_img_lazyload_active = perf_get_field("perf_img_lazyload_active","option");
+$perf_iframe_lazyload_active = perf_get_field("perf_iframe_lazyload_active","option");
 
-if ( !in_array("disable_img", $perf_disable_lazy_load, true) && !is_admin() ) {
+if ( $perf_img_lazyload_active && !is_admin() ) {
 
 	add_filter( 'get_avatar'			, 'perf_lazy_load_image', PHP_INT_MAX );
 	add_filter( 'the_content'			, 'perf_lazy_load_image', PHP_INT_MAX );
@@ -19,15 +19,13 @@ if ( !in_array("disable_img", $perf_disable_lazy_load, true) && !is_admin() ) {
 
 }
 
-if ( !in_array("disable_iframe", $perf_disable_lazy_load, true) && !is_admin() ) {
+if ( $perf_iframe_lazyload_active && !is_admin() ) {
 	add_filter( 'the_content', 'perf_lazyload_iframes', PHP_INT_MAX );
 	add_filter( 'widget_text', 'perf_lazyload_iframes', PHP_INT_MAX );
 }
 
 add_action( 'wp_enqueue_scripts', 'perf_lazysizes_script' );
 function perf_lazysizes_script() {
-	//wp_enqueue_script( 'perf-lazysizes-bgset', get_template_directory_uri() . '/inc/3rd-party/lazysizes/plugins/bgset/ls.bgset.min.js', '', '', true );
-	//wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/inc/3rd-party/lazysizes/lazysizes.min.js', '', '', true );
 	wp_enqueue_script( 'perf-lazysizes', get_template_directory_uri() . '/inc/3rd-party/lazysizes/lazysizes-all.min.js', '', '', true );
 }
 
@@ -36,18 +34,14 @@ function perf_lazy_load_image( $content ){
 	global $post;
 
 	if( is_object( $post ) ){
-        $perf_page_disable_lazy_load = perf_get_field('perf_disable_options', $post->ID);
-
-        if( !is_array($perf_page_disable_lazy_load) ){
-        	$perf_page_disable_lazy_load = array();
-        }
+        $perf_on_page_lazyload_disabled = perf_get_field('perf_on_page_lazyload_disabled', $post->ID);
     }else{
-        $perf_page_disable_lazy_load = array();
+        $perf_on_page_lazyload_disabled = false;
     }
 
 
 
-	if( is_search() || is_array($perf_page_disable_lazy_load) && !in_array("lazy", $perf_page_disable_lazy_load) ){
+	if( !is_search() && !$perf_on_page_lazyload_disabled ){
 		$perf_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
 	    $perf_document = new DOMDocument();
 
@@ -104,7 +98,7 @@ function perf_lazy_load_image( $content ){
 	    $html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $perf_document->saveHTML()));
 	    return $html_fragment;
 	}else{
-		return $perf_content;
+		return $content;
 	}
 }
 
@@ -115,10 +109,13 @@ function perf_lazyload_iframes( $html ) {
 
 	global $post;
 
-	$perf_page_disable_lazy_load = perf_get_field("perf_disable_options", $post->ID);
-	if( !is_array($perf_page_disable_lazy_load) ) $perf_page_disable_lazy_load = array();
+	if( is_object( $post ) ){
+        $perf_on_page_lazyload_disabled = perf_get_field('perf_on_page_lazyload_disabled', $post->ID);
+    }else{
+        $perf_on_page_lazyload_disabled = false;
+    }
 
-	if( !in_array("lazy", $perf_page_disable_lazy_load) ){
+	if( !is_search() && !$perf_on_page_lazyload_disabled ){
 
 		$perf_matches = array();
 		preg_match_all( '/<iframe\s+.*?>/', $html, $perf_matches );

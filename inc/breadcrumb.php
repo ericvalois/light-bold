@@ -3,11 +3,12 @@ function perf_breadcrumbs() {
     global $post;
 	$perf_separator = '<span class="white-color upper"> | </span>'; // Simply change the separator to what ever you need e.g. / or >
 	
-    echo '<nav class="perf_breadcrumbs hide-print">';
+    echo '<nav class="perf_breadcrumbs hide-print normal-weight flex-center">';
 	if (!is_front_page()) {
-		echo '<a class="fa fa-home white-color" href="';
+		echo '<a class="white-color flex flex-center" href="';
 		echo esc_url( home_url( '/' ) );
 		echo '">';
+		echo '<svg class="fa fa-home white-color"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-home"></use></svg>';
 		echo "</a> ".$perf_separator;
 		if ( is_category() || is_single() ) {
 			if ( get_post_type() == 'post' ) {

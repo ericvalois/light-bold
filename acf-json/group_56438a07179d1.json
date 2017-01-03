@@ -3,6 +3,8 @@
     "title": "PerfThemes Performances",
     "fields": [
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56438a071a01f",
             "label": "JS Optimisation",
             "name": "",
@@ -14,36 +16,33 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_564f4063bb746",
-            "label": "Disable JavaScript optimisation",
-            "name": "perf_disable_js_optimisation",
-            "type": "checkbox",
-            "instructions": "<p>By disabling one of those options, you will affect your <a href=\"https:\/\/sites.google.com\/a\/webpagetest.org\/docs\/using-webpagetest\/metrics\/speed-index\" target=\"_blank\">Speed Index<\/a> negatively.<\/p>",
+            "label": "Activate JavaScript optimisation",
+            "name": "perf_js_optimisation_active",
+            "type": "true_false",
+            "instructions": "<p>By enabling this option, you will improve the loading time of your website.<\/>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "disable_js_auto_async": "Disable auto loading scripts asynchronously"
-            },
-            "default_value": [
-
-            ],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value"
+            }
         },
         {
+            "message": "In the case of any display errors, we recommend disabling this option.\r\n\r\nIf you want to know more about Removing Render-Blocking JavaScript, please visit <a target=\"_blank\" href=\"https:\/\/developers.google.com\/speed\/docs\/insights\/BlockingJS\">Google Developers page<\/a>.",
+            "esc_html": 0,
+            "new_lines": "wpautop",
             "key": "field_564b2c400f1fe",
-            "label": "What are you doing exactly?",
+            "label": "Warning!",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -53,12 +52,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "If you want to know more about Removing Render-Blocking JavaScript, please visit <a href=\"https:\/\/developers.google.com\/speed\/docs\/insights\/BlockingJS\" target=\"_blank\">Google Developpers page<\/a>",
-            "esc_html": 0,
-            "new_lines": "wpautop"
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_564a00dd8aee9",
             "label": "CSS Optimisation",
             "name": "",
@@ -70,37 +68,33 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_564f29ab4cded",
-            "label": "Disable CSS optimisation",
-            "name": "perf_disable_css_optimisation",
-            "type": "checkbox",
-            "instructions": "<p>By disabling one of those options, you will affect your <a href=\"https:\/\/sites.google.com\/a\/webpagetest.org\/docs\/using-webpagetest\/metrics\/speed-index\" target=\"_blank\">Speed Index<\/a> negatively.<\/p>",
+            "label": "Activate CSS Optimisation",
+            "name": "perf_css_optimisation_active",
+            "type": "true_false",
+            "instructions": "<p>By enabling this option, you will improve the loading time of your website.<\/>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "disable_theme_critical_css": "Disable theme Critical CSS",
-                "disable_css_auto_async": "Disable auto loading stylesheet asynchronously"
-            },
-            "default_value": [
-
-            ],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value"
+            }
         },
         {
+            "message": "In the case of any display errors, we recommend disabling this option.\r\n\r\nIf you want to know more about CSS Delivery Optimisation, please visit <a href=\"https:\/\/developers.google.com\/speed\/docs\/insights\/OptimizeCSSDelivery\" target=\"_blank\">Google Developers page<\/a>.",
+            "esc_html": 0,
+            "new_lines": "wpautop",
             "key": "field_564b2c240f1fd",
-            "label": "What are you doing exactly?",
+            "label": "Warning!",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -110,15 +104,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "If you want to know more about CSS Delivery Optimisation, please visit <a href=\"https:\/\/developers.google.com\/speed\/docs\/insights\/OptimizeCSSDelivery\" target=\"_blank\">Google Developpers page<\/a>",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_56abbfc48a72c",
             "label": "Images & Iframes Optimisation",
-            "name": "images_&_iframes_optimisation",
+            "name": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -127,37 +120,52 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_56abbfd68a72d",
-            "label": "Lazy Load",
-            "name": "perf_disable_lazy_load",
-            "type": "checkbox",
-            "instructions": "",
+            "label": "Activate Images Lazy Load",
+            "name": "perf_img_lazyload_active",
+            "type": "true_false",
+            "instructions": "<p>By enabling this option, you will improve the loading time of your website.<\/>",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "choices": {
-                "disable_img": "Disable images Lazy Load",
-                "disable_iframe": "Disable iframes Lazy Load"
-            },
-            "default_value": [
-
-            ],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value"
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "key": "field_584d9bea368f2",
+            "label": "Activate Iframe Lazy Load",
+            "name": "perf_iframe_lazyload_active",
+            "type": "true_false",
+            "instructions": "<p>By enabling this option, you will improve the loading time of your website.<\/>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "message": "In the case of any display errors, we recommend disabling those options.\r\n\r\nThe Lazy Load module defers loading of images and iframes until they become visible in the client's viewport. This avoids blocking the download of other critical resources necessary for rendering the above the fold section of the page.",
+            "esc_html": 0,
+            "new_lines": "wpautop",
             "key": "field_56abc0525bcec",
-            "label": "What are you doing exactly?",
+            "label": "Warning!",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -167,12 +175,11 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "The Lazy Load module defers loading of images and iframes until they become visible in the client's viewport. This avoids blocking the download of other critical resources necessary for rendering the above the fold section of the page.",
-            "esc_html": 0,
-            "new_lines": "wpautop"
+            }
         },
         {
+            "placement": "top",
+            "endpoint": 0,
             "key": "field_574301640ed9b",
             "label": "Preload",
             "name": "",
@@ -184,14 +191,17 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
+            }
         },
         {
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_5743017a0ed9c",
-            "label": "Disable preload of requests",
-            "name": "perf_disable_preload",
+            "label": "Activate Requests Preload",
+            "name": "perf_preload_active",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -200,11 +210,14 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "message": "",
-            "default_value": 0
+            }
         },
         {
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": "",
             "key": "field_574302c90ed9d",
             "label": "Add preload link",
             "name": "perf_add_preload",
@@ -215,7 +228,7 @@
                 [
                     {
                         "field": "field_5743017a0ed9c",
-                        "operator": "!=",
+                        "operator": "==",
                         "value": "1"
                     }
                 ]
@@ -224,14 +237,7 @@
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
+            }
         }
     ],
     "location": [
@@ -251,5 +257,6 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1475256326
+    "menu_item_level": "all",
+    "modified": 1483454102
 }

@@ -21,7 +21,7 @@
 
 						<div class="carousel-cell">
 
-							<h3 class="h3 separator white-color mt0"><?php echo $slide['perf_main_title']; ?></h3>
+							<h3 class="h2 entry-title separator white-color mt0"><?php echo $slide['perf_main_title']; ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
 				  				<?php echo $slide['perf_main_content']; ?>
 				  			</p>

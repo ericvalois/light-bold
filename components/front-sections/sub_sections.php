@@ -10,20 +10,20 @@
 
 <?php if( is_array($sub_sections) && count($sub_sections) > 0 ): ?>
 	<?php $col_width = 12 / count($sub_sections);  ?>
-	<section class="clearfix section1 dark-bg md-flex md-flex-wrap">
+	<section class="clearfix section1 dark-bg lg-flex lg-flex-wrap">
 		<?php $cpt = 1; ?>
 		<?php foreach($sub_sections as $box ): ?>
 
 			<?php $image = $box['image']; ?>
 
-			<div class="md-flex md-col-4">
-				<div class="md-flex flex-column fit col-12">
+			<div class="lg-flex lg-col-4">
+				<div class="lg-flex flex-column fit col-12">
 					<div class="thumb_section1 bg-cover bg-center relative lazyload"  	data-sizes="auto"
 																						data-bgset="<?php echo $image['sizes']['perfthemes-hero-md']; ?> [(min-width: 60em)] |
 																						<?php echo $image['sizes']['perfthemes-hero-sm']; ?> [(min-width: 52em)] |
 																						<?php echo $image['sizes']['perfthemes-hero-sm']; ?>">
 						<div class="absolute bottom-0 left-0 z1 col-12 neg_title ">
-							<h3 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4"><?php echo $box['title']; ?></h3>
+							<h3 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4 entry-title"><?php echo $box['title']; ?></h3>
 						</div>
 					</div>
 

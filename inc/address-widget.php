@@ -35,12 +35,12 @@ class perf_address_widget extends WP_Widget {
     if( is_array($perf_sections) && count($perf_sections) > 0 ){
       foreach( $perf_sections as $section ){
       	?>
-      		<div class="table col-12 address_row ">
-            <div class="table-cell width30">
-                <?php echo $section['icon']; ?>
+      		<div class="table col-12 address_row">
+            <div class="table-cell width30 align-top">
+                <svg class="fa <?php echo $section['icon']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $section['icon']; ?>"></use></svg>
             </div>
 
-            <div class="table-cell small-p">
+            <div class="table-cell small-p align-top">
               <p class="mb0"><?php echo $section['content']; ?></p>
             </div>
           </div>
