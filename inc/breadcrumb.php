@@ -5,7 +5,7 @@ function perf_breadcrumbs() {
 	
     echo '<nav class="perf_breadcrumbs hide-print normal-weight flex-center">';
 	if (!is_front_page()) {
-		echo '<a class="white-color flex flex-center" href="';
+		echo '<a class="white-color home_icon" href="';
 		echo esc_url( home_url( '/' ) );
 		echo '">';
 		echo '<svg class="fa fa-home white-color"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-home"></use></svg>';

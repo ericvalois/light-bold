@@ -61,20 +61,17 @@ function filter_tableContentWrapper($content) {
 /*
 * Same tag cloud font size
 */
-add_filter('widget_tag_cloud_args','perf_tag_cloud_sizes');
-function perf_tag_cloud_sizes($args) {
-    $args['smallest'] = 13;
-    $args['largest'] = 13;
-    return $args;
+add_filter('wp_generate_tag_cloud', 'perf_tag_cloud',10,1);
+function perf_tag_cloud($string){
+   return preg_replace("/style='font-size:.+pt;'/", '', $string);
 }
-
 
 
 /*
 * Show or hide content animation
 */
 function perf_content_animation(){
-    if( perf_get_field("perf_hide_fade","option") != 1 ){
+    if( perf_get_field("perf_show_fade","option") == 1 ){
         return 'animated fadeIn opacity-zero';
     }else{
         return;
@@ -99,14 +96,6 @@ function perf_select_hero_image(){
 
     return $perf_hero;
 }
-
-/**
- * Show ACF options if the user want to
- */
-if( !perf_get_field("perf_show_acf","option") ){
-	add_filter('acf/settings/show_admin', '__return_false');
-}
-
 
 /**
  * Move Comment field to the end
@@ -431,7 +420,7 @@ add_action("perf_footer_scripts","perf_call_sprite_fontawesome");
 function perf_call_sprite_fontawesome(){
     ?>
     var ajax = new XMLHttpRequest();
-    ajax.open("GET", "<?php echo get_bloginfo("stylesheet_directory"); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
+    ajax.open("GET", "<?php echo get_template_directory_uri(); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
     ajax.send();
     ajax.onload = function(e) {
       var div = document.createElement("div");

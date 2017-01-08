@@ -7,7 +7,7 @@
 ?>
 
 
-<div class="relative px2 sm-px3 md-px4 md-py3 perf-main-hero break-word">
+<div class="relative px2 sm-px3 md-px3 lg-px4 md-py3 perf-main-hero break-word">
 
 	<?php perf_breadcrumbs(); ?>
 

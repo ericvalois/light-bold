@@ -20,12 +20,6 @@ if( !is_admin() ){
 	}
 }
 
-/* Admin functionality */
-if ( is_admin() ) {
-	// Getting Started page and EDD update class
-	require_once( get_template_directory() . '/includes/admin/updater/theme-updater.php' );
-}
-
 /*
 * Custom ACF function
 */
@@ -111,7 +105,6 @@ function perf_setup() {
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'perf_custom_background_args', array(
 		'default-color' => 'ffffff',
-		'default-image' => '',
 	) ) );
 
 
@@ -142,9 +135,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 1', 'lightbold' ),
 		'id'            => 'footer-1',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
+		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -152,9 +145,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 2', 'lightbold' ),
 		'id'            => 'footer-2',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
+		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -162,9 +155,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 3', 'lightbold' ),
 		'id'            => 'footer-3',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 main-color md-mr3 %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
+		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 
@@ -172,9 +165,9 @@ function perf_widgets_init() {
 		'name'          => esc_html__( 'Footer 4', 'lightbold' ),
 		'id'            => 'footer-4',
 		'description'   => '',
-		'before_widget' => '<div id="%1$s" class="mb2 main-color %2$s clearfix">',
+		'before_widget' => '<div id="%1$s" class="mb2 %2$s clearfix">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h6 class="widget-title separator upper mb2 mt0 small-p">',
+		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
 		'after_title'   => '</h6>',
 	) );
 

@@ -13,8 +13,8 @@ if( function_exists('acf_add_options_page') ) {
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Styles',
-		'menu_title'	=> 'Styles',
+		'page_title' 	=> 'Style',
+		'menu_title'	=> 'Style',
 		'parent_slug'	=> 'perfthemes-settings',
 	));
 
@@ -36,11 +36,18 @@ function perf_layout_options( $field ) {
 	    "1" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/one-column.png">',
 	    "2" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/two-columns.png">',
 	    "3" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/three-columns.png">',
-	    "4" => '<img src="' . trailingslashit( get_template_directory_uri() ) . 'images/four-columns.png">',
 	);
 
     return $field;
 }
+
+/**
+ * Show ACF options if the user want to
+ */
+if( !perf_get_field("perf_show_acf","option") ){
+	add_filter('acf/settings/show_admin', '__return_false');
+}
+
 
 /*
 * Add custom css for ACF

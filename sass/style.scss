@@ -356,17 +356,11 @@ h1.entry-title{
         font-weight: normal;
         line-height: 1.5;
         max-width: 80%;
-        display: flex;
+        display: block;
     }
 
-    .perf_breadcrumbs a:first-child{
-        border: none;
-        font-size: 16px;
-    }
-
-    .perf_breadcrumbs a,
-    .perf_breadcrumbs span{
-        margin-right: 5px;
+    .perf_breadcrumbs .home_icon svg{
+        margin-bottom: -2px;
     }
 
     h1.entry-title{

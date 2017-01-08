@@ -15,7 +15,7 @@
 ?>
 <?php if( have_rows('repeater_icon_and_text') ): ?>
 	<?php $col_width = 12 / $nb_per_row;  ?>
-	<section class="clearfix icon_section py3 lg-py4 px1 sm-px2 md-px3 md-flex flex-wrap flex-stretch">
+	<section class="clearfix icon_section py3 lg-py4 px1 px2 lg-px3 md-flex flex-wrap flex-stretch">
 		<?php
 			if( $col_width == 3 ){
 				$col_class = "md-col-6 lg-col-3";
@@ -28,9 +28,9 @@
 
 		<?php if( $icon_section_title ): ?>
 			<?php if( $title_button_link ): ?>
-				<a href="<?php echo $title_button_link; ?>" class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<a href="<?php echo $title_button_link; ?>" class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php endif; ?>
 
 				<div>
@@ -50,15 +50,17 @@
 		<?php $cpt = 1; while ( have_rows('repeater_icon_and_text') ) : the_row(); ?>
 			
 			<?php if( get_sub_field('link') ): ?>
-				<a href="<?php echo get_sub_field('link'); ?>" class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<a href="<?php echo get_sub_field('link'); ?>" class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center flex-auto py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center flex-auto  py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php endif; ?>
 
 				<div>
-					<div class="front_icon">
-						<svg class="fa flex-none <?php echo get_sub_field('icon_name'); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo get_sub_field('icon_name'); ?>"></use></svg>
-					</div>
+					<?php if( get_sub_field('icon_name') ): ?>
+						<div class="front_icon">
+							<svg class="fa flex-none <?php echo get_sub_field('icon_name'); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo get_sub_field('icon_name'); ?>"></use></svg>
+						</div>
+					<?php endif; ?>
 					<p class="small-p mt1 mb1 bold "><?php echo get_sub_field('title'); ?></p>
 					<p class="small-p  mb0"><?php echo get_sub_field('content'); ?></p>
 				</div>
@@ -68,9 +70,6 @@
 			<?php else: ?>
 				</div>
 			<?php endif; ?>
-
-			<?php if( $col_width == 3 && $cpt % 2 == 0 ){ echo '<div class="lg-hide clearfix"></div>'; } ?>
-			<?php if( $cpt % $nb_per_row == 0 ){ echo '<div class="clearfix"></div>'; } ?>
 
 		<?php $cpt++; endwhile; ?>
 	  	

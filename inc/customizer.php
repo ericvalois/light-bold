@@ -24,3 +24,8 @@ function perf_customize_preview_js() {
 	wp_enqueue_script( 'perf_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
 add_action( 'customize_preview_init', 'perf_customize_preview_js' );
+
+add_action( "customize_register", "perf_remove_bg_image_customizer" );
+function perf_remove_bg_image_customizer( $wp_customize ) {
+	 $wp_customize->remove_section("background_image");
+}

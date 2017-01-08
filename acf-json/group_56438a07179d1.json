@@ -1,6 +1,6 @@
 {
     "key": "group_56438a07179d1",
-    "title": "PerfThemes Performances",
+    "title": "Performance Options",
     "fields": [
         {
             "placement": "top",
@@ -258,5 +258,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1483454102
+    "modified": 1483820694
 }

@@ -29,16 +29,18 @@
 
 						$image = get_sub_field('image');
 						$data_bgset = 'data-bgset="' . $image['sizes']['perfthemes-hero-sm'] . ' [(max-width: 52em)] | ' . $image['sizes']['perfthemes-hero-md'] . ' [(min-width: 52em) and (max-width: 60em)] | '  . $image['sizes']['perfthemes-hero-lg'] . ' [(min-width: 60em)]"';
+						$date_expand = 'data-expand="50"';
 					}else{
 						$div_class = 'bg-white';
 						$title_class = 'mt0 separator h3 entry-title';
 						$text_class = 'mb2 mt2 lg-mb3 lg-mt3 small-p';
 						$button_class = 'perf_btn';
 						$data_bgset = "";
+						$date_expand = '';
 					}
 					
 				?>
-				<div class="py4 <?php echo $div_class; ?> lg-col-<?php echo $col_width; ?>" <?php echo $data_bgset; ?> data-sizes="auto">
+				<div class="py4 <?php echo $div_class; ?> lg-col-<?php echo $col_width; ?>" <?php echo $data_bgset; ?> <?php echo $date_expand; ?> data-sizes="auto">
 
 					<div class="px2 lg-px3 py1">
 						<h4 class="<?php echo $title_class; ?>"><?php echo get_sub_field('title'); ?></h4>

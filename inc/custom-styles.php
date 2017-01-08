@@ -87,10 +87,8 @@ function perf_lg_hero() {
 add_action('perf_mobile_styles','perf_custom_color', 5);
 function perf_custom_color(){
 
-    if( get_field("perf_main_site_color","option") == 'other' ){
+    if( get_field("perf_custom_css_styles","option") ){
         $perf_main_color = get_field("perf_custom_color","option");
-    }elseif( get_field("perf_main_site_color","option") ){
-        $perf_main_color = get_field("perf_main_site_color","option");
     }else{
         $perf_main_color = '#3498db';
     }
@@ -110,7 +108,8 @@ function perf_custom_color(){
     .icons_social:hover,
     .icons_social:focus,
     .button-row button,
-    .active .menu__link{ color: <?php echo $perf_main_color; ?> }
+    .active .menu__link,
+    .site-footer .address_row .fa{ color: <?php echo $perf_main_color; ?> }
     .menu__item i,
     .menu__link:hover,
     .menu__breadcrumbs a,

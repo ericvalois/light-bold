@@ -248,3 +248,4 @@ module.exports = function(grunt) {
     grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };
+

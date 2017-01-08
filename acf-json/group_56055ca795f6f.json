@@ -1,6 +1,6 @@
 {
     "key": "group_56055ca795f6f",
-    "title": "Perfthemes general options",
+    "title": "General options",
     "fields": [
         {
             "placement": "top",
@@ -408,7 +408,7 @@
             "ui_on_text": "",
             "ui_off_text": "",
             "key": "field_57237510a97d6",
-            "label": "Disable Social share",
+            "label": "Hide social share links",
             "name": "perf_disable_social_share",
             "type": "true_false",
             "instructions": "",
@@ -421,14 +421,14 @@
             }
         },
         {
-            "default_value": 1,
+            "default_value": 0,
             "message": "",
             "ui": 1,
-            "ui_on_text": "Activated",
-            "ui_off_text": "Disabled",
-            "key": "field_56d9e9953bd91",
-            "label": "Go to top link",
-            "name": "perf_top_anchor",
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "key": "field_572a589d9b488",
+            "label": "Content fadeIn on page load",
+            "name": "perf_show_fade",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -440,33 +440,14 @@
             }
         },
         {
-            "default_value": 1,
+            "default_value": 0,
             "message": "",
             "ui": 1,
-            "ui_on_text": "Activated",
-            "ui_off_text": "Disabled",
-            "key": "field_572a589d9b488",
-            "label": "Content fadeIn on page load",
-            "name": "perf_content_fade",
-            "type": "true_false",
-            "instructions": "This may cause a \"Fout\" of the content.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            }
-        },
-        {
-            "default_value": 1,
-            "message": "",
-            "ui": 1,
-            "ui_on_text": "Activated",
-            "ui_off_text": "Disabled",
+            "ui_on_text": "",
+            "ui_off_text": "",
             "key": "field_57718bd0eb589",
-            "label": "Hide Advanced Custom Fields Options",
-            "name": "perf_hide_acf",
+            "label": "Show Advanced Custom Fields Menu",
+            "name": "perf_show_acf",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -533,5 +514,5 @@
     "active": 1,
     "description": "",
     "menu_item_level": "all",
-    "modified": 1483461731
+    "modified": 1483820555
 }
