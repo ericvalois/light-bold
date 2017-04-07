@@ -34,7 +34,7 @@ class light_bold_social_profiles extends WP_Widget {
     if( !empty($light_bold_icons) ){
         foreach( $light_bold_icons as $icon ){
             ?>
-                <a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><svg class="fa <?php echo $icon['icon_name']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $icon['icon_name']; ?>"></use></svg></a>
+                <a target="_blank" rel='noopener noreferrer' href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><svg class="fa <?php echo $icon['icon_name']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $icon['icon_name']; ?>"></use></svg></a>
             <?php
         }
     }

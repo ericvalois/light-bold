@@ -276,6 +276,7 @@
 .main-header {
     height: 64px;
     z-index: 9;
+    box-shadow: 0 0 10px rgba(33,33,33,0.25);
 }
 
 @include media-query(md) {
@@ -334,6 +335,7 @@
     .main-header {
         height: auto;
         border-right: 2px solid #f4f3f3;
+        box-shadow: none;
     }
 
     .site-sidebar {

@@ -159,20 +159,27 @@ input.search-field{ padding-right: 40px; }
 .address_row{ margin-bottom: 0.5rem; }
 
 .icons_social{
-    font-size: 25px;
+    font-size: 22px;
     border: none;
-}
-
-footer .icons_social{
-    color: #fff;
-    font-size: 15px;
+    color: $text-color;
     border: none;
-    border: 2px solid #fff;
+    border: 2px solid $text-color;
     border-radius: 50%;
-    width: 33px;
-    height: 33px;
+    width: 45px;
+    height: 45px;
     align-items: center;
     display: flex;
     justify-content: center;
     margin-right: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+footer .icons_social{
+    color: #fff;
+    border-color: #fff;
+    font-size: 16px;
+    width: 33px;
+    height: 33px;
+    
 }
