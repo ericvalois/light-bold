@@ -1,7 +1,5 @@
 .animated {
-  -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
@@ -25,7 +23,4 @@
   }
 }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
+.fadeIn { animation-name: fadeIn; }

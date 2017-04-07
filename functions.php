@@ -14,20 +14,9 @@ if( !is_admin() ){
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	// check for plugin using plugin name
 	if ( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
-	  function get_field(){
-				return;
-			}
-	}
-}
-
-/*
-* Custom ACF function
-*/
-function perf_get_field($field_name, $post_id = false, $format_value = true){
-	if( function_exists("get_field") ){
-		return get_field($field_name, $post_id, $format_value);
-	}else{
-		return false;
+	    function get_field(){
+			return;
+		}
 	}
 }
 
@@ -67,8 +56,10 @@ function perf_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size( 'perfthemes-hero-lg', 950, 612, true );
-	add_image_size( 'perfthemes-hero-md', 767, 612, true );
-	add_image_size( 'perfthemes-hero-sm', 595, 448, true );
+	add_image_size( 'perfthemes-hero-md', 767, 494, true );
+	add_image_size( 'perfthemes-hero-sm', 595, 383, true );
+
+	add_image_size( 'perfthemes-hero-placeholder', 50, 32, true );
 
 	add_image_size( 'perfthemes-blog', 760, 360, true );
 
@@ -200,69 +191,28 @@ function perf_scripts() {
 
 	/* If using a child theme, auto-load the parent theme style. */
     if ( is_child_theme() ) {
-        //wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
         wp_enqueue_style( 'perf-parent-style', trailingslashit( get_template_directory_uri() ) . 'style.css' );
         wp_enqueue_style( 'perf-stylesheet', get_stylesheet_uri()  );
     }else{
-    	//wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style-1.0.0.css' );
     	wp_enqueue_style( 'perf-stylesheet', trailingslashit( get_template_directory_uri() ) . 'style.css' );
     }
-	
+
 	if ( is_page_template("page-templates/template-front.php") ){
 
-		$flickity = false;
-		$post_id = get_the_ID();
-		$rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
-
-		foreach( (array) $rows as $count => $row ) {
-			switch( $row ) {
-			
-				// Custom content
-				case 'custom_content':
-					if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
-						$flickity = true;
-					}else{
-						$flickity = false;
-					}
-				break;
-				
-				// Posts content
-				case 'posts_content':
-					$args = array(
-						'post_type' => 'post',
-					);
-
-					if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
-						$args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
-					}else{
-						$args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
-					}
-
-					$posts = new WP_Query( $args );
-
-					if( $posts->post_count > 1 ){
-						$flickity = true;
-					}else{
-						$flickity = false;
-					}
-				break;
-			}
-		}
-
-		if ( $flickity ){
+		if ( perf_flickity_detection( get_the_id() ) ){
 			// Flickity Script
 			wp_enqueue_script( 'perf-flickity', get_template_directory_uri() . '/inc/3rd-party/flickity/flickity.min.js', array(), '', true );
-			// Custom Flickity Listener
-			add_action("perf_footer_scripts","perf_add_flickity_listener"); 
 		}
 	}
 
+	wp_enqueue_script( 'perf-init', get_template_directory_uri() . '/js/lightbold-init.min.js', array(), '', true );
+
 	// Main menu script
-	if ( perf_main_menu_has_child() ){
+	if ( has_nav_menu( 'primary' ) && perf_main_menu_has_child() ){
 		wp_enqueue_script( 'perf-menu-script', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );
 	}
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && !is_page_template("page-templates/template-front.php") ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
@@ -279,9 +229,9 @@ require get_template_directory() . '/includes/admin/tgm/tgm.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Custom functions that act independently of the theme templates.
+ * Light & Bold functions
  */
-require get_template_directory() . '/inc/extras.php';
+require get_template_directory() . '/inc/lightbold.php';
 
 /**
  * Customizer additions.
@@ -292,21 +242,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-/**
- * Load ACF fields
- */
-require get_template_directory() . '/inc/acf-extra.php';
-
-/**
- * WordPress cleanup
- */
-require get_template_directory() . '/inc/clean.php';
-
-/**
- * Performances optimizations
- */
-require get_template_directory() . '/inc/performance.php';
 
 /**
  * Load Breadcrumb helper
@@ -337,12 +272,6 @@ require get_template_directory() . '/inc/widget-image.php';
  * Add custom buttons and formating to Tinymce
  */
 require get_template_directory() . '/inc/extend-tinymce.php';
-
-/**
- * Plugins compatibility
- */
-require get_template_directory() . '/inc/plugins-compatibility.php';
-
 
 /**
  * Custom protected form markup

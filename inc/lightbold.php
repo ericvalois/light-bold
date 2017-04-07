@@ -7,6 +7,24 @@
  * @package perfthemes
  */
 
+/*
+* Custom action hook
+*/
+add_action("wp_head","perf_action_head_open", 5);
+function perf_action_head_open(){
+    do_action('perf_head_open');
+}
+
+if( !function_exists("perf_get_field") ){
+    function perf_get_field($field_name, $post_id = false, $format_value = true){
+        if( function_exists("get_field") ){
+            return get_field($field_name, $post_id, $format_value);
+        }else{
+            return false;
+        }
+    }
+}
+
 /**
  * Adds custom classes to the array of body classes.
  *
@@ -65,7 +83,6 @@ add_filter('wp_generate_tag_cloud', 'perf_tag_cloud',10,1);
 function perf_tag_cloud($string){
    return preg_replace("/style='font-size:.+pt;'/", '', $string);
 }
-
 
 /*
 * Show or hide content animation
@@ -154,33 +171,6 @@ function perf_custom_comments($comment, $args, $depth) {
 <?php } 
 
 /**
- * Flickity slider custom behavior
- */
-function perf_add_flickity_listener(){
-    ?>
-    // Custom previous button
-    var previousButton = document.querySelector('.button--previous');
-    previousButton.addEventListener( 'click', function() {
-      flkty.previous();
-      flkty.pausePlayer();
-    });
-
-    // Custom Next button
-    var nextButton = document.querySelector('.button--next');
-    nextButton.addEventListener( 'click', function() {
-      flkty.next();
-      flkty.pausePlayer();
-    });
-
-    // Mouse leave unpausePlayer
-    var buttonRow = document.querySelector('.button-row');
-    buttonRow.addEventListener( 'mouseout', function() {
-      flkty.unpausePlayer();
-    });
-    <?php
-}
-
-/**
  * Custom WordPress Menu Markup
  */
 function perf_custom_menu( $theme_location ) {
@@ -201,9 +191,14 @@ function perf_custom_menu( $theme_location ) {
            global $post; 
         }
         
+        if( !empty( $post ) ){
+            $post_id = $post->ID;
+        }else{
+            $post_id = null;
+        }
 
         // Menu
-        $html_menu = '<ul data-menu="main" class="menu__level ' . (( !perf_main_menu_has_child() )?'visible':'') . '">';
+        $html_menu = '<ul data-menu="main" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset ' . (( !perf_main_menu_has_child() )?'visible':'') . '">';
 
         foreach( $menu as $item ):
 
@@ -216,7 +211,7 @@ function perf_custom_menu( $theme_location ) {
 
             $menu_icon = get_field( 'perf_icon_name', $item->ID );
 
-            if(  $item->object_id == $post->ID ){
+            if(  $item->object_id == $post_id ){
                 $current_page = 'active';
             }else{
                 $current_page = '';
@@ -224,8 +219,8 @@ function perf_custom_menu( $theme_location ) {
 
             if( $item->menu_item_parent == 0 ):
                 
-                $html_menu .= '<li class="menu__item '. $current_page .'">';
-                    $html_menu .= '<a class="menu__link flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
+                $html_menu .= '<li class="menu__item ultra-small '. $current_page .'">';
+                    $html_menu .= '<a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
                     
                     $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
                     
@@ -251,7 +246,7 @@ function perf_custom_menu( $theme_location ) {
         if( count( $menu_zero_with_child ) > 0 ):
 
             foreach( $menu_zero_with_child as $item ):
-                echo '<ul data-menu="submenu-' . $item . '" class="menu__level">';
+                echo '<ul data-menu="submenu-' . $item . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
                     foreach( $menu as $starter_item ):
 
                         if(  $starter_item->menu_item_parent == $item ):
@@ -272,8 +267,8 @@ function perf_custom_menu( $theme_location ) {
                             }
 
                             ?>
-                                <li class="menu__item <?php echo $current_page; ?>">
-                                    <a class="menu__link flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>>
+                                <li class="menu__item ultra-small <?php echo $current_page; ?>">
+                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>>
                                         <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID . '"'; } ?>>
                                             <?php echo $starter_item->title; ?> 
                                         </span>
@@ -297,7 +292,7 @@ function perf_custom_menu( $theme_location ) {
         if( count( $menu_sub_with_child ) > 0 ):
 
             foreach( $menu_sub_with_child as $item ):
-                echo '<ul data-menu="submenu-' . $item . '" class="menu__level">';
+                echo '<ul data-menu="submenu-' . $item . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
                     foreach( $menu as $starter_item ):
 
                         $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
@@ -312,8 +307,8 @@ function perf_custom_menu( $theme_location ) {
                     
                         if(  $starter_item->menu_item_parent == $item ):
                             ?>
-                                <li class="menu__item  <?php echo $current_page; ?>">
-                                    <a class="menu__link flex flex-center" <?php echo 'href="'. $starter_item->url .'"'; ?>>
+                                <li class="menu__item ultra-small  <?php echo $current_page; ?>">
+                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php echo 'href="'. $starter_item->url .'"'; ?>>
                                         <span class="flex-auto">
                                             <?php echo $starter_item->title; ?>
                                         </span>
@@ -387,38 +382,13 @@ function perf_main_menu_has_child() {
     return false;
 }
 
-add_action("perf_footer_scripts","perf_menu_toggle");
-function perf_menu_toggle(){
-    ?>
-    // Open main nav
-    document.getElementById("main_nav_toggle").addEventListener("click", function () {
-        
-        var main_nav = document.getElementById("ml-menu");
-        
-        if (main_nav.classList.contains("menu--open")) {
-            main_nav.classList.remove("menu--open");
-        } else {
-            main_nav.classList.add("menu--open");
-        }
-
-    });
-
-    // Close main nav
-    document.querySelector('.action--close').addEventListener("click", function () {
-        
-        var main_nav = document.getElementById("ml-menu");
-        
-        if (main_nav.classList.contains("menu--open")) {
-            main_nav.classList.remove("menu--open");
-        }
-
-    });
-    <?php
-}
-
+/**
+ * Load fontawesome sprite ASYNC
+ */
 add_action("perf_footer_scripts","perf_call_sprite_fontawesome");
 function perf_call_sprite_fontawesome(){
     ?>
+    // Fetch icon font fontawesome.svg
     var ajax = new XMLHttpRequest();
     ajax.open("GET", "<?php echo get_template_directory_uri(); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
     ajax.send();
@@ -453,32 +423,75 @@ function perf_get_response( $url ) {
     // First, we try to use wp_remote_get
     $response = wp_remote_get( $url );
 
-    if( is_wp_error( $response ) ) {
-
-        // If that doesn't work, then we'll try file_get_contents
-        $response = file_get_contents( $url );
-
-        if( false == $response ) {
-
-            // And if that doesn't work, then we'll try curl
-            $response = $this->curl( $url );
-
-            if( null == $response ) {
-                $response = 0;
-            } // end if/else
-
-        } 
-
-    } 
-
     // If the response is an array, it's coming from wp_remote_get,
     // so we just want to capture to the body index for json_decode.
-    if( is_array( $response ) ) {
+    if( is_array( $response ) && !is_wp_error( $response ) ) {
         $response = $response['body'];
     }
 
     return $response;
 }
 
+/**
+ * Detect if flickity is needed
+ *
+ * @params  $post_id  post ID
+ * @returns True/False
+ */
+function perf_flickity_detection( $post_id ){
+    $flickity = false;
+    $rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
 
+    foreach( (array) $rows as $count => $row ) {
+        switch( $row ) {
+        
+            // Custom content
+            case 'custom_content':
+                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
+                    $flickity = true;
+                }else{
+                    $flickity = false;
+                }
+            break;
+            
+            // Posts content
+            case 'posts_content':
+                $args = array(
+                    'post_type' => 'post',
+                );
+
+                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
+                    $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
+                }else{
+                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
+                }
+
+                $posts = new WP_Query( $args );
+
+                if( $posts->post_count > 1 ){
+                    $flickity = true;
+                }else{
+                    $flickity = false;
+                }
+            break;
+        }
+    }
+
+    return $flickity;
+}
+
+/**
+ * Minify string on the fly
+ *
+ * @params  $minify  String to minify
+ * @returns String minified
+ */
+function perf_compress( $minify ){
+    // Remove space after colons
+    $minify = str_replace(': ', ':', $minify);
+    // Remove whitespace
+    $minify = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $minify);
+
+    return $minify;
+}
 

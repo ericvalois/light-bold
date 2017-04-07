@@ -7,7 +7,7 @@
 ?>
 
 
-<div class="relative px2 sm-px3 md-px3 lg-px4 md-py3 perf-main-hero break-word">
+<div class="relative px2 sm-px3 md-px3 lg-px4 md-py3 dark-bg break-word z1">
 
 	<?php perf_breadcrumbs(); ?>
 
@@ -50,5 +50,25 @@
 		</div><!-- .entry-meta -->
 	<?php endif; ?>
 
-	<div id="perf-main-hero" class="bg-cover bg-top absolute top-0 left-0 col-12 overflow-hidden m0 p0 hide-print"></div>
+	<?php
+        $perf_image_id = perf_select_hero_image();
+
+		if( $perf_image_id ):
+			$perf_image_src_sm = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-sm' );
+			$perf_image_src_md = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
+			$perf_image_src_lg = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
+    ?>
+			<div class="perf-main-hero bg-cover bg-center absolute top-0 left-0 right-0 bottom-0 overflow-hidden m0 p0 hide-print">
+				<div class="bg-default absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center"></div>
+				<div id="perf-main-hero" class="absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center"   
+					data-sizes="auto"
+					data-bgset="<?php echo $perf_image_src_lg[0]; ?> [(min-width: 64em)] | 
+					<?php echo $perf_image_src_md[0]; ?> [(min-width: 52em)] | 
+					<?php echo $perf_image_src_sm[0]; ?>">
+				</div>
+			</div>
+	<?php
+		endif;
+	?>
+
 </div>

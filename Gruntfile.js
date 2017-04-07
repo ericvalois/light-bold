@@ -21,19 +21,31 @@ module.exports = function(grunt) {
         criticalcss: {
             home: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/",
+                    url: "http://lightbold.perfthemes.dev/",
                     width: 1200,
-                    height: 1500,
+                    height: 800,
                     outputfile: "critical/home.css",
                     filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs'],
+                    ignoreConsole: false
+                }
+            },
+            homewithslider: {
+                options: {
+                    url: "http://lightbold.perfthemes.dev/home-with-slider/",
+                    width: 1200,
+                    height: 1500,
+                    outputfile: "critical/home-with-slider.css",
+                    filename: "style.css",
                     buffer: 800*1500,
-                    forceInclude: ['.menu__breadcrumbs'],
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs'],
                     ignoreConsole: false
                 }
             },
             archive: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/blog/",
+                    url: "http://lightbold.perfthemes.dev/blog/",
                     width: 1200,
                     height: 900,
                     outputfile: "critical/archive.css",
@@ -45,7 +57,7 @@ module.exports = function(grunt) {
             },
             page: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/about/",
+                    url: "http://lightbold.perfthemes.dev/about/",
                     width: 1200,
                     height: 900,
                     outputfile: "critical/page.css",
@@ -57,7 +69,7 @@ module.exports = function(grunt) {
             },
             single: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/hello-world-2/",
+                    url: "http://lightbold.perfthemes.dev/hello-world-2/",
                     width: 1200,
                     height: 900,
                     outputfile: "critical/single.css",
@@ -69,7 +81,7 @@ module.exports = function(grunt) {
             },
             contact: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/contact-us/",
+                    url: "http://lightbold.perfthemes.dev/contact-us/",
                     width: 1200,
                     height: 900,
                     outputfile: "critical/contact.css",
@@ -81,7 +93,7 @@ module.exports = function(grunt) {
             },
             page_404: {
                 options: {
-                    url: "http://localhost:8888/perfthemes/abcdefgh/",
+                    url: "http://lightbold.perfthemes.dev/abcdefgh/",
                     width: 1200,
                     height: 900,
                     outputfile: "critical/404.css",
@@ -94,15 +106,23 @@ module.exports = function(grunt) {
         },
 
         cssmin: {
-          target: {
-            files: [{
-              expand: true,
-              cwd: 'critical',
-              src: ['*.css', '!*.min.css'],
-              dest: 'critical',
-              ext: '.min.css'
-            }]
-          }
+            critical: {
+                options: {
+                    aggressiveMerging: true,
+                    level: {
+                        2: {
+                          all: true,
+                        }
+                    }
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'critical',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'critical',
+                    ext: '.min.css'
+                }]
+            }
         },
 
         clean: {
@@ -130,20 +150,16 @@ module.exports = function(grunt) {
             },
             build: {
                 expand: true,
-                src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json' ],
+                src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json', '!.gitignore' ],
                 dest: 'build/'
             },
             demo: {
-                src: '../../uploads/demo/demo-lightbold.xml',
-                dest: 'build/demo-lightbold.xml'
+                src: '../../uploads/demo/lightbold-demo.xml',
+                dest: 'build/lightbold-demo.xml'
             },
             doc: {
                 src: '/Users/bulledev/Google\ Drive/perfthemes.com/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
-            },
-            stylesheet: {
-                src: 'temp.css',
-                dest: 'style-<%= pkg.version %>.css'
             },
 
 
@@ -176,30 +192,6 @@ module.exports = function(grunt) {
                 cwd: 'build/',
                 src: ['**/*'],
                 dest: '<%= pkg.name %>/'
-            }
-        },
-
-        perfbudget: {
-            default: {
-                options: {
-                    url: 'perf.dev',
-                    key: 'A.43da8ba865bc8f510685e0e5ef2fdcd2',
-                    budget: {
-                        visualComplete: '2000',
-                        SpeedIndex: '1000'
-                    }
-                }
-            }
-        },
-
-        autoprefixer: {
-            options: {
-                browsers: ['last 2 versions']
-            },
-            dist: {
-                files: {
-                    'temp.css': 'temp.css'
-                }
             }
         },
 
@@ -240,11 +232,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-perfbudget');
-    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('critical', ['criticalcss']);
+    grunt.registerTask('critical', ['criticalcss','cssmin']);
+    grunt.registerTask('min', ['cssmin']);
+
     //grunt.registerTask('cleanstyle', ['clean:style']);
-    grunt.registerTask( 'build', ['clean:init', 'copy', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

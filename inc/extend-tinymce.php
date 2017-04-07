@@ -82,7 +82,8 @@ function perf_styles_dropdown( $settings ) {
 /*
 * Add editor styles
 */
-function wpse120831_mce_css( $mce_css ) {
+add_filter( 'mce_css', 'perf_add_editor_styles' );
+function perf_add_editor_styles( $mce_css ) {
     if ( ! empty( $mce_css ) )
         $mce_css .= ',';
 
@@ -91,4 +92,3 @@ function wpse120831_mce_css( $mce_css ) {
     return $mce_css;
 }
 
-add_filter( 'mce_css', 'wpse120831_mce_css' );

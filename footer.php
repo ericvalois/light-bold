@@ -11,7 +11,6 @@
 
 ?>
 
-
 	<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
 		<footer class="site-footer clearfix dark-bg hide-print">
 
@@ -39,7 +38,7 @@
 
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix hide-print">
 		<div class="md-col md-col-6 mb1 md-mb0">
-			<div class="white-color copy">&copy; <?php echo date("Y"); ?><?php echo perf_get_field("perf_footer_copy","option"); ?></div>
+			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php echo perf_get_field("perf_footer_copy","option"); ?></div>
 		</div>
 
 		<div class="md-col md-col-6">

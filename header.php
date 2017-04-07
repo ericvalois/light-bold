@@ -10,29 +10,24 @@
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-
 	<head>
-
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<?php do_action('perf_head_open'); ?>
+		<?php wp_head(); ?>
 
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-		<?php wp_head(); ?>
-
 	</head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class("system-font"); ?>>
 
 	<?php do_action('perf_body_open'); ?>
-
-	<header class="main-header site-sidebar bg-white">
+	
+	<header class="main-header site-sidebar bg-white overflow-hidden block fixed left-0 top-0 col-12 m0">
 
 		<div class="main-header_container hide-print">
 
@@ -45,6 +40,5 @@
 	</header>
 
 	<?php get_template_part( 'components/main-navigation/main-navigation' ); ?>
-
 
 		<div id="content" class="site-content clearfix">

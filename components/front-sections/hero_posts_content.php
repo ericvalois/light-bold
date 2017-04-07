@@ -18,17 +18,16 @@
 
 	$posts = new WP_Query( $args );
 ?>
-<div class="md-col-5 dark-bg relative md-table-cell">
-	<div class="table col-12 front-hero-content<?php if( $posts->post_count == 1 ){ echo ' single-slide'; } ?>">
-		<div class="table-cell align-middle px2 md-px3 py3">
-			
-			<div <?php if( $posts->post_count > 1 ){ echo 'class="main-carousel is-hidden"'; } ?>>
+<div class="md-col-5 dark-bg relative">
+	<div class="flex flex-stretch flex-column col-12 front-hero-content<?php if( $posts->post_count == 1 ){ echo ' single-slide'; } ?>">
+		<div class="flex flex-center front-hero col-12 px2 py3">
+			<div <?php if( $posts->post_count > 1 ){ echo 'class="col-12 main-carousel is-hidden"'; }else{ echo 'class="fit"'; } ?>>
 				
 				<?php if ( $posts->have_posts() ) : ?>
 
 					<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
-						<article <?php post_class("carousel-cell"); ?>>
+						<article <?php post_class("carousel-cell col-12 px1"); ?>>
 
 							<h3 class="h2 entry-title separator white-color mt0"><?php the_title(); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
@@ -51,9 +50,9 @@
 	</div>
 
 	<?php if( $posts->post_count > 1 ): ?>
-		<div class="button-row alt-dark-bg px2 md-px3">
-			<button class="alt-dark-bg border-none button--previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-			<button class="alt-dark-bg border-none button--next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+		<div class="button-row alt-dark-bg px2 md-px3  flex flex-stretch">
+			<button class="alt-dark-bg border-none button--previous"><svg class="fa fa-chevron-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-left"></use></svg></button>
+			<button class="alt-dark-bg border-none button--next"><svg class="fa fa-chevron-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-right"></use></svg></button>
 
 			<?php if( get_sub_field("remove_archive_link") != 1 ): ?>
 				<a href="<?php echo get_post_type_archive_link("post"); ?>" class="archive-link upper px2"><?php _e("Archive","lightbold"); ?></a>

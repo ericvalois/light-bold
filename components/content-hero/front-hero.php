@@ -6,9 +6,21 @@
  */
 ?>
 
-<div class="front-hero-section clearfix md-table col-12">
-    <div id="perf-main-hero" class="md-col-7 front-hero relative hide-print md-table-cell bg-cover bg-center">
-        
+<div class="front-hero-section flex-stretch clearfix md-flex col-12 alt-dark-bg overflow-hidden">
+
+    <?php
+        $perf_image_id = perf_select_hero_image();
+        $perf_image_src_sm = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-sm' );
+        $perf_image_src_md = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
+        $perf_image_src_lg = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
+    ?>
+    <div class="front-hero md-col-7 hide-print bg-cover bg-center relative">
+        <div class="bg-default front-hero absolute top-0 right-0 bottom-0 left-0 z1 bg-cover bg-center"></div>
+        <div id="perf-main-hero" class="front-hero absolute top-0 right-0 bottom-0 left-0 z2 bg-cover bg-center"
+            data-bgset="<?php echo $perf_image_src_lg[0]; ?> [(min-width: 64em)] | 
+            <?php echo $perf_image_src_md[0]; ?> [(min-width: 52em)] | 
+            <?php echo $perf_image_src_sm[0]; ?>">
+        </div>
     </div>
 
     <?php

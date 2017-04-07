@@ -2,13 +2,11 @@
 	// Include WordPress
   	define('WP_USE_THEMES', false);
   	require('../../../../wp-blog-header.php');
-
     header("Content-type: text/css; charset: UTF-8");
-    $perf_temp_css = wp_remote_get(get_template_directory_uri() . "/style.css");
-    $perf_stylesheet = $perf_temp_css['body'];
 
-    echo $perf_stylesheet;
+    include_once( '../style.css' );
+
     do_action( 'perf_mobile_styles' );
 
 ?>
-#tinymce{ padding: 30px !important;}
+#tinymce{ padding: 30px !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;}

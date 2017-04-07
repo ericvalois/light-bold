@@ -17,11 +17,11 @@
 
 	<div id="social_widget" class="clearfix mb2 hide-print">
 		<div class="left mb1 mr1">
-			<a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php echo get_permalink(); ?>&t=<?php echo get_the_title(); ?>" class="flex flex-center social_share align-middle"><svg class="mx-auto fa fa-facebook"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-facebook"></use></svg></a>
+			<a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php echo get_permalink(); ?>&t=<?php echo urlencode( get_the_title() ); ?>" class="flex flex-center social_share align-middle"><svg class="mx-auto fa fa-facebook"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-facebook"></use></svg></a>
 		</div>
 
 		<div class="left mb1 mr1">
-			<a target="_blank" href="http://twitter.com/home?status=<?php echo get_the_title(); ?>+<?php echo get_permalink(); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-twitter"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-twitter"></use></svg></a>
+			<a target="_blank" href="http://twitter.com/home?status=<?php echo urlencode( get_the_title() ); ?>+<?php echo get_permalink(); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-twitter"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-twitter"></use></svg></a>
 		</div>
 
 		<div class="left mb1 mr1">
@@ -29,11 +29,11 @@
 		</div>
 
 		<div class="left mb1 mr1">
-			<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-linkedin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-linkedin"></use></svg></a>
+			<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink(); ?>&title=<?php echo urlencode( get_the_title() ); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-linkedin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-linkedin"></use></svg></a>
 		</div>
 
 		<div class="left mr1">
-			<a target="_blank" href="http://pinterest.com/pin/create/bookmarklet/?media=article&url=<?php echo get_permalink(); ?>&is_video=false&description=<?php echo get_the_title(); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-pinterest"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-pinterest"></use></svg></a>
+			<a target="_blank" href="http://pinterest.com/pin/create/bookmarklet/?media=article&url=<?php echo get_permalink(); ?>&is_video=false&description=<?php echo urlencode( get_the_title() ); ?>" class="flex flex-center  social_share"><svg class="mx-auto fa fa-pinterest"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-pinterest"></use></svg></a>
 		</div>
 	</div>
 

@@ -6,7 +6,7 @@
 /*
 * Inline styles
 */
-add_action( 'perf_head_open', 'perf_inline_styles', 50 );
+add_action( 'perf_head_open', 'perf_inline_styles', 10 );
 function perf_inline_styles() {
 
     echo '<style>';
@@ -36,117 +36,66 @@ function perf_inline_styles() {
     echo '</style>';
 }
 
-/*
-* Mobile hero
-*/
-add_action( 'perf_mobile_styles', 'perf_sm_hero' );
-function perf_sm_hero() {
-
-    $perf_image_id = perf_select_hero_image();
-    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-sm' );
-?>
-    #perf-main-hero{
-        background-image: url(<?php echo $perf_image_src[0]; ?>);
-    }
-<?php
-}
-
-/*
-* Tablet hero
-*/
-add_action( 'perf_md_styles', 'perf_md_hero' );
-function perf_md_hero() {
-
-    $perf_image_id = perf_select_hero_image();
-    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-md' );
-?>
-    #perf-main-hero{
-        background-image: url(<?php echo $perf_image_src[0]; ?>);
-    }
-<?php
-}
-
-/*
-* Desktop hero
-*/
-add_action( 'perf_lg_styles', 'perf_lg_hero' );
-function perf_lg_hero() {
-
-    $perf_image_id = perf_select_hero_image();
-    $perf_image_src = wp_get_attachment_image_src( $perf_image_id, 'perfthemes-hero-lg' );
-?>
-    #perf-main-hero{
-        background-image: url(<?php echo $perf_image_src[0]; ?>);
-    }
-<?php
-}
-
 /**
  * Print custom inline CSS in the head
  */
 add_action('perf_mobile_styles','perf_custom_color', 5);
 function perf_custom_color(){
 
-    if( get_field("perf_custom_css_styles","option") ){
-        $perf_main_color = get_field("perf_custom_color","option");
+    if( get_field("perf_main_site_color","option") ){
+        $perf_main_color = perf_get_field("perf_main_site_color","option");
     }else{
         $perf_main_color = '#3498db';
     }
 
-    ?>
-
-    .main-color{ color: <?php echo $perf_main_color; ?>; }
-    a,
-    .tagcloud a:hover{ color: <?php echo $perf_main_color; ?>;}
-    a.dark-color:hover,
-    a.white-color:hover,
-    .tags:hover,
-    .widget_categories a:hover,
-    .widget_archive a:hover,
-    .comment-reply-link:hover,
-    .site-footer li a:hover,
-    .icons_social:hover,
-    .icons_social:focus,
-    .button-row button,
-    .active .menu__link,
-    .site-footer .address_row .fa{ color: <?php echo $perf_main_color; ?> }
-    .menu__item i,
-    .menu__link:hover,
-    .menu__breadcrumbs a,
-    .address_row i { color: <?php echo $perf_main_color; ?>; }
-    a:hover,a:focus{ border-color: <?php echo $perf_main_color; ?>; }
-    .menu__link:before,
-    .separator:after,
-    .perf_btn.alt2{ background-color: <?php echo $perf_main_color; ?>; }
-    .perf_btn,
-    .submit,
-    .gform_button,
-    input[type="submit"]{ color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
-    .perf_btn:hover,
-    .perf_btn:focus,
-    .submit:hover,
-    .submit:focus,
-    .gform_button:hover,
-    .gform_button:focus,
-    input[type="submit"]:hover,
-    input[type="submit"]:focus{ background-color: <?php echo $perf_main_color; ?>; border-color: <?php echo $perf_main_color; ?>; }
-    #primary-menu > li.menu-item-has-children:hover,
-    #primary-menu  .sub-menu li{ background-color:  <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>;}
-    .bg-main-color{ background-color: <?php echo $perf_main_color; ?>;}
-    blockquote, .perf_alert_default{ border-left-color: <?php echo $perf_main_color; ?>}
-    .social_share{ border-color: <?php echo $perf_main_color; ?>; }
-    input:focus, textarea:focus, select:focus { border-color: <?php echo $perf_main_color; ?> !important; }
-    ::selection { background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
-    ::-moz-selection{ background: <?php echo perf_hex2rgba($perf_main_color, 0.25); ?>; }
-    .comment-author-admin > article{ border-bottom: 0.5rem solid <?php echo $perf_main_color; ?>; background-color: <?php echo perf_hex2rgba($perf_main_color, 0.05); ?>; }
-    .opacity-zero{ opacity: 0; }
-    img{max-width: 100%;height: auto;}
-    .main-carousel{
-      opacity: 0;
-  -webkit-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-    }
-    <?php
+    $perf_custom_css = '
+        .main-color{ color: ' . $perf_main_color . '; }
+        a,
+        .tagcloud a:hover{ color: ' . $perf_main_color . ';}
+        a.dark-color:hover,
+        a.white-color:hover,
+        .tags:hover,
+        .widget_categories a:hover,
+        .widget_archive a:hover,
+        .comment-reply-link:hover,
+        .site-footer li a:hover,
+        .icons_social:hover,
+        .icons_social:focus,
+        .button-row button,
+        .active .menu__link,
+        .site-footer .address_row .fa{ color: ' . $perf_main_color . ' }
+        .menu__item i,
+        .menu__link:hover,
+        .menu__breadcrumbs a,
+        .address_row i { color: ' . $perf_main_color . '; }
+        a:hover,a:focus{ border-color: ' . $perf_main_color . '; }
+        .menu__link:before,
+        .separator:after,
+        .perf_btn.alt2{ background-color: ' . $perf_main_color . '; }
+        .perf_btn,
+        .submit,
+        .gform_button,
+        input[type="submit"]{ color: ' . $perf_main_color . '; border-color: ' . $perf_main_color . '; }
+        .perf_btn:hover,
+        .perf_btn:focus,
+        .submit:hover,
+        .submit:focus,
+        .gform_button:hover,
+        .gform_button:focus,
+        input[type="submit"]:hover,
+        input[type="submit"]:focus{ background-color: ' . $perf_main_color . '; border-color: ' . $perf_main_color . '; }
+        #primary-menu > li.menu-item-has-children:hover,
+        #primary-menu  .sub-menu li{ background-color:  ' . perf_hex2rgba($perf_main_color, 0.05) . ';}
+        .bg-main-color{ background-color: ' . $perf_main_color . ';}
+        blockquote, .perf_alert_default{ border-left-color: ' . $perf_main_color . '}
+        .social_share{ border-color: ' . $perf_main_color . '; }
+        input:focus, textarea:focus, select:focus { border-color: ' . $perf_main_color . ' !important; }
+        ::selection { background: ' . perf_hex2rgba($perf_main_color, 0.25) . '; }
+        ::-moz-selection{ background: ' . perf_hex2rgba($perf_main_color, 0.25) . '; }
+        .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $perf_main_color . '; background-color: ' . perf_hex2rgba($perf_main_color, 0.05) . '; }
+        .opacity-zero{ opacity: 0; }
+    ';
+    echo perf_compress( $perf_custom_css );
 }
 
 function perf_hex2rgba($color, $opacity = false) {

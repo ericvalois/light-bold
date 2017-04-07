@@ -184,12 +184,12 @@ if ( typeof define === 'function' && define.amd ) {
         // create breadcrumbs
         if( self.options.breadcrumbsCtrl ) {
             this.breadcrumbsCtrl = document.createElement('nav');
-            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center';
+            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center px2 absolute col-12';
             this.el.insertBefore(this.breadcrumbsCtrl, this.el.firstChild);
             // add initial breadcrumb
             this._addBreadcrumb(0);
         }
-
+        
         // event binding
         this._initEvents();
     };
@@ -359,6 +359,8 @@ if ( typeof define === 'function' && define.amd ) {
         }
 
         var bc = document.createElement('a');
+
+        bc.className = "border-none main-color ultra-small upper pointer inline-block nowrap";
 
         
         if( idx ){

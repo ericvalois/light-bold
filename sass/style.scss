@@ -3,7 +3,7 @@ Theme Name: Light & Bold
 Theme URI: https://lightbold.perfthemes.com
 Author: Perfthemes
 Author URI: https://perfthemes.com
-Description: Performance First WordPress Theme
+Description: Speed Focused WordPress Theme
 Version: 1.0.0
 Text Domain: lightbold
 Tags: two-columns, left-sidebar, right-sidebar, custom-colors, custom-menu, featured-images, full-width-template, post-formats, theme-options, translation-ready
@@ -27,7 +27,7 @@ $text-color: #3e3e3e;
 $dark-bg: #1E1E1E;
 $alt-dark-bg: #2c2c2c;
 
-@import 'normalize';
+//@import 'normalize';
 
 @import 'basscss-custom';
 
@@ -122,6 +122,17 @@ a.no-border{
     z-index: 2;
 }
 
+.opacity-zero{ opacity: 0; }
+.opacity-1{ opacity: 1; }
+
+.border-none{ border: none; }
+
+.outline-0{ outline: 0; }
+
+.pointer{ cursor: pointer; }
+
+.text-color{ color: #3e3e3e; }
+
 body, .smooth-container { scroll-behavior: smooth }
 
 .front-hero{ min-height: 360px;}
@@ -130,12 +141,21 @@ body, .smooth-container { scroll-behavior: smooth }
     min-height: 300px;
 }
 
+.front-hero .lazyload,
+.front-hero .lazyloading {
+    opacity: 0;
+}
+.front-hero .lazyloaded {
+    opacity: 1;
+    transition: opacity 100ms;
+}
+
+
 .thumb_section1{ height: 360px; }
 
 @include media-query(md) {
     .front-hero,
     .front-hero-content{
-        min-height: 350px;
         min-height: 58.33333vh;
     }
 
@@ -181,7 +201,9 @@ footer .icons_social{
     margin-top: 15px;
 }
 
-.site-footer p { font-size: 14px; }
+.site-footer p,
+.site-footer .textwidget { font-size: 14px; }
+
 .site-footer .menu,
 .site-footer ul{ padding: 0; }
 
@@ -252,12 +274,6 @@ footer .icons_social{
 .width30{ width: 30px; }
 .width40{ width: 40px; }
 
-.perf-main-hero{
-    background: #282e34;
-    position: relative;
-    z-index: 1;
-}
-
 h1.entry-title{
     padding-top: 13vh;
     padding-bottom: 15vh;
@@ -307,7 +323,6 @@ h1.entry-title{
 /*
 * Contact
 */
-
 .address_contact_cell{ display: block; }
 
 .contact_icons{ font-size: 130%;}
@@ -315,24 +330,22 @@ h1.entry-title{
 /*
 * Post navigation
 */
-
-.nav-links{
-    
-}
-
 .nav-next,
 .nav-previous{ width: 50%; float: left;}
 
 .nav-next{ text-align: right;}
 
-#perf-main-hero {
-    z-index: -999998;
-    height: 100%;
+.perf-main-hero {
+    z-index: -3;
     opacity: 0.8;
 }
 
-.home #perf-main-hero {
-    opacity: 1;
+.perf-main-hero .default{
+    z-index: -2;
+}
+
+.perf-main-hero #perf-main-hero{
+    z-index: 1;
 }
 
 .text-logo{

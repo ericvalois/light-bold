@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="clearfix posts_section px4 py1 lg-py2 white-bg ">
+<section class="clearfix posts_section px2 lg-px3 py1 lg-py2 white-bg ">
 
 	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo get_sub_field("title"); ?></h2>
 	<span class="separator seprarator-center"></span>

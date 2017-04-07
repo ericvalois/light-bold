@@ -19,7 +19,7 @@ function perf_breadcrumbs() {
 				$perf_output = '';
 				if ( ! empty( $perf_categories ) ) {
 				    foreach( $perf_categories as $category ) {
-				        $perf_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'lightbold' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $perf_cat_separator;
+				        $perf_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $perf_cat_separator;
 				    }
 				    echo trim( $perf_output, $perf_cat_separator );
 				}

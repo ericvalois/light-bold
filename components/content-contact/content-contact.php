@@ -3,11 +3,15 @@
 	<?php $cpt = 1; foreach( $locations as $location ): ?>
 		<section class="break-word table col-12">
 
-			<?php
-				if( $cpt % 2 == 0 ){
-					include( get_template_directory() . '/components/content-contact/img-location.php');
-				}
-			?>
+			<?php if( $cpt % 2 == 0 ): ?>
+				<?php if( $location['image_place'] ): ?>
+					<div class="col-12 md-col-5 lg-table-cell bg-cover bg-center center lazyload" data-sizes="auto"
+						data-bgset="<?php echo $location['image_place']['sizes']['perfthemes-hero-md']; ?> [(min-width: 60em)] |
+						<?php echo $location['image_place']['sizes']['perfthemes-hero-sm']; ?> [(min-width: 52em)] |
+						<?php echo $location['image_place']['sizes']['perfthemes-hero-sm']; ?>">
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
 
 			<div class="<?php if( $location['image_place'] ){ echo 'md-col-12 lg-col-7 lg-table-cell'; } ?> align-top dark-bg px2 sm-px3 py3 featured">
 
@@ -41,14 +45,19 @@
 					</div>
 
 				</div>
-				<?php //echo '<pre>'; print_r($location); echo '</pre>'; ?>
+				
 			</div>
 
-			<?php
-				if( $cpt % 2 != 0 ){
-					include( get_template_directory() . '/components/content-contact/img-location.php');
-				}
-			?>
+			<?php if( $cpt % 2 != 0 ): ?>
+				<?php if( $location['image_place'] ): ?>
+					<div class="col-12 md-col-5 lg-table-cell bg-cover bg-center center lazyload" data-sizes="auto"
+						data-bgset="<?php echo $location['image_place']['sizes']['perfthemes-hero-md']; ?> [(min-width: 60em)] |
+						<?php echo $location['image_place']['sizes']['perfthemes-hero-sm']; ?> [(min-width: 52em)] |
+						<?php echo $location['image_place']['sizes']['perfthemes-hero-sm']; ?>">
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+			
 		</section>
 	<?php $cpt++; endforeach; ?>
 <?php endif; ?>

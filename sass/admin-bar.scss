@@ -11,43 +11,12 @@
     .admin-bar .main-header {
         top: 32px;
     }
-
-    .admin-bar .nav-container {
-        //top: 96px;
-    }
 }
 
-/*@include media-query(md) {
-    .admin-bar .nav-container {
-        top: 0;
-    }
-}*/
-
 @media (min-width: 1200px){
-    .admin-bar .nav-container{
-        //margin-top: 180px;
-        //height: calc(100vh - 180px);
-    }
-
-    .admin-bar .main-header_container, 
-    .admin-bar .site-logo{
-        //height: 223px;
-    }
 
     .admin-bar .nav-container {
         top: 32px;
-    }
-}
-
-@media (min-width: 1650px){
-    .admin-bar .nav-container{
-        //margin-top: 230px;
-        //height: calc(100vh - 230px);
-    }
-
-    .admin-bar .main-header_container, 
-    .admin-bar .site-logo{
-        //height: 273px;
     }
 }
 

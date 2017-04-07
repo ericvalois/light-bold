@@ -59,9 +59,8 @@
 
 			<?php if( has_post_thumbnail() ): ?>
 				<div class="col-12 md-col-5 md-table-cell bg-cover bg-center center lazyload" data-sizes="auto"
-					data-bgset="<?php the_post_thumbnail_url( $post->ID, 'perfthemes-hero-md' ); ?> [(min-width: 60em)] |
-					<?php the_post_thumbnail_url( $post->ID, 'perfthemes-hero-sm' ); ?> [(min-width: 52em)] |
-					<?php the_post_thumbnail_url( $post->ID, 'perfthemes-hero-sm' ); ?>">
+					data-bgset="<?php the_post_thumbnail_url( 'perfthemes-hero-lg' ); ?> [(min-width: 100em)] |
+					<?php the_post_thumbnail_url( 'perfthemes-hero-md' ); ?> [(min-width: 52em)]">
 				</div>
 			<?php endif; ?>
 		</article>
