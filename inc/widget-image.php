@@ -2,16 +2,16 @@
 /**
  * Adds image widget.
  */
-class perf_image_widget extends WP_Widget {
+class light_bold_image_widget extends WP_Widget {
 
   /**
    * Register widget with WordPress.
    */
   function __construct() {
     parent::__construct(
-      'perf_image_widget', // Base ID
-      __('Perf Image', 'lightbold'), // Name
-      array( 'description' => __( 'Image widget for Light and Bold', 'lightbold' ), ) // Args
+      'light_bold_image_widget', // Base ID
+      __('PerfThemes Image', 'light-bold'), // Name
+      array( 'description' => __( 'Image widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
@@ -29,16 +29,16 @@ class perf_image_widget extends WP_Widget {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
     }
     
-    $perf_nofollow = perf_get_field('perf_image_noffolow_widget', 'widget_' . $args['widget_id']);
-    $perf_link = perf_get_field('perf_image_link_widget', 'widget_' . $args['widget_id']);
-    $perf_image = perf_get_field('perf_image_widget', 'widget_' . $args['widget_id']);
+    $light_bold_nofollow = get_field('perf_image_noffolow_widget', 'widget_' . $args['widget_id']);
+    $light_bold_link = get_field('perf_image_link_widget', 'widget_' . $args['widget_id']);
+    $light_bold_image = get_field('perf_image_widget', 'widget_' . $args['widget_id']);
   
     ?>
-      <?php if( $perf_link ): ?>
-        <a href="<?php echo $perf_link; ?>" <?php if( $perf_nofollow ){ echo 'rel="nofollow"'; } ?> target="_blank" class="border-none">
+      <?php if( $light_bold_link ): ?>
+        <a href="<?php echo $light_bold_link; ?>" target="_blank" rel="noopener noreferrer <?php if( $light_bold_nofollow ){ echo 'nofollow'; } ?>" class="border-none">
       <?php endif; ?>
-        <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php echo $perf_image['sizes']['medium']; ?>" title="<?php echo $perf_image['title']; ?>" alt="<?php echo $perf_image['alt']; ?>" class="lazyload">
-      <?php if( $perf_link ): ?>
+        <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php echo $light_bold_image['url']; ?>" title="<?php echo $light_bold_image['title']; ?>" alt="<?php echo $light_bold_image['alt']; ?>" class="lazyload">
+      <?php if( $light_bold_link ): ?>
         </a>
       <?php endif; ?>
     <?php
@@ -56,15 +56,15 @@ class perf_image_widget extends WP_Widget {
    */
   public function form( $instance ) {
     if ( isset($instance['title']) ) {
-      $perf_title = $instance['title'];
+      $light_bold_title = $instance['title'];
     }
     else {
-      $perf_title = __( 'New title', 'lightbold' );
+      $light_bold_title = __( 'New title', 'light-bold' );
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','light-bold' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $light_bold_title ); ?>">
     </p>
     <?php
   }
@@ -80,15 +80,15 @@ class perf_image_widget extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $perf_instance = array();
-    $perf_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $light_bold_instance = array();
+    $light_bold_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-    return $perf_instance;
+    return $light_bold_instance;
   }
 
-} // class perf_image_widget
+} // class light_bold_image_widget
 
-// register perf_image_widget widget
+// register light_bold_image_widget widget
 add_action( 'widgets_init', function(){
-  register_widget( 'perf_image_widget' );
+  register_widget( 'light_bold_image_widget' );
 });

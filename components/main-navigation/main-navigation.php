@@ -1,6 +1,6 @@
-<nav id="ml-menu" class="menu nav-container site-sidebar hide-print bg-white <?php if ( has_nav_menu( 'primary' ) && perf_main_menu_has_child() ){ echo 'multi_level'; } ?>">
+<nav id="ml-menu" class="menu nav-container site-sidebar hide-print bg-white <?php if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){ echo 'multi_level'; } ?>">
 
-	<a class="accessibility skip-link" href="#content"><?php _e("Skip to main content","lightbold"); ?></a>
+	<a class="accessibility skip-link" href="#content"><?php _e("Skip to main content","light-bold"); ?></a>
 	<button class="action-close absolute top-0 right-0 bottom-0 z1 border-none mr2 outline-0 p0 pointer" aria-label="Close Menu">
 		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35.413 35.413" xml:space="preserve">
 			<g>
@@ -12,12 +12,12 @@
 		</svg>
 	</button>
 
-	<a id="all" class="hide"><?php _e("All","lightbold"); ?></a>
+	<a id="all" class="hide"><?php _e("All","light-bold"); ?></a>
 
-	<div class="menu__wrap absolute bottom-0 col-12 <?php if ( has_nav_menu( 'primary' ) && perf_main_menu_has_child() ){ echo 'multi_level'; } ?>">
+	<div class="menu__wrap absolute bottom-0 col-12 <?php if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){ echo 'multi_level'; } ?>">
 		<?php
 			if ( has_nav_menu( 'primary' ) ) {
-				perf_custom_menu('primary');
+				light_bold_custom_menu('primary');
 			}
 		?>
 	</div>

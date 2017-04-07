@@ -2,16 +2,16 @@
 /**
  * Adds custom widget.
  */
-class perf_social_profiles extends WP_Widget {
+class light_bold_social_profiles extends WP_Widget {
 
   /**
    * Register widget with WordPress.
    */
   function __construct() {
     parent::__construct(
-      'perf_social_profiles', // Base ID
-      __('Perf Social profiles', 'lightbold'), // Name
-      array( 'description' => __( 'Social profiles widget for Light and Bold', 'lightbold' ), ) // Args
+      'light_bold_social_profiles', // Base ID
+      __('PerfThemes Social Profiles', 'light-bold'), // Name
+      array( 'description' => __( 'Social Profiles Widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
@@ -30,14 +30,15 @@ class perf_social_profiles extends WP_Widget {
     }
     
 
-    $perf_icons = perf_get_field('icons_social', 'widget_' . $args['widget_id']);
-
-    foreach( $perf_icons as $icon ){
-    	?>
-    		<a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><?php echo $icon['icon']; ?></a>
-    	<?php
+    $light_bold_icons = get_field('icons_social', 'widget_' . $args['widget_id']);
+    if( !empty($light_bold_icons) ){
+        foreach( $light_bold_icons as $icon ){
+            ?>
+                <a target="_blank" href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><svg class="fa <?php echo $icon['icon_name']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $icon['icon_name']; ?>"></use></svg></a>
+            <?php
+        }
     }
-
+    
     echo $args['after_widget'];
   }
 
@@ -50,15 +51,15 @@ class perf_social_profiles extends WP_Widget {
    */
   public function form( $instance ) {
     if ( isset($instance['title']) ) {
-      $perf_title = $instance['title'];
+      $light_bold_title = $instance['title'];
     }
     else {
-      $perf_title = __( 'New title', 'lightbold' );
+      $light_bold_title = __( 'New title', 'light-bold' );
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','light-bold' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $light_bold_title ); ?>">
     </p>
     <?php
   }
@@ -74,15 +75,15 @@ class perf_social_profiles extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $perf_instance = array();
-    $perf_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    $light_bold_instance = array();
+    $light_bold_instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-    return $perf_instance;
+    return $light_bold_instance;
   }
 
-} // class perf_social_profiles
+} // class light_bold_social_profiles
 
-// register perf_social_profiles widget
+// register light_bold_social_profiles widget
 add_action( 'widgets_init', function(){
-  register_widget( 'perf_social_profiles' );
+  register_widget( 'light_bold_social_profiles' );
 });

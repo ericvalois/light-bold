@@ -39,7 +39,7 @@
 
 					<?php if( get_sub_field("show_post_thumbnail") ): ?>
 						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
-							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php the_post_thumbnail_url("perfthemes-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
+							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php the_post_thumbnail_url("light-bold-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
 						</a>
 					<?php endif; ?>
 
@@ -48,7 +48,7 @@
 					<h3 class="h3 mb1 mt0 entry-title"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 					<div class="small-p">
-						<strong><?php _e("By","lightbold"); ?> <?php echo get_the_author(); ?></strong><br>
+						<strong><?php _e("By","light-bold"); ?> <?php echo get_the_author(); ?></strong><br>
 						<?php the_date(); ?>
 					</div><!-- .entry-meta -->
 

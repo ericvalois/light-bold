@@ -807,12 +807,12 @@ msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr "Installation de l’extension %1$s (%2$d/%3$d)"
 
 #: searchform.php:2 searchform.php:6
-msgctxt "lightbold"
+msgctxt "light-bold"
 msgid "Search for:"
 msgstr "Rechercher pour :"
 
 #: searchform.php:4
-msgctxt "lightbold"
+msgctxt "light-bold"
 msgid "Search"
 msgstr "Recherche"
 

@@ -10,19 +10,9 @@
 /*
 * Custom action hook
 */
-add_action("wp_head","perf_action_head_open", 5);
-function perf_action_head_open(){
-    do_action('perf_head_open');
-}
-
-if( !function_exists("perf_get_field") ){
-    function perf_get_field($field_name, $post_id = false, $format_value = true){
-        if( function_exists("get_field") ){
-            return get_field($field_name, $post_id, $format_value);
-        }else{
-            return false;
-        }
-    }
+add_action("wp_head","light_bold_action_head_open", 5);
+function light_bold_action_head_open(){
+    do_action('light_bold_head_open');
 }
 
 /**
@@ -31,7 +21,7 @@ if( !function_exists("perf_get_field") ){
  * @param array $classes Classes for the body element.
  * @return array
  */
-function perf_body_classes( $classes ) {
+function light_bold_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -39,7 +29,17 @@ function perf_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'perf_body_classes' );
+add_filter( 'body_class', 'light_bold_body_classes' );
+
+/**
+ * Add a pingback url auto-discovery header for singularly identifiable articles.
+ */
+function light_bold_pingback_header() {
+	if ( is_singular() && pings_open() ) {
+		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
+	}
+}
+add_action( 'wp_head', 'light_bold_pingback_header' );
 
 /*
 * Wrap all table for a better responsive world
@@ -47,23 +47,23 @@ add_filter( 'body_class', 'perf_body_classes' );
 add_filter( 'the_content', 'filter_tableContentWrapper' );
 function filter_tableContentWrapper($content) {
 
-	$perf_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-    $perf_doc = new DOMDocument();
+	$light_bold_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $light_bold_doc = new DOMDocument();
 
     libxml_use_internal_errors(true);
-    if( !empty($perf_content) ){
-    	$perf_doc->loadHTML(utf8_decode($perf_content));
+    if( !empty($light_bold_content) ){
+    	$light_bold_doc->loadHTML(utf8_decode($light_bold_content));
     }else{
     	return;
     }
 
 
-	$items = $perf_doc->getElementsByTagName('table');
+	$items = $light_bold_doc->getElementsByTagName('table');
 	foreach ($items as $item) {
 
 		if( $item->parentNode->tagName == 'body' ) {
 
-			$wrapperDiv = $perf_doc->createElement('div');
+			$wrapperDiv = $light_bold_doc->createElement('div');
 			$wrapperDiv->setAttribute('class', 'overflow-scroll');
 
 			$item->parentNode->replaceChild($wrapperDiv, $item);
@@ -72,23 +72,23 @@ function filter_tableContentWrapper($content) {
 		}
 	}
 
-	$perf_html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $perf_doc->saveHTML()));
-    return $perf_html_fragment;
+	$light_bold_html_fragment = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace( array('<html>', '</html>', '<body>', '</body>'), array('', '', '', ''), $light_bold_doc->saveHTML()));
+    return $light_bold_html_fragment;
 }
 
 /*
 * Same tag cloud font size
 */
-add_filter('wp_generate_tag_cloud', 'perf_tag_cloud',10,1);
-function perf_tag_cloud($string){
+add_filter('wp_generate_tag_cloud', 'light_bold_tag_cloud',10,1);
+function light_bold_tag_cloud($string){
    return preg_replace("/style='font-size:.+pt;'/", '', $string);
 }
 
 /*
 * Show or hide content animation
 */
-function perf_content_animation(){
-    if( perf_get_field("perf_show_fade","option") == 1 ){
+function light_bold_content_animation(){
+    if( get_field("perf_show_fade","option") == 1 ){
         return 'animated fadeIn opacity-zero';
     }else{
         return;
@@ -98,27 +98,27 @@ function perf_content_animation(){
 /*
 * Hero image selection
 */
-function perf_select_hero_image(){
+function light_bold_select_hero_image(){
    global $post;
 
-    if( is_object( $post ) && perf_get_field("perf_hero_image", $post->ID) ){
-        $perf_hero = perf_get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && perf_get_field("perf_hero_blog_archive", "option") ){
-        $perf_hero = perf_get_field("perf_hero_blog_archive", "option");
-    }elseif( is_404() && perf_get_field("perf_hero_404", "option") ){
-        $perf_hero = perf_get_field("perf_hero_404", "option");
+    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
+        $light_bold_hero = get_field("perf_hero_image", $post->ID);
+    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
+        $light_bold_hero = get_field("perf_hero_blog_archive", "option");
+    }elseif( is_404() && get_field("perf_hero_404", "option") ){
+        $light_bold_hero = get_field("perf_hero_404", "option");
     }else{
-        $perf_hero = perf_get_field("perf_hero_image", "option");
+        $light_bold_hero = get_field("perf_hero_image", "option");
     }
 
-    return $perf_hero;
+    return $light_bold_hero;
 }
 
 /**
  * Move Comment field to the end
  */
-add_filter( 'comment_form_fields', 'perf_move_comment_field_to_bottom' );
-function perf_move_comment_field_to_bottom( $fields ) {
+add_filter( 'comment_form_fields', 'light_bold_move_comment_field_to_bottom' );
+function light_bold_move_comment_field_to_bottom( $fields ) {
     $comment_field = $fields['comment'];
     unset( $fields['comment'] );
     $fields['comment'] = $comment_field;
@@ -128,8 +128,8 @@ function perf_move_comment_field_to_bottom( $fields ) {
 /**
  * Remove novalidate from comment form
  */
-add_action( 'wp_footer', 'perf_enable_comment_form_validation' );
-function perf_enable_comment_form_validation() {
+add_action( 'wp_footer', 'light_bold_enable_comment_form_validation' );
+function light_bold_enable_comment_form_validation() {
     if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') && current_theme_supports( 'html5' ) && !is_page_template("page-templates/template-front.php") )  {
         echo '<script>document.getElementById("commentform").removeAttribute("novalidate");</script>' . PHP_EOL;
     }
@@ -138,7 +138,7 @@ function perf_enable_comment_form_validation() {
 /**
  * Custom comment markup
  */
-function perf_custom_comments($comment, $args, $depth) {
+function light_bold_custom_comments($comment, $args, $depth) {
     global $post;
    
     $post_author = get_userdata($post->post_author);
@@ -149,19 +149,19 @@ function perf_custom_comments($comment, $args, $depth) {
             
         <div class="comment-intro clearfix">
             <div class="left mr1 mb1 "><?php echo get_avatar( $comment->comment_author_email, 57, "", "", array("class" => "rounded") ); ?></div> 
-            <span class="small-p bold upper"><?php printf(__('%s','lightbold'), get_comment_author_link()) ?> </span>
+            <span class="small-p bold upper"><?php printf(__('%s','light-bold'), get_comment_author_link()) ?> </span>
             <strong><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?></strong>
             <?php 
                 if( $comment->comment_author_email == $post_author->user_email ){
-                    echo '<span class="comment_author">' . __("Author","lightbold") . '</span>';
+                    echo '<span class="comment_author">' . __("Author","light-bold") . '</span>';
                 }
             ?>
             <br>
-            <span class="comment_date upper small-p"><?php printf(__('%1$s','lightbold'), get_comment_date(), get_comment_time()) ?></span>
+            <span class="comment_date upper small-p"><?php printf(__('%1$s','light-bold'), get_comment_date(), get_comment_time()) ?></span>
         </div>
         
         <?php if ($comment->comment_approved == '0') : ?>
-            <em><php _e('Your comment is awaiting moderation.','lightbold'); ?></em><br />
+            <em><php _e('Your comment is awaiting moderation.','light-bold'); ?></em><br />
         <?php endif; ?>
 
         <div class="small-p">
@@ -173,7 +173,7 @@ function perf_custom_comments($comment, $args, $depth) {
 /**
  * Custom WordPress Menu Markup
  */
-function perf_custom_menu( $theme_location ) {
+function light_bold_custom_menu( $theme_location ) {
 
     $menu_name = $theme_location;
     $locations = get_nav_menu_locations();
@@ -198,18 +198,18 @@ function perf_custom_menu( $theme_location ) {
         }
 
         // Menu
-        $html_menu = '<ul data-menu="main" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset ' . (( !perf_main_menu_has_child() )?'visible':'') . '">';
+        $html_menu = '<ul data-menu="main" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset ' . (( !light_bold_main_menu_has_child() )?'visible':'') . '">';
 
         foreach( $menu as $item ):
 
-            if( perf_menu_item_has_child($item->ID) ){
+            if( light_bold_menu_item_has_child($item->ID) ){
                 $menu_zero_with_child[] = $item->ID;
                 $has_child = true;
             }else{
                 $has_child = false;
             }
 
-            $menu_icon = get_field( 'perf_icon_name', $item->ID );
+            $menu_icon = get_field( 'light_bold_icon_name', $item->ID );
 
             if(  $item->object_id == $post_id ){
                 $current_page = 'active';
@@ -251,14 +251,14 @@ function perf_custom_menu( $theme_location ) {
 
                         if(  $starter_item->menu_item_parent == $item ):
 
-                            if( perf_menu_item_has_child($starter_item->ID) ){
+                            if( light_bold_menu_item_has_child($starter_item->ID) ){
                                 $menu_sub_with_child[] = $starter_item->ID;
                                 $has_child = true;
                             }else{
                                 $has_child = false;
                             }
 
-                            $menu_icon = get_field( 'perf_icon_name', $starter_item->ID );
+                            $menu_icon = get_field( 'light_bold_icon_name', $starter_item->ID );
 
                             if(  $starter_item->object_id == $post->ID ){
                                 $current_page = 'active';
@@ -295,7 +295,7 @@ function perf_custom_menu( $theme_location ) {
                 echo '<ul data-menu="submenu-' . $item . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
                     foreach( $menu as $starter_item ):
 
-                        $menu_icon = get_field( 'perf_menu_icon', $starter_item->ID );
+                        $menu_icon = get_field( 'light_bold_menu_icon', $starter_item->ID );
 
                         if(  $starter_item->object_id == $post->ID ){
                             $current_page = 'active';
@@ -338,7 +338,7 @@ function perf_custom_menu( $theme_location ) {
 /**
  * Detect if primary menu item has child
  */
-function perf_menu_item_has_child( $item_id ){
+function light_bold_menu_item_has_child( $item_id ){
     $menu_name = 'primary';
     $locations = get_nav_menu_locations();
     $menu_id = $locations[ $menu_name ] ;
@@ -360,7 +360,7 @@ function perf_menu_item_has_child( $item_id ){
 /**
  * Detect if primary menu has child
  */
-function perf_main_menu_has_child() {
+function light_bold_main_menu_has_child() {
 
     $menu_name = 'primary';
     $locations = get_nav_menu_locations();
@@ -385,8 +385,8 @@ function perf_main_menu_has_child() {
 /**
  * Load fontawesome sprite ASYNC
  */
-add_action("perf_footer_scripts","perf_call_sprite_fontawesome");
-function perf_call_sprite_fontawesome(){
+add_action("light_bold_footer_scripts","light_bold_call_sprite_fontawesome");
+function light_bold_call_sprite_fontawesome(){
     ?>
     // Fetch icon font fontawesome.svg
     var ajax = new XMLHttpRequest();
@@ -402,11 +402,11 @@ function perf_call_sprite_fontawesome(){
 
 
 
-add_action("wp_footer","perf_custom_js", 99);
-function perf_custom_js(){
+add_action("wp_footer","light_bold_custom_js", 99);
+function light_bold_custom_js(){
   echo '<script>';
 
-  do_action('perf_footer_scripts');
+  do_action('light_bold_footer_scripts');
 
   echo '</script>';
 }
@@ -417,7 +417,7 @@ function perf_custom_js(){
  * @params  $url  The URL of the feed to retrieve.
  * @returns The response from the URL; null if empty.
  */
-function perf_get_response( $url ) {
+function light_bold_get_response( $url ) {
     $response = null;
 
     // First, we try to use wp_remote_get
@@ -438,16 +438,16 @@ function perf_get_response( $url ) {
  * @params  $post_id  post ID
  * @returns True/False
  */
-function perf_flickity_detection( $post_id ){
+function light_bold_flickity_detection( $post_id ){
     $flickity = false;
-    $rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
+    $rows = get_post_meta( $post_id, 'light_bold_front_hero_content', true );
 
     foreach( (array) $rows as $count => $row ) {
         switch( $row ) {
         
             // Custom content
             case 'custom_content':
-                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
+                if( get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
                     $flickity = true;
                 }else{
                     $flickity = false;
@@ -460,10 +460,10 @@ function perf_flickity_detection( $post_id ){
                     'post_type' => 'post',
                 );
 
-                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
-                    $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
+                if( get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
+                    $args['posts_per_page'] = get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_how_many_posts', true );
                 }else{
-                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
+                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_manual_selection', true );
                 }
 
                 $posts = new WP_Query( $args );
@@ -486,7 +486,7 @@ function perf_flickity_detection( $post_id ){
  * @params  $minify  String to minify
  * @returns String minified
  */
-function perf_compress( $minify ){
+function light_bold_compress( $minify ){
     // Remove space after colons
     $minify = str_replace(': ', ':', $minify);
     // Remove whitespace

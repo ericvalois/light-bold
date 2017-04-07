@@ -10,22 +10,22 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function perf_customize_register( $wp_customize ) {
+function light_bold_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	//$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'perf_customize_register' );
+add_action( 'customize_register', 'light_bold_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function perf_customize_preview_js() {
-	wp_enqueue_script( 'perf_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+function light_bold_customize_preview_js() {
+	wp_enqueue_script( 'light-bold-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
-add_action( 'customize_preview_init', 'perf_customize_preview_js' );
+add_action( 'customize_preview_init', 'light_bold_customize_preview_js' );
 
-add_action( "customize_register", "perf_remove_bg_image_customizer" );
-function perf_remove_bg_image_customizer( $wp_customize ) {
+add_action( "customize_register", "light_bold_remove_bg_image_customizer" );
+function light_bold_remove_bg_image_customizer( $wp_customize ) {
 	 $wp_customize->remove_section("background_image");
 }

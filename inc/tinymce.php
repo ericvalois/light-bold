@@ -6,7 +6,7 @@
 
     include_once( '../style.css' );
 
-    do_action( 'perf_mobile_styles' );
+    do_action( 'light_bold_mobile_styles' );
 
 ?>
 #tinymce{ padding: 30px !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;}

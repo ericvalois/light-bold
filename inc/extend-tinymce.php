@@ -7,20 +7,20 @@
  * @package perfthemes
  */
 
-add_filter( 'mce_buttons_2', 'perf_mce_editor_buttons' );
-function perf_mce_editor_buttons( $buttons ) {
+add_filter( 'mce_buttons_2', 'light_bold_mce_editor_buttons' );
+function light_bold_mce_editor_buttons( $buttons ) {
 
     array_unshift( $buttons, 'styleselect' );
     return $buttons;
 }
 
-add_filter( 'tiny_mce_before_init', 'perf_styles_dropdown' );
-function perf_styles_dropdown( $settings ) {
+add_filter( 'tiny_mce_before_init', 'light_bold_styles_dropdown' );
+function light_bold_styles_dropdown( $settings ) {
 
 	// Create array of new styles
-	$perf_new_styles = array(
+	$light_bold_new_styles = array(
 		array(
-			'title'	=> __( 'Custom Styles', 'lightbold' ),
+			'title'	=> __( 'Custom Styles', 'light-bold' ),
 			'items'	=> array(
 				array(
 			        'title' => 'Intro text',
@@ -72,7 +72,7 @@ function perf_styles_dropdown( $settings ) {
 	$settings['style_formats_merge'] = true;
 
 	// Add new styles
-	$settings['style_formats'] = json_encode( $perf_new_styles );
+	$settings['style_formats'] = json_encode( $light_bold_new_styles );
 
 	// Return New Settings
 	return $settings;
@@ -82,8 +82,8 @@ function perf_styles_dropdown( $settings ) {
 /*
 * Add editor styles
 */
-add_filter( 'mce_css', 'perf_add_editor_styles' );
-function perf_add_editor_styles( $mce_css ) {
+add_filter( 'mce_css', 'light_bold_add_editor_styles' );
+function light_bold_add_editor_styles( $mce_css ) {
     if ( ! empty( $mce_css ) )
         $mce_css .= ',';
 

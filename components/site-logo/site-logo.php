@@ -1,11 +1,11 @@
 <div class="site-logo">
-	<?php if( perf_get_field("perf_log_sm","option") || perf_get_field("perf_log_lg","option") ): ?>
+	<?php if( get_field("perf_log_sm","option") || get_field("perf_log_lg","option") ): ?>
 		<a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="border-none mx-auto">
 			<picture>
-				<source srcset="<?php echo perf_get_field("perf_log_sm","option"); ?>" media="(max-width: 1199px)">
-				<source srcset="<?php echo perf_get_field("perf_log_md","option"); ?>" media="(min-width: 1200px) and (max-width: 1650px)">
-				<source srcset="<?php echo perf_get_field("perf_log_lg","option"); ?>" media="(min-width: 1650px)">
- 				<img class="block mx-auto" src="<?php echo perf_get_field("perf_log_md","option"); ?>" alt="Logo">
+				<source srcset="<?php echo get_field("perf_log_sm","option"); ?>" media="(max-width: 1199px)">
+				<source srcset="<?php echo get_field("perf_log_md","option"); ?>" media="(min-width: 1200px) and (max-width: 1650px)">
+				<source srcset="<?php echo get_field("perf_log_lg","option"); ?>" media="(min-width: 1650px)">
+ 				<img class="block mx-auto" src="<?php echo get_field("perf_log_md","option"); ?>" alt="Logo">
 			</picture>
 		</a>
 	<?php else: ?>

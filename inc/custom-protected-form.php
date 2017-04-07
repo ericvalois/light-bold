@@ -4,15 +4,15 @@
  *
  * @package perfthemes
  */
-add_filter( 'the_password_form', 'perf_custom_password_form' );
-function perf_custom_password_form() {
+add_filter( 'the_password_form', 'light_bold_custom_password_form' );
+function light_bold_custom_password_form() {
 	global $post;
-	$perf_label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
-	$perf_o = '<form class="protected-post-form" action="' . get_option('siteurl') . '/wp-pass.php" method="post">';
+	$light_bold_label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+	$light_bold_o = '<form class="protected-post-form" action="' . get_option('siteurl') . '/wp-pass.php" method="post">';
 	
-	$perf_o .= '<p>' . __( "This content is password protected. To view it please enter your password below:","lightbold" ) . '</p>';
+	$light_bold_o .= '<p>' . __( "This content is password protected. To view it please enter your password below:","light-bold" ) . '</p>';
 
-	$perf_o .= '<label for="' . $perf_label . '">' . __( "Password:","lightbold" ) . ' </label><input name="post_password" id="' . $perf_label . '" type="password" size="20" /><input type="submit" class="perf_btn mt1 mb1" name="Submit" value="' . esc_attr__( "Submit","lightbold" ) . '" />
+	$light_bold_o .= '<label for="' . $light_bold_label . '">' . __( "Password:","light-bold" ) . ' </label><input name="post_password" id="' . $light_bold_label . '" type="password" size="20" /><input type="submit" class="light_bold_btn mt1 mb1" name="Submit" value="' . esc_attr__( "Submit","light-bold" ) . '" />
 	</form>';
-	return $perf_o;
+	return $light_bold_o;
 }

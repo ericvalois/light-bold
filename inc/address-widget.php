@@ -2,16 +2,16 @@
 /**
  * Adds address widget
  */
-class perf_address_widget extends WP_Widget {
+class light_bold_address_widget extends WP_Widget {
 
   /**
    * Register widget with WordPress.
    */
   function __construct() {
     parent::__construct(
-      'perf_address_widget', // Base ID
-      __('Perf Address', 'lightbold'), // Name
-      array( 'description' => __( 'Address widget for Light and Bold', 'lightbold' ), ) // Args
+      'light_bold_address_widget', // Base ID
+      __('PerfThemes Address', 'light-bold'), // Name
+      array( 'description' => __( 'Address widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
@@ -63,11 +63,11 @@ class perf_address_widget extends WP_Widget {
       $perf_title = $instance['title'];
     }
     else {
-      $perf_title = __( 'New title', 'lightbold' );
+      $perf_title = __( 'New title', 'light-bold' );
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','lightbold' ); ?></label>
+      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','light-bold' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
     </p>
     <?php
@@ -90,9 +90,9 @@ class perf_address_widget extends WP_Widget {
     return $instance;
   }
 
-} // class perf_address_widget
+} // class light_bold_address_widget
 
-// register perf_address_widget widget
+// register light_bold_address_widget widget
 add_action( 'widgets_init', function(){
-  register_widget( 'perf_address_widget' );
+  register_widget( 'light_bold_address_widget' );
 });

@@ -36,7 +36,7 @@
 									echo $content;
 								?>
 				  			</p>
-				  			<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","lightbold"); ?></a>
+				  			<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","light-bold"); ?></a>
 
 						</article>
 
@@ -55,7 +55,7 @@
 			<button class="alt-dark-bg border-none button--next"><svg class="fa fa-chevron-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-right"></use></svg></button>
 
 			<?php if( get_sub_field("remove_archive_link") != 1 ): ?>
-				<a href="<?php echo get_post_type_archive_link("post"); ?>" class="archive-link upper px2"><?php _e("Archive","lightbold"); ?></a>
+				<a href="<?php echo get_post_type_archive_link("post"); ?>" class="archive-link upper px2"><?php _e("Archive","light-bold"); ?></a>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

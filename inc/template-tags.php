@@ -7,55 +7,55 @@
  * @package perfthemes
  */
 
-if ( ! function_exists( 'perf_posted_on' ) ) :
+if ( ! function_exists( 'light_bold_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function perf_posted_on() {
-	$perf_time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .'%2$s</time></span> ';
+function light_bold_posted_on() {
+	$light_bold_time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","light-bold") . ': ' .'%2$s</time></span> ';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$perf_time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","lightbold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","lightbold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
+		$light_bold_time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","light-bold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","light-bold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
 	}
 
-	$perf_time_string = sprintf( $perf_time_string,
+	$light_bold_time_string = sprintf( $light_bold_time_string,
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
 
-	$perf_posted_on = $perf_time_string;
+	$light_bold_posted_on = $light_bold_time_string;
 
-	$perf_byline = '<span class="author vcard">' . __("By","lightbold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$light_bold_byline = '<span class="author vcard">' . __("By","light-bold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 
-	echo $perf_posted_on;
+	echo $light_bold_posted_on;
 
-	echo $perf_byline;
+	echo $light_bold_byline;
 
-	$perf_categories = get_the_category();
+	$light_bold_categories = get_the_category();
 	$cat_separator = ', ';
-	$perf_output = '';
-	if ( ! empty( $perf_categories ) ) {
+	$light_bold_output = '';
+	if ( ! empty( $light_bold_categories ) ) {
 
-		echo '<span class="cat">' . __("Categories", "lightbold") . ': ';
+		echo '<span class="cat">' . __("Categories", "light-bold") . ': ';
 
-	    foreach( $perf_categories as $category ) {
-	        $perf_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
+	    foreach( $light_bold_categories as $category ) {
+	        $light_bold_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
 	    }
-	    echo trim( $perf_output, $cat_separator );
+	    echo trim( $light_bold_output, $cat_separator );
 
 	    echo '</span>';
 
 	}
 
 
-	$perf_posttags = get_the_tags();
-	if ($perf_posttags) {
+	$light_bold_posttags = get_the_tags();
+	if ($light_bold_posttags) {
 
-		echo '<span class="tag">' . __("Tags", "lightbold") . ': ';
+		echo '<span class="tag">' . __("Tags", "light-bold") . ': ';
 		$cpt = 1;
-		foreach($perf_posttags as $tag) {
+		foreach($light_bold_posttags as $tag) {
 			if( $cpt != 1){
 				echo ', ';
 			}
@@ -71,33 +71,33 @@ function perf_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'perf_entry_footer' ) ) :
+if ( ! function_exists( 'light_bold_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function perf_entry_footer() {
+function light_bold_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$perf_categories_list = get_the_category_list( esc_html__( ', ', 'lightbold' ) );
-		if ( $perf_categories_list && perf_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'lightbold' ) . '</span>', $perf_categories_list ); // WPCS: XSS OK.
+		$light_bold_categories_list = get_the_category_list( esc_html__( ', ', 'light-bold' ) );
+		if ( $light_bold_categories_list && light_bold_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'light-bold' ) . '</span>', $light_bold_categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'lightbold' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'light-bold' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'lightbold' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'light-bold' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'lightbold' ), esc_html__( '1 Comment', 'lightbold' ), esc_html__( '% Comments', 'lightbold' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'light-bold' ), esc_html__( '1 Comment', 'light-bold' ), esc_html__( '% Comments', 'light-bold' ) );
 		echo '</span>';
 	}
 
-	edit_post_link( esc_html__( 'Edit', 'lightbold' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( esc_html__( 'Edit', 'light-bold' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
@@ -106,10 +106,10 @@ endif;
  *
  * @return bool
  */
-function perf_categorized_blog() {
-	if ( false === ( $perf_all_the_cool_cats = get_transient( 'perf_categories' ) ) ) {
+function light_bold_categorized_blog() {
+	if ( false === ( $light_bold_all_the_cool_cats = get_transient( 'light_bold_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
-		$perf_all_the_cool_cats = get_categories( array(
+		$light_bold_all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
 			'hide_empty' => 1,
 
@@ -118,29 +118,29 @@ function perf_categorized_blog() {
 		) );
 
 		// Count the number of categories that are attached to the posts.
-		$perf_all_the_cool_cats = count( $perf_all_the_cool_cats );
+		$light_bold_all_the_cool_cats = count( $light_bold_all_the_cool_cats );
 
-		set_transient( 'perf_categories', $perf_all_the_cool_cats );
+		set_transient( 'light_bold_categories', $light_bold_all_the_cool_cats );
 	}
 
-	if ( $perf_all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so perf_categorized_blog should return true.
+	if ( $light_bold_all_the_cool_cats > 1 ) {
+		// This blog has more than 1 category so light_bold_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so perf_categorized_blog should return false.
+		// This blog has only 1 category so light_bold_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in perf_categorized_blog.
+ * Flush out the transients used in light_bold_categorized_blog.
  */
-function perf_category_transient_flusher() {
+function light_bold_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'perf_categories' );
+	delete_transient( 'light_bold_categories' );
 }
-add_action( 'edit_category', 'perf_category_transient_flusher' );
-add_action( 'save_post',     'perf_category_transient_flusher' );
+add_action( 'edit_category', 'light_bold_category_transient_flusher' );
+add_action( 'save_post',     'light_bold_category_transient_flusher' );

@@ -24,6 +24,6 @@ document.querySelector('.action-close').addEventListener("click", function () {
     
 // Fix Google Page Speed Insights false error "Prioritize visible content"
 if ( document.getElementById("perf-main-hero") && !navigator.userAgent.match(/Google Page Speed Insights/i) ){
-    var perf_main_hero = document.getElementById("perf-main-hero");
-    perf_main_hero.classList.add("lazyload");
+    var light_bold_main_hero = document.getElementById("perf-main-hero");
+    light_bold_main_hero.classList.add("lazyload");
 }

@@ -13,7 +13,7 @@
 	if( !$perf_disable_social_share && !$perf_on_page_share_disabled  ):
 ?>
 
-	<h5 class="mb1 mt2 hide-prin"><?php _e("Share this","lightbold"); ?></h5>
+	<h5 class="mb1 mt2 hide-prin"><?php _e("Share this","light-bold"); ?></h5>
 
 	<div id="social_widget" class="clearfix mb2 hide-print">
 		<div class="left mb1 mr1">

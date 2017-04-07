@@ -28,7 +28,7 @@
 						$button_class = 'perf_btn alt';
 
 						$image = get_sub_field('image');
-						$data_bgset = 'data-bgset="' . $image['sizes']['perfthemes-hero-sm'] . ' [(max-width: 52em)] | ' . $image['sizes']['perfthemes-hero-md'] . ' [(min-width: 52em) and (max-width: 60em)] | '  . $image['sizes']['perfthemes-hero-lg'] . ' [(min-width: 60em)]"';
+						$data_bgset = 'data-bgset="' . $image['sizes']['light-bold-hero-sm'] . ' [(max-width: 52em)] | ' . $image['sizes']['light-bold-hero-md'] . ' [(min-width: 52em) and (max-width: 60em)] | '  . $image['sizes']['light-bold-hero-lg'] . ' [(min-width: 60em)]"';
 						$date_expand = 'data-expand="50"';
 					}else{
 						$div_class = 'bg-white';

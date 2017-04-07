@@ -11,14 +11,14 @@ get_header(); ?>
 	
 	<?php get_template_part( 'components/content-hero/content-hero' ); ?>
 
-	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 <?php echo perf_content_animation(); ?>">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 <?php echo light_bold_content_animation(); ?>">
 	
 		<main id="main" class="site-main px2 sm-px3 md-px4 col lg-col-12">
 
 			<section class="error-404 not-found">
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'lightbold' ); ?></p>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'light-bold' ); ?></p>
 
 					<?php get_search_form(); ?>
 
@@ -28,9 +28,9 @@ get_header(); ?>
 						</div>
 
 						<div class="sm-col sm-col-6 sm-px3">
-							<?php if ( perf_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+							<?php if ( light_bold_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 								<div class="widget widget_categories">
-									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'lightbold' ); ?></h2>
+									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'light-bold' ); ?></h2>
 									<ul>
 										<?php
 											wp_list_categories( array(
@@ -52,7 +52,7 @@ get_header(); ?>
 						<div class="sm-col sm-col-6">
 							<?php
 								/* translators: %1$s: smiley */
-								$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'lightbold' ), convert_smilies( ':)' ) ) . '</p>';
+								$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'light-bold' ), convert_smilies( ':)' ) ) . '</p>';
 								the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 							?>
 						</div>
