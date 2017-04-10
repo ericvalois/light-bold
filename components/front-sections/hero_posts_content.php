@@ -27,7 +27,7 @@
 
 					<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
-						<article <?php post_class("carousel-cell col-12 px1"); ?>>
+						<article <?php post_class("carousel-cell col-12 md-px1"); ?>>
 
 							<h3 class="h2 entry-title separator white-color mt0"><?php the_title(); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">

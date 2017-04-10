@@ -19,7 +19,7 @@
 
 					<?php foreach( $perf_slides as $slide ): ?>
 
-						<div class="carousel-cell col-12 px2">
+						<div class="carousel-cell col-12 md-px1">
 
 							<h3 class="h2 entry-title separator white-color mt0"><?php echo $slide['perf_main_title']; ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
