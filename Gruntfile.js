@@ -133,14 +133,14 @@ module.exports = function(grunt) {
                 src: ['build/*', '!build/<%= pkg.name %>-parent.zip']
             },
             second: {
-                src: ['build/*', '!build/lightbold.zip']
+                src: ['build/*', '!build/light-bold.zip']
             },
             style: {
                 src: ['style-*']
             },
             temp: {
                 src: ['temp.css']
-            }
+            },
         },
 
         copy: {
@@ -154,12 +154,16 @@ module.exports = function(grunt) {
                 dest: 'build/'
             },
             demo: {
-                src: '../../uploads/demo/lightbold-demo.xml',
-                dest: 'build/lightbold-demo.xml'
+                src: '../../uploads/demo/light-bold-demo.xml',
+                dest: 'build/light-bold-demo.xml'
             },
             doc: {
                 src: '/Users/bulledev/Google\ Drive/perfthemes.com/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
+            },
+            extend_lightbold: {
+                src: 'build/extend-lightbold.zip',
+                dest: 'inc/3rd-party/plugins/extend-lightbold.zip'
             },
 
 
@@ -180,13 +184,22 @@ module.exports = function(grunt) {
                     archive: 'build/<%= pkg.name %>-child.zip'
                 },
                 expand: true,
-                cwd: '../lightbold-child/',
+                cwd: '../light-bold-child/',
                 src: ['**/*'],
                 dest: '<%= pkg.name %>-child/'
             },
+            extend_lightbold: {
+                options: {
+                    archive: 'build/extend-lightbold.zip'
+                },
+                expand: true,
+                cwd: '../../plugins/extend-lightbold/',
+                src: ['**/*'],
+                dest: 'extend-lightbold/'
+            },
             full: {
                 options: {
-                    archive: 'build/lightbold.zip'
+                    archive: 'build/light-bold.zip'
                 },
                 expand: true,
                 cwd: 'build/',
@@ -238,6 +251,6 @@ module.exports = function(grunt) {
     grunt.registerTask('min', ['cssmin']);
 
     //grunt.registerTask('cleanstyle', ['clean:style']);
-    grunt.registerTask( 'build', ['clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

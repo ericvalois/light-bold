@@ -32,7 +32,7 @@
 							<h3 class="h2 entry-title separator white-color mt0"><?php the_title(); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
 				  				<?php 
-								  	$content = wp_trim_words( get_the_content(), 45, '…' ); 
+								  	$content = wp_trim_words( get_the_content(), 45, '...' ); 
 									echo $content;
 								?>
 				  			</p>

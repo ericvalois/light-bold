@@ -125,7 +125,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 1', 'light-bold' ),
 		'id'            => 'footer-1',
-		'description'   => '',
+		'description'   => __("First footer column location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
@@ -135,7 +135,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 2', 'light-bold' ),
 		'id'            => 'footer-2',
-		'description'   => '',
+		'description'   => __("Second footer column location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
@@ -145,7 +145,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 3', 'light-bold' ),
 		'id'            => 'footer-3',
-		'description'   => '',
+		'description'   => __("Third footer column location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="mb2 md-mr3 %2$s clearfix">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
@@ -155,7 +155,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 4', 'light-bold' ),
 		'id'            => 'footer-4',
-		'description'   => '',
+		'description'   => __("Fourth footer column location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="mb2 %2$s clearfix">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h6 class="widget-title main-color separator upper mb2 mt0 small-p">',
@@ -165,7 +165,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Blog sidebar', 'light-bold' ),
 		'id'            => 'blog-sidebar',
-		'description'   => '',
+		'description'   => __("Blog and archive sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',
@@ -175,7 +175,7 @@ function light_bold_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Page sidebar', 'light-bold' ),
 		'id'            => 'page-sidebar',
-		'description'   => '',
+		'description'   => __("Default page sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="perf_widget mb3 %2$s ">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',

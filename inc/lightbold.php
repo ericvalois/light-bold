@@ -44,8 +44,8 @@ add_action( 'wp_head', 'light_bold_pingback_header' );
 /*
 * Wrap all table for a better responsive world
 */
-add_filter( 'the_content', 'filter_tableContentWrapper' );
-function filter_tableContentWrapper($content) {
+add_filter( 'the_content', 'light_bold_filter_tableContentWrapper' );
+function light_bold_filter_tableContentWrapper($content) {
 
 	$light_bold_content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
     $light_bold_doc = new DOMDocument();
@@ -209,7 +209,7 @@ function light_bold_custom_menu( $theme_location ) {
                 $has_child = false;
             }
 
-            $menu_icon = get_field( 'light_bold_icon_name', $item->ID );
+            $menu_icon = get_field( 'perf_icon_name', $item->ID );
 
             if(  $item->object_id == $post_id ){
                 $current_page = 'active';
@@ -258,7 +258,7 @@ function light_bold_custom_menu( $theme_location ) {
                                 $has_child = false;
                             }
 
-                            $menu_icon = get_field( 'light_bold_icon_name', $starter_item->ID );
+                            $menu_icon = get_field( 'perf_icon_name', $starter_item->ID );
 
                             if(  $starter_item->object_id == $post->ID ){
                                 $current_page = 'active';
@@ -440,14 +440,14 @@ function light_bold_get_response( $url ) {
  */
 function light_bold_flickity_detection( $post_id ){
     $flickity = false;
-    $rows = get_post_meta( $post_id, 'light_bold_front_hero_content', true );
+    $rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
 
     foreach( (array) $rows as $count => $row ) {
         switch( $row ) {
         
             // Custom content
             case 'custom_content':
-                if( get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
+                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
                     $flickity = true;
                 }else{
                     $flickity = false;
@@ -460,10 +460,10 @@ function light_bold_flickity_detection( $post_id ){
                     'post_type' => 'post',
                 );
 
-                if( get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
-                    $args['posts_per_page'] = get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_how_many_posts', true );
+                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
+                    $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
                 }else{
-                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'light_bold_front_hero_content_' . $count . '_manual_selection', true );
+                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
                 }
 
                 $posts = new WP_Query( $args );

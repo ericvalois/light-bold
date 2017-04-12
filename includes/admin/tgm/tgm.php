@@ -71,11 +71,11 @@ function light_bold_register_required_plugins() {
 		),
 
         array(
-			'name'               => 'Perfthemes Extend Light & Bold',
-			'slug'               => 'perf-lightbold-extend', 
-			'source'             => 'https://github.com/perfthemes/perf-lightbold-extend/archive/master.zip',
+			'name'               => 'Extend Light & Bold',
+			'slug'               => 'extend-lightbold', 
+			'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'version'            => '1.0.0',
 		),
 
@@ -87,6 +87,7 @@ function light_bold_register_required_plugins() {
 			//'version'            => '5.3.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			//'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
+            'version'            => '1.0.0',
 		),
 
 		array(
@@ -94,6 +95,7 @@ function light_bold_register_required_plugins() {
 			'slug'               => 'perf-browser-cache', 
 			'source'             => 'https://github.com/perfthemes/perf-browser-cache/archive/master.zip',
 			'required'           => false,
+            'version'            => '1.0.0',
 		),
 
 		array(
