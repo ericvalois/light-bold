@@ -37,7 +37,7 @@
 
 				<article <?php post_class("border-box px2 break-word mb3 " . $col_class); ?> id="post-<?php the_ID(); ?>">
 
-					<?php if( get_sub_field("show_post_thumbnail") ): ?>
+					<?php if( get_sub_field("show_post_thumbnail") && has_post_thumbnail() ): ?>
 						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
 							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php the_post_thumbnail_url("light-bold-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
 						</a>
