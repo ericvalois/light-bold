@@ -388,7 +388,7 @@ function light_bold_main_menu_has_child() {
 add_action("light_bold_footer_scripts","light_bold_call_sprite_fontawesome");
 function light_bold_call_sprite_fontawesome(){
     ?>
-    // Fetch icon font fontawesome.svg
+    /* Get fontawesome.svg */ 
     var ajax = new XMLHttpRequest();
     ajax.open("GET", "<?php echo get_template_directory_uri(); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
     ajax.send();
