@@ -4,8 +4,6 @@
   	require('../../../../wp-blog-header.php');
     header("Content-type: text/css; charset: UTF-8");
 
-    include_once( '../style.css' );
-
     do_action( 'light_bold_mobile_styles' );
 
 ?>

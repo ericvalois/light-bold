@@ -82,8 +82,8 @@ function light_bold_styles_dropdown( $settings ) {
 /*
 * Add editor styles
 */
-add_filter( 'mce_css', 'light_bold_add_editor_styles' );
-function light_bold_add_editor_styles( $mce_css ) {
+add_filter( 'mce_css', 'light_bold_add_dynamic_editor_styles' );
+function light_bold_add_dynamic_editor_styles( $mce_css ) {
     if ( ! empty( $mce_css ) )
         $mce_css .= ',';
 
@@ -91,4 +91,13 @@ function light_bold_add_editor_styles( $mce_css ) {
 
     return $mce_css;
 }
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+ add_action( 'admin_init', 'light_bold_add_editor_styles' );
+function light_bold_add_editor_styles() {
+    add_editor_style( get_template_directory_uri() . '/style.css' );
+}
+
 
