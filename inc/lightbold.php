@@ -180,6 +180,12 @@ function light_bold_custom_menu( $theme_location ) {
     $menu_id = $locations[ $menu_name ] ;
     $menu_object = wp_get_nav_menu_object($menu_id);
 
+    // Prevent errors on 404 page
+    if( !empty( $post ) ){
+        $post_id = $post->ID;
+    }else{
+        $post_id = null;
+    }
 
     if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
         $menu = wp_get_nav_menu_items( $menu_object->slug );
@@ -189,12 +195,6 @@ function light_bold_custom_menu( $theme_location ) {
             $post = get_post( get_option( 'page_for_posts' ) );
         }else{
            global $post; 
-        }
-        
-        if( !empty( $post ) ){
-            $post_id = $post->ID;
-        }else{
-            $post_id = null;
         }
 
         // Menu
@@ -259,8 +259,8 @@ function light_bold_custom_menu( $theme_location ) {
                             }
 
                             $menu_icon = get_field( 'perf_icon_name', $starter_item->ID );
-
-                            if(  $starter_item->object_id == $post->ID ){
+                            
+                            if(  $starter_item->object_id == $post_id ){
                                 $current_page = 'active';
                             }else{
                                 $current_page = '';
@@ -297,7 +297,7 @@ function light_bold_custom_menu( $theme_location ) {
 
                         $menu_icon = get_field( 'light_bold_menu_icon', $starter_item->ID );
 
-                        if(  $starter_item->object_id == $post->ID ){
+                        if(  $starter_item->object_id == $post_id ){
                             $current_page = 'active';
                         }else{
                             $current_page = '';
