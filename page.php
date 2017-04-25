@@ -18,9 +18,11 @@ get_header(); ?>
 
 	<div id="primary" class="content-area clearfix py3 md-py4 px2 sm-px3 md-px3 lg-px4 <?php echo light_bold_content_animation(); ?>">
 
-		<div class="lg-col lg-col-8 lg-col-right">
+        <?php if( is_active_sidebar( "page-sidebar" ) ): ?>
+		    <div class="lg-col lg-col-8 lg-col-right ">
+        <?php endif; ?>
 
-			<main id="main" class="site-main break-word lg-ml4">
+			<main id="main" class="site-main break-word <?php if( is_active_sidebar( "page-sidebar" ) ): ?>lg-ml4<?php endif; ?>">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -38,10 +40,12 @@ get_header(); ?>
 				<?php endwhile; // End of the loop. ?>
 
 			</main><!-- #main -->
+        
+        <?php if( is_active_sidebar( "page-sidebar" ) ): ?>
+		    </div><?php // lg-col-right ?>
 
-		</div><?php // lg-col-right ?>
-
-		<?php get_sidebar("page"); ?>
+            <?php get_sidebar("page"); ?>
+        <?php endif; ?>
 
 	</div><?php // #primary ?>
 

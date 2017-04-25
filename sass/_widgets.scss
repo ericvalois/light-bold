@@ -21,23 +21,25 @@
 .calendar_wrap td {
     background-color: #f6f6f6;
     color: #bcbcbb;
-    border: 3px solid #fff;
+    border: 3px solid transparent;
 }
 
 .calendar_wrap td.pad,
 .calendar_wrap td#prev,
 .calendar_wrap td#next {
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .calendar_wrap td#prev{ text-align: left; }
 .calendar_wrap td#right{ text-align: right; }
 
-.search-icon{
-    font-size: 24px;
-    color: #ababab;
-    top: 13px;
-    right: 15px;
+.site-footer .calendar_wrap td {
+    color: #6d6d6b;
+}
+
+.footer_widget{ 
+    color: #fff; 
+    -webkit-font-smoothing: antialiased;
 }
 
 input.search-field{ padding-right: 40px; }
@@ -58,9 +60,15 @@ input.search-field{ padding-right: 40px; }
     font-size: 75%;
 }
 
+.widget_categories li, 
+.widget_archive li {
+    font-size: 13px;
+}
+
 .tagcloud a,
 .tags,
-.widget_categories a, .widget_archive a{
+.widget_categories a, 
+.widget_archive a{
     font-weight: normal;
     font-style: normal;
     color: #fff;
@@ -89,6 +97,18 @@ input.search-field{ padding-right: 40px; }
     margin-right: 0.5rem;
     display: inline-block;
 
+}
+
+.widget_categories .children{ 
+    display: inline;
+    margin-left: 0.5rem;
+}
+
+.site-footer .tagcloud,
+.site-footer .tags,
+.site-footer .widget_categories, 
+.site-footer .widget_archive {
+    color: #fff;
 }
 
 .site-footer .tagcloud a,

@@ -184,7 +184,7 @@ if ( typeof define === 'function' && define.amd ) {
         // create breadcrumbs
         if( self.options.breadcrumbsCtrl ) {
             this.breadcrumbsCtrl = document.createElement('nav');
-            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center px2 absolute col-12';
+            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center px2 absolute col-12 bg-white';
             this.el.insertBefore(this.breadcrumbsCtrl, this.el.firstChild);
             // add initial breadcrumb
             this._addBreadcrumb(0);
