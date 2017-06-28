@@ -10,8 +10,8 @@ class light_bold_social_profiles extends WP_Widget {
   function __construct() {
     parent::__construct(
       'light_bold_social_profiles', // Base ID
-      esc_html_e('TTFB Social Profiles', 'light-bold'), // Name
-      array( 'description' => esc_html_e( 'Social Profiles Widget for Light and Bold', 'light-bold' ), ) // Args
+      esc_html__('TTFB Social Profiles', 'light-bold'), // Name
+      array( 'description' => esc_html__( 'Social Profiles Widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
