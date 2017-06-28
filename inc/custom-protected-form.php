@@ -1,6 +1,6 @@
 <?php
 /**
- * perfthemes custom protected form
+ * ttfb custom protected form
  *
  * @package ttfb
  */

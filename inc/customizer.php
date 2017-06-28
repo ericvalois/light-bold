@@ -1,6 +1,6 @@
 <?php
 /**
- * perfthemes Theme Customizer.
+ * ttfb Theme Customizer.
  *
  * @package ttfb
  */

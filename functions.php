@@ -1,6 +1,6 @@
 <?php
 /**
- * perfthemes functions and definitions.
+ * ttfb functions and definitions.
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
@@ -32,7 +32,7 @@ function light_bold_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on perfthemes, use a find and replace
+	 * If you're building a theme based on ttfb, use a find and replace
 	 * to change 'light-bold' to the name of your theme in all the template files.
 	 */
 	load_theme_textdomain( 'light-bold', get_template_directory() . '/languages' );

@@ -80,7 +80,7 @@ function light_bold_register_required_plugins() {
 		),
 
 		array(
-			'name'               => 'Perfthemes Browser Cache',
+			'name'               => 'TTFB Browser Cache',
 			'slug'               => 'perf-browser-cache', 
 			'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
 			'required'           => false,

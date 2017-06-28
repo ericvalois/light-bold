@@ -10,7 +10,7 @@ class light_bold_address_widget extends WP_Widget {
   function __construct() {
     parent::__construct(
       'light_bold_address_widget', // Base ID
-      __('PerfThemes Address', 'light-bold'), // Name
+      __('TTFB Address', 'light-bold'), // Name
       array( 'description' => __( 'Address widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }

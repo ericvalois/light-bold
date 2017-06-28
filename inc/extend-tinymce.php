@@ -1,6 +1,6 @@
 <?php
 /**
- * perfthemes tinymce extensions
+ * ttfb tinymce extensions
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
