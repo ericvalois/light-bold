@@ -1,2 +1,2 @@
-# Light & Bold
-Performance First WordPress Theme
+# Light & Bold theme
+Speed-Focused WordPress Theme by TTFB
