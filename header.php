@@ -22,7 +22,7 @@
 
 	</head>
 
-<body <?php body_class("system-font"); ?>>
+<body <?php body_class(); ?>>
 
 	<?php do_action('light_bold_body_open'); ?>
 	

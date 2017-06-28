@@ -76,20 +76,24 @@ function light_bold_styles_dropdown( $settings ) {
 
 	// Return New Settings
 	return $settings;
-
 }
 
 /*
-* Add editor styles
+* Add theme dynamic styles to TinyMCE
 */
-add_filter( 'mce_css', 'light_bold_add_dynamic_editor_styles' );
-function light_bold_add_dynamic_editor_styles( $mce_css ) {
-    if ( ! empty( $mce_css ) )
-        $mce_css .= ',';
+add_filter('tiny_mce_before_init','wpdocs_theme_editor_dynamic_styles');
+function wpdocs_theme_editor_dynamic_styles( $mceInit ) {
+    $custom_css = light_bold_custom_styles();
+    $custom_css = preg_replace( "/\r|\n/", "", $custom_css );
+    $styles = esc_attr($custom_css);
+    $styles = $styles . '#tinymce{ padding: 30px !important; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif;}';
 
-    $mce_css .= get_template_directory_uri() . "/inc/tinymce.php";
-
-    return $mce_css;
+    if ( isset( $mceInit['content_style'] ) ) {
+        $mceInit['content_style'] .= ' ' . $styles . ' ';
+    } else {
+        $mceInit['content_style'] = $styles . ' ';
+    }
+    return $mceInit;
 }
 
 /**

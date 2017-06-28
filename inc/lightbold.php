@@ -16,22 +16,6 @@ function light_bold_action_head_open(){
 }
 
 /**
- * Adds custom classes to the array of body classes.
- *
- * @param array $classes Classes for the body element.
- * @return array
- */
-function light_bold_body_classes( $classes ) {
-	// Adds a class of group-blog to blogs with more than 1 published author.
-	if ( is_multi_author() ) {
-		$classes[] = 'group-blog';
-	}
-
-	return $classes;
-}
-add_filter( 'body_class', 'light_bold_body_classes' );
-
-/**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
 function light_bold_pingback_header() {
@@ -175,6 +159,8 @@ function light_bold_custom_comments($comment, $args, $depth) {
  */
 function light_bold_custom_menu( $theme_location ) {
 
+    global $post;
+
     $menu_name = $theme_location;
     $locations = get_nav_menu_locations();
     $menu_id = $locations[ $menu_name ] ;
@@ -219,13 +205,13 @@ function light_bold_custom_menu( $theme_location ) {
 
             if( $item->menu_item_parent == 0 ):
                 
-                $html_menu .= '<li class="menu__item ultra-small '. $current_page .'">';
-                    $html_menu .= '<a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'" href="#"':'href="'. $item->url .'"') . '>';
+                $html_menu .= '<li class="menu__item ultra-small '. esc_attr( $current_page ) .'">';
+                    $html_menu .= '<a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. esc_attr( $item->ID ) .'" href="#"':'href="'. esc_url( $item->url ) .'"') . '>';
                     
-                    $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. $item->ID .'"':'') . '>' . $item->title . '</span>';
+                    $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. esc_attr( $item->ID ) .'"':'') . '>' . esc_html( $item->title ) . '</span>';
                     
                     if( $menu_icon ){ 
-                        $html_menu .= '<svg class="fa flex-none '. $menu_icon .'"><use xlink:href="#'. $menu_icon .'"></use></svg>'; 
+                        $html_menu .= '<svg class="fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
                     }
 
                     $html_menu .= '</a>';
@@ -246,7 +232,7 @@ function light_bold_custom_menu( $theme_location ) {
         if( count( $menu_zero_with_child ) > 0 ):
 
             foreach( $menu_zero_with_child as $item ):
-                echo '<ul data-menu="submenu-' . $item . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
+                echo '<ul data-menu="submenu-' . esc_attr( $item ) . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
                     foreach( $menu as $starter_item ):
 
                         if(  $starter_item->menu_item_parent == $item ):
@@ -267,15 +253,15 @@ function light_bold_custom_menu( $theme_location ) {
                             }
 
                             ?>
-                                <li class="menu__item ultra-small <?php echo $current_page; ?>">
-                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID .'" href="#"'; }else{ echo 'href="'. $starter_item->url .'"';} ?>>
-                                        <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'.$starter_item->ID . '"'; } ?>>
-                                            <?php echo $starter_item->title; ?> 
+                                <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
+                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $starter_item->url ) .'"';} ?>>
+                                        <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) . '"'; } ?>>
+                                            <?php echo esc_html( $starter_item->title ); ?> 
                                         </span>
 
                                         <?php 
                                             if( $menu_icon ){ 
-                                                echo '<svg class="fa flex-none '. $menu_icon .'"><use xlink:href="#'. $menu_icon .'"></use></svg>'; 
+                                                echo '<svg class="fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
                                             }
                                         ?>
                                     </a>
@@ -292,7 +278,7 @@ function light_bold_custom_menu( $theme_location ) {
         if( count( $menu_sub_with_child ) > 0 ):
 
             foreach( $menu_sub_with_child as $item ):
-                echo '<ul data-menu="submenu-' . $item . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
+                echo '<ul data-menu="submenu-' . esc_attr( $item ) . '" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset">';
                     foreach( $menu as $starter_item ):
 
                         $menu_icon = get_field( 'light_bold_menu_icon', $starter_item->ID );
@@ -307,15 +293,15 @@ function light_bold_custom_menu( $theme_location ) {
                     
                         if(  $starter_item->menu_item_parent == $item ):
                             ?>
-                                <li class="menu__item ultra-small  <?php echo $current_page; ?>">
-                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php echo 'href="'. $starter_item->url .'"'; ?>>
+                                <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
+                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php echo 'href="'. esc_url( $starter_item->url ) .'"'; ?>>
                                         <span class="flex-auto">
-                                            <?php echo $starter_item->title; ?>
+                                            <?php echo esc_html( $starter_item->title ); ?>
                                         </span>
 
                                         <?php 
                                             if( $menu_icon ){ 
-                                                echo '<i class="fa flex-none '. $menu_icon .'"></i>'; 
+                                                echo '<i class="fa flex-none '. esc_attr( $menu_icon ) .'"></i>'; 
                                             }
                                         ?>
                                     </a>
@@ -330,7 +316,7 @@ function light_bold_custom_menu( $theme_location ) {
         endif;
  
     } else {
-        $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
+        $menu_list = '<!-- no menu defined in location "'. esc_html( $theme_location ) .'" -->';
     }
 
 }
@@ -495,3 +481,37 @@ function light_bold_compress( $minify ){
     return $minify;
 }
 
+/**
+ * Add custom body class for system font
+ */
+add_filter( 'body_class','light_bold_body_classes_system_font' );
+function light_bold_body_classes_system_font( $classes ) {
+    $classes[] = 'system-font';
+
+    return $classes;
+}
+
+/**
+ * Add custom body class for multi author
+ */
+add_filter( 'body_class','light_bold_body_classes_multi_author' );
+function light_bold_body_classes_multi_author( $classes ) {
+
+    if ( is_multi_author() ) {
+		$classes[] = 'group-blog';
+	}
+      
+    return $classes;
+}
+
+/**
+ * Add custom post class for blog page
+ */
+add_filter( 'post_class','light_bold_post_classes_blog_template' );
+function light_bold_post_classes_blog_template( $classes ) {
+    if( is_archive() || is_home() || is_search() ){
+        $classes[] = 'border-bottom break-word mb2 md-mb3';
+    }
+      
+    return $classes;
+}

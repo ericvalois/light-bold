@@ -10,7 +10,7 @@ get_header(); ?>
 
 	<?php get_template_part( 'components/content-contact/content-contact' ); ?>
 
-	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4 <?php echo light_bold_content_animation(); ?>">
+	<div id="primary" class="content-area clearfix py2 sm-py3 md-py4 px2 sm-px3 md-px4 <?php echo esc_attr( light_bold_content_animation() ); ?>">
 
 		<main id="main" class="site-main col col-12 break-word">
 

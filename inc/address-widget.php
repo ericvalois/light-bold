@@ -37,11 +37,11 @@ class light_bold_address_widget extends WP_Widget {
       	?>
       		<div class="table col-12 address_row">
             <div class="table-cell width30 align-top">
-                <svg class="fa <?php echo $section['icon']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $section['icon']; ?>"></use></svg>
+                <svg class="fa <?php echo esc_attr( $section['icon'] ); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo esc_attr( $section['icon'] ); ?>"></use></svg>
             </div>
 
             <div class="table-cell small-p align-top">
-              <p class="mb0"><?php echo $section['content']; ?></p>
+              <p class="mb0"><?php echo esc_html( $section['content'] ); ?></p>
             </div>
           </div>
       	<?php
@@ -67,8 +67,8 @@ class light_bold_address_widget extends WP_Widget {
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','light-bold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
+      <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e(  'Title:','light-bold' ); ?></label>
+      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $perf_title ); ?>">
     </p>
     <?php
   }

@@ -107,3 +107,18 @@ input:focus, textarea:focus, select:focus {
 .mc4wp-alert p{
     margin-bottom: 0;
 }
+
+/*
+* Contact Form 7
+*/
+
+.wpcf7{ max-width: 800px; }
+.wpcf7 .sent p,
+.wpcf7 .sent .wpcf7-form-control-wrap{ display: none; }
+.wpcf7-not-valid-tip,
+.wpcf7-validation-errors,
+.wpcf7-spam-blocked{
+    color: red;
+}
+.screen-reader-response{ display: none; }
+.wpcf7-mail-sent-ok{ color: green; }

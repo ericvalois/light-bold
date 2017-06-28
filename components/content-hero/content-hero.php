@@ -16,15 +16,15 @@
 			<?php global $post; ?>
 			<?php
 				if( get_option('page_for_posts', true) ){
-					echo get_the_title( get_option('page_for_posts', true) );
+					echo esc_html( get_the_title( get_option('page_for_posts', true) ) );
 				}else{
-					echo get_bloginfo( "description" );
+					echo esc_html( get_bloginfo( "description" ) );
 				}
 			
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 				if( $paged > 1 ){
-					echo '&nbsp;' . __("page ","light-bold") . $paged;
+					echo '&nbsp;' . esc_html__("page ","light-bold") . $paged;
 				}
 			?>
 		<?php elseif( is_archive() ): ?>
@@ -62,9 +62,9 @@
 				<div class="bg-default absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center"></div>
 				<div id="perf-main-hero" class="absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center"   
 					data-sizes="auto"
-					data-bgset="<?php echo $perf_image_src_lg[0]; ?> [(min-width: 64em)] | 
-					<?php echo $perf_image_src_md[0]; ?> [(min-width: 52em)] | 
-					<?php echo $perf_image_src_sm[0]; ?>">
+					data-bgset="<?php echo esc_url( $perf_image_src_lg[0] ); ?> [(min-width: 64em)] | 
+					<?php echo esc_url( $perf_image_src_md[0] ); ?> [(min-width: 52em)] | 
+					<?php echo esc_url( $perf_image_src_sm[0] ); ?>">
 				</div>
 			</div>
 	<?php

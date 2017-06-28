@@ -59,6 +59,8 @@ $alt-dark-bg: #2c2c2c;
 
 @import 'widgets';
 
+@import 'debug-bar';
+
 /*
 * Custom helper
 */
@@ -188,6 +190,7 @@ body{
 
 .neg_bm1{ margin-bottom: -2rem;}
 
+.site-footer ul ul ul{ display: none; }
 .site-footer .separator:after {
     margin-top: 15px;
 }

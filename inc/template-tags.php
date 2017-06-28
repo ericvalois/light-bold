@@ -12,9 +12,9 @@ if ( ! function_exists( 'light_bold_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function light_bold_posted_on() {
-	$light_bold_time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . __("Posted on","light-bold") . ': ' .'%2$s</time></span> ';
+	$light_bold_time_string = '<span class="posted-on"><time class="entry-date published updated" datetime="%1$s">' . esc_html__("Posted on","light-bold") . ': ' .'%2$s</time></span> ';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$light_bold_time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . __("Posted on","light-bold") . ': ' .' %2$s</time></span><span class="posted-on">' . __("Last Update","light-bold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
+		$light_bold_time_string = '<span class="posted-on"><time class="entry-date published" datetime="%1$s">' . esc_html__("Posted on","light-bold") . ': ' .' %2$s</time></span><span class="posted-on">' . esc_html__("Last Update","light-bold") . ': ' . '<time class="updated" datetime="%3$s">%4$s</time></span> ';
 	}
 
 	$light_bold_time_string = sprintf( $light_bold_time_string,
@@ -26,7 +26,7 @@ function light_bold_posted_on() {
 
 	$light_bold_posted_on = $light_bold_time_string;
 
-	$light_bold_byline = '<span class="author vcard">' . __("By","light-bold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
+	$light_bold_byline = '<span class="author vcard">' . esc_html__("By","light-bold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
 
 	echo $light_bold_posted_on;
@@ -38,7 +38,7 @@ function light_bold_posted_on() {
 	$light_bold_output = '';
 	if ( ! empty( $light_bold_categories ) ) {
 
-		echo '<span class="cat">' . __("Categories", "light-bold") . ': ';
+		echo '<span class="cat">' . esc_html__("Categories", "light-bold") . ': ';
 
 	    foreach( $light_bold_categories as $category ) {
 	        $light_bold_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
@@ -53,7 +53,7 @@ function light_bold_posted_on() {
 	$light_bold_posttags = get_the_tags();
 	if ($light_bold_posttags) {
 
-		echo '<span class="tag">' . __("Tags", "light-bold") . ': ';
+		echo '<span class="tag">' . esc_html__("Tags", "light-bold") . ': ';
 		$cpt = 1;
 		foreach($light_bold_posttags as $tag) {
 			if( $cpt != 1){

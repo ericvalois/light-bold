@@ -49,12 +49,12 @@
 
 				<p class="small-p white-color">
 					<?php 
-						$content = get_the_content(); 
-						echo substr(strip_tags($content), 0, 130) . '...'; 
+						$content = wp_trim_words( get_the_content(), 20, '...' ); 
+						echo esc_html( strip_tags( $content ) );
 					?>
 				</p>
 
-				<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","light-bold"); ?></a>
+				<a href="<?php the_permalink(); ?>" class="perf_btn"><?php esc_html_e("Read more","light-bold"); ?></a>
 			</div>
 
 			<?php if( has_post_thumbnail() ): ?>

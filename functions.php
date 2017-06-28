@@ -264,11 +264,6 @@ require get_template_directory() . '/inc/widget-social.php';
 require get_template_directory() . '/inc/address-widget.php';
 
 /**
- * Image widget
- */
-require get_template_directory() . '/inc/widget-image.php';
-
-/**
  * Add custom buttons and formating to Tinymce
  */
 require get_template_directory() . '/inc/extend-tinymce.php';
@@ -277,8 +272,3 @@ require get_template_directory() . '/inc/extend-tinymce.php';
  * Custom protected form markup
  */
 require get_template_directory() . '/inc/custom-protected-form.php';
-
-/**
- * Analytics code
- */
-require get_template_directory() . '/inc/analytics.php';

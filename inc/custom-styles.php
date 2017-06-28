@@ -39,11 +39,16 @@ function light_bold_inline_styles() {
 /**
  * Print custom inline CSS in the head
  */
-add_action('light_bold_mobile_styles','light_bold_custom_color', 5);
-function light_bold_custom_color(){
+add_action('light_bold_mobile_styles','light_bold_e_custom_styles', 5);
+function light_bold_e_custom_styles(){
+    $custom_styles = light_bold_custom_styles();
+    echo light_bold_compress( $custom_styles );
+}
+
+function light_bold_custom_styles(){
 
     if( get_field("perf_main_site_color","option") ){
-        $light_bold_main_color = get_field("perf_main_site_color","option");
+        $light_bold_main_color = esc_html( get_field("perf_main_site_color","option") );
     }else{
         $light_bold_main_color = '#3498db';
     }
@@ -90,12 +95,14 @@ function light_bold_custom_color(){
         blockquote, .perf_alert_default{ border-left-color: ' . $light_bold_main_color . '}
         .social_share{ border-color: ' . $light_bold_main_color . '; }
         input:focus, textarea:focus, select:focus { border-color: ' . $light_bold_main_color . ' !important; }
-        ::selection { background: ' . light_bold_hex2rgba($light_bold_main_color, 0.25) . '; }
-        ::-moz-selection{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.25) . '; }
+        ::selection{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
+        ::-moz-selection{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
+        .highlight{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
         .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $light_bold_main_color . '; background-color: ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . '; }
         .opacity-zero{ opacity: 0; }
     ';
-    echo light_bold_compress( $light_bold_custom_css );
+
+    return $light_bold_custom_css;
 }
 
 function light_bold_hex2rgba($color, $opacity = false) {

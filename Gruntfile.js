@@ -165,6 +165,10 @@ module.exports = function(grunt) {
                 src: 'build/extend-lightbold.zip',
                 dest: 'inc/3rd-party/plugins/extend-lightbold.zip'
             },
+            acf_pro: {
+                src: 'build/advanced-custom-fields-pro.zip',
+                dest: 'inc/3rd-party/plugins/advanced-custom-fields-pro.zip'
+            },
 
 
         },
@@ -196,6 +200,15 @@ module.exports = function(grunt) {
                 cwd: '../../plugins/extend-lightbold/',
                 src: ['**/*'],
                 dest: 'extend-lightbold/'
+            },
+            acf_pro: {
+                options: {
+                    archive: 'build/advanced-custom-fields-pro.zip'
+                },
+                expand: true,
+                cwd: '../../plugins/advanced-custom-fields-pro/',
+                src: ['**/*'],
+                dest: 'advanced-custom-fields-pro/'
             },
             full: {
                 options: {
@@ -251,6 +264,6 @@ module.exports = function(grunt) {
     grunt.registerTask('min', ['cssmin']);
 
     //grunt.registerTask('cleanstyle', ['clean:style']);
-    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'compress:acf_pro', 'copy:acf_pro', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

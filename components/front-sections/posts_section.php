@@ -8,7 +8,7 @@
 
 <section class="clearfix posts_section px2 lg-px3 py1 lg-py2 white-bg ">
 
-	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo get_sub_field("title"); ?></h2>
+	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo esc_html( get_sub_field("title") ); ?></h2>
 	<span class="separator seprarator-center"></span>
 	
 	<div class="flex flex-wrap mxn2 mt2">
@@ -17,10 +17,12 @@
 				$args = array(
 					'post_type' => 'post',
 					'posts_per_page' => get_sub_field("how_many_posts"),
+                    'ignore_sticky_posts' => 1,
 				);
 			}else{
 				$args = array(
 					'post_type' => 'post',
+                    'ignore_sticky_posts' => 1,
 					'post__in' => get_sub_field("manual_selection"),
 				);
 			}
@@ -35,11 +37,11 @@
 
 			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
-				<article <?php post_class("border-box px2 break-word mb3 " . $col_class); ?> id="post-<?php the_ID(); ?>">
+				<article <?php post_class("border-box px2 break-word mb3 " . esc_attr( $col_class )); ?> id="post-<?php the_ID(); ?>">
 
 					<?php if( get_sub_field("show_post_thumbnail") && has_post_thumbnail() ): ?>
 						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
-							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php the_post_thumbnail_url("light-bold-blog"); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
+							<img alt="<?php the_title(); ?>" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-src="<?php esc_url( the_post_thumbnail_url("light-bold-blog") ); ?>" class="blur-up lazyload mb1 rounded" data-sizes="auto" />
 						</a>
 					<?php endif; ?>
 

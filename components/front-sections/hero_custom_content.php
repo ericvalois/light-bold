@@ -21,11 +21,11 @@
 
 						<div class="carousel-cell col-12 md-px1">
 
-							<h3 class="h2 entry-title separator white-color mt0"><?php echo $slide['perf_main_title']; ?></h3>
+							<h3 class="h2 entry-title separator white-color mt0"><?php echo esc_html( $slide['perf_main_title'] ); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
-				  				<?php echo $slide['perf_main_content']; ?>
+				  				<?php echo esc_html( $slide['perf_main_content'] ); ?>
 				  			</p>
-				  			<a href="<?php echo $slide['perf_main_link']; ?>" class="perf_btn" <?php if( $slide['perf_main_new_window'] == 1 ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo $slide['perf_main_button_text']; ?></a>
+				  			<a href="<?php echo esc_url( $slide['perf_main_link'] ); ?>" class="perf_btn" <?php if( $slide['perf_main_new_window'] == 1 ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $slide['perf_main_button_text'] ); ?></a>
 
 						</div>
 

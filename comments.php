@@ -66,7 +66,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'light-bold' ); ?></p>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'light-bold' ); ?></p>
 	<?php endif; ?>
 
 	<?php
@@ -76,26 +76,26 @@ if ( post_password_required() ) {
 			'title_reply_after'  => '</h3>',
 			'class_submit'		 => 'perf_btn alt2 col-12 mb2 btn_comment',
 			'class_form' => ' clearfix',
-			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>','light-bold' ), admin_url( 'profile.php' ), $user_identity, wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) . '</p>',
-			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . __( 'Comment', 'light-bold' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ></textarea></p>',
+			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>','light-bold' ), esc_url( admin_url( 'profile.php' ) ), $user_identity, esc_url( wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) ) . '</p>',
+			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Comment', 'light-bold' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ></textarea></p>',
 			'fields' => apply_filters( 'comment_form_default_fields', array(
 
 			'author' =>
 				'<div class="clearfix mxn1"><div class="lg-col lg-col-4 px1"><p class="comment-form-author">' .
-				'<label for="author">' . __( 'Name', 'light-bold' ) . '</label> ' .
+				'<label for="author">' . esc_html__( 'Name', 'light-bold' ) . '</label> ' .
 				( $req ? '<span class="required">*</span>' : '' ) .
 				'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 				'" size="30" aria-required="true" required /></p></div>',
 
 			'email' =>
-				'<div class="lg-col lg-col-4 px1"><p class="comment-form-email"><label for="email">' . __( 'Email', 'light-bold' ) . '</label> ' .
+				'<div class="lg-col lg-col-4 px1"><p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'light-bold' ) . '</label> ' .
 				( $req ? '<span class="required">*</span>' : '' ) .
 				'<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 				'" size="30" aria-required="true" required /></p></div>',
 
 			'url' =>
 				'<div class="lg-col lg-col-4 px1"><p class="comment-form-url"><label for="url">' .
-				__( 'Website', 'light-bold' ) . '</label>' .
+				esc_html__( 'Website', 'light-bold' ) . '</label>' .
 				'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
 				'" size="30" /></p></div></div>'
 			))

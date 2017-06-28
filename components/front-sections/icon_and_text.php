@@ -28,15 +28,15 @@
 
 		<?php if( $icon_section_title ): ?>
 			<?php if( $title_button_link ): ?>
-				<a href="<?php echo $title_button_link; ?>" class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<a href="<?php echo esc_attr( $title_button_link ); ?>" class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box bg-main-color <?php echo $col_class; ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php endif; ?>
 
 				<div>
-					<h3 class="weight-1 m0"><?php echo $icon_section_title; ?></h3>
+					<h3 class="weight-1 m0"><?php echo esc_html( $icon_section_title ); ?></h3>
 					<?php if( $title_button_label ): ?>
-						<span class="small-p upper"><?php echo $title_button_label; ?></span>
+						<span class="small-p upper"><?php echo esc_html( $title_button_label ); ?></span>
 					<?php endif; ?>
 				</div>
 
@@ -50,19 +50,19 @@
 		<?php $cpt = 1; while ( have_rows('repeater_icon_and_text') ) : the_row(); ?>
 			
 			<?php if( get_sub_field('link') ): ?>
-				<a href="<?php echo get_sub_field('link'); ?>" class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center flex-auto py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<a href="<?php echo esc_attr( get_sub_field('link') ); ?>" class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box <?php echo $col_class; ?> bg-white flex flex-center flex-auto  py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto  py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php endif; ?>
 
 				<div>
 					<?php if( get_sub_field('icon_name') ): ?>
 						<div class="front_icon">
-							<svg class="fa flex-none <?php echo get_sub_field('icon_name'); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo get_sub_field('icon_name'); ?>"></use></svg>
+							<svg class="fa flex-none <?php echo esc_attr( get_sub_field('icon_name') ); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo esc_attr( get_sub_field('icon_name') ); ?>"></use></svg>
 						</div>
 					<?php endif; ?>
-					<p class="small-p mt1 mb1 bold "><?php echo get_sub_field('title'); ?></p>
-					<p class="small-p  mb0"><?php echo get_sub_field('content'); ?></p>
+					<p class="small-p mt1 mb1 bold "><?php echo esc_html( get_sub_field('title') ); ?></p>
+					<p class="small-p  mb0"><?php echo esc_html( get_sub_field('content') ); ?></p>
 				</div>
 				
 			<?php if( get_sub_field('link') ): ?>

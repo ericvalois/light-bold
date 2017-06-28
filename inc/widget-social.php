@@ -34,7 +34,7 @@ class light_bold_social_profiles extends WP_Widget {
     if( !empty($light_bold_icons) ){
         foreach( $light_bold_icons as $icon ){
             ?>
-                <a target="_blank" rel='noopener noreferrer' href="<?php echo $icon['link']; ?>" class="left mr2 icons_social"><svg class="fa <?php echo $icon['icon_name']; ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo $icon['icon_name']; ?>"></use></svg></a>
+                <a target="_blank" rel='noopener noreferrer' href="<?php echo esc_url( $icon['link'] ); ?>" class="left mr2 icons_social"><svg class="fa <?php echo esc_attr( $icon['icon_name'] ); ?>"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#<?php echo esc_attr( $icon['icon_name'] ); ?>"></use></svg></a>
             <?php
         }
     }
@@ -58,8 +58,8 @@ class light_bold_social_profiles extends WP_Widget {
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','light-bold' ); ?></label>
-      <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $light_bold_title ); ?>">
+      <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e(  'Title:','light-bold' ); ?></label>
+      <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $light_bold_title ); ?>">
     </p>
     <?php
   }

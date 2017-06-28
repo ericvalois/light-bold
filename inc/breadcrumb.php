@@ -30,7 +30,7 @@ function light_bold_breadcrumbs() {
 			}
 			if ( is_single() ) {
 				echo '<span class="white-color upper">';
-				the_title();
+				esc_html( the_title() );
 				echo '</span>';
 			}
 		} elseif ( is_page() && $post->post_parent ) {
@@ -38,28 +38,28 @@ function light_bold_breadcrumbs() {
 			for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
 				if (($light_bold_home->ID) != ($post->ancestors[$i])) {
 					echo '<a class="white-color upper" href="';
-					echo get_permalink($post->ancestors[$i]); 
+					echo esc_url( get_permalink($post->ancestors[$i]) ); 
 					echo '">';
-					echo get_the_title($post->ancestors[$i]);
+					echo esc_html( get_the_title($post->ancestors[$i]) );
 					echo "</a>".$light_bold_separator;
 				}
 			}
-			echo '<span class="white-color upper">' . get_the_title() . '</span>';
+			echo '<span class="white-color upper">' . esc_html( get_the_title() ) . '</span>';
 		} elseif (is_page()) {
-			echo '<span class="white-color upper">' . get_the_title() . '</span>';
+			echo '<span class="white-color upper">' . esc_html( get_the_title() ) . '</span>';
 		} elseif ( is_home() ) {
-			echo '<span class="white-color upper">' . get_the_title( get_option('page_for_posts', true) ) . '</span>';
+			echo '<span class="white-color upper">' . esc_html( get_the_title( get_option('page_for_posts', true) ) ) . '</span>';
 		} elseif ( is_archive() ) {
-			echo '<span class="white-color upper">' . get_the_archive_title() . '</span>';
+			echo '<span class="white-color upper">' . esc_html( get_the_archive_title() ) . '</span>';
 		} elseif (is_404()) {
-			echo '<span class="white-color upper">' . __("404 page","light-bold") . '</span>';
+			echo '<span class="white-color upper">' . esc_html__("404 page","light-bold") . '</span>';
 		} elseif (is_search()) {
 			echo '<span class="white-color upper">';
 			printf( esc_html__( 'Search Results for: %s', 'light-bold' ),  get_search_query() );
 			echo '</span>';
 		}
 	} else {
-		echo '<span class="white-color upper">' . get_bloginfo('name') . '</span>';
+		echo '<span class="white-color upper">' . esc_html( get_bloginfo('name') ) . '</span>';
 	}
 	echo '</nav>';
 }

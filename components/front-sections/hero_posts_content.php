@@ -8,6 +8,7 @@
 <?php
 	$args = array(
 		'post_type' => 'post',
+        'ignore_sticky_posts' => 1,
 	);
 
 	if( get_sub_field("latest_posts_or_manual_selection") == "latest" ){
@@ -33,10 +34,10 @@
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
 				  				<?php 
 								  	$content = wp_trim_words( get_the_content(), 45, '...' ); 
-									echo $content;
+									echo esc_html( strip_tags( $content ) );
 								?>
 				  			</p>
-				  			<a href="<?php the_permalink(); ?>" class="perf_btn"><?php _e("Read more","light-bold"); ?></a>
+				  			<a href="<?php the_permalink(); ?>" class="perf_btn"><?php esc_html_e("Read more","light-bold"); ?></a>
 
 						</article>
 
@@ -55,7 +56,7 @@
 			<button class="alt-dark-bg border-none button--next"><svg class="fa fa-chevron-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-right"></use></svg></button>
 
 			<?php if( get_sub_field("remove_archive_link") != 1 ): ?>
-				<a href="<?php echo get_post_type_archive_link("post"); ?>" class="archive-link upper px2"><?php _e("Archive","light-bold"); ?></a>
+				<a href="<?php echo esc_url( get_post_type_archive_link("post") ); ?>" class="archive-link upper px2"><?php esc_html_e("Archive","light-bold"); ?></a>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

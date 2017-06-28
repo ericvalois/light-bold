@@ -22,6 +22,7 @@ add_action( 'customize_register', 'light_bold_customize_register' );
  */
 function light_bold_customize_preview_js() {
 	wp_enqueue_script( 'light-bold-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+
 }
 add_action( 'customize_preview_init', 'light_bold_customize_preview_js' );
 
