@@ -20,7 +20,7 @@
 
 		<h6 class="mt0 perf_sup_title_section_4 small-p upper mb1 block entry-title"><?php echo esc_html( get_sub_field("sup_title") ); ?></h6>
 		<span class="separator alt seprarator-center"></span>
-		<span class="block line-height2 h1 mb2 md-mb3 mt2 entry-title"><?php echo esc_html( get_sub_field("title") ); ?></span>
+		<span class="block line-height2 h1 mb2 md-mb3 mt2 entry-title"><?php echo wp_kses( get_sub_field("title"), array( 'br' => array() ) ); ?></span>
 		<a href="<?php echo esc_url( get_sub_field("button_link") ); ?>" class="perf_btn alt table mx-auto" <?php if( get_sub_field("external_link") == 1){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( get_sub_field("button_label") ); ?></a>
 		
 	</section>

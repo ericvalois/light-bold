@@ -54,7 +54,9 @@
                                 $args = array(
                                     'a' => array(
                                         'href' => array(),
-                                        'title' => array()
+                                        'title' => array(),
+                                        'rel'   => array(),
+                                        'target'=> array()
                                     ),
                                     'br' => array(),
                                     'em' => array(),
