@@ -10,8 +10,8 @@ class light_bold_address_widget extends WP_Widget {
   function __construct() {
     parent::__construct(
       'light_bold_address_widget', // Base ID
-      __('TTFB Address', 'light-bold'), // Name
-      array( 'description' => __( 'Address widget for Light and Bold', 'light-bold' ), ) // Args
+      esc_html__('TTFB Address', 'light-bold'), // Name
+      array( 'description' => esc_html__( 'Address widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
@@ -63,7 +63,7 @@ class light_bold_address_widget extends WP_Widget {
       $perf_title = $instance['title'];
     }
     else {
-      $perf_title = __( 'New title', 'light-bold' );
+      $perf_title = esc_html__( 'New title', 'light-bold' );
     }
     ?>
     <p>

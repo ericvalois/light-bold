@@ -44,9 +44,13 @@
 
 input.search-field{ padding-right: 40px; }
 
+.widget{
 
-.perf_widget{  }
-.perf_widget ul{
+}
+
+.widget .sub-menu .sub-menu .sub-menu{ display: none; }
+
+.widget ul{
     list-style-type: none;
     padding: 0;
 }
@@ -57,7 +61,7 @@ input.search-field{ padding-right: 40px; }
 
 .widget_rss,
 .recentcomments{
-    font-size: 75%;
+    font-size: 16px;
 }
 
 .widget_categories li, 

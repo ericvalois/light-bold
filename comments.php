@@ -76,7 +76,7 @@ if ( post_password_required() ) {
 			'title_reply_after'  => '</h3>',
 			'class_submit'		 => 'perf_btn alt2 col-12 mb2 btn_comment',
 			'class_form' => ' clearfix',
-			'logged_in_as' => '<p class="logged-in-as">' . sprintf( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>','light-bold' ), esc_url( admin_url( 'profile.php' ) ), $user_identity, esc_url( wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) ) . '</p>',
+			'logged_in_as' => '<p class="logged-in-as">' . sprintf( wp_kses( __( '<a href="%1$s" class="tags">Logged in as %2$s</a> <a href="%3$s" class="tags" title="Log out of this account">Log out?</a>','light-bold' ), array( 'a' => array( 'href' => array(), 'class' => array(), 'title' => array() ) ) ), esc_url( admin_url( 'profile.php' ) ), $user_identity, esc_url( wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ) ) ) . '</p>',
 			'comment_field' => '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Comment', 'light-bold' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" ></textarea></p>',
 			'fields' => apply_filters( 'comment_form_default_fields', array(
 

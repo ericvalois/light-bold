@@ -50,7 +50,7 @@
 					<h3 class="h3 mb1 mt0 entry-title"><a class="dark-color" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
 					<div class="small-p">
-						<strong><?php _e("By","light-bold"); ?> <?php echo get_the_author(); ?></strong><br>
+						<strong><?php esc_html_e("By","light-bold"); ?> <?php echo get_the_author(); ?></strong><br>
 						<?php the_date(); ?>
 					</div><!-- .entry-meta -->
 

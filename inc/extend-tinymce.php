@@ -20,7 +20,7 @@ function light_bold_styles_dropdown( $settings ) {
 	// Create array of new styles
 	$light_bold_new_styles = array(
 		array(
-			'title'	=> __( 'Custom Styles', 'light-bold' ),
+			'title'	=> esc_html__( 'Custom Styles', 'light-bold' ),
 			'items'	=> array(
 				array(
 			        'title' => 'Intro text',
@@ -28,38 +28,38 @@ function light_bold_styles_dropdown( $settings ) {
 			        'classes' => 'intro-text separator'
 		        ),
 		        array(
-			        'title' => 'Perf alert default',
+			        'title' => 'Alert default',
 			        'selector' => 'p',
 			        'classes' => 'perf_alert perf_alert_default',
 		        ),
 		        array(
-			        'title' => 'Perf alert warning',
+			        'title' => 'Alert warning',
 			        'selector' => 'p',
 			        'classes' => 'perf_alert perf_warning',
 		        ),
 		        array(
-			        'title' => 'Perf alert info',
+			        'title' => 'Alert info',
 			        'selector' => 'p',
 			        'classes' => 'perf_alert perf_info',
 		        ),
 		        array(
-			        'title' => 'Perf alert danger',
+			        'title' => 'Alert danger',
 			        'selector' => 'p',
 			        'classes' => 'perf_alert perf_danger',
 		        ),
 		        array(
-			        'title' => 'Perf alert success',
+			        'title' => 'Alert success',
 			        'selector' => 'p',
 			        'classes' => 'perf_alert perf_success',
 		        ),
 		        array(
-			        'title' => 'Perf button',
+			        'title' => 'Button',
 			        'block' => 'a',
 			        'classes' => 'perf_btn',
 			        'wrapper' => true,
 		        ),
 		        array(
-			        'title' => 'Perf button2',
+			        'title' => 'Button2',
 			        'block' => 'a',
 			        'classes' => 'perf_btn alt2',
 			        'wrapper' => true,

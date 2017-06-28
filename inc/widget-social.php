@@ -10,8 +10,8 @@ class light_bold_social_profiles extends WP_Widget {
   function __construct() {
     parent::__construct(
       'light_bold_social_profiles', // Base ID
-      __('TTFB Social Profiles', 'light-bold'), // Name
-      array( 'description' => __( 'Social Profiles Widget for Light and Bold', 'light-bold' ), ) // Args
+      esc_html_e('TTFB Social Profiles', 'light-bold'), // Name
+      array( 'description' => esc_html_e( 'Social Profiles Widget for Light and Bold', 'light-bold' ), ) // Args
     );
   }
 
@@ -54,7 +54,7 @@ class light_bold_social_profiles extends WP_Widget {
       $light_bold_title = $instance['title'];
     }
     else {
-      $light_bold_title = __( 'New title', 'light-bold' );
+      $light_bold_title = esc_html_e( 'New title', 'light-bold' );
     }
     ?>
     <p>
