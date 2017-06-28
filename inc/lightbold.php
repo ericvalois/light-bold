@@ -63,9 +63,12 @@ function light_bold_filter_tableContentWrapper($content) {
 /*
 * Same tag cloud font size
 */
-add_filter('wp_generate_tag_cloud', 'light_bold_tag_cloud',10,1);
-function light_bold_tag_cloud($string){
-   return preg_replace("/style='font-size:.+pt;'/", '', $string);
+add_filter('widget_tag_cloud_args','light_bold_tag_cloud');
+function light_bold_tag_cloud($args) {
+    $args['smallest'] = 12; /* Set the smallest size to 12px */
+    $args['largest'] = 12;  /* set the largest size to 19px */
+    $args['unit'] = "px";
+    return $args; 
 }
 
 /*
