@@ -10,7 +10,7 @@ function light_bold_breadcrumbs() {
 		echo '">';
 		echo '<svg class="fa fa-home white-color"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-home"></use></svg>';
 		echo "</a> ".$light_bold_separator;
-		if ( is_category() || is_single() ) {
+		if ( is_single() ) {
 			if ( get_post_type() == 'post' ) {
 				echo '<span class="white-color">';
 				
@@ -50,7 +50,7 @@ function light_bold_breadcrumbs() {
 		} elseif ( is_home() ) {
 			echo '<span class="white-color upper">' . esc_html( get_the_title( get_option('page_for_posts', true) ) ) . '</span>';
 		} elseif ( is_archive() ) {
-			echo '<span class="white-color upper">' . esc_html( get_the_archive_title() ) . '</span>';
+			echo '<span class="white-color upper">' . wp_kses( get_the_archive_title(), array( 'span' => array() ) ) . '</span>';
 		} elseif (is_404()) {
 			echo '<span class="white-color upper">' . esc_html__("404 page","light-bold") . '</span>';
 		} elseif (is_search()) {
