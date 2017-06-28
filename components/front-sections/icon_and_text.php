@@ -34,7 +34,7 @@
 			<?php endif; ?>
 
 				<div>
-					<h3 class="weight-1 m0"><?php echo esc_html( $icon_section_title ); ?></h3>
+					<h3 class="weight-1 m0 mb1"><?php echo esc_html( $icon_section_title ); ?></h3>
 					<?php if( $title_button_label ): ?>
 						<span class="small-p upper"><?php echo esc_html( $title_button_label ); ?></span>
 					<?php endif; ?>

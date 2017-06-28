@@ -124,6 +124,7 @@ a.no-border{
 
 .opacity-zero{ opacity: 0; }
 .opacity-1{ opacity: 1; }
+.mutted{ opacity: 0.5; }
 
 .border-none{ border: none; }
 
@@ -132,6 +133,8 @@ a.no-border{
 .pointer{ cursor: pointer; }
 
 .text-color{ color: #3e3e3e; }
+
+
 
 body, .smooth-container { scroll-behavior: smooth }
 
@@ -333,6 +336,8 @@ h1.entry-title{
     z-index: -3;
     opacity: 0.8;
 }
+
+.z-3{ z-index: -3; }
 
 .perf-main-hero .default{
     z-index: -2;

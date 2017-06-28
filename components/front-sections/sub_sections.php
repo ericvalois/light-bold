@@ -28,7 +28,7 @@
 
 					<div class="ml2 mr2 px2 py2 lg-py3 alt-dark-bg mb2 md-flex flex-column flex-auto">
 						<div class="flex-auto">
-							<p class="white-color mb2 lg-mb3 small-p ">
+							<div class="white-color mb2 lg-mb3 small-p normal-weight">
                                 <?php 
                                     $args = array(
                                         'a' => array(
@@ -38,14 +38,19 @@
                                         'br' => array(),
                                         'em' => array(),
                                         'strong' => array(),
+                                        'ul' => array(),
+                                        'ol' => array(),
+                                        'li' => array(),
+                                        'p' => array(),
                                     );
                                     echo wp_kses( $box['content'], $args ); 
                                 ?>
-                            </p>
+                            </div>
 						</div>
 
-						<div><a href="<?php echo esc_url( $box['button_link'] ); ?>" class="perf_btn center" <?php if( $box['open_in_a_new_window'] ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['button_text'] ); ?></a></div>
-						
+                        <?php if( $box['button_text'] && $box['button_link'] ): ?>
+						    <div><a href="<?php echo esc_url( $box['button_link'] ); ?>" class="perf_btn center" <?php if( $box['open_in_a_new_window'] ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['button_text'] ); ?></a></div>
+						<?php endif; ?>
 					</div>
 
 				</div>
