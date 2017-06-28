@@ -2,7 +2,7 @@
 /**
  * Template part for displaying share.
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 ?>

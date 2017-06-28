@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 if ( ! is_active_sidebar( 'page-sidebar' ) ) {

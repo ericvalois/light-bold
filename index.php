@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 get_header(); ?>

@@ -2,7 +2,7 @@
 /**
  * The template used for displaying hero_section content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 <?php $perf_hero_img = get_sub_field("image"); ?>

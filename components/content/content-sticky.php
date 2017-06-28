@@ -2,7 +2,7 @@
 /**
  * Template part for displaying sticky posts.
  *
- * @package perfthemes
+ * @package ttfb
  */
 	$sticky = get_option( 'sticky_posts' );
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

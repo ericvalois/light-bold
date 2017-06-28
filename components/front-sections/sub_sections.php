@@ -2,7 +2,7 @@
 /**
  * The template used for displaying sub_sections content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 

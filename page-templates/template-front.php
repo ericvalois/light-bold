@@ -2,7 +2,7 @@
 /**
  * Template Name: Front Page
  *
- * @package perfthemes
+ * @package ttfb
  */
 get_header(); ?>
 

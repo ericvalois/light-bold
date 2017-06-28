@@ -2,7 +2,7 @@
 /**
  * The template used for displaying hero posts content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 <?php

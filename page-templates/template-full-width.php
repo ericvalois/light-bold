@@ -2,7 +2,7 @@
 /**
  * Template Name: Full width
  *
- * @package perfthemes
+ * @package ttfb
  */
 get_header(); ?>
 

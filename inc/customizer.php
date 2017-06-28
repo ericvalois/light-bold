@@ -2,7 +2,7 @@
 /**
  * perfthemes Theme Customizer.
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 /**

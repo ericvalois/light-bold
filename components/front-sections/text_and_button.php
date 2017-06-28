@@ -2,7 +2,7 @@
 /**
  * The template used for displaying text_and_button content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 

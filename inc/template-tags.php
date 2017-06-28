@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 if ( ! function_exists( 'light_bold_posted_on' ) ) :

@@ -2,7 +2,7 @@
 /**
  * The template used for displaying posts_section content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 

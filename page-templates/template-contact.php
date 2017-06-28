@@ -2,7 +2,7 @@
 /**
  * Template Name: Contact us
  *
- * @package perfthemes
+ * @package ttfb
  */
 get_header(); ?>
 

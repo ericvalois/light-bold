@@ -2,7 +2,7 @@
 /**
  * The template used for displaying hero content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 

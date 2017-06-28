@@ -1,6 +1,6 @@
 <?php
 /**
- * @package perfthemes
+ * @package ttfb
  */
 
 /*

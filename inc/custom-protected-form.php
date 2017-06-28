@@ -2,7 +2,7 @@
 /**
  * perfthemes custom protected form
  *
- * @package perfthemes
+ * @package ttfb
  */
 add_filter( 'the_password_form', 'light_bold_custom_password_form' );
 function light_bold_custom_password_form() {

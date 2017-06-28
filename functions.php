@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 /**

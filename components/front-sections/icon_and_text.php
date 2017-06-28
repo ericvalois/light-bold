@@ -2,7 +2,7 @@
 /**
  * The template used for displaying icon_and_text content.
  *
- * @package perfthemes
+ * @package ttfb
  */
 ?>
 

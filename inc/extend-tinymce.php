@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Functions_File_Explained
  *
- * @package perfthemes
+ * @package ttfb
  */
 
 add_filter( 'mce_buttons_2', 'light_bold_mce_editor_buttons' );
