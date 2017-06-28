@@ -82,7 +82,7 @@ function light_bold_register_required_plugins() {
 		array(
 			'name'               => 'Perfthemes Browser Cache',
 			'slug'               => 'perf-browser-cache', 
-			'source'             => 'https://github.com/perfthemes/perf-browser-cache/archive/master.zip',
+			'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
 			'required'           => false,
             'version'            => '1.0.0',
 		),
