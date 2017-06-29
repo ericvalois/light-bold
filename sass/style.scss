@@ -187,6 +187,9 @@ body{
     padding-top: 64px;
 }
 
+.entry-content > :first-child,
+.widget-area .widget:first-child > :first-child{ margin-top: 0;}
+
 .site-content{
     min-height: 100%;
     backface-visibility: hidden;
