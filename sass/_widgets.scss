@@ -148,7 +148,7 @@ input.search-field{ padding-right: 40px; }
 
 .widget_pages .children,
 .widget_nav_menu .sub-menu{
-    padding: 10px 0 0 20px;
+    padding: 0 0 0 20px;
     margin: 0;
 }
 
@@ -165,6 +165,10 @@ input.search-field{ padding-right: 40px; }
 .widget-area ul,
 .widget-area ol,
 .widget_categories ul{ margin-bottom: 0; padding: 0; }
+
+.widget-area .widget-title:first-child{ margin-top: 0; }
+
+.entry-content > :first-child { margin-top: 0;}
 
 @include media-query(max-lg) {
     .widget_recent_entries li,

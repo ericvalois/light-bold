@@ -41,7 +41,7 @@ class light_bold_address_widget extends WP_Widget {
             </div>
 
             <div class="table-cell small-p align-top">
-              <p class="mb0"><?php echo wp_kses( $section['content'], array( 'br' => array() ) ); ?></p>
+              <p class="m0"><?php echo wp_kses( $section['content'], array( 'br' => array() ) ); ?></p>
             </div>
           </div>
       	<?php

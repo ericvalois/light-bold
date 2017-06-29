@@ -35,7 +35,7 @@
 									</div>
 
 									<div class="table-cell small-p align-middle">
-										<p class="mb0"><?php echo esc_html( $infos['contact_content'] ); ?></p>
+                                        <p class="m0"><?php echo wp_kses( $infos['contact_content'], array( 'br' => array() ) ); ?></p>
 									</div>
 								</div>
 

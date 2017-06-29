@@ -3,6 +3,7 @@ ol.children{ padding-left: 0; }
 @include media-query(sm) {
 	ol.children{
 		padding-left: 67px;
+        margin-top: 2rem;
 	}
 }
 
@@ -85,8 +86,5 @@ li.comment.depth-1 {
     margin-bottom: 1rem;
 }
 
-.children li{
-	padding-bottom: 0 !important;
-}
-
 .comment-list li:first-child{ padding-top: 0; }
+.comment p:last-child{ margin-bottom: 0; }
