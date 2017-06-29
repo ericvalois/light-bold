@@ -38,7 +38,7 @@
 
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix hide-print">
 		<div class="md-col md-col-6 mb1 md-mb0">
-			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php echo esc_html( get_field("perf_footer_copy","option") ); ?></div>
+			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php echo wp_kses( get_field("perf_footer_copy","option"), array( 'a' => array( 'href' => array(), 'title' => array(), 'class' => array() ) ) ); ?></div>
 		</div>
 
 		<div class="md-col md-col-6">

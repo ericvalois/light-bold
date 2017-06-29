@@ -62,7 +62,7 @@
 						</div>
 					<?php endif; ?>
 					<p class="small-p mt1 mb1 bold "><?php echo esc_html( get_sub_field('title') ); ?></p>
-					<p class="small-p  mb0"><?php echo esc_html( get_sub_field('content') ); ?></p>
+					<p class="small-p  mb0"><?php echo wp_kses( get_sub_field('content'), array( 'br' => array() ) ); ?></p>
 				</div>
 				
 			<?php if( get_sub_field('link') ): ?>
