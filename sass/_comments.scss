@@ -1,14 +1,14 @@
-ol.children{ padding-left: 0; }
+ol.children{ 
+    padding-left: 0;
+    list-style-type: none;
+}
+
+li.comment{ }
 
 @include media-query(sm) {
 	ol.children{
 		padding-left: 67px;
-        margin-top: 2rem;
 	}
-}
-
-ol.children{
-	list-style-type: none;
 }
 
 .comment-reply-title small a {
@@ -29,7 +29,8 @@ ol.children{
 #commentform input,
 #commentform textarea{margin-top: 5px;}
 
-#commentform p{margin-bottom: 1rem;}
+#commentform p{margin: 0 0 1rem 0;}
+#commentform .comment-notes{ margin-bottom: 2rem; }
 
 .form-submit #submit{
 	transition: all 0.2s ease;
@@ -82,9 +83,6 @@ ol.children{
     margin-left: 3px;
 }
 
-li.comment.depth-1 {
-    margin-bottom: 1rem;
-}
-
 .comment-list li:first-child{ padding-top: 0; }
+.comment p{ margin: 1rem 0; }
 .comment p:last-child{ margin-bottom: 0; }

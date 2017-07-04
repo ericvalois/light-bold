@@ -132,11 +132,11 @@ function light_bold_custom_comments($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment; ?>
 
 
-    <li <?php comment_class("py1"); ?> id="comment-<?php comment_ID() ?>">
+    <li <?php comment_class("mt2 mb2"); ?> id="comment-<?php comment_ID() ?>">
             
         <div class="comment-intro clearfix">
             <div class="left mr1 mb1 "><?php echo get_avatar( $comment->comment_author_email, 57, "", "", array("class" => "rounded") ); ?></div> 
-            <span class="small-p bold upper"><?php printf( esc_html__('%s','light-bold'), get_comment_author_link()) ?> </span>
+            <span class="small-p regular upper"><?php printf( esc_html__('%s','light-bold'), get_comment_author_link()) ?> </span>
             <strong><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?></strong>
             <?php 
                 if( $comment->comment_author_email == $post_author->user_email ){
