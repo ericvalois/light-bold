@@ -80,12 +80,12 @@ input.search-field{ padding-right: 40px; }
     letter-spacing: 0;
     text-decoration: none;
     background: #3a3a3a;
-    border: 1px solid #f4f3f3;
-    padding: 5px 10px;
+    border: 1px solid #3a3a3a;
+    padding: 2px 10px;
     display: inline-block;
     border-radius: 2px;
     text-transform: uppercase;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover{
         color: #3a3a3a;
@@ -96,7 +96,8 @@ input.search-field{ padding-right: 40px; }
 
 
 .tagcloud a,
-.widget_categories li, .widget_archive li{
+.widget_categories li, 
+.widget_archive li{
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
     display: inline-block;
@@ -146,10 +147,15 @@ input.search-field{ padding-right: 40px; }
     -webkit-font-smoothing: antialiased;
 }
 
+.widget_pages,
+.widget_nav_menu,
+.widget_meta,
+.widget_recent_entries{ font-size: 18px; }
+
 .widget_pages .children,
 .widget_nav_menu .sub-menu{
-    padding: 0 0 0 20px;
-    margin: 0;
+    padding: 0;
+    margin: 0.5rem 0 0.5rem 20px;
 }
 
 .widget_pages .children li,
