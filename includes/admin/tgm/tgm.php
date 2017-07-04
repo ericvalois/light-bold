@@ -79,6 +79,12 @@ function light_bold_register_required_plugins() {
 			'version'            => '1.0.3',
 		),
 
+        array(
+			'name'      => 'Location "Nav Menu" for ACF',
+			'slug'      => 'location-nav-menu-for-acf',
+			'required'  => true,
+		),
+
 		array(
 			'name'               => 'TTFB Browser Cache',
 			'slug'               => 'perf-browser-cache', 
@@ -87,10 +93,10 @@ function light_bold_register_required_plugins() {
             'version'            => '1.0.0',
 		),
 
-		array(
-			'name'      => 'Location "Nav Menu" for ACF',
-			'slug'      => 'location-nav-menu-for-acf',
-			'required'  => true,
+        array(
+			'name'      => 'ACF Flexible Content Modal',
+			'slug'      => 'acf-flexible-content-modal',
+			'required'  => false,
 		),
 
 		array(
