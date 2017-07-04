@@ -28,8 +28,6 @@ get_header(); ?>
 
 					<?php get_template_part( 'components/content/content-page' ); ?>
 
-					<?php get_template_part( 'components/content/content-share' ); ?>
-
 					<?php
 						// If comments are open or we have at least one comment load up the comment template.
 						if ( comments_open() || get_comments_number() ) :
