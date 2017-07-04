@@ -31,11 +31,9 @@ p,
 
 a{
 	text-decoration: none;
-	-ms-touch-action: manipulation;	/* IE10  */
-	touch-action: manipulation;		/* IE11+ */
 	transition: border-color 0.2s ease, color 0.2s ease;
 	border-bottom-style: solid;
-    border-bottom-width: 0.08em;
+    border-bottom-width: 2px;
     border-bottom-color: transparent;
 }
 
