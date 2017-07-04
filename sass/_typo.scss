@@ -78,11 +78,8 @@ input[type="submit"]{
     padding: 0.8rem 2.3rem;
     line-height: 1;
     background-color: transparent;
-    //transition: background-color 0.3s ease, color 0.3s ease;
-    transition: background-color .3s ease, color .4s ease;
-    -ms-touch-action: manipulation;	/* IE10  */
-	touch-action: manipulation;		/* IE11+ */
-    -webkit-font-smoothing: antialiased;
+    transition: all .3s ease;
+	touch-action: manipulation;	
 
     &:hover,
     &:focus{

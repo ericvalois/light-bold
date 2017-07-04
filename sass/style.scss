@@ -2,7 +2,7 @@
 Theme Name: Light & Bold
 Theme URI: https://ttfb.io/
 Author: TTFB
-Author URI: https://ttfb.io/
+Author URI: https://www.ericvalois.com
 Description: Speed Focused WordPress Theme
 Version: 1.0.0
 Text Domain: light-bold
@@ -189,6 +189,7 @@ body{
 
 .entry-content > :first-child,
 .widget-area .widget:first-child > :first-child{ margin-top: 0;}
+.site-footer .textwidget > :first-child{ margin-top: 0;}
 
 .site-content{
     min-height: 100%;
