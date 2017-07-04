@@ -48,11 +48,11 @@
                                     echo wp_kses( $box['content'], $args ); 
                                 ?>
                             </div>
-						</div>
 
-                        <?php if( $box['button_text'] && $box['button_link'] ): ?>
-						    <div><a href="<?php echo esc_url( $box['button_link'] ); ?>" class="perf_btn center" <?php if( $box['open_in_a_new_window'] ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['button_text'] ); ?></a></div>
-						<?php endif; ?>
+                            <?php if( $box['button_text'] && $box['button_link'] ): ?>
+                                <div><a href="<?php echo esc_url( $box['button_link'] ); ?>" class="perf_btn center" <?php if( $box['open_in_a_new_window'] ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['button_text'] ); ?></a></div>
+                            <?php endif; ?>
+						</div>
 					</div>
 
 				</div>
