@@ -75,7 +75,7 @@ function light_bold_register_required_plugins() {
 			'slug'               => 'extend-lightbold', 
 			'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'version'            => '1.0.5',
 		),
 
