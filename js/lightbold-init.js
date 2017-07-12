@@ -1,3 +1,4 @@
+"use strict";
 // Open main nav
 document.getElementById("main_nav_toggle").addEventListener("click", function () {
     

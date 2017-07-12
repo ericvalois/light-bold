@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span'],
                     ignoreConsole: false
                 }
             },

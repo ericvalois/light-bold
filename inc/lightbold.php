@@ -113,16 +113,6 @@ function light_bold_move_comment_field_to_bottom( $fields ) {
 }
 
 /**
- * Remove novalidate from comment form
- */
-add_action( 'wp_footer', 'light_bold_enable_comment_form_validation' );
-function light_bold_enable_comment_form_validation() {
-    if ( (!is_admin()) && is_singular() && comments_open() && get_option('thread_comments') && current_theme_supports( 'html5' ) && !is_page_template("page-templates/template-front.php") )  {
-        echo '<script>document.getElementById("commentform").removeAttribute("novalidate");</script>' . PHP_EOL;
-    }
-}
-
-/**
  * Custom comment markup
  */
 function light_bold_custom_comments($comment, $args, $depth) {
@@ -369,35 +359,6 @@ function light_bold_main_menu_has_child() {
     }
 
     return false;
-}
-
-/**
- * Load fontawesome sprite ASYNC
- */
-add_action("light_bold_footer_scripts","light_bold_call_sprite_fontawesome");
-function light_bold_call_sprite_fontawesome(){
-    ?>
-    /* Get fontawesome.svg */ 
-    var ajax = new XMLHttpRequest();
-    ajax.open("GET", "<?php echo get_template_directory_uri(); ?>/inc/3rd-party/font-awesome/fontawesome.svg", true);
-    ajax.send();
-    ajax.onload = function(e) {
-      var div = document.createElement("div");
-      div.innerHTML = ajax.responseText;
-      document.body.insertBefore(div, document.body.childNodes[0]);
-    }
-    <?php
-}
-
-
-
-add_action("wp_footer","light_bold_custom_js", 99);
-function light_bold_custom_js(){
-  echo '<script>';
-
-  do_action('light_bold_footer_scripts');
-
-  echo '</script>';
 }
 
 /**

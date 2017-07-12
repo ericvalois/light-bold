@@ -93,11 +93,6 @@ function light_bold_setup() {
 		'link',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'light_bold_custom_background_args', array(
-		'default-color' => 'ffffff',
-	) ) );
-
 
 }
 endif; // light_bold_setup
@@ -249,11 +244,6 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/breadcrumb.php';
 
 /**
- * Load custom style
- */
-require get_template_directory() . '/inc/custom-styles.php';
-
-/**
  * Social Widget
  */
 require get_template_directory() . '/inc/widget-social.php';
@@ -262,11 +252,6 @@ require get_template_directory() . '/inc/widget-social.php';
  * Address widget
  */
 require get_template_directory() . '/inc/address-widget.php';
-
-/**
- * Add custom buttons and formating to Tinymce
- */
-require get_template_directory() . '/inc/extend-tinymce.php';
 
 /**
  * Custom protected form markup
