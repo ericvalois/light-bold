@@ -204,7 +204,12 @@ function light_bold_scripts() {
 
 	// Main menu script
 	if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){
-		wp_enqueue_script( 'light-bold-menu-script', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );
+		wp_enqueue_script( 'light-bold-menu', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );
+	}
+
+    // Logged In script
+	if (  is_user_logged_in() && is_admin_bar_showing() ){
+		wp_enqueue_script( 'light-bold-logged-in', get_template_directory_uri() . '/js/logged-in.min.js', array(), '', true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && !is_page_template("page-templates/template-front.php") ) {
