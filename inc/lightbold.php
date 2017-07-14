@@ -346,7 +346,12 @@ function light_bold_main_menu_has_child() {
     $menu_id = $locations[ $menu_name ] ;
     $menu_object = wp_get_nav_menu_object($menu_id);
 
-    $menu = wp_get_nav_menu_items( $menu_object->slug );
+    if( is_object( $menu_object ) ){
+        $menu = wp_get_nav_menu_items( $menu_object->slug );
+    }else{
+        return false;
+    }
+    
 
     if( is_array($menu) ){
       foreach( $menu as $item ):
