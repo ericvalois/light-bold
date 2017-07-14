@@ -196,7 +196,7 @@ function light_bold_scripts() {
 
 		if ( light_bold_flickity_detection( get_the_id() ) ){
 			// Flickity Script
-			wp_enqueue_script( 'light-bold-flickity', get_template_directory_uri() . '/inc/3rd-party/flickity/flickity.min.js', array(), '', true );
+			wp_enqueue_script( 'flickity', get_template_directory_uri() . '/inc/3rd-party/flickity/flickity.min.js', array(), '', true );
 		}
 	}
 
