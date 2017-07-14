@@ -390,6 +390,12 @@ function light_bold_get_response( $url ) {
  */
 function light_bold_flickity_detection( $post_id ){
     $flickity = false;
+
+    // Prevent Flickity Enqueu for nothing if ACF is not active 
+    if( !is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ){
+        return $flickity;
+    }
+
     $rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
 
     foreach( (array) $rows as $count => $row ) {
