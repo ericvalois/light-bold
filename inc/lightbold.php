@@ -121,7 +121,6 @@ function light_bold_custom_comments($comment, $args, $depth) {
     $post_author = get_userdata($post->post_author);
     $GLOBALS['comment'] = $comment; ?>
 
-
     <li <?php comment_class("mt2 mb2"); ?> id="comment-<?php comment_ID() ?>">
             
         <div class="comment-intro clearfix">
@@ -346,11 +345,11 @@ function light_bold_main_menu_has_child() {
     $menu_id = $locations[ $menu_name ] ;
     $menu_object = wp_get_nav_menu_object($menu_id);
 
-    if( is_object( $menu_object ) ){
-        $menu = wp_get_nav_menu_items( $menu_object->slug );
-    }else{
+    if( !is_object( $menu_object ) ){ 
         return false;
     }
+
+    $menu = wp_get_nav_menu_items( $menu_object->slug );
     
 
     if( is_array($menu) ){
