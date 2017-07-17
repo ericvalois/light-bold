@@ -12,7 +12,13 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<div class="entry-content clearfix">
-		<?php the_content(); ?>
+		<?php
+            if( has_post_thumbnail() && !function_exists("extend_light_bold_exist") ){
+                the_post_thumbnail('full');
+            }
+            
+            the_content(); 
+        ?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'light-bold' ),
