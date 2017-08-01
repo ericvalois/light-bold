@@ -79,12 +79,6 @@ function light_bold_register_required_plugins() {
 			'version'            => '1.0.7',
 		),
 
-        array(
-			'name'      => 'Location "Nav Menu" for ACF',
-			'slug'      => 'location-nav-menu-for-acf',
-			'required'  => true,
-		),
-
 		array(
 			'name'               => 'TTFB Browser Cache',
 			'slug'               => 'browser-cache', 
