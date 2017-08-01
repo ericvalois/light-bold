@@ -6,7 +6,7 @@
  */
 ?>
 
-<?php $sub_sections = get_field("perf_above_fold_sub_section"); ?>
+<?php $sub_sections = get_field("perf_sub_section"); ?>
 
 <?php if( is_array($sub_sections) && count($sub_sections) > 0 ): ?>
 	<?php $col_width = 12 / count($sub_sections);  ?>
@@ -14,7 +14,7 @@
 		<?php $cpt = 1; ?>
 		<?php foreach($sub_sections as $box ): ?>
 
-			<?php $image = $box['image']; ?>
+			<?php $image = $box['box']['image']; ?>
 
 			<div class="lg-flex lg-col-<?php echo esc_attr( $col_width ); ?>">
 				<div class="lg-flex flex-column fit col-12">
@@ -22,7 +22,7 @@
 																						data-bgset="<?php echo esc_attr( $image['sizes']['light-bold-hero-md'] ); ?> [(min-width: 52em)] | 
 																						<?php echo esc_attr( $image['sizes']['light-bold-hero-sm'] ); ?>">
 						<div class="absolute bottom-0 left-0 z1 col-12">
-							<h3 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4 entry-title"><?php echo esc_html( $box['title'] ); ?></h3>
+							<h3 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4 entry-title"><?php echo esc_html( $box['box']['title'] ); ?></h3>
 						</div>
 					</div>
 
@@ -45,12 +45,12 @@
                                         'li' => array(),
                                         'p' => array(),
                                     );
-                                    echo wp_kses( $box['content'], $args ); 
+                                    echo wp_kses( $box['box']['content'], $args ); 
                                 ?>
                             </div>
 
-                            <?php if( $box['button_text'] && $box['button_link'] ): ?>
-                                <div><a href="<?php echo esc_url( $box['button_link'] ); ?>" class="perf_btn center" <?php if( $box['open_in_a_new_window'] ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['button_text'] ); ?></a></div>
+                            <?php if( $box['box']['link']['url']  ): ?>
+                                <div><a href="<?php echo esc_url( $box['box']['link']['url'] ); ?>" class="perf_btn center" <?php if( $box['box']['link']['target'] == '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['box']['link']['title'] ); ?></a></div>
                             <?php endif; ?>
 						</div>
 					</div>
