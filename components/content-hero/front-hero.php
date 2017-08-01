@@ -8,8 +8,15 @@
 
 <div class="front-hero-section flex-stretch clearfix md-flex col-12 alt-dark-bg overflow-hidden">
 
+    <?php $front_hero = get_field("perf_front_hero"); ?>
+    <?php 
+        //echo '<pre>';
+        //print_r(  $front_hero);
+        //echo '</pre>';
+    ?>
+
     <?php
-        $perf_image_id = light_bold_select_hero_image();
+        $perf_image_id = $front_hero['image'];
         $perf_image_src_sm = wp_get_attachment_image_src( $perf_image_id, 'light-bold-hero-sm' );
         $perf_image_src_md = wp_get_attachment_image_src( $perf_image_id, 'light-bold-hero-md' );
         $perf_image_src_lg = wp_get_attachment_image_src( $perf_image_id, 'light-bold-hero-lg' );
@@ -24,27 +31,11 @@
     </div>
 
     <?php
-        if( function_exists('have_rows')):
-                        
-            if( have_rows('perf_front_hero_content') ):
-
-                while ( have_rows('perf_front_hero_content') ) : the_row();
-
-                    if( get_row_layout() == 'custom_content' ):
-
-                        get_template_part( 'components/front-sections/hero_custom_content' );
-
-                    elseif( get_row_layout() == 'posts_content' ): 
-
-                        get_template_part( 'components/front-sections/hero_posts_content' );
-
-                    endif;
-
-                endwhile;
-
-            endif;
-
-        endif;
+        if( $front_hero['content_type'] === 'custom' ){
+            get_template_part( 'components/front-sections/hero_custom_content' );
+        }else{
+            get_template_part( 'components/front-sections/hero_posts_content' );
+        }
     ?>
 
 </div>

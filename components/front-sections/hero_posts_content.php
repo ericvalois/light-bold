@@ -6,15 +6,18 @@
  */
 ?>
 <?php
+
+    $front_hero = get_field("perf_front_hero");
+
 	$args = array(
 		'post_type' => 'post',
         'ignore_sticky_posts' => 1,
 	);
 
-	if( get_sub_field("latest_posts_or_manual_selection") == "latest" ){
-		$args['posts_per_page'] = get_sub_field("how_many_posts");
+	if( $front_hero['content_type'] === 'latest_posts' ){
+		$args['posts_per_page'] = $front_hero['how_many_posts'];
 	}else{
-		$args['post__in'] = get_sub_field("manual_selection");
+		$args['post__in'] = $front_hero['manual_selection'];
 	}
 
 	$posts = new WP_Query( $args );
@@ -28,7 +31,7 @@
 
 					<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
-						<article <?php post_class("carousel-cell col-12 md-px1"); ?>>
+						<article <?php post_class("carousel-cell col-12 md-px1 break-word"); ?>>
 
 							<h3 class="h2 entry-title separator white-color mt0"><?php the_title(); ?></h3>
 				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
@@ -55,7 +58,7 @@
 			<button class="alt-dark-bg border-none button--previous"><svg class="fa fa-chevron-left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-left"></use></svg></button>
 			<button class="alt-dark-bg border-none button--next"><svg class="fa fa-chevron-right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-chevron-right"></use></svg></button>
 
-			<?php if( get_sub_field("remove_archive_link") != 1 ): ?>
+			<?php if( $front_hero['archive_link'] == 1 ): ?>
 				<a href="<?php echo esc_url( get_post_type_archive_link("post") ); ?>" class="archive-link upper px2"><?php esc_html_e("Archive","light-bold"); ?></a>
 			<?php endif; ?>
 		</div>
