@@ -400,42 +400,17 @@ function light_bold_flickity_detection( $post_id ){
         return $flickity;
     }
 
-    $rows = get_post_meta( $post_id, 'perf_front_hero_content', true );
-
-    foreach( (array) $rows as $count => $row ) {
-        switch( $row ) {
-        
-            // Custom content
-            case 'custom_content':
-                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_custom_content', true ) > 1 ){
-                    $flickity = true;
-                }else{
-                    $flickity = false;
-                }
-            break;
-            
-            // Posts content
-            case 'posts_content':
-                $args = array(
-                    'post_type' => 'post',
-                );
-
-                if( get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_latest_posts_or_manual_selection', true ) == "latest" ){
-                    $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_how_many_posts', true );
-                }else{
-                    $args['post__in'] = $args['posts_per_page'] = get_post_meta( $post_id, 'perf_front_hero_content_' . $count . '_manual_selection', true );
-                }
-
-                $posts = new WP_Query( $args );
-
-                if( $posts->post_count > 1 ){
-                    $flickity = true;
-                }else{
-                    $flickity = false;
-                }
-            break;
-        }
-    }
+    $rows = get_field('perf_front_hero', $post_id );
+    
+    if( $rows['content_type'] == 'custom' && count( $rows['custom_content'] ) > 1 ){
+        $flickity = true;
+    }elseif( $rows['content_type'] == 'latest_posts' && $rows['how_many_posts'] > 1 ){
+        $flickity = true;
+    }elseif( $rows['content_type'] == 'manual_posts' && count( $rows['manual_selection'] ) > 1 ){
+        $flickity = true;
+    }else{
+        $flickity = false;
+    }      
 
     return $flickity;
 }
@@ -488,4 +463,129 @@ function light_bold_post_classes_blog_template( $classes ) {
     }
       
     return $classes;
+}
+
+/**
+ * Custom Inline CSS
+ */
+function light_bold_custom_styles(){
+
+    if( get_field("perf_main_site_color","option") ){
+        $light_bold_main_color = esc_html( get_field("perf_main_site_color","option") );
+    }else{
+        $light_bold_main_color = '#3498db';
+    }
+
+    $light_bold_custom_css = '
+        .main-color{ color: ' . $light_bold_main_color . '; }
+        a,
+        .tagcloud a:hover{ color: ' . $light_bold_main_color . ';}
+        a.dark-color:hover,
+        a.white-color:hover,
+        .tags:hover,
+        .widget_categories a:hover,
+        .widget_archive a:hover,
+        .comment-reply-link:hover,
+        .site-footer li a:hover,
+        .icons_social:hover,
+        .icons_social:focus,
+        .button-row button,
+        .active .menu__link,
+        .site-footer .address_row .fa{ color: ' . $light_bold_main_color . '; border-color: ' . $light_bold_main_color . '; }
+        .menu__item i,
+        .menu__link:hover,
+        .menu__breadcrumbs a,
+        .address_row i { color: ' . $light_bold_main_color . '; }
+        a:hover,a:focus,.perf_btn{ border-color: ' . $light_bold_main_color . '; }
+        .menu__link:before,
+        .separator:after,
+        .perf_btn.alt2{ background-color: ' . $light_bold_main_color . '; }
+        .perf_btn,
+        .submit,
+        .gform_button,
+        input[type="submit"]{ color: ' . $light_bold_main_color . '; border-color: ' . $light_bold_main_color . '; }
+        .perf_btn:hover,
+        .perf_btn:focus,
+        .submit:hover,
+        .submit:focus,
+        .gform_button:hover,
+        .gform_button:focus,
+        input[type="submit"]:hover,
+        input[type="submit"]:focus{ background-color: ' . $light_bold_main_color . '; border-color: ' . $light_bold_main_color . '; }
+        #primary-menu > li.menu-item-has-children:hover,
+        #primary-menu  .sub-menu li{ background-color:  ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . ';}
+        .bg-main-color{ background-color: ' . $light_bold_main_color . ';}
+        blockquote, .perf_alert_default{ border-left-color: ' . $light_bold_main_color . '}
+        .social_share{ border-color: ' . $light_bold_main_color . '; }
+        input:focus, textarea:focus, select:focus { border-color: ' . $light_bold_main_color . ' !important; }
+        ::selection{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
+        ::-moz-selection{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
+        .highlight{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
+        .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $light_bold_main_color . '; background-color: ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . '; }
+        .opacity-zero{ opacity: 0; }
+    ';
+
+    return $light_bold_custom_css;
+}
+
+/**
+ * Generate rgba color from hexadecimal color
+ */
+function light_bold_hex2rgba($color, $opacity = false) {
+
+    $light_bold_default = 'rgb(0,0,0)';
+
+    //Return default if no color provided
+    if(empty($color))
+          return $light_bold_default;
+
+    //Sanitize $color if "#" is provided
+        if ($color[0] == '#' ) {
+            $color = substr( $color, 1 );
+        }
+
+        //Check if color has 6 or 3 characters and get values
+        if (strlen($color) == 6) {
+                $light_bold_hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+        } elseif ( strlen( $color ) == 3 ) {
+                $light_bold_hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+        } else {
+                return $light_bold_default;
+        }
+
+        //Convert hexadec to rgb
+        $light_bold_rgb =  array_map('hexdec', $light_bold_hex);
+
+        //Check if opacity is set(rgba or rgb)
+        if($opacity){
+            if(abs($opacity) > 1)
+                $opacity = 1.0;
+            $output = 'rgba('.implode(",",$light_bold_rgb).','.$opacity.')';
+        } else {
+            $output = 'rgb('.implode(",",$light_bold_rgb).')';
+        }
+
+        //Return rgb(a) color string
+        return $output;
+}
+
+/**
+ * Inline custom inline CSS if extend-lightbold plugin is not active
+ */
+add_action( 'wp_enqueue_scripts', 'light_bold_inline_style' );
+function light_bold_inline_style() {
+    if( !is_plugin_active( 'extend-lightbold/extend-lightbold.php' ) ){
+        $custom_css = light_bold_custom_styles(); 
+        wp_add_inline_style( 'light-bold-stylesheet', $custom_css );
+    }
+}
+
+/**
+ * Inject Fontawesome Sprite if extend-lightbold plugin is not active
+ */
+add_action( 'wp_footer', 'light_bold_fontawesome_sprite' );
+function light_bold_fontawesome_sprite() {
+    if( !is_plugin_active( 'extend-lightbold/extend-lightbold.php' ) ){
+        echo light_bold_get_response( get_template_directory_uri() . "/inc/3rd-party/font-awesome/fontawesome.svg" );
+    }
 }
