@@ -10,8 +10,7 @@
 	$items = get_sub_field("repeater_icon_and_text"); 
 	$nb_per_row = get_sub_field("radio_icon_and_text_layout"); 
 	$icon_section_title = get_sub_field("icon_section_title");
-	$title_button_label = get_sub_field("icon_button_label");
-	$title_button_link = get_sub_field("icon_button_link");
+	$link = get_sub_field("icon_section_button");
 ?>
 <?php if( have_rows('repeater_icon_and_text') ): ?>
 	<?php $col_width = 12 / $nb_per_row;  ?>
@@ -27,20 +26,20 @@
 		
 
 		<?php if( $icon_section_title ): ?>
-			<?php if( $title_button_link ): ?>
-				<a href="<?php echo esc_attr( $title_button_link ); ?>" class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+			<?php if( !empty( $link['url'] ) ): ?>
+				<a href="<?php echo esc_attr( $link['url'] ); ?>" class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php else: ?>
 				<div class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
 			<?php endif; ?>
 
 				<div>
 					<h3 class="weight-1 m0 mb1"><?php echo esc_html( $icon_section_title ); ?></h3>
-					<?php if( $title_button_label ): ?>
-						<span class="small-p upper"><?php echo esc_html( $title_button_label ); ?></span>
+					<?php if( !empty( $link['title'] ) ): ?>
+						<span class="small-p upper"><?php echo esc_html( $link['title'] ); ?></span>
 					<?php endif; ?>
 				</div>
 
-			<?php if( $title_button_link ): ?>
+			<?php if( !empty( $link['url'] ) ): ?>
 				</a>
 			<?php else: ?>
 				</div>

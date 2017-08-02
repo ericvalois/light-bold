@@ -45,8 +45,9 @@
                                 ?>
 				  			</p>
                             
-				  			<a href="<?php echo esc_url( $slide['btn']['url'] ); ?>" class="perf_btn" <?php if( $slide['btn']['target'] === '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $slide['btn']['title'] ); ?></a>
-
+                            <?php if( !empty( $slide['btn']['url'] ) ): ?>
+				  			    <a href="<?php echo esc_url( $slide['btn']['url'] ); ?>" class="perf_btn" <?php if( $slide['btn']['target'] === '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $slide['btn']['title'] ); ?></a>
+                            <?php endif; ?>
 						</div>
 
 					<?php endforeach; ?>
