@@ -479,7 +479,8 @@ function light_bold_custom_styles(){
     $light_bold_custom_css = '
         .main-color{ color: ' . $light_bold_main_color . '; }
         a,
-        .tagcloud a:hover{ color: ' . $light_bold_main_color . ';}
+        .tagcloud a:hover,
+        .button-row button{ color: ' . $light_bold_main_color . ';}
         a.dark-color:hover,
         a.white-color:hover,
         .tags:hover,
@@ -489,7 +490,6 @@ function light_bold_custom_styles(){
         .site-footer li a:hover,
         .icons_social:hover,
         .icons_social:focus,
-        .button-row button,
         .active .menu__link,
         .site-footer .address_row .fa{ color: ' . $light_bold_main_color . '; border-color: ' . $light_bold_main_color . '; }
         .menu__item i,
@@ -570,7 +570,7 @@ function light_bold_hex2rgba($color, $opacity = false) {
 }
 
 /**
- * Inline custom inline CSS if extend-lightbold plugin is not active
+ * Inline custom CSS if extend-lightbold plugin is not active
  */
 add_action( 'wp_enqueue_scripts', 'light_bold_inline_style' );
 function light_bold_inline_style() {

@@ -21,31 +21,31 @@ module.exports = function(grunt) {
         criticalcss: {
             home: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/",
+                    url: "http://lightbold.dev/",
                     width: 1200,
-                    height: 800,
+                    height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/home.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs'],
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
                     ignoreConsole: false
                 }
             },
             homewithslider: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/home-with-slider/",
+                    url: "http://lightbold.dev/home-with-slider/",
                     width: 1200,
                     height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/home-with-slider.css",
                     filename: "style.css",
                     buffer: 800*1500,
-                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs'],
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
                     ignoreConsole: false
                 }
             },
             archive: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/blog/",
+                    url: "http://lightbold.dev/blog/",
                     width: 1200,
                     height: 900,
                     outputfile: "../../plugins/extend-lightbold/critical/archive.css",
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
             },
             page: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/about/",
+                    url: "http://lightbold.dev/about/",
                     width: 1200,
                     height: 900,
                     outputfile: "../../plugins/extend-lightbold/critical/page.css",
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
             },
             single: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/hello-world-2/",
+                    url: "http://lightbold.dev/hello-world-2/",
                     width: 1200,
                     height: 900,
                     outputfile: "../../plugins/extend-lightbold/critical/single.css",
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
             },
             contact: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/contact-us/",
+                    url: "http://lightbold.dev/contact-us/",
                     width: 1200,
                     height: 900,
                     outputfile: "../../plugins/extend-lightbold/critical/contact.css",
@@ -93,7 +93,7 @@ module.exports = function(grunt) {
             },
             page_404: {
                 options: {
-                    url: "http://lightbold.perfthemes.dev/abcdefgh/",
+                    url: "http://lightbold.dev/abcdefgh/",
                     width: 1200,
                     height: 900,
                     outputfile: "../../plugins/extend-lightbold/critical/404.css",

@@ -65,7 +65,7 @@ function light_bold_register_required_plugins() {
 			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
 			'source'             => get_template_directory() . '/inc/3rd-party/plugins/advanced-custom-fields-pro.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-			'version'            => '5.5.14', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'version'            => '5.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
@@ -76,7 +76,7 @@ function light_bold_register_required_plugins() {
 			'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'version'            => '1.0.7',
+			'version'            => '1.0.8',
 		),
 
 		array(
@@ -85,12 +85,6 @@ function light_bold_register_required_plugins() {
 			'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
 			'required'           => false,
             'version'            => '1.0.0',
-		),
-
-        array(
-			'name'      => 'ACF Flexible Content Modal',
-			'slug'      => 'acf-flexible-content-modal',
-			'required'  => false,
 		),
 
 		array(
@@ -110,12 +104,6 @@ function light_bold_register_required_plugins() {
 			'slug'      => 'contact-form-7',
 			'required'  => false,
 		),
-
-		/*array(
-			'name'      => 'CDN Enabler - WordPress CDN Plugin',
-			'slug'      => 'cdn-enabler',
-			'required'  => false,
-		),*/
 
 	);
 

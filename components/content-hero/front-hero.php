@@ -9,11 +9,6 @@
 <div class="front-hero-section flex-stretch clearfix md-flex col-12 alt-dark-bg overflow-hidden">
 
     <?php $front_hero = get_field("perf_front_hero"); ?>
-    <?php 
-        //echo '<pre>';
-        //print_r(  $front_hero);
-        //echo '</pre>';
-    ?>
 
     <?php
         $perf_image_id = $front_hero['image'];

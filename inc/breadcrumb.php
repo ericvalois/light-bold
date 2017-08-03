@@ -58,8 +58,6 @@ function light_bold_breadcrumbs() {
 			printf( esc_html__( 'Search Results for: %s', 'light-bold' ),  get_search_query() );
 			echo '</span>';
 		}
-	} else {
-		echo '<span class="white-color upper">' . esc_html( get_bloginfo('name') ) . '</span>';
 	}
 	echo '</nav>';
 }
