@@ -176,7 +176,7 @@ function light_bold_custom_menu( $theme_location ) {
         }
 
         // Menu
-        $html_menu = '<ul data-menu="main" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset ' . (( !light_bold_main_menu_has_child() )?'visible':'') . '">';
+        echo '<ul data-menu="main" class="menu__level absolute top-0 left-0 overflow-hidden m0 p0 list-reset ' . (( !light_bold_main_menu_has_child() )?'visible':'') . '">';
 
         foreach( $menu as $item ):
 
@@ -195,28 +195,49 @@ function light_bold_custom_menu( $theme_location ) {
                 $current_page = '';
             }
 
+            // Menu target
+            if( !empty( $item->target ) ){
+                $menu_target = true;
+            }else{
+                $menu_target = false;
+            }
+
+            // Menu class
+            if( isset( $item->classes ) && is_array( $item->classes ) ){
+                $menu_classes = '';
+                foreach( $item->classes as $class ){
+                    $menu_classes .= ' ' . $class;
+                }
+            }else{
+                $menu_classes = '';
+            }
+
+            /*echo '<pre>';
+            print_r( $item );
+            echo '</pre>';*/
+            
+
             if( $item->menu_item_parent == 0 ):
-                
-                $html_menu .= '<li class="menu__item ultra-small '. esc_attr( $current_page ) .'">';
-                    $html_menu .= '<a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" ' . (($has_child)?'data-submenu="submenu-'. esc_attr( $item->ID ) .'" href="#"':'href="'. esc_url( $item->url ) .'"') . '>';
-                    
-                    $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. esc_attr( $item->ID ) .'"':'') . '>' . esc_html( $item->title ) . '</span>';
-                    
-                    if( $menu_icon ){ 
-                        $html_menu .= '<svg class="ml1 fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
-                    }
+                ?>
+                    <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
+                        <a <?php if( $item->attr_title ){ echo 'title="'. esc_attr( $item->attr_title ) .'"'; } ?> <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $item->url ) .'"';} ?>>
+                            <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $item->ID ) . '"'; } ?>>
+                                <?php echo esc_html( $item->title ); ?> 
+                            </span>
 
-                    $html_menu .= '</a>';
-
-                $html_menu .= '</li>';
-                
+                            <?php 
+                                if( $menu_icon ){ 
+                                    echo '<svg class="ml1 fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
+                                }
+                            ?>
+                        </a>
+                    </li>
+                <?php
             endif;
 
         endforeach;
 
-        $html_menu .= '</ul>';
-
-        echo $html_menu;
+        echo '</ul>';
 
         $menu_sub_with_child = array();
 
@@ -244,16 +265,33 @@ function light_bold_custom_menu( $theme_location ) {
                                 $current_page = '';
                             }
 
+                            // Menu target
+                            if( !empty( $starter_item->target ) ){
+                                $menu_target = true;
+                            }else{
+                                $menu_target = false;
+                            }
+
+                            // Menu class
+                            if( isset( $starter_item->classes ) && is_array( $starter_item->classes ) ){
+                                $menu_classes = '';
+                                foreach( $starter_item->classes as $class ){
+                                    $menu_classes .= ' ' . $class;
+                                }
+                            }else{
+                                $menu_classes = '';
+                            }
+
                             ?>
                                 <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
-                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $starter_item->url ) .'"';} ?>>
+                                    <a <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $starter_item->url ) .'"';} ?>>
                                         <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) . '"'; } ?>>
                                             <?php echo esc_html( $starter_item->title ); ?> 
                                         </span>
 
                                         <?php 
                                             if( $menu_icon ){ 
-                                                echo '<svg class="fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
+                                                echo '<svg class="ml1 fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
                                             }
                                         ?>
                                     </a>
