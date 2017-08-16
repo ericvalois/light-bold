@@ -203,7 +203,7 @@ function light_bold_custom_menu( $theme_location ) {
                     $html_menu .= '<span class="flex-auto" ' . (($has_child)?'data-submenu="submenu-'. esc_attr( $item->ID ) .'"':'') . '>' . esc_html( $item->title ) . '</span>';
                     
                     if( $menu_icon ){ 
-                        $html_menu .= '<svg class="fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
+                        $html_menu .= '<svg class="ml1 fa flex-none '. esc_attr( $menu_icon ) .'"><use xlink:href="#'. esc_attr( $menu_icon ) .'"></use></svg>'; 
                     }
 
                     $html_menu .= '</a>';
