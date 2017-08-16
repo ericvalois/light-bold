@@ -24,28 +24,33 @@
 
 						<div class="carousel-cell col-12 md-px1">
 
-							<h3 class="h2 entry-title separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h3>
-				  			<p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
-                                <?php 
-                                    $args = array(
-                                        'a' => array(
-                                            'href' => array(),
-                                            'title' => array(),
-                                            'rel'   => array(),
-                                            'target'=> array()
-                                        ),
-                                        'br' => array(),
-                                        'em' => array(),
-                                        'strong' => array(),
-                                        'ul' => array(),
-                                        'ol' => array(),
-                                        'li' => array(),
-                                    );
-                                    echo wp_kses( $slide['content'], $args ); 
-                                ?>
-				  			</p>
-                            
-                            <?php if( !empty( $slide['btn']['url'] ) ): ?>
+                            <?php if( !empty( $slide['title'] ) ): ?>
+							    <h3 class="h2 entry-title separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h3>
+                            <?php endif; ?>
+
+                            <?php if( !empty( $slide['content'] ) ): ?>
+                                <p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
+                                    <?php 
+                                        $args = array(
+                                            'a' => array(
+                                                'href' => array(),
+                                                'title' => array(),
+                                                'rel'   => array(),
+                                                'target'=> array()
+                                            ),
+                                            'br' => array(),
+                                            'em' => array(),
+                                            'strong' => array(),
+                                            'ul' => array(),
+                                            'ol' => array(),
+                                            'li' => array(),
+                                        );
+                                        echo wp_kses( $slide['content'], $args ); 
+                                    ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <?php if( !empty( $slide['btn']['url'] ) && !empty( $slide['btn']['title'] ) ): ?>
 				  			    <a href="<?php echo esc_url( $slide['btn']['url'] ); ?>" class="perf_btn" <?php if( $slide['btn']['target'] === '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $slide['btn']['title'] ); ?></a>
                             <?php endif; ?>
 						</div>
