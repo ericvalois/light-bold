@@ -38,23 +38,26 @@
 /*--------------------------------------------------------------
 # Alignments
 --------------------------------------------------------------*/
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
-}
 
 .aligncenter {
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+@include media-query(md) {
+    .alignleft {
+        display: inline;
+        float: left;
+        margin-right: 1.5em;
+    }
+
+    .alignright {
+        display: inline;
+        float: right;
+        margin-left: 1.5em;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -116,6 +119,10 @@ object {
 .wp-caption {
 	margin-bottom: 1.5em;
 	max-width: 100%;
+    width: auto !important;
+    background-color: #e6e6e6;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .wp-caption img[class*="wp-image-"] {
@@ -125,7 +132,8 @@ object {
 }
 
 .wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+	padding: 0.8em;
+    font-size: 14px;
 }
 
 .wp-caption-text {
