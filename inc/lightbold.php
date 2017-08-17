@@ -210,12 +210,7 @@ function light_bold_custom_menu( $theme_location ) {
                 }
             }else{
                 $menu_classes = '';
-            }
-
-            /*echo '<pre>';
-            print_r( $item );
-            echo '</pre>';*/
-            
+            }       
 
             if( $item->menu_item_parent == 0 ):
                 ?>
