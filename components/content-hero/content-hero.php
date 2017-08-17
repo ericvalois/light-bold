@@ -7,12 +7,17 @@
 ?>
 <?php 
     $title = '';
+    $description = '';
 
     if ( is_home() ) {
         global $post; 
     
         if( get_option('page_for_posts', true) ){
             $title .= esc_html( get_the_title( get_option('page_for_posts', true) ) );
+        }
+
+        if( empty($title) && is_plugin_active( 'extend-lightbold/extend-lightbold.php' ) ){
+            $title .= get_bloginfo("name");
         }
     
         $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -39,16 +44,22 @@
             <?php echo $title; ?>
         </h1>
 
-        <?php if( is_single() && get_post_type() == 'post' ): ?>
+        <?php 
+            if( is_single() && get_post_type() == 'post' ){
+                while ( have_posts() ) : the_post(); 
+                    $description = light_bold_posted_on(); 
+                endwhile; 
+            }elseif( is_archive() ){
+                $description = get_the_archive_description();
+            }elseif( is_home() && empty( $description ) ){
+                $description = get_bloginfo("description");
+            }
+        ?>
+
+        <?php if( !empty( $description ) ): ?>
             <div class="entry-meta white-color upper normal-weight">
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <?php light_bold_posted_on(); ?>
-                <?php endwhile; // End of the loop. ?>
-            </div><!-- .entry-meta -->
-        <?php elseif( is_archive() ): ?>
-            <div class="entry-meta white-color upper absolute normal-weight">
-                <?php the_archive_description(); ?>
-            </div><!-- .entry-meta -->
+                <?php echo $description; ?>
+            </div>
         <?php endif; ?>
 
         <?php
