@@ -49,7 +49,7 @@
                                 ?>
                             </div>
 
-                            <?php if( $box['box']['link']['url']  ): ?>
+                            <?php if( !empty( $box['box']['link']['url'] )  ): ?>
                                 <div><a href="<?php echo esc_url( $box['box']['link']['url'] ); ?>" class="perf_btn center" <?php if( $box['box']['link']['target'] == '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $box['box']['link']['title'] ); ?></a></div>
                             <?php endif; ?>
 						</div>

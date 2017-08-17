@@ -28,24 +28,22 @@ function light_bold_posted_on() {
 
 	$light_bold_byline = '<span class="author vcard">' . esc_html__("By","light-bold") . ': ' . '<a class="url fn n white-color" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
-
-	echo $light_bold_posted_on;
-
-	echo $light_bold_byline;
+    $content_tags = $light_bold_posted_on . $light_bold_byline;
 
 	$light_bold_categories = get_the_category();
 	$cat_separator = ', ';
 	$light_bold_output = '';
 	if ( ! empty( $light_bold_categories ) ) {
 
-		echo '<span class="cat">' . esc_html__("Categories", "light-bold") . ': ';
+		$content_tags .= '<span class="cat">' . esc_html__("Categories", "light-bold") . ': ';
 
 	    foreach( $light_bold_categories as $category ) {
 	        $light_bold_output .= '<a class="white-color upper" href="' . esc_url( get_category_link( $category->term_id ) ) . '">' . esc_html( $category->name ) . '</a>' . $cat_separator;
 	    }
-	    echo trim( $light_bold_output, $cat_separator );
 
-	    echo '</span>';
+	    $content_tags .= trim( $light_bold_output, $cat_separator );
+
+	    $content_tags .= '</span>';
 
 	}
 
@@ -53,20 +51,22 @@ function light_bold_posted_on() {
 	$light_bold_posttags = get_the_tags();
 	if ($light_bold_posttags) {
 
-		echo '<span class="tag">' . esc_html__("Tags", "light-bold") . ': ';
+		$content_tags .= '<span class="tag">' . esc_html__("Tags", "light-bold") . ': ';
 		$cpt = 1;
 		foreach($light_bold_posttags as $tag) {
 			if( $cpt != 1){
-				echo ', ';
+				$content_tags .= ', ';
 			}
-			echo '<a class="white-color upper" href="' . get_tag_link($tag->term_id) . '">';
-			echo $tag->name;
-			echo '</a> ';
+			$content_tags .= '<a class="white-color upper" href="' . get_tag_link($tag->term_id) . '">';
+			$content_tags .= $tag->name;
+			$content_tags .= '</a> ';
 			$cpt++;
 		}
 
-		echo '</span>';
+		$content_tags .= '</span>';
 	}
+
+    return $content_tags;
 
 }
 endif;

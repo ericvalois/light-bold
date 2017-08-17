@@ -158,7 +158,7 @@ module.exports = function(grunt) {
                 dest: 'build/light-bold-demo.xml'
             },
             doc: {
-                src: '/Users/bulledev/Google\ Drive/perfthemes.com/themes/light\&bold/documentation.pdf',
+                src: '/Users/bulledev/Google\ Drive/TTFB/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
             },
             extend_lightbold: {
