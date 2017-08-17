@@ -9,6 +9,12 @@
 <section class="clearfix posts_section px2 lg-px3 py1 lg-py2 white-bg ">
 
 	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo esc_html( get_sub_field("title") ); ?></h2>
+
+    <?php $button = get_sub_field("button"); ?>
+    <?php if( !empty( $button['url'] ) && !empty( $button['title'] )  ): ?>
+        <div class="center small-p mb1"><a href="<?php echo esc_url( $button['url'] ); ?>" <?php if( $button['target'] == '_blank' ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?>><?php echo esc_html( $button['title'] ); ?></a></div>
+    <?php endif; ?>
+
 	<span class="separator seprarator-center"></span>
 	
 	<div class="flex flex-wrap mxn2 mt2">
