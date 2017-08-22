@@ -299,6 +299,8 @@
 
     .menu__wrap {
         top: 0;
+        height: calc(100% - 225px);
+        overflow-y: scroll;
     }
 
     .menu__breadcrumbs {
@@ -367,7 +369,7 @@
 }
 
 @include media-query(xlg) {
-
+    .menu__wrap{ height: calc(100% - 275px); }
     .menu__breadcrumbs{ display: flex;}
     .menu__back{ display: none;}
 

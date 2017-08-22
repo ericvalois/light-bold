@@ -18,6 +18,17 @@
     .admin-bar .nav-container {
         top: 32px;
     }
+
+    .admin-bar .menu__wrap {
+        height: calc(100% - 257px);
+    }
+}
+
+@include media-query(xlg) {
+
+    .admin-bar .menu__wrap {
+        height: calc(100% - 307px);
+    }
 }
 
 .light-bold-adminbar{ position: fixed !important; }
