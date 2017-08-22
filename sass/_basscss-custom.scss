@@ -602,6 +602,68 @@ h6,.h6 { font-size: 120%; }
 
 }
 
+@media (min-width: 1650px) {
+
+  .xlg-col {
+    float: left;
+    box-sizing: border-box;
+  }
+
+  .xlg-col-right {
+    float: right;
+    box-sizing: border-box;
+  }
+
+  .xlg-col-1 {
+    width: 8.33333%;
+  }
+
+  .xlg-col-2 {
+    width: 16.66667%;
+  }
+
+  .xlg-col-3 {
+    width: 25%;
+  }
+
+  .xlg-col-4 {
+    width: 33.33333%;
+  }
+
+  .xlg-col-5 {
+    width: 41.66667%;
+  }
+
+  .xlg-col-6 {
+    width: 50%;
+  }
+
+  .xlg-col-7 {
+    width: 58.33333%;
+  }
+
+  .xlg-col-8 {
+    width: 66.66667%;
+  }
+
+  .xlg-col-9 {
+    width: 75%;
+  }
+
+  .xlg-col-10 {
+    width: 83.33333%;
+  }
+
+  .xlg-col-11 {
+    width: 91.66667%;
+  }
+
+  .xlg-col-12 {
+    width: 100%;
+  }
+
+}
+
 .flex { display: flex }
 
 .flex-column  { flex-direction: column }
@@ -1262,6 +1324,25 @@ input[type=range] {
   .lg-p4  { padding: 6rem }
   .lg-py4 { padding-top: 6rem; padding-bottom: 6rem }
   .lg-px4 { padding-left: 6rem; padding-right: 6rem }
+
+}
+@media (min-width: 1650px) {
+
+  .xlg-p1  { padding: 1rem }
+  .xlg-py1 { padding-top: 1rem; padding-bottom: 1rem }
+  .xlg-px1 { padding-left: 1rem; padding-right: 1rem }
+
+  .xlg-p2  { padding: 2rem }
+  .xlg-py2 { padding-top: 2rem; padding-bottom: 2rem }
+  .xlg-px2 { padding-left: 2rem; padding-right: 2rem }
+
+  .xlg-p3  { padding: 4rem }
+  .xlg-py3 { padding-top: 4rem; padding-bottom: 4rem }
+  .xlg-px3 { padding-left: 4rem; padding-right: 4rem }
+
+  .xlg-p4  { padding: 6rem }
+  .xlg-py4 { padding-top: 6rem; padding-bottom: 6rem }
+  .xlg-px4 { padding-left: 6rem; padding-right: 6rem }
 
 }
 /*
