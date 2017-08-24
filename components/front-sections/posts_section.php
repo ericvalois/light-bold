@@ -43,7 +43,7 @@
 
 			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
-				<article <?php post_class("border-box px2 break-word mb3 " . esc_attr( $col_class )); ?> id="post-<?php the_ID(); ?>">
+				<article <?php post_class("border-box px2 break-word mb3 col-12 " . esc_attr( $col_class )); ?> id="post-<?php the_ID(); ?>">
 
 					<?php if( get_sub_field("show_post_thumbnail") && has_post_thumbnail() ): ?>
 						<a href="<?php the_permalink(); ?>" class="no-border hover-opacity">
