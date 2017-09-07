@@ -37,7 +37,13 @@ get_header(); ?>
 
 				<?php else : ?>
 
-					<?php get_template_part( 'components/content/content', 'none' ); ?>
+                    <?php 
+                        $count_posts = wp_count_posts(); 
+
+                        if( $count_posts->publish < 1 ){
+                            get_template_part( 'components/content/content', 'none' );
+                        }
+                    ?>
 
 				<?php endif; ?>
 			</main><!-- #main -->
