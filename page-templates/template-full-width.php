@@ -10,7 +10,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area clearfix py3 md-py4 px2 sm-px3 md-px3 lg-px4 <?php echo esc_attr( light_bold_content_animation() ); ?>">
 
-		<main id="main" class="site-main col col-12 break-word">
+		<main id="main" class="site-main col col-12 break-word block">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
