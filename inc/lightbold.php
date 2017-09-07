@@ -440,6 +440,10 @@ function light_bold_flickity_detection( $post_id ){
 
     $rows = get_field('perf_front_hero', $post_id );
     
+    if( empty( $rows['content_type'] ) ){
+        return false;
+    }
+
     if( $rows['content_type'] == 'custom' && count( $rows['custom_content'] ) > 1 ){
         $flickity = true;
     }elseif( $rows['content_type'] == 'latest_posts' && $rows['how_many_posts'] > 1 ){
