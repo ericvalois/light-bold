@@ -5,7 +5,8 @@
 
 .menu__level {
     visibility: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar; // hide scroll bar on IE and EDGE
     width: calc(100% + 50px);
     height: 100%;
 }
@@ -174,10 +175,16 @@
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+
+
 .menu__breadcrumbs a:last-child {
     pointer-events: none;
     color: #3e3e3e;
     padding-right: 2rem;
+}
+
+.menu__breadcrumbs a:first-child:last-child {
+    color: #fff;
 }
 
 .menu__breadcrumbs a:hover {
@@ -261,6 +268,7 @@
 
 .main-nav {
     -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
     overflow-y: auto;
     height: 100%;
     z-index: 9;
@@ -300,7 +308,7 @@
     .menu__wrap {
         top: 0;
         height: calc(100% - 225px);
-        overflow-y: scroll;
+        //overflow-y: scroll;
     }
 
     .menu__breadcrumbs {
@@ -370,7 +378,7 @@
 
 @include media-query(xlg) {
     .menu__wrap{ height: calc(100% - 275px); }
-    .menu__breadcrumbs{ display: flex;}
+    //.menu__breadcrumbs{ display: flex;}
     .menu__back{ display: none;}
 
    .site-sidebar {

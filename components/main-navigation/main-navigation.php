@@ -12,7 +12,7 @@
 		</svg>
 	</button>
 
-	<a id="all" class="hide"><?php esc_html_e("All","light-bold"); ?></a>
+    <a id="all" class="hide"><svg class="fa fa-list-ul small-p"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-list-ul"></use></svg></a>
 
 	<div class="menu__wrap absolute bottom-0 col-12 <?php if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){ echo 'multi_level'; } ?>">
 		<?php

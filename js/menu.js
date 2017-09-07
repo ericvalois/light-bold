@@ -182,7 +182,7 @@ if ( typeof define === 'function' && define.amd ) {
         // create breadcrumbs
         if( self.options.breadcrumbsCtrl ) {
             this.breadcrumbsCtrl = document.createElement('nav');
-            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center px2 absolute col-12 bg-white';
+            this.breadcrumbsCtrl.className = 'menu__breadcrumbs flex flex-center px2 absolute col-12 bg-white line-height1';
             this.el.insertBefore(this.breadcrumbsCtrl, this.el.firstChild);
             // add initial breadcrumb
             this._addBreadcrumb(0);
@@ -358,7 +358,7 @@ if ( typeof define === 'function' && define.amd ) {
 
         var bc = document.createElement('a');
 
-        bc.className = "border-none main-color ultra-small upper pointer inline-block nowrap";
+        bc.className = "border-none ultra-small upper pointer flex flex-center nowrap";
 
         
         if( idx ){
@@ -397,28 +397,13 @@ if ( typeof define === 'function' && define.amd ) {
 })(window);
 
 (function() {
-        var menuEl = document.getElementById('ml-menu'),
-            mlmenu = new MLMenu(menuEl, {
-                breadcrumbsCtrl : true, // show breadcrumbs
-                //initialBreadcrumb : 'all', // initial breadcrumb text
-                backCtrl : false, // show back button
-                itemsDelayInterval : 50, // delay between each menu item sliding animation
-                //onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
-            });
+    var menuEl = document.getElementById('ml-menu'),
+        mlmenu = new MLMenu(menuEl, {
+            breadcrumbsCtrl : true, // show breadcrumbs
+            //initialBreadcrumb : 'all', // initial breadcrumb text
+            backCtrl : false, // show back button
+            itemsDelayInterval : 50, // delay between each menu item sliding animation
+            //onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+        });
 
-        // mobile menu toggle
-        //var openMenuCtrl = document.querySelector('.action--open');
-            //closeMenuCtrl = document.querySelector('.action--close');
-
-        //openMenuCtrl.addEventListener('click', openMenu);
-        //closeMenuCtrl.addEventListener('click', closeMenu);
-
-        function openMenu() {
-            classie.add(menuEl, 'menu--open');
-        }
-
-        function closeMenu() {
-            classie.remove(menuEl, 'menu--open');
-        }
-
-    })();
+})();
