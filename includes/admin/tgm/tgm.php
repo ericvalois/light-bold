@@ -79,12 +79,10 @@ function light_bold_register_required_plugins() {
 			'version'            => '1.1.1',
 		),
 
-		array(
-			'name'               => 'TTFB Browser Cache',
-			'slug'               => 'browser-cache', 
-			'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
-			'required'           => false,
-            'version'            => '1.0.0',
+        array(
+			'name'      => 'Download Speed Up – Browser Caching',
+			'slug'      => 'speed-up-browser-caching',
+			'required'  => false,
 		),
 
 		array(
@@ -106,6 +104,20 @@ function light_bold_register_required_plugins() {
 		),
 
 	);
+
+    /*
+    * Disable former browser cache plugin or update it
+    */
+    if( function_exists('browser_cache_init') ){
+        $plugins[] = array(
+            'name'               => 'TTFB Browser Cache',
+            'slug'               => 'browser-cache', 
+            'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
+            'required'           => false,
+            'force_deactivation' => true,
+            'version'            => '1.0.1',
+        );
+    }
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.
