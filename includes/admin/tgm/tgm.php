@@ -76,15 +76,13 @@ function light_bold_register_required_plugins() {
 			'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'version'            => '1.1.0',
+			'version'            => '1.1.1',
 		),
 
-		array(
-			'name'               => 'TTFB Browser Cache',
-			'slug'               => 'browser-cache', 
-			'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
-			'required'           => false,
-            'version'            => '1.0.0',
+        array(
+			'name'      => 'Download Speed Up – Browser Caching',
+			'slug'      => 'speed-up-browser-caching',
+			'required'  => false,
 		),
 
 		array(
@@ -106,6 +104,20 @@ function light_bold_register_required_plugins() {
 		),
 
 	);
+
+    /*
+    * Disable former browser cache plugin or update it
+    */
+    if( function_exists('browser_cache_init') ){
+        $plugins[] = array(
+            'name'               => 'TTFB Browser Cache',
+            'slug'               => 'browser-cache', 
+            'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
+            'required'           => false,
+            'force_deactivation' => true,
+            'version'            => '1.0.1',
+        );
+    }
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.

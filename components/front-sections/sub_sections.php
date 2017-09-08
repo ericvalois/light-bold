@@ -22,7 +22,7 @@
 																						data-bgset="<?php echo esc_attr( $image['sizes']['light-bold-hero-md'] ); ?> [(min-width: 52em)] | 
 																						<?php echo esc_attr( $image['sizes']['light-bold-hero-sm'] ); ?>">
 						<div class="absolute bottom-0 left-0 z1 col-12">
-							<h3 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4 entry-title"><?php echo esc_html( $box['box']['title'] ); ?></h3>
+							<h2 class="alt-dark-bg mt0 neg_bm1 ml2 mr2 py2 px2 separator white-color h4 entry-title"><?php echo esc_html( $box['box']['title'] ); ?></h2>
 						</div>
 					</div>
 

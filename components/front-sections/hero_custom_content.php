@@ -25,11 +25,15 @@
 						<div class="carousel-cell col-12 md-px1">
 
                             <?php if( !empty( $slide['title'] ) ): ?>
-							    <h3 class="h2 entry-title separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h3>
+                                <?php if( count($perf_slides) > 1): ?>
+							        <h3 class="h2 separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h3>
+                                <?php else: ?>
+                                    <h1 class="h2 separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h1>
+                                <?php endif; ?>
                             <?php endif; ?>
 
                             <?php if( !empty( $slide['content'] ) ): ?>
-                                <p class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
+                                <div class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
                                     <?php 
                                         $args = array(
                                             'a' => array(
@@ -44,10 +48,11 @@
                                             'ul' => array(),
                                             'ol' => array(),
                                             'li' => array(),
+                                            'p' => array(),
                                         );
                                         echo wp_kses( $slide['content'], $args ); 
                                     ?>
-                                </p>
+                                </div>
                             <?php endif; ?>
 
                             <?php if( !empty( $slide['btn']['url'] ) && !empty( $slide['btn']['title'] ) ): ?>

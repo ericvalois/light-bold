@@ -24,7 +24,7 @@ get_header(); ?>
 		    <div class="lg-col lg-col-8 lg-col-right ">
         <?php endif; ?>
 
-			<main id="main" class="site-main break-word <?php if( is_active_sidebar( "blog-sidebar" ) ): ?>lg-ml4<?php endif; ?>">
+			<main id="main" class="site-main break-word block <?php if( is_active_sidebar( "blog-sidebar" ) ): ?>lg-ml4<?php endif; ?>">
 				<?php if ( have_posts() ) : ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
@@ -37,7 +37,13 @@ get_header(); ?>
 
 				<?php else : ?>
 
-					<?php get_template_part( 'components/content/content', 'none' ); ?>
+                    <?php 
+                        $count_posts = wp_count_posts(); 
+
+                        if( $count_posts->publish < 1 ){
+                            get_template_part( 'components/content/content', 'none' );
+                        }
+                    ?>
 
 				<?php endif; ?>
 			</main><!-- #main -->

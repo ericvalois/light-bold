@@ -17,7 +17,7 @@ get_header(); ?>
 		    <div class="lg-col lg-col-8 lg-col-right ">
         <?php endif; ?>
 
-			<main id="main" class="site-main break-word <?php if( is_active_sidebar( "blog-sidebar" ) ): ?>lg-ml4<?php endif; ?>">
+			<main id="main" class="site-main break-word block <?php if( is_active_sidebar( "blog-sidebar" ) ): ?>lg-ml4<?php endif; ?>">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 

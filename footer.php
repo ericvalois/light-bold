@@ -61,7 +61,7 @@
 
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix hide-print">
 		<div class="md-col md-col-6 mb1 md-mb0">
-			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php echo wp_kses( $footer_copy, array( 'a' => array( 'href' => array(), 'title' => array(), 'class' => array() ) ) ); ?></div>
+			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php if( !empty( $footer_copy ) ){ echo wp_kses( $footer_copy, array( 'a' => array( 'href' => array(), 'title' => array(), 'class' => array() ) ) ); } ?></div>
 		</div>
 
 		<div class="md-col md-col-6">

@@ -37,8 +37,9 @@ a{
     border-bottom-color: transparent;
 }
 
-h1, h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6{
     font-weight: 100;
+    clear: both;
 }
 
 .separator:after{
@@ -185,7 +186,6 @@ pre{
 .pull-excerpt {
     font-size: 110%;
     line-height: 1.5;
-    padding: 2rem;
     background: #eef0f4;
 }
 
@@ -195,6 +195,7 @@ pre{
         margin: 0 0 2% 5%;
         text-align: left;
         width: 32%;
+        padding: 2rem;
     }
 
     .pull-left{
@@ -202,5 +203,6 @@ pre{
         margin: 0 5% 2% 0;
         text-align: left;
         width: 32%;
+        padding: 2rem;
     }
 }

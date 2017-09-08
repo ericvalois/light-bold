@@ -88,10 +88,15 @@ function light_bold_content_animation(){
 function light_bold_select_hero_image(){
    global $post;
 
-    if( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
+    if( is_home() || is_archive() ){
+        $blog_hero = get_field("perf_hero_blog_archive", "option");
+        if( $blog_hero ){
+            $light_bold_hero = $blog_hero;
+        }else{
+            $light_bold_hero = get_field("perf_hero_image", "option");
+        }
+    }elseif( is_object( $post ) && get_field("perf_hero_image", $post->ID) ){
         $light_bold_hero = get_field("perf_hero_image", $post->ID);
-    }elseif( ( is_home() || is_archive() ) && get_field("perf_hero_blog_archive", "option") ){
-        $light_bold_hero = get_field("perf_hero_blog_archive", "option");
     }elseif( is_404() && get_field("perf_hero_404", "option") ){
         $light_bold_hero = get_field("perf_hero_404", "option");
     }else{
@@ -435,6 +440,10 @@ function light_bold_flickity_detection( $post_id ){
 
     $rows = get_field('perf_front_hero', $post_id );
     
+    if( empty( $rows['content_type'] ) ){
+        return false;
+    }
+
     if( $rows['content_type'] == 'custom' && count( $rows['custom_content'] ) > 1 ){
         $flickity = true;
     }elseif( $rows['content_type'] == 'latest_posts' && $rows['how_many_posts'] > 1 ){

@@ -52,7 +52,7 @@
                     <?php endif; ?>
 
 					<div class="px2 lg-px3 py1">
-						<h4 class="<?php echo esc_attr( $title_class ); ?>"><?php echo get_sub_field('title'); ?></h4>
+						<h2 class="<?php echo esc_attr( $title_class ); ?>"><?php echo get_sub_field('title'); ?></h2>
 					
 						<div class="<?php echo esc_attr( $text_class ); ?>">
                             <?php 
