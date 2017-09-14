@@ -19,12 +19,13 @@ $updater = new Light_Bold_Theme_Updater_Admin(
 	// Config settings
 	$config = array(
 		'remote_api_url' => 'https://ttfb.io', // Site where EDD is hosted
-		'item_name'      => 'Light & Bold WordPress Theme', // Name of theme
+		'item_name'      => 'Light & Bold', // Name of theme
 		'theme_slug'     => 'light-bold', // Theme slug
 		'version'        => LIGHT_BOLD_SL_THEME_VERSION, // The current version of this theme
 		'light-bold'         => 'TTFB', // The author of this theme
-		'download_id'    => '1995', // Optional, used for generating a license renewal link
-		'renew_url'      => '' // Optional, allows for a custom license renewal link
+		'download_id'    => '', // Optional, used for generating a license renewal link
+		'renew_url'      => '', // Optional, allows for a custom license renewal link
+        'beta'           => false, // Optional, set to true to opt into beta versions
 	),
 
 	// Strings
