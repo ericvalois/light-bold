@@ -2,7 +2,7 @@
 /**
  * Theme updater admin page and functions.
  *
- * @package Author
+ * @package Light & Bold
  */
 
 /**
@@ -13,7 +13,7 @@ function light_bold_redirect_on_activation() {
 
 	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {
 
-		wp_redirect( admin_url( "themes.php?page=author-license" ) );
+		wp_redirect( admin_url( "themes.php?page=light-bold-license" ) );
 
 	}
 }
@@ -38,11 +38,11 @@ function light_bold_start_load_admin_scripts() {
 	 */
 
 	// Getting Started javascript
-	wp_enqueue_script( 'author-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.js', array( 'jquery' ), '1.0.0', true );
 
 	// Getting Started styles
-	wp_register_style( 'author-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.css', false, '1.0.0' );
-	wp_enqueue_style( 'author-getting-started' );
+	wp_register_style( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.css', false, '1.0.0' );
+	wp_enqueue_style( 'light-bold-getting-started' );
 
 	// Thickbox
 	add_thickbox();
