@@ -81,6 +81,17 @@ function light_bold_setup() {
 		'caption',
 	) );
 
+    /**
+    * Load TGM class
+    */
+    require get_template_directory() . '/includes/admin/tgm/tgm.php';
+
+    /* Admin functionality */
+	if ( is_admin() ) {
+		// Getting Started page and EDD update class
+		require_once( get_template_directory() . '/includes/admin/updater/theme-updater.php' );
+	}
+
 }
 endif; // light_bold_setup
 add_action( 'after_setup_theme', 'light_bold_setup' );
@@ -204,11 +215,6 @@ function light_bold_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'light_bold_scripts' );
-
-/**
- * Load TGM class
- */
-require get_template_directory() . '/includes/admin/tgm/tgm.php';
 
 /**
  * Custom template tags for this theme.
