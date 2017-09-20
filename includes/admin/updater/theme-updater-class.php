@@ -6,7 +6,7 @@
  * @version 1.0.3
  */
 
-class TTFB_Theme_Updater {
+class Light_Bold_Theme_Updater {
 
 	private $remote_api_url;
 	private $request_data;
