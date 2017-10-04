@@ -12,12 +12,39 @@ add_action( 'admin_init', 'light_bold_redirect_on_activation' );
 function light_bold_redirect_on_activation() {
 	global $pagenow;
 
-	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {
+	if ( is_admin() && 'admin.php' == $pagenow && isset( $_GET['activated'] ) ) {
 
-		wp_redirect( admin_url( "themes.php?page=light-bold-license" ) );
+		wp_redirect( admin_url( "admin.php?page=light-bold-license" ) );
 
 	}
 }
+
+/**
+ * Redirect specific main options page
+ */
+add_action('current_screen', 'light_bold_redirect_admin_page');
+function light_bold_redirect_admin_page() {
+    $screen = get_current_screen();
+    if (isset($screen->base) && $screen->base == 'toplevel_page_light-bold-main-page') {
+        wp_redirect( admin_url( 'admin.php?page=light-bold-license' ) );
+        exit();
+    }
+}
+
+/**
+ * Hide first option page
+ */
+add_action('admin_head', 'light_bold_custom_fonts');
+function light_bold_custom_fonts() {
+  echo '<style>
+    #toplevel_page_light-bold-main-page .wp-first-item{
+        display: none;
+    }
+  </style>';
+}
+
+
+
 
 
 /**
@@ -29,8 +56,16 @@ add_action( 'admin_enqueue_scripts', 'light_bold_start_load_admin_scripts' );
 function light_bold_start_load_admin_scripts() {
 
 	// Load styles only on our page
-	global $pagenow;
-	if( 'themes.php' != $pagenow )
+    //global $menu;
+    $screen = get_current_screen();
+
+    /*
+    echo '<pre>';
+    print_r( $screen );
+    echo '</pre>';
+    */
+
+	if( 'theme-options_page_light-bold-license' != $screen->base )
 		return;
 
 	/**
@@ -108,8 +143,12 @@ class Light_Bold_Theme_Updater_Admin {
 
 		add_action( 'init', array( $this, 'updater' ) );
 		add_action( 'admin_init', array( $this, 'register_option' ) );
-		add_action( 'admin_init', array( $this, 'license_action' ) );
-		add_action( 'admin_menu', array( $this, 'license_menu' ) );
+        add_action( 'admin_init', array( $this, 'license_action' ) );
+        
+        // main option page
+        add_action( 'admin_menu', array( $this, 'main_option_menu' ) );
+
+        add_action( 'admin_menu', array( $this, 'license_menu' ) );
 		add_action( 'update_option_' . $this->theme_slug . '_license_key', array( $this, 'activate_license' ), 10, 2 );
 		add_filter( 'http_request_args', array( $this, 'disable_wporg_request' ), 5, 2 );
 
@@ -148,22 +187,47 @@ class Light_Bold_Theme_Updater_Admin {
 		);
 	}
 
-	/**
-	 * Adds a menu item for the theme license under the appearance menu.
-	 *
-	 * since 1.0.0
-	 */
+     
+    function main_option_menu() {
+        $page_title = '';
+        $menu_title = 'Theme Options';
+        $capability = 'edit_posts';
+        $menu_slug = $this->theme_slug . '-main-page';
+        $function = array( $this, 'main_page_redirect' );
+        $icon_url = '';
+        $position = 99;
+    
+        add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position ); 
+    }
+
+    function main_page_redirect(){
+        
+    }
+
+
 	function license_menu() {
 
 		$strings = $this->strings;
 
-		add_theme_page(
+		/*add_theme_page(
 			$strings['theme-license'],
 			$strings['theme-license'],
 			'manage_options',
 			$this->theme_slug . '-license',
 			array( $this, 'license_page' )
-		);
+        );*/
+        
+        $parent_page = $this->theme_slug . '-main-page';
+        $page_title = 'Getting started';
+        $menu_title = 'Getting started';
+        $capability = 'edit_posts';
+        $menu_slug = $this->theme_slug . '-license';
+        $function = array( $this, 'license_page' );
+        $icon_url = '';
+        $position = 99;
+    
+        add_submenu_page( $parent_page, $page_title, $menu_title, $capability, $menu_slug, $function );
+        
 	}
 
 	/**
@@ -490,7 +554,7 @@ class Light_Bold_Theme_Updater_Admin {
 				}
 
 				if ( ! empty( $message ) ) {
-					$base_url = admin_url( 'themes.php?page=' . $this->theme_slug . '-license' );
+					$base_url = admin_url( 'admin.php?page=' . $this->theme_slug . '-license' );
 					$redirect = add_query_arg( array( 'sl_theme_activation' => 'false', 'message' => urlencode( $message ) ), $base_url );
 
 					wp_redirect( $redirect );
@@ -507,7 +571,7 @@ class Light_Bold_Theme_Updater_Admin {
 			delete_transient( $this->theme_slug . '_license_message' );
 		}
 
-		wp_redirect( admin_url( 'themes.php?page=' . $this->theme_slug . '-license' ) );
+		wp_redirect( admin_url( 'admin.php?page=' . $this->theme_slug . '-license' ) );
 		exit();
 
 	}
@@ -554,14 +618,14 @@ class Light_Bold_Theme_Updater_Admin {
 		}
 
 		if ( ! empty( $message ) ) {
-			$base_url = admin_url( 'themes.php?page=' . $this->theme_slug . '-license' );
+			$base_url = admin_url( 'admin.php?page=' . $this->theme_slug . '-license' );
 			$redirect = add_query_arg( array( 'sl_theme_activation' => 'false', 'message' => urlencode( $message ) ), $base_url );
 
 			wp_redirect( $redirect );
 			exit();
 		}
 
-		wp_redirect( admin_url( 'themes.php?page=' . $this->theme_slug . '-license' ) );
+		wp_redirect( admin_url( 'admin.php?page=' . $this->theme_slug . '-license' ) );
 		exit();
 
 	}
