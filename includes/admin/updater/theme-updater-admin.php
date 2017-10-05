@@ -377,8 +377,14 @@ class Light_Bold_Theme_Updater_Admin {
                                     </p>
                                 </form>
 
-							</div><!-- .panel-aside license -->
-
+                            </div><!-- .panel-aside license -->
+                            
+                            <?php if ( version_compare(PHP_VERSION, '7', '<') ): ?>
+                                <div class="panel-aside warning">
+                                    <h3><?php esc_html_e( 'Page Speed Issue Detected', 'light-bold' ); ?></h3>
+                                    <p><?php esc_html_e("It seems that PHP7 is not enabled. PHP7 could dramatically speed-up your site! We suggest that you contact your web hosting provider to activate it."); ?></p>
+                                </div>
+                            <?php endif; ?>
 
 							<div class="panel-aside panel-club">
 								
@@ -386,7 +392,7 @@ class Light_Bold_Theme_Updater_Admin {
 									<h3><?php esc_html_e( 'Page Speed Recommendations', 'light-bold' ); ?></h3>
 
                                     <p><strong>Fast WordPress Hosting</strong></p>
-									<p><?php esc_html_e( 'TTFB is hosted on Siteground with the GOGEEK plan. Siteground is a cheap WordPress hosting with FREE SSDs, FREE SSL, HTTP/2, PHP7, Domain, and Backups.', 'light-bold' ); ?></p>
+									<p><?php esc_html_e( 'TTFB sites are hosted on Siteground with the GOGEEK plan. Siteground is a cheap WordPress hosting with FREE SSDs, FREE SSL, HTTP/2, PHP7, Domain, and Backups.', 'light-bold' ); ?></p>
 
 									<a class="" href="https://www.siteground.com/go/speed-wordpress" target="_blank"><?php esc_html_e( 'Fast WordPress Hosting', 'light-bold' ); ?> &rarr;</a>
 
@@ -399,7 +405,7 @@ class Light_Bold_Theme_Updater_Admin {
 
                                     <hr>
                                     <p><strong>CDN and Security</strong></p>
-									<p><?php esc_html_e( 'TTFB is accelerated by Cloudflare. Performance is not just about moving static files closer to visitors, it is also about ensuring that every page renders as fast and efficiently as possible from whatever device a visitor is surfing from.', 'light-bold' ); ?></p>
+									<p><?php esc_html_e( 'TTFB sites are accelerated by Cloudflare. Performance is not just about moving static files closer to visitors, it is also about ensuring that every page renders as fast and efficiently as possible from whatever device a visitor is surfing from.', 'light-bold' ); ?></p>
 
 									<a class="" target="_blank" href="https://www.cloudflare.com/"><?php esc_html_e( 'Activate Cloudflare', 'light-bold' ); ?> &rarr;</a>
 								</div>
