@@ -48,7 +48,7 @@ function light_bold_filter_tableContentWrapper($content) {
 		if( $item->parentNode->tagName == 'body' ) {
 
 			$wrapperDiv = $light_bold_doc->createElement('div');
-			$wrapperDiv->setAttribute('class', 'overflow-scroll');
+			$wrapperDiv->setAttribute('class', 'overflow-auto');
 
 			$item->parentNode->replaceChild($wrapperDiv, $item);
     		$wrapperDiv->appendChild($item);
