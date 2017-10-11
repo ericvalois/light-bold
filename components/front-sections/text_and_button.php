@@ -54,25 +54,8 @@
 					<div class="px2 lg-px3 py1">
 						<h2 class="<?php echo esc_attr( $title_class ); ?>"><?php echo get_sub_field('title'); ?></h2>
 					
-						<div class="<?php echo esc_attr( $text_class ); ?>">
-                            <?php 
-                                $args = array(
-                                    'a' => array(
-                                        'href' => array(),
-                                        'title' => array(),
-                                        'rel'   => array(),
-                                        'target'=> array()
-                                    ),
-                                    'br' => array(),
-                                    'em' => array(),
-                                    'strong' => array(),
-                                    'ul' => array(),
-                                    'ol' => array(),
-                                    'li' => array(),
-                                    'p' => array(),
-                                );
-                                echo wp_kses( get_sub_field('content'), $args );
-                            ?>
+						<div class="<?php echo esc_attr( $text_class ); ?> clearfix last-mb0">
+                            <?php echo wp_kses_post( get_sub_field('content') ); ?>
                         </div>
 
                         <?php

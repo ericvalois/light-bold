@@ -26,32 +26,15 @@
 
                             <?php if( !empty( $slide['title'] ) ): ?>
                                 <?php if( count($perf_slides) > 1): ?>
-							        <h3 class="h2 separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h3>
+							        <h3 class="h2 separator white-color mt0 mb0"><?php echo esc_html( $slide['title'] ); ?></h3>
                                 <?php else: ?>
-                                    <h1 class="h2 separator white-color mt0"><?php echo esc_html( $slide['title'] ); ?></h1>
+                                    <h1 class="h2 separator white-color mt0 mb0"><?php echo esc_html( $slide['title'] ); ?></h1>
                                 <?php endif; ?>
                             <?php endif; ?>
 
                             <?php if( !empty( $slide['content'] ) ): ?>
-                                <div class="small-p mt2 lg-mt3 mb2 lg-mb3 white-color">
-                                    <?php 
-                                        $args = array(
-                                            'a' => array(
-                                                'href' => array(),
-                                                'title' => array(),
-                                                'rel'   => array(),
-                                                'target'=> array()
-                                            ),
-                                            'br' => array(),
-                                            'em' => array(),
-                                            'strong' => array(),
-                                            'ul' => array(),
-                                            'ol' => array(),
-                                            'li' => array(),
-                                            'p' => array(),
-                                        );
-                                        echo wp_kses( $slide['content'], $args ); 
-                                    ?>
+                                <div class="small-p mt2 mb2 lg-mb3 white-color clearfix last-mb0">
+                                    <?php echo wp_kses_post( $slide['content'] ); ?>
                                 </div>
                             <?php endif; ?>
 

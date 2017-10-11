@@ -31,6 +31,7 @@ var flkty = new Flickity( carousel, {
   autoPlay: 5000,
   pageDots: false,
   pauseAutoPlayOnHover: true,
+  dragThreshold: 50,
   //adaptiveHeight: true
 });
 

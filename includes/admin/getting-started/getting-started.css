@@ -638,3 +638,8 @@ h4 .button {
 }
 
 .wrap_license_action .label{ margin-right: 10px; }
+
+.panel-aside.warning{ 
+    
+    border-left: 3px solid #f39c12;
+}
