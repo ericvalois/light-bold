@@ -220,7 +220,7 @@ function light_bold_custom_menu( $theme_location ) {
             if( $item->menu_item_parent == 0 ):
                 ?>
                     <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
-                        <a <?php if( $item->attr_title ){ echo 'title="'. esc_attr( $item->attr_title ) .'"'; } ?> <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $item->url ) .'"';} ?>>
+                        <a <?php if( strpos( $item->url, "#" ) === false ){ echo "data-scroll-ignore"; } ?>  <?php if( $item->attr_title ){ echo 'title="'. esc_attr( $item->attr_title ) .'"'; } ?> <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $item->url ) .'"';} ?>>
                             <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $item->ID ) . '"'; } ?>>
                                 <?php echo esc_html( $item->title ); ?> 
                             </span>
