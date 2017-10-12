@@ -538,7 +538,7 @@ function light_bold_custom_styles(){
         .menu__link:hover,
         .menu__breadcrumbs a,
         .address_row i { color: ' . $light_bold_main_color . '; }
-        a:hover,a:focus,.perf_btn{ border-color: ' . $light_bold_main_color . '; }
+        a:hover,a:focus,.perf_btn,.box_cta{ border-color: ' . $light_bold_main_color . '; }
         .menu__link:before,
         .separator:after,
         .perf_btn.alt2{ background-color: ' . $light_bold_main_color . '; }

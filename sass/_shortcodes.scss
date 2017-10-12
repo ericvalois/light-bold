@@ -1,0 +1,9 @@
+.box_cta{
+    border-style: solid;
+    border-width: 2px;
+    -webkit-font-smoothing: auto;
+    font-weight: 600;
+}
+.box_cta>:last-child{
+    margin-bottom: 0;
+}
