@@ -263,7 +263,10 @@ class Light_Bold_Theme_Updater_Admin {
 				<h2 class="notices"></h2>
 				<div class="intro-wrap">
 					<div class="intro">
-						<h3><?php printf( esc_html__( 'Getting started with %1$s', 'light-bold' ), $theme['Name'] ); ?></h3>
+						<h3>
+                            <?php echo esc_html__( 'Getting Started with', 'light-bold' ); ?><br>
+                            <?php echo esc_html($theme['Name']); ?>
+                        </h3>
 
 						<h4><?php printf( esc_html__( 'You will find everything you need to get started with Light & Bold below.', 'light-bold' ), $theme['Name'] ); ?></h4>
 					</div>
