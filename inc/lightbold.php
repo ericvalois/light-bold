@@ -284,7 +284,7 @@ function light_bold_custom_menu( $theme_location ) {
 
                             ?>
                                 <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
-                                    <a <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $starter_item->url ) .'"';} ?>>
+                                    <a <?php if( strpos( $starter_item->url, "#" ) === false ){ echo "data-scroll-ignore"; } ?> <?php if( $menu_target ){ echo 'rel="noopener noreferrer" target="_blank"'; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center<?php echo esc_attr( $menu_classes ); ?>" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) .'" href="#"'; }else{ echo 'href="'. esc_url( $starter_item->url ) .'"';} ?>>
                                         <span class="flex-auto" <?php if( $has_child ){ echo 'data-submenu="submenu-'. esc_attr( $starter_item->ID ) . '"'; } ?>>
                                             <?php echo esc_html( $starter_item->title ); ?> 
                                         </span>
@@ -324,7 +324,7 @@ function light_bold_custom_menu( $theme_location ) {
                         if(  $starter_item->menu_item_parent == $item ):
                             ?>
                                 <li class="menu__item ultra-small <?php echo esc_attr( $current_page ); ?>">
-                                    <a class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php echo 'href="'. esc_url( $starter_item->url ) .'"'; ?>>
+                                    <a <?php if( strpos( $starter_item->url, "#" ) === false ){ echo "data-scroll-ignore"; } ?> class="menu__link small-p normal-weight overflow-hidden relative px2 z3 border-none text-color flex flex-center" <?php echo 'href="'. esc_url( $starter_item->url ) .'"'; ?>>
                                         <span class="flex-auto">
                                             <?php echo esc_html( $starter_item->title ); ?>
                                         </span>
