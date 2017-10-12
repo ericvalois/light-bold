@@ -23,11 +23,11 @@ get_header(); ?>
 					<?php get_search_form(); ?>
 
 					<div class="clearfix mt2">
-						<div class="sm-col sm-col-6">
+						<div class="sm-col sm-col-6 break-word">
 							<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
 						</div>
 
-						<div class="sm-col sm-col-6 sm-px3">
+						<div class="sm-col sm-col-6 sm-px3 break-word">
 							<?php if ( light_bold_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 								<div class="widget widget_categories">
 									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'light-bold' ); ?></h2>
@@ -49,7 +49,7 @@ get_header(); ?>
 
 					<div class="clearfix sm-mt2">
 
-						<div class="sm-col sm-col-6">
+						<div class="sm-col sm-col-6 break-word">
 							<?php
 								/* translators: %1$s: smiley */
 								$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'light-bold' ), convert_smilies( ':)' ) ) . '</p>';
@@ -57,7 +57,7 @@ get_header(); ?>
 							?>
 						</div>
 
-						<div class="sm-col sm-col-6 sm-px3">
+						<div class="sm-col sm-col-6 sm-px3 break-word">
 							<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
 						</div>
 					</div><?php // row ?>
