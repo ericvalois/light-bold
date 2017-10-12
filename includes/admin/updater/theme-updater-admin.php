@@ -272,7 +272,7 @@ class Light_Bold_Theme_Updater_Admin {
 				<div class="panels">
 					<ul class="inline-list">
 						<li class="current"><a id="help-tab" href="#"><?php esc_html_e( 'Help File', 'light-bold' ); ?></a></li>
-						<li><a id="updates-tab" href="#"><?php esc_html_e( 'Latest Updates', 'light-bold' ); ?></a></li>
+						<li><a id="updates-tab" href="#"><?php esc_html_e( 'What’s New', 'light-bold' ); ?></a></li>
 					</ul>
 
 					<div id="panel" class="panel">
