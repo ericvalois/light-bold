@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="front-hero-section flex-stretch clearfix md-flex col-12 alt-dark-bg overflow-hidden">
+<div id="section-hero" class="front-hero-section flex-stretch clearfix md-flex col-12 alt-dark-bg overflow-hidden">
 
     <?php $front_hero = get_field("perf_front_hero"); ?>
 
