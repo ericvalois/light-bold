@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/archive.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4'],
                     ignoreConsole: false
                 }
             },
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/page.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4'],
                     ignoreConsole: false
                 }
             },
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span','.lg-pr4'],
                     ignoreConsole: false
                 }
             },
