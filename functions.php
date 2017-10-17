@@ -212,7 +212,13 @@ function light_bold_scripts() {
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && !is_page_template("page-templates/template-front.php") ) {
 		wp_enqueue_script( 'comment-reply' );
-	}
+    }
+    
+    // smooth-scrolling Script
+    if( get_field("perf_smooth_scroll","option") ){
+        wp_enqueue_script( 'light-bold-smooth-scrolling', get_template_directory_uri() . '/js/smooth-scrolling.min.js', array(), '', true );
+    }
+	
 }
 add_action( 'wp_enqueue_scripts', 'light_bold_scripts' );
 

@@ -5,10 +5,8 @@
  * @package ttfb
  */
 ?>
-
-
-
 <?php 
+    $id_section = get_sub_field("section_id");
     $items = get_sub_field("repeater_text_and_button"); 
     $col_width = 12 / count($items);
     if( get_sub_field('darker') ){
@@ -20,7 +18,7 @@
 
 <?php if( have_rows('repeater_text_and_button') ): ?>
 
-	<section class="clearfix section2 alt-dark-bg lg-flex flex-stretch col-12 ">
+	<section <?php if( !empty( $id_section ) ){ echo 'id="'.esc_attr( $id_section ).'"'; } ?> class="clearfix section2 alt-dark-bg lg-flex flex-stretch col-12 ">
 
 		<?php while ( have_rows('repeater_text_and_button') ) : the_row(); ?>
 

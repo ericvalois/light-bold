@@ -4,7 +4,7 @@ Theme URI: https://ttfb.io/
 Author: TTFB
 Author URI: https://www.ericvalois.com
 Description: Speed Focused WordPress Theme
-Version: 1.1.1
+Version: 1.1.2
 Text Domain: light-bold
 Tags: two-columns, left-sidebar, right-sidebar, custom-colors, custom-menu, featured-images, full-width-template, post-formats, theme-options, translation-ready
 
@@ -58,6 +58,8 @@ $alt-dark-bg: #2c2c2c;
 @import 'widgets';
 
 @import 'debug-bar';
+
+@import 'shortcodes';
 
 /*
 * Custom helper

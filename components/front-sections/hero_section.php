@@ -5,10 +5,13 @@
  * @package ttfb
  */
 ?>
-<?php $perf_hero_img = get_sub_field("image"); ?>
+<?php
+    $id_section = get_sub_field("section_id");
+    $perf_hero_img = get_sub_field("image");
+?>
 <?php if( $perf_hero_img ): ?>
 	
-	<section class="clearfix section4 px4 py3 lg-py4 white-color center dark-bg relative z1">
+	<section <?php if( !empty( $id_section ) ){ echo 'id="'.esc_attr( $id_section ).'"'; } ?> class="clearfix section4 px4 py3 lg-py4 white-color center dark-bg relative z1">
         
         <div class="z-3 absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center lazyload <?php if( get_sub_field("darker") ){ echo ' mutted'; } ?>"  data-sizes="auto"
 		data-bgset="<?php echo esc_attr( $perf_hero_img['sizes']['light-bold-hero-md'] ); ?> [(min-width: 60em)] |
