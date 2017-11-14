@@ -6,11 +6,14 @@
  */
 ?>
 
-<?php $sub_sections = get_field("perf_sub_section"); ?>
+<?php
+    $id_section = get_field("perf_section_id");
+    $sub_sections = get_field("perf_sub_section"); 
+?>
 
 <?php if( is_array($sub_sections) && count($sub_sections) > 0 ): ?>
 	<?php $col_width = 12 / count($sub_sections);  ?>
-	<section class="clearfix section1 dark-bg lg-flex ">
+	<section <?php if( !empty( $id_section ) ){ echo 'id="'.esc_attr( $id_section ).'"'; } ?> class="clearfix section1 dark-bg lg-flex ">
 		<?php $cpt = 1; ?>
 		<?php foreach($sub_sections as $box ): ?>
 

@@ -7,6 +7,7 @@
 ?>
 
 <?php 
+    $id_section = get_sub_field("section_id");
 	$items = get_sub_field("repeater_icon_and_text"); 
 	$nb_per_row = get_sub_field("radio_icon_and_text_layout"); 
 	$icon_section_title = get_sub_field("icon_section_title");
@@ -14,7 +15,7 @@
 ?>
 <?php if( have_rows('repeater_icon_and_text') ): ?>
 	<?php $col_width = 12 / $nb_per_row;  ?>
-	<section class="clearfix icon_section py3 lg-py4 px1 px2 lg-px3 md-flex flex-wrap flex-stretch">
+	<section <?php if( !empty( $id_section ) ){ echo 'id="'.esc_attr( $id_section ).'"'; } ?> class="clearfix icon_section py3 lg-py4 px1 px2 lg-px3 md-flex flex-wrap flex-stretch">
 		<?php
 			if( $col_width == 3 ){
 				$col_class = "md-col-6 lg-col-3";

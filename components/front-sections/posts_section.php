@@ -5,8 +5,8 @@
  * @package ttfb
  */
 ?>
-
-<section class="clearfix posts_section px2 lg-px3 py1 lg-py2 white-bg ">
+<?php $id_section = get_sub_field("section_id"); ?>
+<section <?php if( !empty( $id_section ) ){ echo 'id="'.esc_attr( $id_section ).'"'; } ?> class="clearfix posts_section px2 lg-px3 py1 lg-py2 white-bg ">
 
 	<h2 class="mt2 lg-mt3 upper mb1 block center entry-title"><?php echo esc_html( get_sub_field("title") ); ?></h2>
 
