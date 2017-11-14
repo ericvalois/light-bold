@@ -57,7 +57,7 @@
         ?>
 
         <?php if( !empty( $description ) ): ?>
-            <div class="entry-meta white-color upper normal-weight">
+            <div class="entry-meta lg-show white-color upper normal-weight">
                 <?php echo $description; ?>
             </div>
         <?php endif; ?>
