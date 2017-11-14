@@ -44,23 +44,29 @@
             <?php echo $title; ?>
         </h1>
 
+        
         <?php 
-            if( is_single() && get_post_type() == 'post' ){
-                while ( have_posts() ) : the_post(); 
-                    $description = light_bold_posted_on(); 
-                endwhile; 
-            }elseif( is_archive() ){
-                $description = get_the_archive_description();
-            }elseif( is_home() && empty( $description ) ){
-                $description = get_bloginfo("description");
-            }
-        ?>
+            if( !get_field('perf_disable_metadata','option') ):
+                
+                if( is_single() && get_post_type() == 'post' ){
+                    while ( have_posts() ) : the_post(); 
+                        $description = light_bold_posted_on(); 
+                    endwhile; 
+                }elseif( is_archive() ){
+                    $description = get_the_archive_description();
+                }elseif( is_home() && empty( $description ) ){
+                    $description = get_bloginfo("description");
+                }
 
-        <?php if( !empty( $description ) ): ?>
-            <div class="entry-meta lg-show white-color upper normal-weight">
-                <?php echo $description; ?>
-            </div>
-        <?php endif; ?>
+                if( !empty( $description ) ){
+                
+                    echo '<div class="entry-meta lg-show white-color upper normal-weight">';
+                        echo $description;
+                    echo '</div>';
+                
+                }
+            endif;
+        ?>
 
         <?php
             $perf_image_id = light_bold_select_hero_image();
