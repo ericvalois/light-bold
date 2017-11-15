@@ -47,11 +47,11 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://lightbold.dev/blog/",
                     width: 1200,
-                    height: 900,
+                    height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/archive.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -59,11 +59,11 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://lightbold.dev/about/",
                     width: 1200,
-                    height: 900,
+                    height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/page.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -71,11 +71,11 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://lightbold.dev/hello-world-2/",
                     width: 1200,
-                    height: 900,
+                    height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span','.lg-pr4'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://lightbold.dev/contact-us/",
                     width: 1200,
-                    height: 900,
+                    height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/contact.css",
                     filename: "style.css",
                     buffer: 800*1024,
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
                 options: {
                     url: "http://lightbold.dev/abcdefgh/",
                     width: 1200,
-                    height: 900,
+                    height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/404.css",
                     filename: "style.css",
                     buffer: 800*1024,

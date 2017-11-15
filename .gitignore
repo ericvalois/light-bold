@@ -15,4 +15,5 @@ wp-content/plugins/hello.php
 
 **/build/
 **/node_modules/*
-inc/3rd-party/plugins/extend-lightbold.zip
+**/inc/3rd-party/plugins/*
+*.zip
