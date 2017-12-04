@@ -159,7 +159,7 @@ function light_bold_widgets_init() {
 		'name'          => esc_html__( 'Blog', 'light-bold' ),
 		'id'            => 'blog-sidebar',
 		'description'   => esc_html__("Blog and archive sidebar location","light-bold"),
-		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
+		'before_widget' => '<div id="%1$s" class="widget-side widget mb2 %2$s clearfix break-word">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',
 		'after_title'   => '</h4>',
@@ -169,7 +169,7 @@ function light_bold_widgets_init() {
 		'name'          => esc_html__( 'Page', 'light-bold' ),
 		'id'            => 'page-sidebar',
 		'description'   => esc_html__("Default page sidebar location","light-bold"),
-		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
+		'before_widget' => '<div id="%1$s" class="widget-side widget mb2 %2$s clearfix break-word">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',
 		'after_title'   => '</h4>',
@@ -181,18 +181,18 @@ function light_bold_widgets_init() {
 		'description'   => esc_html__("Under posts sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h5 class="widget-title mb1 mt2">',
+		'after_title'   => '</h5>',
     ) );
     
     register_sidebar( array(
-		'name'          => esc_html__( 'Under pages', 'light-bold' ),
+		'name'          => esc_html__( 'Under Pages', 'light-bold' ),
 		'id'            => 'under-pages-sidebar',
 		'description'   => esc_html__("Under pages sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title separator upper mb2">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h5 class="widget-title mb1 mt2">',
+		'after_title'   => '</h5>',
 	) );
 }
 add_action( 'widgets_init', 'light_bold_widgets_init' );
