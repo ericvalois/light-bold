@@ -156,7 +156,7 @@ function light_bold_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Blog sidebar', 'light-bold' ),
+		'name'          => esc_html__( 'Blog', 'light-bold' ),
 		'id'            => 'blog-sidebar',
 		'description'   => esc_html__("Blog and archive sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
@@ -166,9 +166,19 @@ function light_bold_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Page sidebar', 'light-bold' ),
+		'name'          => esc_html__( 'Page', 'light-bold' ),
 		'id'            => 'page-sidebar',
 		'description'   => esc_html__("Default page sidebar location","light-bold"),
+		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator upper mb2">',
+		'after_title'   => '</h4>',
+    ) );
+    
+    register_sidebar( array(
+		'name'          => esc_html__( 'Under Posts', 'light-bold' ),
+		'id'            => 'under-posts-sidebar',
+		'description'   => esc_html__("Under posts sidebar location","light-bold"),
 		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',
