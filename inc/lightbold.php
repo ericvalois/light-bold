@@ -643,11 +643,21 @@ function light_bold_inject_post_thumbnail() {
 }
 
 /**
- * Inject under post sidebar
+ * Inject under posts sidebar
  */
 add_action( 'light_bold_after_post_content', 'light_bold_under_post_sidebar' );
 function light_bold_under_post_sidebar() {
     if ( is_active_sidebar( 'under-posts-sidebar' ) ){
         dynamic_sidebar( 'under-posts-sidebar' );
+    }
+}
+
+/**
+ * Inject under pages sidebar
+ */
+add_action( 'light_bold_after_page_content', 'light_bold_under_page_sidebar' );
+function light_bold_under_page_sidebar() {
+    if ( is_active_sidebar( 'under-pages-sidebar' ) ){
+        dynamic_sidebar( 'under-pages-sidebar' );
     }
 }

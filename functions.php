@@ -183,6 +183,16 @@ function light_bold_widgets_init() {
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title separator upper mb2">',
 		'after_title'   => '</h4>',
+    ) );
+    
+    register_sidebar( array(
+		'name'          => esc_html__( 'Under pages', 'light-bold' ),
+		'id'            => 'under-pages-sidebar',
+		'description'   => esc_html__("Under pages sidebar location","light-bold"),
+		'before_widget' => '<div id="%1$s" class="widget mb2 %2$s clearfix break-word">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title separator upper mb2">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'light_bold_widgets_init' );
