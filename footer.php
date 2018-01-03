@@ -10,19 +10,11 @@
  */
 
 ?>
-
+    <?php $footer_data = get_field("perf_footer","option"); ?>
 	<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) || is_active_sidebar( 'footer-4' ) ) : ?>
 		<footer class="site-footer clearfix dark-bg hide-print break-word">
 
             <?php 
-                $footer_data = get_field("perf_footer","option");
-
-                if( !empty( $footer_data['copy'] ) ){
-                    $footer_copy = $footer_data['copy'];
-                }else{
-                    $footer_copy = get_field("perf_footer_copy","option");
-                }
-
                 if( !empty( $footer_data['layout'] ) ){
                     $layout = $footer_data['layout'];
                 }else{
@@ -58,7 +50,14 @@
 		</footer><!-- #colophon -->
 
 	<?php endif; ?>
-
+    
+    <?php 
+        if( !empty( $footer_data['copy'] ) ){
+            $footer_copy = $footer_data['copy'];
+        }else{
+            $footer_copy = get_field("perf_footer_copy","option");
+        }
+    ?>
 	<div class="site-info py2 px2 lg-px3 bg-black clearfix hide-print">
 		<div class="md-col md-col-6 mb1 md-mb0">
 			<div class="white-color copy">&copy; <?php echo date("Y"); ?> <?php if( !empty( $footer_copy ) ){ echo wp_kses( $footer_copy, array( 'a' => array( 'href' => array(), 'title' => array(), 'class' => array() ) ) ); } ?></div>
