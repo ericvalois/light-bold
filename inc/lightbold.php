@@ -631,3 +631,34 @@ function light_bold_fontawesome_sprite() {
         echo light_bold_get_response( get_template_directory_uri() . "/inc/3rd-party/font-awesome/fontawesome.svg" );
     }
 }
+
+/**
+ * Main navigation Markup
+ */
+add_action( 'light_bold_main_nav', 'light_bold_get_main_nav', 10 );
+function light_bold_get_main_nav() {
+    $main_nav_layout = get_field("perf_layouts","option");
+
+    if( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ){
+        get_template_part( 'components/main-navigation/top-nav' );
+    }else{
+        get_template_part( 'components/main-navigation/side-nav' );
+    }
+}
+
+/**
+ * Add custom body class for main navigation purpose
+ */
+add_filter( 'body_class','light_bold_main_nav_body_class' );
+function light_bold_main_nav_body_class( $classes ) {
+
+    $main_nav_layout = get_field("perf_layouts","option");
+    
+    if( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ){
+        $classes[] = 'top-nav';
+    }else{
+        $classes[] = 'side-nav';
+    }
+      
+    return $classes;
+}

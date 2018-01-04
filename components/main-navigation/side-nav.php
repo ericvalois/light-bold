@@ -1,3 +1,15 @@
+<header class="main-header site-sidebar bg-white overflow-hidden block fixed left-0 top-0 col-12 m0">
+
+    <div class="main-header_container hide-print">
+
+        <?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
+
+        <?php get_template_part( 'components/site-logo/site-logo' ); ?>
+
+    </div>
+
+</header>
+
 <nav id="ml-menu" class="menu nav-container site-sidebar hide-print bg-white <?php if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){ echo 'multi_level'; } ?>">
 
 	<a class="accessibility skip-link" href="#content"><?php esc_html_e("Skip to main content","light-bold"); ?></a>
