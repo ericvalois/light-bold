@@ -7,7 +7,7 @@
         $button_class = 'absolute top-0 right-0 bottom-0 z1';
     }
 ?>
-<button class="action-close border-none mr2 outline-0 p0 pointer" aria-label="Close Menu">
+<button class="action-close border-none mr2 outline-0 p0 pointer display-none" aria-label="Close Menu">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35.413 35.413" xml:space="preserve">
         <g>
             <path d="M20.535,17.294L34.002,3.827c0.781-0.781,0.781-2.047,0-2.828c-0.78-0.781-2.048-0.781-2.828,0L17.707,14.466L4.242,0.999

@@ -525,6 +525,7 @@ function light_bold_custom_styles(){
         .button-row button{ color: ' . $light_bold_main_color . ';}
         a.dark-color:hover,
         a.white-color:hover,
+        #top-main-menu a:hover,
         .tags:hover,
         .widget_categories a:hover,
         .widget_archive a:hover,
@@ -565,6 +566,7 @@ function light_bold_custom_styles(){
         .highlight{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
         .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $light_bold_main_color . '; background-color: ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . '; }
         .opacity-zero{ opacity: 0; }
+        #top-main-menu .menu-item-has-children > a:after{background: #fff url('. get_template_directory_uri() .'/assets/svg/small-down.svg) no-repeat center center;}
     ';
 
     return $light_bold_custom_css;

@@ -1,15 +1,130 @@
+#top-main-menu{
+    max-height: 0px;
+    overflow: hidden;
+    transition-duration: 0.5s;
+    transition-timing-function: swing;
+}
+
+#top-main-menu.menu--open{
+    max-height: 700px;
+    overflow-y: scroll;
+    transition: max-height 0.5s ease-in;
+}
+
+#top-main-menu li{
+    font-size: 16px;
+    position: relative;
+    z-index: 10;
+    padding: 10px 0;
+}
+
 #top-main-menu .sub-menu{
+    margin: 10px 0 0 0;
+}
+
+#top-main-menu > li:last-child{
+    padding-right: 0;
+}
+
+#top-main-menu li > a{
+    color: #3a3a3a;
+    border: none;
+}
+
+#top-main-menu .sub-menu a{
+    padding: 0.5rem 0;
+}
+
+#top-main-menu .menu-item-has-children > a:after{
+    content: " ";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+    //opacity: 0.6;
+    margin-left: 0.6rem;
+}
+
+#top-main-menu .sub-menu a:after{
     display: none;
 }
+
+#top-main-menu .sub-menu .sub-menu{ display: none; }
 
 @include media-query(md) {
     
 }
 
-@include media-query(lg) {
-    
-}
 
-@media (min-width: 1200px){
-    #top-main-menu{ display: inline-flex; }
+
+@include media-query(lg) {
+    #top-main-menu{ 
+        max-height: 200px;
+        transition-duration: 0s;
+        overflow: visible !important;
+    }
+
+    #top-main-menu li{
+        padding: 3rem 2rem;
+    }
+
+    #top-main-menu{ 
+        display: inline-flex;
+        width: auto;
+    }
+
+    #top-main-menu .sub-menu{
+        max-height: 700px;
+        overflow: visible;
+        display: block;
+        position: absolute;
+        top: 100%;
+        top: calc(100% - 2px);
+        left: 0;
+        z-index: 1000;
+        display: block;
+        float: left;
+        min-width: 200px;
+        padding: 1.5rem 0;
+        //margin: 2px 0 0;
+        margin: 0;
+        text-align: left;
+        list-style: none;
+        visibility: hidden;
+        opacity: 0;
+        background-color: #fff;
+        border-top: 2px solid #3498db;
+        //border: 1px solid #dcdee0;
+        //background-clip: padding-box;
+        //border-radius: 4px;
+        box-shadow: 0 15px 40px -5px rgba(37,45,51, .25);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform: translateX(0px) translateY(20px); 
+    }
+
+    #top-main-menu .sub-menu li{
+        display: block;
+        padding: 0;
+        margin: 0 0 10px 0;
+    }
+
+    #top-main-menu .sub-menu li:last-child{
+        margin-bottom: 0;
+    }
+    
+    #top-main-menu .sub-menu a{
+        clear: both;
+        line-height: 25px;
+        white-space: nowrap;
+        //opacity: 0.8;
+    }
+
+    #top-main-menu li:hover .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0px) translateY(0px);
+        
+    }
+
+    
 }
