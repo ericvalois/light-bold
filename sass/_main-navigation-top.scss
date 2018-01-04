@@ -1,4 +1,6 @@
-
+#top-main-menu .sub-menu{
+    display: none;
+}
 
 @include media-query(md) {
     
@@ -9,5 +11,5 @@
 }
 
 @media (min-width: 1200px){
-
+    #top-main-menu{ display: inline-flex; }
 }

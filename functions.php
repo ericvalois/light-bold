@@ -198,7 +198,7 @@ function light_bold_scripts() {
 		}
 	}
 
-	wp_enqueue_script( 'light-bold-init', get_template_directory_uri() . '/js/lightbold-init.min.js', array(), '', true );
+	wp_enqueue_script( 'light-bold-init', get_template_directory_uri() . '/js/lightbold-init.js', array(), '', true );
 
 	// Main menu script
 	if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() ){

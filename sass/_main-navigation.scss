@@ -253,7 +253,7 @@
     position: fixed;
 }
 
-.site-logo{ 
+.side-nav .site-logo{ 
     right: 25px;
     padding: 0;
     position: absolute;
@@ -277,7 +277,7 @@
 }
 
 #main_nav_toggle{
-    margin: 0 20px;
+    //margin: 0 20px;
     width: 40px;
 }
 
@@ -352,7 +352,7 @@
         width: 230px;
     }
 
-    .site-logo{
+    .side-nav .site-logo{
         float: none;
         margin: 0 auto;
         padding-left: 2rem;
@@ -398,7 +398,7 @@
         margin-top: 255px;
     }
 
-    .site-logo {
+    .side-nav .site-logo {
         height: 255px;
     }
 

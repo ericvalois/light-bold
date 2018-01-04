@@ -37,6 +37,8 @@ $alt-dark-bg: #2c2c2c;
 
 @import 'main-navigation';
 
+@import 'main-navigation-top';
+
 @import 'images';
 
 @import 'accessibility';
@@ -185,7 +187,7 @@ body,
     }
 }
 
-body{
+body.side-nav{
     padding-top: 64px;
 }
 
@@ -365,7 +367,7 @@ h1.entry-title{
 }
 
 @include media-query(md) {
-    body{ padding-top: 86px; }
+    body.side-nav{ padding-top: 86px; }
 
     .md-right{ float: right;}
 
