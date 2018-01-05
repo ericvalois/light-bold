@@ -28,15 +28,15 @@
 
 		<?php if( $icon_section_title ): ?>
 			<?php if( !empty( $link['url'] ) ): ?>
-				<a href="<?php echo esc_attr( $link['url'] ); ?>" class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<a href="<?php echo esc_attr( $link['url'] ); ?>" class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 px2 lg-py3 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box bg-main-color <?php echo esc_attr( $col_class ); ?> flex flex-center flex-auto  white-color py2 px2 lg-py3 lg-px3">
 			<?php endif; ?>
 
 				<div>
-					<h3 class="weight-1 m0 mb1"><?php echo esc_html( $icon_section_title ); ?></h3>
+					<h3 class="weight-1 m0"><?php echo esc_html( $icon_section_title ); ?></h3>
 					<?php if( !empty( $link['title'] ) ): ?>
-						<span class="small-p upper"><?php echo esc_html( $link['title'] ); ?></span>
+						<span class="small-p upper mt1"><?php echo esc_html( $link['title'] ); ?></span>
 					<?php endif; ?>
 				</div>
 
@@ -50,9 +50,16 @@
 		<?php $cpt = 1; while ( have_rows('repeater_icon_and_text') ) : the_row(); ?>
 			
 			<?php if( get_sub_field('link') ): ?>
-				<a href="<?php echo esc_attr( get_sub_field('link') ); ?>" class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+                <?php
+                    if( get_sub_field('external') ){
+                        $external = '_blank';
+                    }else{
+                        $external = '';
+                    }
+                ?>
+				<a href="<?php echo esc_attr( get_sub_field('link') ); ?>" target="<?php echo esc_attr( $external ); ?>" class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto py2 px2 lg-py3 lg-px3">
 			<?php else: ?>
-				<div class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto  py2 md-py2 lg-py3 px2 md-py2 lg-px3">
+				<div class="icon_section_box <?php echo esc_attr( $col_class ); ?> bg-white flex flex-center flex-auto py2 px2 lg-py3 lg-px3">
 			<?php endif; ?>
 
 				<div>
@@ -62,7 +69,7 @@
 						</div>
 					<?php endif; ?>
 					<p class="small-p mt1 mb1 bold "><?php echo esc_html( get_sub_field('title') ); ?></p>
-					<p class="small-p  mb0"><?php echo wp_kses( get_sub_field('content'), array( 'br' => array() ) ); ?></p>
+					<p class="small-p  mb0"><?php echo wp_kses_post( get_sub_field('content') ); ?></p>
 				</div>
 				
 			<?php if( get_sub_field('link') ): ?>

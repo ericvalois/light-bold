@@ -48,9 +48,13 @@
 				<h2 class="entry-title h2 separator mb3 mt0"><a class="white-color" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 				<p class="small-p white-color">
-					<?php 
-						$content = wp_trim_words( get_the_content(), 20, '...' ); 
-						echo esc_html( strip_tags( $content ) );
+					<?php
+                        if( has_excerpt() ){
+                            echo esc_html( get_the_excerpt() );
+                        }else{
+                            $content = wp_trim_words( get_the_content(), 20, '...' ); 
+                            echo esc_html( strip_tags( $content ) );
+                        }
 					?>
 				</p>
 
