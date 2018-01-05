@@ -409,10 +409,8 @@ h1.entry-title{
 }
 
 @media (min-width: 1200px){
-    body{
-        padding-top: 0;
-        font-size: 115%;
-    }
+    body{ font-size: 115%; }
+    body.side-nav{ padding-top: 0; }
 }
 
 @include media-query(xlg) {

@@ -203,7 +203,11 @@ function light_bold_scripts() {
     // Main menu script
     $main_nav_layout = get_field("perf_layouts","option");
     
-	if ( has_nav_menu( 'primary' ) && light_bold_main_menu_has_child() && (!isset( $main_nav_layout['main_nav_layout'] ) || $main_nav_layout['main_nav_layout'] == 'side') ){
+    if ( has_nav_menu( 'primary' ) && 
+        light_bold_main_menu_has_child() && 
+        ( !isset( $_GET['topnav'] ) && 
+            ( !isset( $main_nav_layout['main_nav_layout'] ) || 
+            $main_nav_layout['main_nav_layout'] == 'side') ) ){
 		wp_enqueue_script( 'light-bold-menu', get_template_directory_uri() . '/js/menu.min.js', array(), '', true );
 	}
 

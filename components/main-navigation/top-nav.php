@@ -1,4 +1,4 @@
-<header class="top-main-header bg-white px2 py2 lg-py0 flex flex-center flex-wrap flex-stretch col-12 m0 hide-print justify-between">
+<header class="top-main-header bg-white px2 py2 lg-py0 flex flex-center flex-wrap flex-stretch col-12 m0 hide-print flex-justify">
 
     <?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
 

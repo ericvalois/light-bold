@@ -10,8 +10,12 @@ document.getElementById("main_nav_toggle").addEventListener("click", function ()
     
     if (main_nav.classList.contains("menu--open")) {
         main_nav.classList.remove("menu--open");
+        document.getElementById("main_nav_toggle").classList.remove("display-none");
+        document.querySelector('.action-close').classList.add("display-none");
     } else {
         main_nav.classList.add("menu--open");
+        document.getElementById("main_nav_toggle").classList.add("display-none");
+        document.querySelector('.action-close').classList.remove("display-none");
     }
 
 });
@@ -27,6 +31,8 @@ document.querySelector('.action-close').addEventListener("click", function () {
     
     if (main_nav.classList.contains("menu--open")) {
         main_nav.classList.remove("menu--open");
+        document.getElementById("main_nav_toggle").classList.remove("display-none");
+        document.querySelector('.action-close').classList.add("display-none");
     }
 
 });

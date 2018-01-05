@@ -567,6 +567,7 @@ function light_bold_custom_styles(){
         .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $light_bold_main_color . '; background-color: ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . '; }
         .opacity-zero{ opacity: 0; }
         #top-main-menu .menu-item-has-children > a:after{background: #fff url('. get_template_directory_uri() .'/assets/svg/small-down.svg) no-repeat center center;}
+        .flex-justify{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
     ';
 
     return $light_bold_custom_css;
@@ -641,7 +642,7 @@ add_action( 'light_bold_main_nav', 'light_bold_get_main_nav', 10 );
 function light_bold_get_main_nav() {
     $main_nav_layout = get_field("perf_layouts","option");
 
-    if( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ){
+    if( isset( $_GET['topnav'] ) || ( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ) ){
         get_template_part( 'components/main-navigation/top-nav' );
     }else{
         get_template_part( 'components/main-navigation/side-nav' );
@@ -656,7 +657,7 @@ function light_bold_main_nav_body_class( $classes ) {
 
     $main_nav_layout = get_field("perf_layouts","option");
     
-    if( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ){
+    if( isset( $_GET['topnav'] ) || ( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ) ){
         $classes[] = 'top-nav';
     }else{
         $classes[] = 'side-nav';
@@ -664,3 +665,23 @@ function light_bold_main_nav_body_class( $classes ) {
       
     return $classes;
 }
+
+/**
+ * Allow more tags on homepage
+ */
+add_filter('wp_kses_allowed_html', 'light_bold_add_allowed_tags');
+function light_bold_add_allowed_tags($tags) {
+    $tags['input'] = array(
+        'type' => true,
+        'class' => true,
+        'value' => true,
+        'style' => true,
+        'name' => true,
+        'size' => true,
+        'aria-required' => true,
+        'aria-invalid' => true,
+        
+    );
+    return $tags;
+}
+
