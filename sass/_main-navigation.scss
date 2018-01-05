@@ -1,3 +1,5 @@
+.site-logo img{ border: none; }
+
 .menu__wrap {
     top: 75px;
     overflow-x: hidden;
@@ -203,7 +205,7 @@
     color: #3e3e3e;
 }
 
-.action-close {
+.side-menu .action-close {
     height: 75px;
     width: 20px;
     background-color: transparent;
@@ -253,7 +255,7 @@
     position: fixed;
 }
 
-.site-logo{ 
+.side-nav .site-logo{ 
     right: 25px;
     padding: 0;
     position: absolute;
@@ -277,8 +279,8 @@
 }
 
 #main_nav_toggle{
-    margin: 0 20px;
-    width: 40px;
+    width: 30px;
+    padding: 0;
 }
 
 .main-header {
@@ -319,7 +321,7 @@
 
     .menu__back{ display: block;}
 
-    .site-content{
+    .side-nav .site-content{
         padding: 0 0 0 230px;
     }
 
@@ -352,7 +354,7 @@
         width: 230px;
     }
 
-    .site-logo{
+    .side-nav .site-logo{
         float: none;
         margin: 0 auto;
         padding-left: 2rem;
@@ -386,7 +388,7 @@
         max-width: 320px;
     }
 
-    .site-content{
+    .side-nav .site-content{
         padding: 0 0 0 320px;
     }
 
@@ -398,7 +400,7 @@
         margin-top: 255px;
     }
 
-    .site-logo {
+    .side-nav .site-logo {
         height: 255px;
     }
 

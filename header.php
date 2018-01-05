@@ -24,20 +24,8 @@
 
 <body <?php body_class(); ?>>
 
-	<?php do_action('light_bold_body_open'); ?>
-	
-	<header class="main-header site-sidebar bg-white overflow-hidden block fixed left-0 top-0 col-12 m0">
-
-		<div class="main-header_container hide-print">
-
-			<?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
-
-			<?php get_template_part( 'components/site-logo/site-logo' ); ?>
-
-		</div>
-
-	</header>
-
-	<?php get_template_part( 'components/main-navigation/main-navigation' ); ?>
+    <?php do_action('light_bold_body_open'); ?>
+    
+    <?php do_action('light_bold_main_nav'); ?>
 
 		<div id="content" class="site-content clearfix">

@@ -1,4 +1,4 @@
-<div class="site-logo">
+<div class="site-logo inline-flex flex-center">
 	<?php if( get_field("perf_log_sm","option") || get_field("perf_log_lg","option") ): ?>
 		<a id="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="border-none mx-auto">
 			<picture>
