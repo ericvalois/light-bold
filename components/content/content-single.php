@@ -13,11 +13,11 @@
 
 	<div class="entry-content clearfix">
 		<?php
-            if( has_post_thumbnail() && !function_exists("extend_light_bold_exist") ){
-                the_post_thumbnail('full');
-            }
-            
-            the_content(); 
+            do_action("light_bold_before_post_content");
+
+            the_content();
+
+            do_action("light_bold_after_post_content");
         ?>
 		<?php
 			wp_link_pages( array(

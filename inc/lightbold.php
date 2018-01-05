@@ -631,3 +631,33 @@ function light_bold_fontawesome_sprite() {
         echo light_bold_get_response( get_template_directory_uri() . "/inc/3rd-party/font-awesome/fontawesome.svg" );
     }
 }
+
+/**
+ * Inject the post thumbnail for wordpress unit test compatibility
+ */
+add_action( 'light_bold_before_post_content', 'light_bold_inject_post_thumbnail' );
+function light_bold_inject_post_thumbnail() {
+    if( has_post_thumbnail() && !function_exists("extend_light_bold_exist") ){
+        the_post_thumbnail('full');
+    }
+}
+
+/**
+ * Inject under posts sidebar
+ */
+add_action( 'light_bold_after_post_content', 'light_bold_under_post_sidebar' );
+function light_bold_under_post_sidebar() {
+    if ( is_active_sidebar( 'under-posts-sidebar' ) ){
+        dynamic_sidebar( 'under-posts-sidebar' );
+    }
+}
+
+/**
+ * Inject under pages sidebar
+ */
+add_action( 'light_bold_after_page_content', 'light_bold_under_page_sidebar' );
+function light_bold_under_page_sidebar() {
+    if ( is_active_sidebar( 'under-pages-sidebar' ) ){
+        dynamic_sidebar( 'under-pages-sidebar' );
+    }
+}
