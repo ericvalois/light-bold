@@ -18,8 +18,7 @@
             the_content();
 
             do_action("light_bold_after_post_content");
-        ?>
-		<?php
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'light-bold' ),
 				'after'  => '</div>',

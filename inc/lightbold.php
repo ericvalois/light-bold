@@ -658,6 +658,16 @@ function light_bold_under_page_sidebar() {
 }
 
 /**
+ * Inject under posts sidebar
+ */
+add_action( 'light_bold_after_post_content', 'light_bold_under_post_sidebar' );
+function light_bold_under_post_sidebar() {
+    if ( is_active_sidebar( 'under-posts-sidebar' ) ){
+        dynamic_sidebar( 'under-posts-sidebar' );
+    }
+}
+
+/**
  * Main navigation Markup
  */
 add_action( 'light_bold_main_nav', 'light_bold_get_main_nav', 10 );
