@@ -10,12 +10,11 @@
  */
 add_action( 'admin_init', 'light_bold_redirect_on_activation' );
 function light_bold_redirect_on_activation() {
-	global $pagenow;
+    global $pagenow;
 
-	if ( is_admin() && 'admin.php' == $pagenow && isset( $_GET['activated'] ) ) {
-
+	if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {
 		wp_redirect( admin_url( "admin.php?page=light-bold-license" ) );
-
+        exit();
 	}
 }
 
@@ -74,11 +73,13 @@ function light_bold_start_load_admin_scripts() {
 	 * @since 1.0
 	 */
 
+    $theme = wp_get_theme( 'light-bold' );
+
 	// Getting Started javascript
-	wp_enqueue_script( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.js', array( 'jquery' ), $theme->get( 'Version' ), true );
 
 	// Getting Started styles
-	wp_register_style( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.css', false, '1.0.0' );
+	wp_register_style( 'light-bold-getting-started', get_template_directory_uri() . '/includes/admin/getting-started/getting-started.css', false, $theme->get( 'Version' ) );
 	wp_enqueue_style( 'light-bold-getting-started' );
 
 	// Thickbox
@@ -109,7 +110,7 @@ class Light_Bold_Theme_Updater_Admin {
 	function __construct( $config = array(), $strings = array() ) {
 
 		$config = wp_parse_args( $config, array(
-			'remote_api_url' => 'http://ttfb.io',
+			'remote_api_url' => 'https://ttfb.io',
 			'theme_slug' => get_template(),
             'api_slug'   => get_template(),
 			'item_name' => '',
@@ -264,8 +265,8 @@ class Light_Bold_Theme_Updater_Admin {
 				<div class="intro-wrap">
 					<div class="intro">
 						<h3>
-                            <?php echo esc_html__( 'Getting Started with', 'light-bold' ); ?><br>
-                            <?php echo esc_html($theme['Name']); ?>
+                            <?php echo esc_html__( 'Getting Started with', 'light-bold' ); ?>
+                            <strong><?php echo esc_html($theme['Name']); ?> <sup><?php echo $this->version; ?></sup></strong>
                         </h3>
 
 						<h4><?php printf( esc_html__( 'You will find everything you need to get started with Light & Bold below.', 'light-bold' ), $theme['Name'] ); ?></h4>
@@ -274,48 +275,107 @@ class Light_Bold_Theme_Updater_Admin {
 
 				<div class="panels">
 					<ul class="inline-list">
-						<li class="current"><a id="help-tab" href="#"><?php esc_html_e( 'Help File', 'light-bold' ); ?></a></li>
-						<li><a id="updates-tab" href="#"><?php esc_html_e( 'What’s New', 'light-bold' ); ?></a></li>
+                    <li class="current"><a id="help-tab" href="#"><?php esc_html_e( 'Quick Setup', 'light-bold' ); ?></a></li>
+                    <li><a id="getting-started" href="#"><?php esc_html_e( 'Complete Setup', 'light-bold' ); ?></a></li>
+                    <li><a id="updates-tab" href="#"><?php esc_html_e( 'What’s New', 'light-bold' ); ?></a></li>
 					</ul>
 
 					<div id="panel" class="panel">
 
-						<!-- Help file panel -->
+                        <!-- Help file panel -->
 						<div id="help-panel" class="panel-left visible">
 
-							
-                            <!-- Grab feed of help file -->
-                        
+                            <h2><?php _e('1. Install required plugins','light-bold'); ?></h2>
 
+                            <div class="lg-flex flex-wrap bg-gray mb4 pt3">
+                                <div class="lg-col-12 mb3 px3">
+
+                                    <p><?php _e('The best way to get started quickly is to install and activate all the required plugins.','light-bold'); ?></p>
+
+                                    <p><?php _e('Then and only then proceed to step #2 to import the demo.','light-bold'); ?></p>
+
+                                    <a href="<?php echo admin_url( 'themes.php?page=tgmpa-install-plugins' ); ?>" class="button button-primary"><?php _e('Install all plugins','light-bold'); ?></a>
+                                </div>
+                            </div>
+
+                            <h2><?php _e('2. Demo import','light-bold'); ?></h2>
+
+                            <div class="lg-flex flex-wrap bg-gray mb4 pt3">
+                                <div class="lg-col-12 mb3 px3">
+                                    <p><?php _e('Once all the required plugins are installed and activated, you can safely import the demo.','light-bold'); ?></p>
+
+                                    <p><?php _e('This option will replicate the <a target="_blank" href="https://lightbold.ttfb.io/">Light & Bold demo</a> site, giving you a better overview of Light & Bold’s features.','light-bold'); ?></p>
+
+                                    <?php if( light_bold_is_theme_demo_import_active() ): ?>
+                                        <a href="<?php echo admin_url( 'themes.php?page=theme-demo-import' ); ?>" class="button button-primary"><?php _e('Import Demo Content','light-bold'); ?></a>
+                                    <?php else: ?>
+                                        <button disabled class="button button-primary"><?php _e('Install required plugins first','light-bold'); ?></button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <h2><?php _e('3. Activate your license','light-bold'); ?></h2>
+
+                            <div class="lg-flex flex-wrap bg-gray mb4 pt3">
+                                <div class="lg-col-12 mb3 px3">
+                                    <p><?php _e('With an active license, you can get seamless, one-click theme updates to keep your site healthy and happy.','light-bold'); ?></p>
+                                    <p><?php _e('If you bought from our website, you should have received your key by email after your purchase. If not, you can find your license key in your <a target="_blank" href="https://ttfb.io/dashboard">TTFB Dashboard</a>.','light-bold'); ?></p>
+                                    <p><?php _e('<strong>Themeforest</strong> customers have to <a href="https://ttfb.io/register/" target="_blank">register first</a>.','light-bold'); ?></p>
+                                </div>
+                            </div>
+
+                            <h2><?php _e('4. That\'s all','light-bold'); ?></h2>
+
+                            <div class="lg-flex flex-wrap bg-gray mb4 pt3">
+                                <div class="lg-col-12 mb3 px3">
+                                    <p><?php _e('There aren’t any more steps. You are now free to disable the plugins you don’t need and to delete irrelevant posts and pages.','light-bold'); ?></p>
+
+                                    <p><?php _e('Refer to our complete <a href="https://ttfb.io/documentation/" target="_blank">documentation</a> for specific needs.','light-bold') ?></p>
+                                </div>
+                            </div>
+
+						</div>
+
+                        <!-- Getting Started full -->
+						<div id="getting-started" class="panel-left">
+                    
                             <?php
-                                $getting_post = wp_remote_get('http://ttfb.io/wp-json/wp/v2/docs-api/44');
+                                $light_bold_getting_started = wp_remote_get('https://ttfb.io/wp-json/wp/v2/knowledgebase/44/');
 
                                 // Make sure the response came back okay.
-                                if( is_wp_error( $getting_post ) ) {
+                                if( is_wp_error( $light_bold_getting_started ) ) {
                                     return false; // Bail early
                                 }
 
-                                $body = wp_remote_retrieve_body( $getting_post );
+                                $body = wp_remote_retrieve_body( $light_bold_getting_started );
                                 $data = json_decode( $body );
 
-                                if( ! empty( $data ) ) {
+                                if( ! empty( $data ) && !empty( $data->content->rendered ) ) {
                                     echo $data->content->rendered;
+                                }else{
+                                    echo '<p>' . esc_html__( 'There seems to be a temporary problem retrieving the complete setup guide.', 'light-bold' ) . '<p>';
+                                    echo '<p><a class="button button-primary" href="https://ttfb.io/doc/getting-started-light-bold/" target="_blank">'. esc_html__("Read it directly on our website","light-bold") .'</a></p>';
                                 }
                             ?>
 
 						</div>
+                        
+                        
 
-                        <?php
-                            // Grab the change log from ttfb.io for display in the Latest Updates tab
-                            $changelog = wp_remote_get( 'https://ttfb.io/themes/' . $this->api_slug . '/changelog/' );
-                            if( $changelog && !is_wp_error( $changelog ) && 200 === wp_remote_retrieve_response_code( $changelog ) ) {
-                                $changelog = $changelog['body'];
-                            } else {
-                                $changelog = esc_html__( 'There seems to be a temporary problem retrieving the latest updates for this theme. You can always view the latest updates in your Array Dashboard.', 'light-bold' );
-                            }
-                        ?>
+
+                        
 						<!-- Updates panel -->
 						<div id="updates-panel" class="panel-left">
+                            <?php
+                                // Grab the change log from ttfb.io for display in the Latest Updates tab
+                                $changelog = wp_remote_get( 'https://ttfb.io/themes/' . $this->api_slug . '/changelog/' );
+                                if( $changelog && !is_wp_error( $changelog ) && 200 === wp_remote_retrieve_response_code( $changelog ) ) {
+                                    $changelog = $changelog['body'];
+                                } else {
+                                    $changelog = esc_html__( 'There seems to be a temporary problem retrieving the latest updates for this theme. You can always view the latest updates in your Dashboard.', 'light-bold' );
+                                }
+                            ?>
+
 							<p><?php echo $changelog; ?></p>
 						</div><!-- .panel-left updates -->
 
@@ -376,7 +436,7 @@ class Light_Bold_Theme_Updater_Admin {
                                     <?php endif; ?>
 
                                     <p class="">
-                                        <input type="submit" name="submit" id="submit" class="button button-primary club-button" value="Save Changes">
+                                        <input type="submit" name="submit" id="submit" class="button button-primary master-button" value="Save Changes">
                                     </p>
                                 </form>
 

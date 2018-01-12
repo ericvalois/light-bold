@@ -287,3 +287,18 @@ require get_template_directory() . '/inc/address-widget.php';
  * Custom protected form markup
  */
 require get_template_directory() . '/inc/custom-protected-form.php';
+
+/**
+ * Compatibility
+ */
+require get_template_directory() . '/includes/compatibility.php';
+
+/**
+ * Is Theme Demo Import active?
+ *
+ * @since 1.0.0
+ * @return bool
+ */
+function light_bold_is_theme_demo_import_active() {
+	return class_exists('Theme_Demo_Import');
+}

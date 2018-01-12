@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/archive.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/archive.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/page.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/page.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -136,7 +136,7 @@ module.exports = function(grunt) {
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
@@ -255,12 +255,8 @@ module.exports = function(grunt) {
                 src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json', '!.gitignore' ],
                 dest: 'build/'
             },
-            demo: {
-                src: '../../uploads/demo/light-bold-demo.xml',
-                dest: 'build/light-bold-demo.xml'
-            },
             doc: {
-                src: '/Users/bulledev/Google\ Drive/TTFB/themes/light\&bold/documentation.pdf',
+                src: '/Volumes/GoogleDrive/Mon\ disque/TTFB/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
             },
             extend_lightbold: {
@@ -366,6 +362,6 @@ module.exports = function(grunt) {
     grunt.registerTask('min', ['cssmin']);
 
     //grunt.registerTask('cleanstyle', ['clean:style']);
-    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'compress:acf_pro', 'copy:acf_pro', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'compress:acf_pro', 'copy:acf_pro', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

@@ -88,10 +88,8 @@
         visibility: hidden;
         opacity: 0;
         background-color: #fff;
-        border-top: 2px solid #3498db;
-        //border: 1px solid #dcdee0;
-        //background-clip: padding-box;
-        //border-radius: 4px;
+        border-top-width: 2px;
+        border-top-style: solid;
         box-shadow: 0 15px 40px -5px rgba(37,45,51, .25);
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         transform: translateX(0px) translateY(20px); 

@@ -519,10 +519,11 @@ function light_bold_custom_styles(){
     }
 
     $light_bold_custom_css = '
-        .main-color{ color: ' . $light_bold_main_color . '; }
-        a,
+        .main-color,a,
         .tagcloud a:hover,
-        .button-row button{ color: ' . $light_bold_main_color . ';}
+        .button-row button,
+        #top-main-menu .current_page_item > a,
+        #top-main-menu .current_page_ancestor > a{ color: ' . $light_bold_main_color . ';}
         a.dark-color:hover,
         a.white-color:hover,
         #top-main-menu a:hover,
@@ -568,6 +569,7 @@ function light_bold_custom_styles(){
         .opacity-zero{ opacity: 0; }
         #top-main-menu .menu-item-has-children > a:after{background: #fff url('. get_template_directory_uri() .'/assets/svg/small-down.svg) no-repeat center center;}
         .flex-justify{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+        #top-main-menu .sub-menu{ border-color: ' . $light_bold_main_color . '}
     ';
 
     return $light_bold_custom_css;
