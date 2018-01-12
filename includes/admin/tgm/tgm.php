@@ -10,7 +10,7 @@
  *
  * @package    TGM-Plugin-Activation
  * @subpackage Example
- * @version    2.6.1 for parent theme light-Bold for publication on ThemeForest
+ * @version    2.6.1 for parent theme Light Bold for publication on ThemeForest
  * @author     Thomas Griffin, Gary Jones, Juliette Reinders Folmer
  * @copyright  Copyright (c) 2011, Thomas Griffin
  * @license    http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
@@ -61,63 +61,55 @@ function light_bold_register_required_plugins() {
 
 		// This is an example of how to include a plugin bundled with a theme.
 		array(
-			'name'               => 'Advanced Custom Fields Pro', // The plugin name.
-			'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
-			'source'             => get_template_directory() . '/inc/3rd-party/plugins/advanced-custom-fields-pro.zip', // The plugin source.
-			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-			'version'            => '5.6.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
-		),
-
-        array(
-			'name'               => 'Extend Light & Bold',
-			'slug'               => 'extend-lightbold', 
-			'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
-			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'name'               => 'Advanced Custom Fields Pro', // The plugin name.
+            'slug'               => 'advanced-custom-fields-pro', // The plugin slug (typically the folder name).
+            'source'             => get_template_directory() . '/inc/3rd-party/plugins/advanced-custom-fields-pro.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'version'            => '5.6.7', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'version'            => '1.1.5.1',
-		),
-
+            'is_callable'        => 'get_field', // If set, this callable will be be checked for availability to determine if a plugin is active.
+        ),
+        
         array(
-			'name'      => 'Download Speed Up – Browser Caching',
-			'slug'      => 'speed-up-browser-caching',
-			'required'  => false,
-		),
-
-		array(
-			'name'      => 'Cache Enabler - WordPress Cache',
-			'slug'      => 'cache-enabler',
-			'required'  => false,
-		),
-
-		array(
-			'name'      => 'Compress JPEG & PNG images',
-			'slug'      => 'tiny-compress-images',
-			'required'  => false,
-		),
-
+            'name'               => 'Extend Light & Bold',
+            'slug'               => 'extend-lightbold', 
+            'source'             => get_template_directory() . '/inc/3rd-party/plugins/extend-lightbold.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'version'            => '1.2',
+        ),
+        
         array(
-			'name'      => 'Contact Form 7',
-			'slug'      => 'contact-form-7',
-			'required'  => false,
-		),
+            'name'      => 'Download Speed Up – Browser Caching',
+            'slug'      => 'speed-up-browser-caching',
+            'required'  => false,
+        ),
+        
+        array(
+            'name'      => 'Cache Enabler - WordPress Cache',
+            'slug'      => 'cache-enabler',
+            'required'  => false,
+        ),
+        
+        array(
+            'name'      => 'Compress JPEG & PNG images',
+            'slug'      => 'tiny-compress-images',
+            'required'  => false,
+        ),
+        
+        array(
+            'name'      => 'Contact Form 7',
+            'slug'      => 'contact-form-7',
+            'required'  => false,
+        ),
+        
+        array(
+            'name'      => 'Theme Demo Import',
+            'slug'      => 'theme-demo-import',
+            'required'  => false,
+        ),
 
 	);
-
-    /*
-    * Disable former browser cache plugin or update it
-    */
-    if( function_exists('browser_cache_init') ){
-        $plugins[] = array(
-            'name'               => 'TTFB Browser Cache',
-            'slug'               => 'browser-cache', 
-            'source'             => 'https://github.com/time-to-first-byte/browser-cache/archive/master.zip',
-            'required'           => false,
-            'force_deactivation' => true,
-            'version'            => '1.0.1',
-        );
-    }
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.

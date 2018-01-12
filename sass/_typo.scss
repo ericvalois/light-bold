@@ -188,6 +188,8 @@ pre{
     background: #eef0f4;
 }
 
+//.builder-col *:last-child{ margin-bottom: 0; }
+
 @include media-query(md) {
     .pull-right{
         float: right;

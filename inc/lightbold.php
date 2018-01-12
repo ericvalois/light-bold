@@ -519,12 +519,14 @@ function light_bold_custom_styles(){
     }
 
     $light_bold_custom_css = '
-        .main-color{ color: ' . $light_bold_main_color . '; }
-        a,
+        .main-color,a,
         .tagcloud a:hover,
-        .button-row button{ color: ' . $light_bold_main_color . ';}
+        .button-row button,
+        #top-main-menu .current_page_item > a,
+        #top-main-menu .current_page_ancestor > a{ color: ' . $light_bold_main_color . ';}
         a.dark-color:hover,
         a.white-color:hover,
+        #top-main-menu a:hover,
         .tags:hover,
         .widget_categories a:hover,
         .widget_archive a:hover,
@@ -565,6 +567,9 @@ function light_bold_custom_styles(){
         .highlight{ background: ' . light_bold_hex2rgba($light_bold_main_color, 0.45) . '; }
         .comment-author-admin > article{ border-bottom: 0.5rem solid ' . $light_bold_main_color . '; background-color: ' . light_bold_hex2rgba($light_bold_main_color, 0.05) . '; }
         .opacity-zero{ opacity: 0; }
+        #top-main-menu .menu-item-has-children > a:after{background: #fff url('. get_template_directory_uri() .'/assets/svg/small-down.svg) no-repeat center center;}
+        .flex-justify{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+        #top-main-menu .sub-menu{ border-color: ' . $light_bold_main_color . '}
     ';
 
     return $light_bold_custom_css;
@@ -632,23 +637,13 @@ function light_bold_fontawesome_sprite() {
     }
 }
 
-/**
+/*
  * Inject the post thumbnail for wordpress unit test compatibility
  */
 add_action( 'light_bold_before_post_content', 'light_bold_inject_post_thumbnail' );
 function light_bold_inject_post_thumbnail() {
     if( has_post_thumbnail() && !function_exists("extend_light_bold_exist") ){
         the_post_thumbnail('full');
-    }
-}
-
-/**
- * Inject under posts sidebar
- */
-add_action( 'light_bold_after_post_content', 'light_bold_under_post_sidebar' );
-function light_bold_under_post_sidebar() {
-    if ( is_active_sidebar( 'under-posts-sidebar' ) ){
-        dynamic_sidebar( 'under-posts-sidebar' );
     }
 }
 
@@ -661,3 +656,55 @@ function light_bold_under_page_sidebar() {
         dynamic_sidebar( 'under-pages-sidebar' );
     }
 }
+
+/**
+ * Main navigation Markup
+ */
+add_action( 'light_bold_main_nav', 'light_bold_get_main_nav', 10 );
+function light_bold_get_main_nav() {
+    $main_nav_layout = get_field("perf_layouts","option");
+
+    if( isset( $_GET['topnav'] ) || ( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ) ){
+        get_template_part( 'components/main-navigation/top-nav' );
+    }else{
+        get_template_part( 'components/main-navigation/side-nav' );
+    }
+}
+
+/**
+ * Add custom body class for main navigation purpose
+ */
+add_filter( 'body_class','light_bold_main_nav_body_class' );
+function light_bold_main_nav_body_class( $classes ) {
+
+    $main_nav_layout = get_field("perf_layouts","option");
+    
+    if( isset( $_GET['topnav'] ) || ( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ) ){
+        $classes[] = 'top-nav';
+    }else{
+        $classes[] = 'side-nav';
+    }
+      
+    return $classes;
+}
+
+/**
+ * Allow more tags on homepage
+ */
+add_filter('wp_kses_allowed_html', 'light_bold_add_allowed_tags');
+function light_bold_add_allowed_tags($tags) {
+    $tags['input'] = array(
+        'type' => true,
+        'class' => true,
+        'value' => true,
+        'style' => true,
+        'name' => true,
+        'size' => true,
+        'aria-required' => true,
+        'aria-invalid' => true,
+        
+    );
+    return $tags;
+}
+
+

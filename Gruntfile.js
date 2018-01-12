@@ -19,84 +19,169 @@ module.exports = function(grunt) {
         },
 
         criticalcss: {
-            home: {
+            sideHome: {
                 options: {
                     url: "http://lightbold.dev/",
                     width: 1200,
                     height: 1500,
-                    outputfile: "../../plugins/extend-lightbold/critical/home.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/home.css",
                     filename: "style.css",
                     buffer: 800*1024,
                     forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
                     ignoreConsole: false
                 }
             },
-            homewithslider: {
+            topHome: {
+                options: {
+                    url: "http://lightbold.dev/?topnav=1",
+                    width: 1200,
+                    height: 1500,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/home.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
+                    ignoreConsole: false
+                }
+            },
+            sideHomewithslider: {
                 options: {
                     url: "http://lightbold.dev/home-with-slider/",
                     width: 1200,
                     height: 1500,
-                    outputfile: "../../plugins/extend-lightbold/critical/home-with-slider.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/home-with-slider.css",
                     filename: "style.css",
                     buffer: 800*1500,
                     forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
                     ignoreConsole: false
                 }
             },
-            archive: {
+            topHomewithslider: {
+                options: {
+                    url: "http://lightbold.dev/home-with-slider/?topnav=1",
+                    width: 1200,
+                    height: 1500,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/home-with-slider.css",
+                    filename: "style.css",
+                    buffer: 800*1500,
+                    forceInclude: ['.lg-col-12','.lg-col-6','.lg-col-4','.menu__breadcrumbs','lg-flex','.thumb_section1'],
+                    ignoreConsole: false
+                }
+            },
+            sideArchive: {
                 options: {
                     url: "http://lightbold.dev/blog/",
                     width: 1200,
                     height: 1200,
-                    outputfile: "../../plugins/extend-lightbold/critical/archive.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/archive.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
-            page: {
+            topArchive: {
+                options: {
+                    url: "http://lightbold.dev/blog/?topnav=1",
+                    width: 1200,
+                    height: 1200,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/archive.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    ignoreConsole: false
+                }
+            },
+            sidePage: {
                 options: {
                     url: "http://lightbold.dev/about/",
                     width: 1200,
                     height: 1200,
-                    outputfile: "../../plugins/extend-lightbold/critical/page.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/page.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
-            single: {
+            topPage: {
+                options: {
+                    url: "http://lightbold.dev/about/?topnav=1",
+                    width: 1200,
+                    height: 1200,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/page.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.menu__breadcrumbs','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    ignoreConsole: false
+                }
+            },
+            
+            sideSingle: {
                 options: {
                     url: "http://lightbold.dev/hello-world-2/",
                     width: 1200,
                     height: 1200,
-                    outputfile: "../../plugins/extend-lightbold/critical/single.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/single.css",
                     filename: "style.css",
                     buffer: 800*1024,
-                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
                     ignoreConsole: false
                 }
             },
-            contact: {
+            topSingle: {
+                options: {
+                    url: "http://lightbold.dev/hello-world-2/?topnav=1",
+                    width: 1200,
+                    height: 1200,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/single.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.menu__breadcrumbs','.entry-meta', '.entry-meta span', '.lg-show','.lg-pr4','.lg-pl4', '.lg-col-8', '.lg-col-4', '.lg-col'],
+                    ignoreConsole: false
+                }
+            },
+            sideContact: {
                 options: {
                     url: "http://lightbold.dev/contact-us/",
                     width: 1200,
                     height: 1200,
-                    outputfile: "../../plugins/extend-lightbold/critical/contact.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/contact.css",
                     filename: "style.css",
                     buffer: 800*1024,
                     forceInclude: ['.menu__breadcrumbs'],
                     ignoreConsole: false
                 }
             },
-            page_404: {
+            topContact: {
+                options: {
+                    url: "http://lightbold.dev/contact-us/?topnav=1",
+                    width: 1200,
+                    height: 1200,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/contact.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.menu__breadcrumbs'],
+                    ignoreConsole: false
+                }
+            },
+            sidePage_404: {
                 options: {
                     url: "http://lightbold.dev/abcdefgh/",
                     width: 1200,
                     height: 1200,
-                    outputfile: "../../plugins/extend-lightbold/critical/404.css",
+                    outputfile: "../../plugins/extend-lightbold/critical/side-nav/404.css",
+                    filename: "style.css",
+                    buffer: 800*1024,
+                    forceInclude: ['.menu__breadcrumbs'],
+                    ignoreConsole: false
+                }
+            },
+            topPage_404: {
+                options: {
+                    url: "http://lightbold.dev/abcdefgh/?topnav=1",
+                    width: 1200,
+                    height: 1200,
+                    outputfile: "../../plugins/extend-lightbold/critical/top-nav/404.css",
                     filename: "style.css",
                     buffer: 800*1024,
                     forceInclude: ['.menu__breadcrumbs'],
@@ -106,7 +191,7 @@ module.exports = function(grunt) {
         },
 
         cssmin: {
-            critical: {
+            sideCritical: {
                 options: {
                     aggressiveMerging: true,
                     level: {
@@ -117,9 +202,26 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '../../plugins/extend-lightbold/critical/',
+                    cwd: '../../plugins/extend-lightbold/critical/side-nav/',
                     src: ['*.css', '!*.min.css'],
-                    dest: '../../plugins/extend-lightbold/critical/',
+                    dest: '../../plugins/extend-lightbold/critical/side-nav/',
+                    ext: '.min.css'
+                }]
+            },
+            topCritical: {
+                options: {
+                    aggressiveMerging: true,
+                    level: {
+                        2: {
+                          all: true,
+                        }
+                    }
+                },
+                files: [{
+                    expand: true,
+                    cwd: '../../plugins/extend-lightbold/critical/top-nav/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: '../../plugins/extend-lightbold/critical/top-nav/',
                     ext: '.min.css'
                 }]
             }
@@ -153,12 +255,8 @@ module.exports = function(grunt) {
                 src: ['**', '!node_modules/**', '!build/**', '!readme.md', '!Gruntfile.js', '!package.json', '!.gitignore' ],
                 dest: 'build/'
             },
-            demo: {
-                src: '../../uploads/demo/light-bold-demo.xml',
-                dest: 'build/light-bold-demo.xml'
-            },
             doc: {
-                src: '/Users/bulledev/Google\ Drive/TTFB/themes/light\&bold/documentation.pdf',
+                src: '/Volumes/GoogleDrive/Mon\ disque/TTFB/themes/light\&bold/documentation.pdf',
                 dest: 'build/documentation.pdf'
             },
             extend_lightbold: {
@@ -264,6 +362,6 @@ module.exports = function(grunt) {
     grunt.registerTask('min', ['cssmin']);
 
     //grunt.registerTask('cleanstyle', ['clean:style']);
-    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'compress:acf_pro', 'copy:acf_pro', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:demo', 'copy:doc', 'compress:full', 'clean:second']);
+    grunt.registerTask( 'build', ['clean:init', 'compress:extend_lightbold', 'copy:extend_lightbold', 'compress:acf_pro', 'copy:acf_pro', 'clean:init', 'copy:build', 'compress:parent', 'clean:first', 'compress:child', 'copy:doc', 'compress:full', 'clean:second']);
 
 };

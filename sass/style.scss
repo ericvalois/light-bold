@@ -1,10 +1,10 @@
 /*!
 Theme Name: Light & Bold
-Theme URI: https://ttfb.io/
+Theme URI: https://ttfb.io/themes/light-bold/
 Author: TTFB
-Author URI: https://www.ericvalois.com
+Author URI: https://ttfb.io/
 Description: Speed-Focused WordPress Theme
-Version: 1.1.5.1
+Version: 1.2
 Text Domain: light-bold
 Tags: two-columns, left-sidebar, right-sidebar, custom-colors, custom-menu, featured-images, full-width-template, post-formats, theme-options, translation-ready
 
@@ -36,6 +36,8 @@ $alt-dark-bg: #2c2c2c;
 @import 'forms';
 
 @import 'main-navigation';
+
+@import 'main-navigation-top';
 
 @import 'images';
 
@@ -185,7 +187,7 @@ body,
     }
 }
 
-body{
+body.side-nav{
     padding-top: 64px;
 }
 
@@ -365,7 +367,7 @@ h1.entry-title{
 }
 
 @include media-query(md) {
-    body{ padding-top: 86px; }
+    body.side-nav{ padding-top: 86px; }
 
     .md-right{ float: right;}
 
@@ -407,10 +409,8 @@ h1.entry-title{
 }
 
 @media (min-width: 1200px){
-    body{
-        padding-top: 0;
-        font-size: 115%;
-    }
+    body{ font-size: 115%; }
+    body.side-nav{ padding-top: 0; }
 }
 
 @include media-query(xlg) {
