@@ -52,6 +52,7 @@
 }
 
 @include media-query(lg) {
+//@media (min-width: 1650px){
     #top-main-menu{ 
         max-height: 200px;
         transition-duration: 0s;
@@ -60,7 +61,8 @@
 
     #top-main-menu li,
     #top-main-menu > li:first-child{
-        padding: 3rem 2rem;
+        //padding: 3rem 2rem;
+        padding: 3rem 1.5rem;
     }
 
     #top-main-menu{ 
@@ -132,6 +134,10 @@
         visibility: visible;
         transform: translateX(0px) translateY(0px);
         
+    }
+
+    .top-nav .action-close {
+        display: none;
     }
 
     

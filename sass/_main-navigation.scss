@@ -205,7 +205,7 @@
     color: #3e3e3e;
 }
 
-.side-menu .action-close {
+.side-nav .action-close {
     height: 75px;
     width: 20px;
     background-color: transparent;
@@ -224,7 +224,7 @@
         transition: transform 0.3s;
     }
     
-    .menu--open {
+    .side-nav .menu--open {
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }

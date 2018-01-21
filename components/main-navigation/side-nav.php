@@ -3,7 +3,7 @@
     <div class="main-header_container hide-print">
 
         <?php get_template_part( 'components/menu-toggle/menu-toggle' ); ?>
-
+        
         <?php get_template_part( 'components/site-logo/site-logo' ); ?>
 
     </div>
