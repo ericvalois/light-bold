@@ -13,7 +13,6 @@
 
 	<div class="entry-content clearfix">
         <?php 
-
             do_action("light_bold_before_page_content");
 
             the_content();
