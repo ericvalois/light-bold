@@ -1,0 +1,86 @@
+{
+    "key": "group_56d9ba6a92d0c",
+    "title": "Address widget",
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "light_bold_address_widget"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "menu_item_level": "all",
+    "fields": [
+        {
+            "key": "field_56d9ba6a94e91",
+            "label": "Sections",
+            "name": "perf_address_widget",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add section",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_56d9ba6a95d71",
+                    "label": "Icon name",
+                    "name": "icon",
+                    "type": "text",
+                    "instructions": "Copy and paste an icon name from the <a target=\"_blank\" href=\"https:\/\/ttfb.io\/doc\/light-bold\/icons\/\">complete icons list<\/a>.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Ex: fa-home",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_56d9baa1e57f9",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "new_lines": "br",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "rows": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
+    "modified": 1522331341
+}

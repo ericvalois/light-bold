@@ -1,0 +1,107 @@
+{
+    "key": "group_577905b05e4de",
+    "title": "Page Options",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "fields": [
+        {
+            "key": "field_584d929d059ff",
+            "label": "Disable JS Optimization",
+            "name": "perf_on_page_js_optimisation_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated"
+        },
+        {
+            "key": "field_584da0e2f4c8d",
+            "label": "Disable CSS Optimization",
+            "name": "perf_on_page_css_optimisation_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated"
+        },
+        {
+            "key": "field_584da0f7f4c8e",
+            "label": "Disable Lazyload",
+            "name": "perf_on_page_lazyload_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "message": "",
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated"
+        },
+        {
+            "key": "field_584da111f4c8f",
+            "label": "Disable Share Links",
+            "name": "perf_on_page_share_disabled",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Disabled",
+            "ui_off_text": "Activated"
+        }
+    ],
+    "modified": 1522331343
+}

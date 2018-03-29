@@ -1,0 +1,43 @@
+{
+    "key": "group_587e2a272d7c2",
+    "title": "Menu Icon",
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "location\/primary"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "fields": [
+        {
+            "key": "field_587e2a3bc34f5",
+            "label": "Icon name",
+            "name": "perf_icon_name",
+            "type": "text",
+            "instructions": "Copy and paste an icon name from the <a target=\"_blank\" href=\"https:\/\/ttfb.io\/doc\/light-bold\/icons\/\">complete icons list<\/a>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "fa-wordpress",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "modified": 1522331343
+}
