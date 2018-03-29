@@ -42,3 +42,28 @@ if ( document.getElementById("perf-main-hero") && !navigator.userAgent.match(/Go
     var light_bold_main_hero = document.getElementById("perf-main-hero");
     light_bold_main_hero.classList.add("lazyload");
 }
+
+/*
+* Search bar logic
+*/
+if( document.querySelector('.search-toggle') ){
+    var toggle = document.querySelector('.search-toggle');
+    var search_form = document.querySelector('.search-bar');
+
+    toggle.onclick = function() {
+        toggleSearchBar();
+        
+    }
+
+    function toggleSearchBar(){
+        var search_form = document.querySelector('.search-bar');
+        
+
+        if( search_form.classList.contains("active") ){
+            search_form.classList.remove('active');
+        }else{
+            search_form.classList.add('active');
+            document.querySelector('.search-field-bar').focus();
+        }
+    }
+}

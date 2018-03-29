@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         criticalcss: {
             sideHome: {
                 options: {
-                    url: "http://lightbold.dev/",
+                    url: "http://lightbold.local/",
                     width: 1200,
                     height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/home.css",
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             topHome: {
                 options: {
-                    url: "http://lightbold.dev/?topnav=1",
+                    url: "http://lightbold.local/?topnav=1",
                     width: 1200,
                     height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/home.css",
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
             },
             sideHomewithslider: {
                 options: {
-                    url: "http://lightbold.dev/home-with-slider/",
+                    url: "http://lightbold.local/home-with-slider/",
                     width: 1200,
                     height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/home-with-slider.css",
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
             },
             topHomewithslider: {
                 options: {
-                    url: "http://lightbold.dev/home-with-slider/?topnav=1",
+                    url: "http://lightbold.local/home-with-slider/?topnav=1",
                     width: 1200,
                     height: 1500,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/home-with-slider.css",
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
             },
             sideArchive: {
                 options: {
-                    url: "http://lightbold.dev/blog/",
+                    url: "http://lightbold.local/blog/",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/archive.css",
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
             },
             topArchive: {
                 options: {
-                    url: "http://lightbold.dev/blog/?topnav=1",
+                    url: "http://lightbold.local/blog/?topnav=1",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/archive.css",
@@ -93,7 +93,7 @@ module.exports = function(grunt) {
             },
             sidePage: {
                 options: {
-                    url: "http://lightbold.dev/about/",
+                    url: "http://lightbold.local/about/",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/page.css",
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
             },
             topPage: {
                 options: {
-                    url: "http://lightbold.dev/about/?topnav=1",
+                    url: "http://lightbold.local/about/?topnav=1",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/page.css",
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
             
             sideSingle: {
                 options: {
-                    url: "http://lightbold.dev/hello-world-2/",
+                    url: "http://lightbold.local/hello-world-2/",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/single.css",
@@ -130,7 +130,7 @@ module.exports = function(grunt) {
             },
             topSingle: {
                 options: {
-                    url: "http://lightbold.dev/hello-world-2/?topnav=1",
+                    url: "http://lightbold.local/hello-world-2/?topnav=1",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/single.css",
@@ -142,7 +142,7 @@ module.exports = function(grunt) {
             },
             sideContact: {
                 options: {
-                    url: "http://lightbold.dev/contact-us/",
+                    url: "http://lightbold.local/contact-us/",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/contact.css",
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
             },
             topContact: {
                 options: {
-                    url: "http://lightbold.dev/contact-us/?topnav=1",
+                    url: "http://lightbold.local/contact-us/?topnav=1",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/contact.css",
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
             },
             sidePage_404: {
                 options: {
-                    url: "http://lightbold.dev/abcdefgh/",
+                    url: "http://lightbold.local/abcdefgh/",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/side-nav/404.css",
@@ -178,7 +178,7 @@ module.exports = function(grunt) {
             },
             topPage_404: {
                 options: {
-                    url: "http://lightbold.dev/abcdefgh/?topnav=1",
+                    url: "http://lightbold.local/abcdefgh/?topnav=1",
                     width: 1200,
                     height: 1200,
                     outputfile: "../../plugins/extend-lightbold/critical/top-nav/404.css",
