@@ -192,7 +192,7 @@ class Light_Bold_Theme_Updater_Admin {
     function main_option_menu() {
         $page_title = '';
         $menu_title = 'Theme Options';
-        $capability = 'edit_posts';
+        $capability = 'manage_options';
         $menu_slug = $this->theme_slug . '-main-page';
         $function = array( $this, 'main_page_redirect' );
         $icon_url = '';
