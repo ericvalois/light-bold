@@ -302,3 +302,13 @@ require get_template_directory() . '/includes/compatibility.php';
 function light_bold_is_theme_demo_import_active() {
 	return class_exists('Theme_Demo_Import');
 }
+
+/**
+ * Is Gutenberg active?
+ *
+ * @since 1.0.0
+ * @return bool
+ */
+function light_bold_is_gutenberg_active() {
+	return class_exists('WP_Block_Type');
+}

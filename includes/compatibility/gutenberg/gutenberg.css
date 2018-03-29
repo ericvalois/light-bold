@@ -1,0 +1,27 @@
+.gutenberg > *{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+
+
+.gutenberg .alignfull{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gutenberg *.alignfull{max-width: 100%;}
+
+.alignfull > img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 1000px) {
+    div[class^="wp-block"],
+    .gutenberg * {
+        max-width: 768px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
