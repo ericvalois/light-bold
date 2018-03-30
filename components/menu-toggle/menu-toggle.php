@@ -1,8 +1,10 @@
 <?php
     $main_nav_layout = get_field("perf_layouts","option");
 
-    if( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ){
-        $toggle_class = 'lg-hide';
+    if( 
+        (isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' ) || 
+        isset( $_GET['topnav'] ) ){
+            $toggle_class = 'lg-hide';
     }else{
         $toggle_class = 'absolute z1 top-0 bottom-0 left-0 ml1 mr1';
     }

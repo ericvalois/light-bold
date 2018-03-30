@@ -57,7 +57,7 @@
 
 					<div class="small-p">
 						<strong><?php esc_html_e("By","light-bold"); ?> <?php echo get_the_author(); ?></strong><br>
-						<?php the_date(); ?>
+						<?php echo get_the_date(); ?>
 					</div><!-- .entry-meta -->
 
 				</article>

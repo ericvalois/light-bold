@@ -300,6 +300,7 @@ function light_bold_custom_menu( $theme_location ) {
                         endif;
 
                     endforeach;
+
                 echo '</ul>';
             endforeach;
         endif;
@@ -340,6 +341,7 @@ function light_bold_custom_menu( $theme_location ) {
                         endif;
 
                     endforeach;
+
                 echo '</ul>';
             endforeach;
          
@@ -717,4 +719,60 @@ function light_bold_add_allowed_tags($tags) {
     return $tags;
 }
 
+/*
+* Main navigation wrapper to inject search toggle
+*/
+function light_bold_search_toggle(){
 
+    $menu  = '<ul id="%1$s" class="%2$s">%3$s';
+    
+
+    $main_nav_layout = get_field("perf_layouts","option");
+
+    if( isset( $_GET['topnav'] ) || 
+        ( isset( $main_nav_layout['main_nav_layout'] ) && $main_nav_layout['main_nav_layout'] == 'top' && get_option("options_perf_activate_search", false) ) ){
+
+        $menu .= '<li>
+                        <button class="search-toggle border-none p0">
+                            <svg class="fa fa-search">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fa-search"></use>
+                            </svg>
+                        </button>
+                    </li>';
+    }
+
+    $menu .= '</ul>';
+
+    return $menu;
+
+}
+
+/*
+* Search bar footer injection
+*/
+add_action("wp_footer","light_bold_search_bar_form");
+function light_bold_search_bar_form(){
+    if( !get_option("options_perf_activate_search", false) ){ return false; }
+
+    get_template_part( 'components/search-form/search-bar' );
+?>
+
+<?php
+}
+
+/*
+* Lod ACF field from parent theme
+*/
+add_filter('acf/settings/save_json', function() {
+	return get_stylesheet_directory() . '/acf-json';
+});
+add_filter('acf/settings/load_json', function($paths) {
+	$paths = array(get_template_directory() . '/acf-json');
+
+	if(is_child_theme())
+	{
+		$paths[] = get_stylesheet_directory() . '/acf-json';
+	}
+
+	return $paths;
+});

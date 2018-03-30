@@ -1401,37 +1401,45 @@ input[type=range] {
 }
 @media (min-width: 1650px) {
 
-  .xlg-p1  { padding: 1rem }
-  .xlg-py1 { padding-top: 1rem; padding-bottom: 1rem }
-  .xlg-px1 { padding-left: 1rem; padding-right: 1rem }
-  .xlg-pl1 { padding-left: 1rem }
-  .xlg-pr1 { padding-right: 1rem }
-  .xlg-pt1 { padding-top: 1rem; }
-  .xlg-pb1 { padding-bottom: 1rem }
+    .xlg-p0  { padding: 0 }
+    .xlg-py0  { padding-top: 0; padding-bottom: 0 }
+    .xlg-px0  { padding-left: 0; padding-right: 0 }
+    .xlg-pl0 { padding-left: 0 }
+    .xlg-pr0 { padding-right: 0 }
+    .xlg-pt0 { padding-top: 0; }
+    .xlg-pb0 { padding-bottom: 0 }
 
-  .xlg-p2  { padding: 2rem }
-  .xlg-py2 { padding-top: 2rem; padding-bottom: 2rem }
-  .xlg-px2 { padding-left: 2rem; padding-right: 2rem }
-  .xlg-pl2 { padding-left: 2rem }
-  .xlg-pr2 { padding-right: 2rem }
-  .xlg-pt2 { padding-top: 2rem; }
-  .xlg-pb2 { padding-bottom: 2rem }
+    .xlg-p1  { padding: 1rem }
+    .xlg-py1 { padding-top: 1rem; padding-bottom: 1rem }
+    .xlg-px1 { padding-left: 1rem; padding-right: 1rem }
+    .xlg-pl1 { padding-left: 1rem }
+    .xlg-pr1 { padding-right: 1rem }
+    .xlg-pt1 { padding-top: 1rem; }
+    .xlg-pb1 { padding-bottom: 1rem }
 
-  .xlg-p3  { padding: 4rem }
-  .xlg-py3 { padding-top: 4rem; padding-bottom: 4rem }
-  .xlg-px3 { padding-left: 4rem; padding-right: 4rem }
-  .xlg-pl3 { padding-left: 4rem }
-  .xlg-pr3 { padding-right: 4rem }
-  .xlg-pt3 { padding-top: 4rem; }
-  .xlg-pb3 { padding-bottom: 4rem }
+    .xlg-p2  { padding: 2rem }
+    .xlg-py2 { padding-top: 2rem; padding-bottom: 2rem }
+    .xlg-px2 { padding-left: 2rem; padding-right: 2rem }
+    .xlg-pl2 { padding-left: 2rem }
+    .xlg-pr2 { padding-right: 2rem }
+    .xlg-pt2 { padding-top: 2rem; }
+    .xlg-pb2 { padding-bottom: 2rem }
 
-  .xlg-p4  { padding: 6rem }
-  .xlg-py4 { padding-top: 6rem; padding-bottom: 6rem }
-  .xlg-px4 { padding-left: 6rem; padding-right: 6rem }
-  .xlg-pl4 { padding-left: 6rem }
-  .xlg-pr4 { padding-right: 6rem }
-  .xlg-pt4 { padding-top: 6rem; }
-  .xlg-pb4 { padding-bottom: 6rem }
+    .xlg-p3  { padding: 4rem }
+    .xlg-py3 { padding-top: 4rem; padding-bottom: 4rem }
+    .xlg-px3 { padding-left: 4rem; padding-right: 4rem }
+    .xlg-pl3 { padding-left: 4rem }
+    .xlg-pr3 { padding-right: 4rem }
+    .xlg-pt3 { padding-top: 4rem; }
+    .xlg-pb3 { padding-bottom: 4rem }
+
+    .xlg-p4  { padding: 6rem }
+    .xlg-py4 { padding-top: 6rem; padding-bottom: 6rem }
+    .xlg-px4 { padding-left: 6rem; padding-right: 6rem }
+    .xlg-pl4 { padding-left: 6rem }
+    .xlg-pr4 { padding-right: 6rem }
+    .xlg-pt4 { padding-top: 6rem; }
+    .xlg-pb4 { padding-bottom: 6rem }
 
 }
 /*

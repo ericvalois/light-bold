@@ -1,0 +1,506 @@
+{
+    "key": "group_56055ca795f7m",
+    "title": "General options",
+    "fields": [
+        {
+            "key": "field_56055cee1dam7",
+            "label": "General",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59df931f7c8fe",
+            "label": "Layouts",
+            "name": "perf_layouts",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_59df933c7c8ff",
+                    "label": "Sidebar layout",
+                    "name": "sidebar",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "acf-image-select",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "<img title=\"Sidebar left\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/sidebar-left.png\">",
+                        "2": "<img title=\"Sidebar right\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/sidebar-right.png\">"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": 1,
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5a4e2428b038a",
+                    "label": "Main navigation layout",
+                    "name": "main_nav_layout",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "acf-image-select",
+                        "id": ""
+                    },
+                    "choices": {
+                        "side": "<img title=\"Side Menu\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/side-menu.png\">",
+                        "top": "<img title=\"Top Menu\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/top-menu.png\">"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": 1,
+                    "layout": "horizontal",
+                    "return_format": "value"
+                }
+            ]
+        },
+        {
+            "key": "field_560961fa510fe",
+            "label": "Large logo",
+            "name": "perf_log_lg",
+            "type": "image",
+            "instructions": "Side navigation max Width 255px;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_57c99fc8ecb2e",
+            "label": "Medium logo",
+            "name": "perf_log_md",
+            "type": "image",
+            "instructions": "Side navigation max Width 166px;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_56bb9ed6c85cc",
+            "label": "Small logo",
+            "name": "perf_log_sm",
+            "type": "image",
+            "instructions": "Recommended height 50px; Recommended width 140px;",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_56ddd6de01e66",
+            "label": "Hero images",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_56ddd70b01e67",
+            "label": "Default hero image",
+            "name": "perf_hero_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_56ddd73901e68",
+            "label": "Blog and archive hero image",
+            "name": "perf_hero_blog_archive",
+            "type": "image",
+            "instructions": "Leave empty to use the default hero image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_56ddd75f01e69",
+            "label": "404 hero image",
+            "name": "perf_hero_404",
+            "type": "image",
+            "instructions": "Leave empty to use the default hero image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_56d9e12280e18",
+            "label": "Footer",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_599c49cddcce3",
+            "label": "Footer",
+            "name": "perf_footer",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_599c4a4fdcce4",
+                    "label": "Layout",
+                    "name": "layout",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "acf-image-select",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "<img title=\"Full width\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/one-column.png\">",
+                        "2": "<img title=\"Two columns\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/two-columns.png\">",
+                        "3": "<img title=\"Three columns\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/three-columns.png\">",
+                        "4": "<img title=\"Four columns\" width=\"150\" src=\"http:\/\/lightbold.local\/wp-content\/plugins\/extend-lightbold\/images\/four-columns.png\">"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": 4,
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_599c506f66a10",
+                    "label": "Columns spacings",
+                    "name": "col_padding",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "px1": "Small",
+                        "px2": "Medium",
+                        "px3": "Large",
+                        "px4": "Extra Large"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "px2",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_599c558a1c2bf",
+                    "label": "Columns Breakpoints",
+                    "name": "col_breakpoints",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "sm": "Mobile (≈640px)",
+                        "md": "Tablet (≈832px)",
+                        "lg": "Desktop (≈1024px)",
+                        "xlg": "Large Desktop (≈1650px)"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "lg",
+                    "layout": "horizontal",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_56d9e12e80e1b",
+                    "label": "Copyright",
+                    "name": "copy",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_572a58639b498",
+            "label": "Other",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59df854cd7c3e",
+            "label": "Activate Smooth Scroll for anchor Links",
+            "name": "perf_smooth_scroll",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_572a589d9b499",
+            "label": "Content FadeIn on Page Load",
+            "name": "perf_show_fade",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_57718bd0eb598",
+            "label": "Show Advanced Custom Fields Menu",
+            "name": "perf_show_acf",
+            "type": "true_false",
+            "instructions": "For developer purpose",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5a0b4ce888181",
+            "label": "Disable posts meta datas",
+            "name": "perf_disable_metadata",
+            "type": "true_false",
+            "instructions": "Remove post date, author, and categories from posts hero.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5abcefd17bd7a",
+            "label": "Activate search bar",
+            "name": "perf_activate_search",
+            "type": "true_false",
+            "instructions": "Horizontal navigation only",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-general"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1522351971
+}

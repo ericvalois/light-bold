@@ -17,3 +17,4 @@ wp-content/plugins/hello.php
 **/node_modules/*
 **/inc/3rd-party/plugins/*
 *.zip
+.DS_Store
