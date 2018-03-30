@@ -448,7 +448,7 @@
         },
         {
             "key": "field_5a0b4ce888181",
-            "label": "Disable posts meta data",
+            "label": "Disable posts meta datas",
             "name": "perf_disable_metadata",
             "type": "true_false",
             "instructions": "Remove post date, author, and categories from posts hero.",
@@ -467,10 +467,10 @@
         },
         {
             "key": "field_5abcefd17bd7a",
-            "label": "Activate Search Bar",
+            "label": "Activate search bar",
             "name": "perf_activate_search",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Horizontal navigation only",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -502,5 +502,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1522331659
+    "modified": 1522351971
 }
