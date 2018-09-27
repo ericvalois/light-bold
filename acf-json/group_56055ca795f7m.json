@@ -85,14 +85,14 @@
         },
         {
             "key": "field_560961fa510fe",
-            "label": "Large logo",
+            "label": "Desktop logo",
             "name": "perf_log_lg",
             "type": "image",
             "instructions": "Side navigation max Width 255px;",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -108,15 +108,15 @@
             "mime_types": ""
         },
         {
-            "key": "field_57c99fc8ecb2e",
-            "label": "Medium logo",
-            "name": "perf_log_md",
+            "key": "field_5bace3452e03f",
+            "label": "Retina Desktop logo",
+            "name": "perf_log_lg_retina",
             "type": "image",
-            "instructions": "Side navigation max Width 166px;",
+            "instructions": "(Optional)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -133,14 +133,38 @@
         },
         {
             "key": "field_56bb9ed6c85cc",
-            "label": "Small logo",
+            "label": "Mobile logo",
             "name": "perf_log_sm",
             "type": "image",
             "instructions": "Recommended height 50px; Recommended width 140px;",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "full",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5bace3892e040",
+            "label": "Retina Mobile logo",
+            "name": "perf_log_sm_retina",
+            "type": "image",
+            "instructions": "(Optional)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -502,5 +526,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1522351971
+    "modified": 1538059035
 }

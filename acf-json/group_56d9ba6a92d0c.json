@@ -1,24 +1,6 @@
 {
     "key": "group_56d9ba6a92d0c",
     "title": "Address widget",
-    "location": [
-        [
-            {
-                "param": "widget",
-                "operator": "==",
-                "value": "light_bold_address_widget"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "menu_item_level": "all",
     "fields": [
         {
             "key": "field_56d9ba6a94e91",
@@ -82,5 +64,22 @@
             ]
         }
     ],
-    "modified": 1522331341
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "light_bold_address_widget"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1538059012
 }

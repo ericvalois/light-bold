@@ -1,23 +1,6 @@
 {
     "key": "group_56f985f298e96",
     "title": "Contact page configuration",
-    "location": [
-        [
-            {
-                "param": "page_template",
-                "operator": "==",
-                "value": "page-templates\/template-contact.php"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "acf_after_title",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_56f9862850e80",
@@ -168,5 +151,22 @@
             ]
         }
     ],
-    "modified": 1522331341
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1538059025
 }

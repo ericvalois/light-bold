@@ -1,6 +1,25 @@
 {
     "key": "group_57b2006930370",
     "title": "Light & Bold",
+    "fields": [
+        {
+            "key": "field_57d16184f3398",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<h3>TTFB Updates<\/h3>\r\n\r\n<p>Get TTFB’s latest news. Be the first to know when we release new themes and features. <a target=\"_blank\" href=\"http:\/\/eepurl.com\/b1x9T1\">Sign up!<\/a><\/p>\r\n\r\n<hr>\r\n\r\n<h3>Looking for help?<\/h3>\r\n\r\n<p>If your answer cannot be found in the <a href=\"https:\/\/ttfb.io\/documentation\/\" target=\"_blank\">Knowledge Base<\/a>, please use the <a href=\"https:\/\/ttfb.io\/dashboard\/support\/\" target=\"_blank\">support form<\/a> to contact us.<\/p>",
+            "new_lines": "",
+            "esc_html": 0
+        }
+    ],
     "location": [
         [
             {
@@ -32,24 +51,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "fields": [
-        {
-            "key": "field_57d16184f3398",
-            "label": "",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "<h3>TTFB Updates<\/h3>\r\n\r\n<p>Get TTFB’s latest news. Be the first to know when we release new themes and features. <a target=\"_blank\" href=\"http:\/\/eepurl.com\/b1x9T1\">Sign up!<\/a><\/p>\r\n\r\n<hr>\r\n\r\n<h3>Looking for help?<\/h3>\r\n\r\n<p>If your answer cannot be found in the <a href=\"https:\/\/ttfb.io\/documentation\/\" target=\"_blank\">Knowledge Base<\/a>, please use the <a href=\"https:\/\/ttfb.io\/dashboard\/support\/\" target=\"_blank\">support form<\/a> to contact us.<\/p>",
-            "new_lines": "",
-            "esc_html": 0
-        }
-    ],
-    "modified": 1522331343
+    "modified": 1538059040
 }

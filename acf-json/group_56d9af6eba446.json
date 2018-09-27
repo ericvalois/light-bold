@@ -1,24 +1,6 @@
 {
     "key": "group_56d9af6eba446",
     "title": "Social media profile widget",
-    "location": [
-        [
-            {
-                "param": "widget",
-                "operator": "==",
-                "value": "light_bold_social_profiles"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "menu_item_level": "all",
     "fields": [
         {
             "key": "field_56d9af9dbaa69",
@@ -77,5 +59,22 @@
             ]
         }
     ],
-    "modified": 1522331343
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "light_bold_social_profiles"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1538059059
 }
